@@ -1,3 +1,19 @@
+---
+name: liquid-biopsy-analytics-agent
+description: Comprehensive analysis of liquid biopsy data (ctDNA, CTCs) for cancer detection, MRD monitoring, and response tracking.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    keywords:
+    - liquid-biopsy
+    - ctdna
+    - mrd
+    - cancer-detection
+    - treatment-response
+    measurable_outcome: Detects circulating tumor DNA with 0.01% sensitivity and accurately predicts treatment response in longitudinal samples.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,20 +27,6 @@
 
 -->
 
----
-name: 'liquid-biopsy-analytics-agent'
-description: 'Comprehensive analysis of liquid biopsy data (ctDNA, CTCs) for cancer detection, MRD monitoring, and response tracking.'
-keywords:
-  - liquid-biopsy
-  - ctdna
-  - mrd
-  - cancer-detection
-  - treatment-response
-measurable_outcome: 'Detects circulating tumor DNA with 0.01% sensitivity and accurately predicts treatment response in longitudinal samples.'
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # Liquid Biopsy Analytics Agent

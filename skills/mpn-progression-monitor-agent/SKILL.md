@@ -1,3 +1,13 @@
+---
+name: mpn-progression-monitor-agent
+description: AI-powered myeloproliferative neoplasm monitoring for disease progression prediction, treatment response tracking, and transformation risk assessment in PV, ET, and myelofibrosis.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'mpn-progression-monitor-agent'
-description: 'AI-powered myeloproliferative neoplasm monitoring for disease progression prediction, treatment response tracking, and transformation risk assessment in PV, ET, and myelofibrosis.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # MPN Progression Monitor Agent

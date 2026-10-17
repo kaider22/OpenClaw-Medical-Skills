@@ -1,3 +1,15 @@
+---
+name: bio-alignment-validation
+description: Validate alignment quality with insert size distribution, proper pairing rates, GC bias, strand balance, and other post-alignment metrics. Use when verifying alignment data quality before variant calling or quantification.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: samtools
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-alignment-validation
-description: Validate alignment quality with insert size distribution, proper pairing rates, GC bias, strand balance, and other post-alignment metrics. Use when verifying alignment data quality before variant calling or quantification.
-tool_type: mixed
-primary_tool: samtools
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Alignment Validation
 

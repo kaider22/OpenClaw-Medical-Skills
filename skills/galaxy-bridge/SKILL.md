@@ -1,36 +1,47 @@
 ---
 name: galaxy-bridge
-description: "Galaxy tool discovery, intelligent recommendation, and execution — 8,000+ bioinformatics tools from usegalaxy.org with multi-signal scoring and workflow suggestions"
-version: 0.2.0
-author: Manuel Corpas
+description: Galaxy tool discovery, intelligent recommendation, and execution — 8,000+ bioinformatics tools from usegalaxy.org with multi-signal scoring and workflow suggestions
 license: MIT
-tags: [galaxy, bioinformatics, tool-discovery, workflows, NGS, genomics, proteomics, metagenomics]
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env:
-        - GALAXY_URL
-        - GALAXY_API_KEY
+      - GALAXY_URL
+      - GALAXY_API_KEY
       config: []
     always: false
-    emoji: "🌌"
+    emoji: 🌌
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: pip
-        package: bioblend
-        bins: []
+    - kind: pip
+      package: bioblend
+      bins: []
     trigger_keywords:
-      - galaxy
-      - usegalaxy
-      - tool shed
-      - bioblend
-      - run on galaxy
-      - galaxy tool
-      - galaxy workflow
-      - NGS pipeline
+    - galaxy
+    - usegalaxy
+    - tool shed
+    - bioblend
+    - run on galaxy
+    - galaxy tool
+    - galaxy workflow
+    - NGS pipeline
+  source_extensions:
+    version: 0.2.0
+    author: Manuel Corpas
+    tags:
+    - galaxy
+    - bioinformatics
+    - tool-discovery
+    - workflows
+    - NGS
+    - genomics
+    - proteomics
+    - metagenomics
 ---
 
 # Galaxy Bridge

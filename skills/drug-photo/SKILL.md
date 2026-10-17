@@ -1,27 +1,34 @@
 ---
 name: drug-photo
 description: Medication photo to personalised PGx dosage card via Claude vision — snap a pill, get genotype-informed guidance
-version: 0.1.0
-author: Manuel Corpas
 license: MIT
-tags: [pharmacogenomics, computer-vision, drug-identification, dosage-guidance]
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env: []
       config: []
     always: false
-    emoji: "📸"
+    emoji: 📸
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install: []
     trigger_keywords:
-      - drug photo
-      - medication photo
-      - pill photo
-      - drug image
+    - drug photo
+    - medication photo
+    - pill photo
+    - drug image
+  source_extensions:
+    version: 0.1.0
+    author: Manuel Corpas
+    tags:
+    - pharmacogenomics
+    - computer-vision
+    - drug-identification
+    - dosage-guidance
 ---
 
 # 📸 Drug Photo

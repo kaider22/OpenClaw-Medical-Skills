@@ -1,3 +1,24 @@
+---
+name: chematagent-drug-discovery
+description: Chemical Lab Agent
+license: MIT
+metadata:
+  author: CheMatAgent Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - chemistry
+    - drug-discovery
+    - tools
+    - synthesis
+    - property-prediction
+    measurable_outcome: Plan a synthesis route and predict ADMET properties for a candidate molecule with >80% validity.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: chematagent-drug-discovery
-description: Chemical Lab Agent
-keywords:
-  - chemistry
-  - drug-discovery
-  - tools
-  - synthesis
-  - property-prediction
-measurable_outcome: Plan a synthesis route and predict ADMET properties for a candidate molecule with >80% validity.
-license: MIT
-metadata:
-  author: CheMatAgent Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # CheMatAgent
 

@@ -1,3 +1,15 @@
+---
+name: bio-phylo-distance-calculations
+description: Compute evolutionary distances and build phylogenetic trees using Biopython Bio.Phylo.TreeConstruction. Use when creating distance matrices from alignments, building NJ/UPGMA trees, or generating bootstrap consensus trees.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Bio.Phylo.TreeConstruction
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-phylo-distance-calculations
-description: Compute evolutionary distances and build phylogenetic trees using Biopython Bio.Phylo.TreeConstruction. Use when creating distance matrices from alignments, building NJ/UPGMA trees, or generating bootstrap consensus trees.
-tool_type: python
-primary_tool: Bio.Phylo.TreeConstruction
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Distance Calculations and Tree Building
 

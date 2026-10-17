@@ -1,8 +1,10 @@
 ---
 name: bio-differential-splicing
 description: Detects differential alternative splicing between conditions using rMATS-turbo (BAM-based) or SUPPA2 diffSplice (TPM-based). Reports events with FDR-corrected significance and delta PSI effect sizes. Use when comparing splicing patterns between treatment groups, tissues, or disease states.
-tool_type: mixed
-primary_tool: rMATS-turbo
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: rMATS-turbo
 ---
 
 ## Version Compatibility

@@ -1,3 +1,28 @@
+---
+name: bio-workflows-hic-pipeline
+description: End-to-end Hi-C analysis workflow from contact pairs to compartments, TADs, and loops. Covers cooler matrices, cooltools analysis, and visualization. Use when processing Hi-C data to compartments and TADs.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: cooler
+    workflow: true
+    depends_on:
+    - hi-c-analysis/hic-data-io
+    - hi-c-analysis/contact-pairs
+    - hi-c-analysis/matrix-operations
+    - hi-c-analysis/compartment-analysis
+    - hi-c-analysis/tad-detection
+    - hi-c-analysis/loop-calling
+    - hi-c-analysis/hic-visualization
+    qc_checkpoints:
+    - after_pairs: Valid pairs >50%, cis >70%
+    - after_matrix: Coverage uniform, no artifacts
+    - after_analysis: Compartments correlate with expression
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,29 +36,6 @@
 
 -->
 
----
-name: bio-workflows-hic-pipeline
-description: End-to-end Hi-C analysis workflow from contact pairs to compartments, TADs, and loops. Covers cooler matrices, cooltools analysis, and visualization. Use when processing Hi-C data to compartments and TADs.
-tool_type: mixed
-primary_tool: cooler
-workflow: true
-depends_on:
-  - hi-c-analysis/hic-data-io
-  - hi-c-analysis/contact-pairs
-  - hi-c-analysis/matrix-operations
-  - hi-c-analysis/compartment-analysis
-  - hi-c-analysis/tad-detection
-  - hi-c-analysis/loop-calling
-  - hi-c-analysis/hic-visualization
-qc_checkpoints:
-  - after_pairs: "Valid pairs >50%, cis >70%"
-  - after_matrix: "Coverage uniform, no artifacts"
-  - after_analysis: "Compartments correlate with expression"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Hi-C Pipeline
 

@@ -1,8 +1,10 @@
 ---
 name: bio-isoform-switching
 description: Analyzes isoform switching events and functional consequences using IsoformSwitchAnalyzeR. Predicts protein domain changes, NMD sensitivity, ORF alterations, and coding potential shifts between conditions. Use when investigating how splicing changes affect protein function.
-tool_type: r
-primary_tool: IsoformSwitchAnalyzeR
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: IsoformSwitchAnalyzeR
 ---
 
 ## Version Compatibility

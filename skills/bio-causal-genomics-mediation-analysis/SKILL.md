@@ -1,8 +1,10 @@
 ---
 name: bio-causal-genomics-mediation-analysis
 description: Decompose genetic effects into direct and indirect paths through mediating variables using the mediation R package. Tests whether gene expression, methylation, or other molecular phenotypes mediate the effect of genetic variants on disease. Use when testing whether a molecular phenotype mediates the genotype-to-phenotype relationship.
-tool_type: r
-primary_tool: mediation
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: mediation
 ---
 
 ## Version Compatibility

@@ -1,8 +1,10 @@
 ---
 name: bio-vcf-basics
 description: View, query, and understand VCF/BCF variant files using bcftools and cyvcf2. Use when inspecting variants, extracting specific fields, or understanding VCF format structure.
-tool_type: cli
-primary_tool: bcftools
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bcftools
 ---
 
 ## Version Compatibility

@@ -1,3 +1,26 @@
+---
+name: bio-workflows-rnaseq-to-de
+description: End-to-end RNA-seq workflow from FASTQ files to differential expression results. Covers QC, quantification (Salmon or STAR+featureCounts), and DESeq2 analysis with visualization. Use when running RNA-seq from FASTQ to DE results.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: DESeq2
+    workflow: true
+    depends_on:
+    - read-qc/fastp-workflow
+    - rna-quantification/alignment-free-quant
+    - rna-quantification/tximport-workflow
+    - differential-expression/deseq2-basics
+    - differential-expression/de-visualization
+    qc_checkpoints:
+    - after_qc: Q30 >80%, adapter content <5%
+    - after_quant: Mapping rate >70%, >10M reads mapped
+    - after_de: Dispersion fit reasonable, no sample outliers
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +34,6 @@
 
 -->
 
----
-name: bio-workflows-rnaseq-to-de
-description: End-to-end RNA-seq workflow from FASTQ files to differential expression results. Covers QC, quantification (Salmon or STAR+featureCounts), and DESeq2 analysis with visualization. Use when running RNA-seq from FASTQ to DE results.
-tool_type: mixed
-primary_tool: DESeq2
-workflow: true
-depends_on:
-  - read-qc/fastp-workflow
-  - rna-quantification/alignment-free-quant
-  - rna-quantification/tximport-workflow
-  - differential-expression/deseq2-basics
-  - differential-expression/de-visualization
-qc_checkpoints:
-  - after_qc: "Q30 >80%, adapter content <5%"
-  - after_quant: "Mapping rate >70%, >10M reads mapped"
-  - after_de: "Dispersion fit reasonable, no sample outliers"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # RNA-seq to Differential Expression Workflow
 

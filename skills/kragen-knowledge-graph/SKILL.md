@@ -1,3 +1,24 @@
+---
+name: kragen-knowledge-graph
+description: Graph-RAG Solver
+license: MIT
+metadata:
+  author: Bioinformatics Oxford
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - knowledge-graph
+    - RAG
+    - reasoning
+    - graph-of-thoughts
+    - biomedical-qa
+    measurable_outcome: Return a reasoning path and an answer supported by ≥3 knowledge graph nodes for complex biomedical questions with <5s latency.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- web_fetch
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: kragen-knowledge-graph
-description: Graph-RAG Solver
-keywords:
-  - knowledge-graph
-  - RAG
-  - reasoning
-  - graph-of-thoughts
-  - biomedical-qa
-measurable_outcome: Return a reasoning path and an answer supported by ≥3 knowledge graph nodes for complex biomedical questions with <5s latency.
-license: MIT
-metadata:
-  author: Bioinformatics Oxford
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - web_fetch
----
 
 # KRAGEN (Knowledge Graph Enhanced RAG)
 

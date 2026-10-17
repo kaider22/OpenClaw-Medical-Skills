@@ -1,3 +1,13 @@
+---
+name: microbiome-cancer-agent
+description: AI-powered analysis of microbiome-cancer interactions including tumor microbiome profiling, immunotherapy response prediction, and microbiome-targeted therapeutic opportunities.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'microbiome-cancer-agent'
-description: 'AI-powered analysis of microbiome-cancer interactions including tumor microbiome profiling, immunotherapy response prediction, and microbiome-targeted therapeutic opportunities.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # Microbiome-Cancer Interaction Agent

@@ -1,3 +1,27 @@
+---
+name: bio-workflows-neoantigen-pipeline
+description: End-to-end neoantigen discovery from somatic variants to ranked vaccine candidates. Integrates HLA typing, MHC binding prediction, pVACtools neoantigen calling, and immunogenicity scoring. Use when identifying tumor neoantigens for personalized vaccine design or checkpoint biomarkers.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: pVACtools
+    workflow: true
+    depends_on:
+    - clinical-databases/hla-typing
+    - immunoinformatics/mhc-binding-prediction
+    - immunoinformatics/neoantigen-prediction
+    - immunoinformatics/immunogenicity-scoring
+    - immunoinformatics/epitope-prediction
+    qc_checkpoints:
+    - after_hla: HLA types resolved to 4-digit, coverage adequate
+    - after_binding: Predictions generated for all alleles, IC50 <500nM filter
+    - after_neoantigen: Neoantigens identified with VAF >0.1, expressed
+    - after_scoring: Top candidates prioritized by immunogenicity
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +35,6 @@
 
 -->
 
----
-name: bio-workflows-neoantigen-pipeline
-description: End-to-end neoantigen discovery from somatic variants to ranked vaccine candidates. Integrates HLA typing, MHC binding prediction, pVACtools neoantigen calling, and immunogenicity scoring. Use when identifying tumor neoantigens for personalized vaccine design or checkpoint biomarkers.
-tool_type: mixed
-primary_tool: pVACtools
-workflow: true
-depends_on:
-  - clinical-databases/hla-typing
-  - immunoinformatics/mhc-binding-prediction
-  - immunoinformatics/neoantigen-prediction
-  - immunoinformatics/immunogenicity-scoring
-  - immunoinformatics/epitope-prediction
-qc_checkpoints:
-  - after_hla: "HLA types resolved to 4-digit, coverage adequate"
-  - after_binding: "Predictions generated for all alleles, IC50 <500nM filter"
-  - after_neoantigen: "Neoantigens identified with VAF >0.1, expressed"
-  - after_scoring: "Top candidates prioritized by immunogenicity"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Neoantigen Pipeline
 

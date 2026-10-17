@@ -1,8 +1,10 @@
 ---
 name: bio-metagenomics-visualization
 description: Visualize metagenomic profiles using R (phyloseq, microbiome) and Python (matplotlib, seaborn). Create stacked bar plots, heatmaps, PCA plots, and diversity analyses. Use when creating publication-quality figures from MetaPhlAn, Bracken, or other taxonomic profiling output.
-tool_type: mixed
-primary_tool: phyloseq
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: phyloseq
 ---
 
 ## Version Compatibility

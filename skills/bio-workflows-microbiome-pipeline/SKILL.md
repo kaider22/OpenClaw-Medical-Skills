@@ -1,3 +1,21 @@
+---
+name: bio-workflows-microbiome-pipeline
+description: End-to-end 16S amplicon workflow from FASTQ reads to differential abundance. Orchestrates DADA2 ASV inference, taxonomy assignment, diversity analysis, and compositional testing with ALDEx2. Use when processing 16S/ITS amplicon data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: dada2
+    workflow: true
+    depends_on:
+    - microbiome/amplicon-processing
+    - microbiome/taxonomy-assignment
+    - microbiome/diversity-analysis
+    - microbiome/differential-abundance
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,22 +29,6 @@
 
 -->
 
----
-name: bio-workflows-microbiome-pipeline
-description: End-to-end 16S amplicon workflow from FASTQ reads to differential abundance. Orchestrates DADA2 ASV inference, taxonomy assignment, diversity analysis, and compositional testing with ALDEx2. Use when processing 16S/ITS amplicon data.
-tool_type: r
-primary_tool: dada2
-workflow: true
-depends_on:
-  - microbiome/amplicon-processing
-  - microbiome/taxonomy-assignment
-  - microbiome/diversity-analysis
-  - microbiome/differential-abundance
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Microbiome Pipeline
 

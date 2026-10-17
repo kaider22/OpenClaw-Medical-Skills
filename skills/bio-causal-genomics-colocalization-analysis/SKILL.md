@@ -1,8 +1,10 @@
 ---
 name: bio-causal-genomics-colocalization-analysis
 description: Test whether two traits share a causal variant at a genomic locus using Bayesian colocalization with coloc. Computes posterior probabilities for shared vs distinct causal variants between GWAS and eQTL signals. Use when determining if a GWAS signal and an eQTL share the same causal variant.
-tool_type: r
-primary_tool: coloc
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: coloc
 ---
 
 ## Version Compatibility

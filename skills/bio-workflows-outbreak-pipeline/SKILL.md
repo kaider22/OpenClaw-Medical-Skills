@@ -1,3 +1,27 @@
+---
+name: bio-workflows-outbreak-pipeline
+description: End-to-end outbreak investigation from pathogen isolates to transmission networks. Orchestrates MLST typing, AMR surveillance, phylodynamic dating, and transmission inference with TransPhylo. Use when investigating disease outbreaks or tracking pathogen transmission chains.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: mlst
+    workflow: true
+    depends_on:
+    - epidemiological-genomics/pathogen-typing
+    - epidemiological-genomics/amr-surveillance
+    - epidemiological-genomics/phylodynamics
+    - epidemiological-genomics/transmission-inference
+    - epidemiological-genomics/variant-surveillance
+    qc_checkpoints:
+    - after_typing: Valid ST assigned, cgMLST distance matrix computed
+    - after_amr: AMR genes identified with >90% identity
+    - after_phylodynamics: Root-to-tip R2 >0.5, clock rate plausible
+    - after_transmission: Transmission pairs consistent with epi data
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +35,6 @@
 
 -->
 
----
-name: bio-workflows-outbreak-pipeline
-description: End-to-end outbreak investigation from pathogen isolates to transmission networks. Orchestrates MLST typing, AMR surveillance, phylodynamic dating, and transmission inference with TransPhylo. Use when investigating disease outbreaks or tracking pathogen transmission chains.
-tool_type: mixed
-primary_tool: mlst
-workflow: true
-depends_on:
-  - epidemiological-genomics/pathogen-typing
-  - epidemiological-genomics/amr-surveillance
-  - epidemiological-genomics/phylodynamics
-  - epidemiological-genomics/transmission-inference
-  - epidemiological-genomics/variant-surveillance
-qc_checkpoints:
-  - after_typing: "Valid ST assigned, cgMLST distance matrix computed"
-  - after_amr: "AMR genes identified with >90% identity"
-  - after_phylodynamics: "Root-to-tip R2 >0.5, clock rate plausible"
-  - after_transmission: "Transmission pairs consistent with epi data"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Outbreak Pipeline
 

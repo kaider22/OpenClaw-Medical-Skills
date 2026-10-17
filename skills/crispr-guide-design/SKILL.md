@@ -1,3 +1,24 @@
+---
+name: crispr-guide-design
+description: Guide foundry
+license: MIT
+metadata:
+  author: CRISPR-GPT Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - CRISPR
+    - sgRNA
+    - Doench
+    - off-target
+    - oligos
+    measurable_outcome: Return the requested number of guides (default ≥4) with efficiency + specificity scores, coordinates, and cloning oligos within 10 minutes per gene.
+    compatibility:
+    - system: Python 3.10+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: crispr-guide-design
-description: Guide foundry
-keywords:
-  - CRISPR
-  - sgRNA
-  - Doench
-  - off-target
-  - oligos
-measurable_outcome: Return the requested number of guides (default ≥4) with efficiency + specificity scores, coordinates, and cloning oligos within 10 minutes per gene.
-license: MIT
-metadata:
-  author: CRISPR-GPT Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.10+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # CRISPR Design Agent
 

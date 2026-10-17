@@ -1,3 +1,13 @@
+---
+name: rna-velocity-agent
+description: AI-powered RNA velocity analysis for predicting cellular state transitions, differentiation trajectories, and dynamic gene regulation from single-cell RNA sequencing data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'rna-velocity-agent'
-description: 'AI-powered RNA velocity analysis for predicting cellular state transitions, differentiation trajectories, and dynamic gene regulation from single-cell RNA sequencing data.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # RNA Velocity Agent

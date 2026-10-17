@@ -1,8 +1,10 @@
 ---
 name: bio-genome-engineering-hdr-template-design
 description: Design homology-directed repair donor templates for CRISPR knock-ins using primer3-py. Create ssODN, dsDNA, or plasmid templates with optimized homology arms. Use when designing donor templates for precise insertions, tagging, or allele replacement.
-tool_type: python
-primary_tool: primer3-py
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: primer3-py
 ---
 
 ## Version Compatibility

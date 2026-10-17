@@ -1,3 +1,24 @@
+---
+name: leads-literature-mining
+description: Review Automator
+license: CC-BY-4.0
+metadata:
+  author: Nature Communications 2025
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - literature-mining
+    - systematic-review
+    - meta-analysis
+    - pubmed
+    - evidence-synthesis
+    measurable_outcome: Complete a systematic review screen of 100+ papers with >90% inclusion/exclusion accuracy compared to human baseline.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- web_fetch
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: leads-literature-mining
-description: Review Automator
-keywords:
-  - literature-mining
-  - systematic-review
-  - meta-analysis
-  - pubmed
-  - evidence-synthesis
-measurable_outcome: Complete a systematic review screen of 100+ papers with >90% inclusion/exclusion accuracy compared to human baseline.
-license: CC-BY-4.0
-metadata:
-  author: Nature Communications 2025
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - web_fetch
----
 
 # LEADS (Literature Mining Agent)
 

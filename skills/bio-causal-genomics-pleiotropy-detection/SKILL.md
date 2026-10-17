@@ -1,8 +1,10 @@
 ---
 name: bio-causal-genomics-pleiotropy-detection
 description: Detect and correct for horizontal pleiotropy in Mendelian randomization analyses using MR-PRESSO for outlier removal, MR-Egger regression for directional pleiotropy, and Steiger filtering for variant directionality. Use when validating MR results, detecting pleiotropic instruments, or running sensitivity analyses for causal inference.
-tool_type: r
-primary_tool: MR-PRESSO
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: MR-PRESSO
 ---
 
 ## Version Compatibility

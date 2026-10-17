@@ -1,8 +1,10 @@
 ---
 name: bio-imaging-mass-cytometry-phenotyping
 description: Cell type assignment from marker expression in IMC data. Covers manual gating, clustering, and automated classification approaches. Use when assigning cell types to segmented IMC cells based on protein marker expression or when phenotyping cells in multiplexed imaging data.
-tool_type: python
-primary_tool: scanpy
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: scanpy
 ---
 
 ## Version Compatibility

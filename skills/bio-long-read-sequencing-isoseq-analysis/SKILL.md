@@ -1,8 +1,10 @@
 ---
 name: bio-long-read-sequencing-isoseq-analysis
 description: Analyze PacBio Iso-Seq data for full-length isoform discovery and quantification. Use when characterizing transcript diversity or identifying novel splice variants.
-tool_type: cli
-primary_tool: IsoSeq3
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: IsoSeq3
 ---
 
 ## Version Compatibility

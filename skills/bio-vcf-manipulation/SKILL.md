@@ -1,8 +1,10 @@
 ---
 name: bio-vcf-manipulation
 description: Merge, concatenate, sort, intersect, and subset VCF files using bcftools. Use when combining variant files, comparing call sets, or restructuring VCF data.
-tool_type: cli
-primary_tool: bcftools
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bcftools
 ---
 
 ## Version Compatibility

@@ -1,8 +1,10 @@
 ---
 name: bio-imaging-mass-cytometry-cell-segmentation
 description: Cell segmentation from multiplexed tissue images. Covers deep learning (Cellpose, Mesmer) and classical approaches for nuclear and whole-cell segmentation. Use when extracting single-cell data from IMC or MIBI images after preprocessing.
-tool_type: python
-primary_tool: cellpose
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: cellpose
 ---
 
 ## Version Compatibility

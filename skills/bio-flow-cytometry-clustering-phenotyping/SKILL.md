@@ -1,8 +1,10 @@
 ---
 name: bio-flow-cytometry-clustering-phenotyping
 description: Unsupervised clustering and cell type identification for flow/mass cytometry. Covers FlowSOM, Phenograph, and CATALYST workflows. Use when discovering cell populations in high-dimensional cytometry data without predefined gates.
-tool_type: r
-primary_tool: CATALYST
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: CATALYST
 ---
 
 ## Version Compatibility

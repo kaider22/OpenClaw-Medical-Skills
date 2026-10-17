@@ -4,13 +4,14 @@ description: An AI agent for therapeutic discovery that executes transparent, mu
 license: MIT
 metadata:
   author: Artificial Intelligence Group (Adapted from openscientist.ai)
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.10+
+  version: 1.0.0
+  source_extensions:
+    compatibility:
+    - system: Python 3.10+
 allowed-tools:
-  - run_shell_command
-  - read_file
-  - web_fetch
+- run_shell_command
+- read_file
+- web_fetch
 ---
 
 # Medea Therapeutic Discovery Agent

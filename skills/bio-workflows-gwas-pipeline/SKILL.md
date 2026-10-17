@@ -1,3 +1,25 @@
+---
+name: bio-workflows-gwas-pipeline
+description: End-to-end GWAS workflow from VCF to association results. Covers PLINK QC, population structure correction, and association testing for case-control or quantitative traits. Use when running genome-wide association studies.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: PLINK2
+    workflow: true
+    depends_on:
+    - population-genetics/plink-basics
+    - population-genetics/population-structure
+    - population-genetics/association-testing
+    - population-genetics/linkage-disequilibrium
+    qc_checkpoints:
+    - after_qc: Sample/variant call rates >95%, HWE p>1e-6
+    - after_structure: No population stratification bias
+    - after_association: Lambda ~1.0, expected QQ plot
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +33,6 @@
 
 -->
 
----
-name: bio-workflows-gwas-pipeline
-description: End-to-end GWAS workflow from VCF to association results. Covers PLINK QC, population structure correction, and association testing for case-control or quantitative traits. Use when running genome-wide association studies.
-tool_type: mixed
-primary_tool: PLINK2
-workflow: true
-depends_on:
-  - population-genetics/plink-basics
-  - population-genetics/population-structure
-  - population-genetics/association-testing
-  - population-genetics/linkage-disequilibrium
-qc_checkpoints:
-  - after_qc: "Sample/variant call rates >95%, HWE p>1e-6"
-  - after_structure: "No population stratification bias"
-  - after_association: "Lambda ~1.0, expected QQ plot"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # GWAS Pipeline
 

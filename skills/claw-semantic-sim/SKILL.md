@@ -1,47 +1,55 @@
 ---
 name: claw-semantic-sim
-version: 0.1.0
 description: Semantic Similarity Index for disease research literature using PubMedBERT embeddings
-author: Manuel Corpas
 license: MIT
-tags: [health-equity, semantic-analysis, NLP, PubMedBERT, disease-neglect]
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env: []
       config: []
     always: false
-    emoji: "🔬"
+    emoji: 🔬
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: pip
-        package: torch
-        bins: []
-      - kind: pip
-        package: transformers
-        bins: []
-      - kind: pip
-        package: h5py
-        bins: []
-      - kind: pip
-        package: umap-learn
-        bins: []
-      - kind: pip
-        package: biopython
-        bins: []
-      - kind: pip
-        package: networkx
-        bins: []
+    - kind: pip
+      package: torch
+      bins: []
+    - kind: pip
+      package: transformers
+      bins: []
+    - kind: pip
+      package: h5py
+      bins: []
+    - kind: pip
+      package: umap-learn
+      bins: []
+    - kind: pip
+      package: biopython
+      bins: []
+    - kind: pip
+      package: networkx
+      bins: []
     trigger_keywords:
-      - semantic similarity
-      - disease neglect
-      - research gaps
-      - NTDs
-      - SII
-      - knowledge silo
+    - semantic similarity
+    - disease neglect
+    - research gaps
+    - NTDs
+    - SII
+    - knowledge silo
+  source_extensions:
+    version: 0.1.0
+    author: Manuel Corpas
+    tags:
+    - health-equity
+    - semantic-analysis
+    - NLP
+    - PubMedBERT
+    - disease-neglect
 ---
 
 # 🦖 Semantic Similarity Index

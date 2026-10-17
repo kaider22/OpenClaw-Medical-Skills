@@ -1,3 +1,21 @@
+---
+name: bio-research-tools-biomarker-signature-studio
+description: Multi-omic biomarker discovery studio that ingests expression + metadata, performs QC, multi-strategy feature selection, nested CV model training, survival analysis hooks, and SHAP-based interpretation. Use to design translational biomarker panels with documented evidence.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: scikit-learn
+    depends_on:
+    - machine-learning/biomarker-discovery
+    - machine-learning/model-validation
+    - machine-learning/omics-classifiers
+    - differential-expression/de-results
+    - workflow-management/biomarker-pipeline
+    measurable_outcome: Run biomarker_signature_studio.py end-to-end on provided data within 20 minutes and produce metrics + feature rankings JSON artifacts.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,22 +29,6 @@
 
 -->
 
----
-name: bio-research-tools-biomarker-signature-studio
-description: Multi-omic biomarker discovery studio that ingests expression + metadata, performs QC, multi-strategy feature selection, nested CV model training, survival analysis hooks, and SHAP-based interpretation. Use to design translational biomarker panels with documented evidence.
-tool_type: python
-primary_tool: scikit-learn
-depends_on:
-  - machine-learning/biomarker-discovery
-  - machine-learning/model-validation
-  - machine-learning/omics-classifiers
-  - differential-expression/de-results
-  - workflow-management/biomarker-pipeline
-measurable_outcome: Run biomarker_signature_studio.py end-to-end on provided data within 20 minutes and produce metrics + feature rankings JSON artifacts.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Biomarker Signature Studio
 

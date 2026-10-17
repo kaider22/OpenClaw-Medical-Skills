@@ -1,34 +1,37 @@
 ---
 name: equity-scorer
 description: Compute HEIM diversity and equity metrics from VCF or ancestry data. Generates heterozygosity, FST, PCA plots, and a composite HEIM Equity Score with markdown reports.
-version: 0.1.0
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env: []
       config: []
     always: false
-    emoji: "🦖"
+    emoji: 🦖
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: uv
-        package: biopython
-        bins: []
-      - kind: uv
-        package: pandas
-        bins: []
-      - kind: uv
-        package: scikit-learn
-        bins: []
-      - kind: uv
-        package: matplotlib
-        bins: []
-      - kind: uv
-        package: numpy
-        bins: []
+    - kind: uv
+      package: biopython
+      bins: []
+    - kind: uv
+      package: pandas
+      bins: []
+    - kind: uv
+      package: scikit-learn
+      bins: []
+    - kind: uv
+      package: matplotlib
+      bins: []
+    - kind: uv
+      package: numpy
+      bins: []
+  source_extensions:
+    version: 0.1.0
 ---
 
 # 🦖 Equity Scorer

@@ -1,3 +1,13 @@
+---
+name: nicheformer-spatial-agent
+description: Foundation model-powered spatial transcriptomics analysis leveraging 53M+ spatially resolved cells for cellular architecture modeling and tissue niche discovery.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'nicheformer-spatial-agent'
-description: 'Foundation model-powered spatial transcriptomics analysis leveraging 53M+ spatially resolved cells for cellular architecture modeling and tissue niche discovery.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # Nicheformer Spatial Agent

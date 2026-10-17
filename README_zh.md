@@ -149,6 +149,20 @@ Agent 应当列出已安装的技能及其功能说明。
 
 ---
 
+### Codex CLI 用户
+
+克隆仓库后，在仓库根目录启动 Codex。Codex 会从 `.agents/skills/` 发现项目技能；其中每个入口都指向 `skills/` 下的原技能目录。
+
+```bash
+git clone --branch codex/codex-native-skills https://github.com/kaider22/OpenClaw-Medical-Skills.git
+cd OpenClaw-Medical-Skills
+codex
+```
+
+在 Codex 中用 `/skills` 浏览技能，或按名称调用，例如 `$pubmed-database`。发现技能不等于自动安装其所需的外部程序、数据库、API 凭据或服务。本次适配验证的是 Codex 格式和技能发现，不代表每个医学或科研流程都已完成实际功能验证。
+
+---
+
 ## 技能总览
 
 | 类别 | 数量 | 代表技能 |

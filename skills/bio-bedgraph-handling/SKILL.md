@@ -1,3 +1,15 @@
+---
+name: bio-bedgraph-handling
+description: Create, manipulate, and convert bedGraph files for genome browser visualization. Covers bedGraph format, conversion to/from bigWig, normalization, and signal processing. Use when handling coverage and signal tracks from ChIP-seq, ATAC-seq, or RNA-seq.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: pyBigWig
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-bedgraph-handling
-description: Create, manipulate, and convert bedGraph files for genome browser visualization. Covers bedGraph format, conversion to/from bigWig, normalization, and signal processing. Use when handling coverage and signal tracks from ChIP-seq, ATAC-seq, or RNA-seq.
-tool_type: mixed
-primary_tool: pyBigWig
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # bedGraph Handling
 

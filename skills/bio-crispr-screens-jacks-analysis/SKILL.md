@@ -1,8 +1,10 @@
 ---
 name: bio-crispr-screens-jacks-analysis
 description: JACKS (Joint Analysis of CRISPR/Cas9 Knockout Screens) for modeling sgRNA efficacy and gene essentiality. Use when analyzing multiple CRISPR screens simultaneously or when accounting for variable sgRNA efficiency across experiments.
-tool_type: python
-primary_tool: JACKS
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: JACKS
 ---
 
 ## Version Compatibility

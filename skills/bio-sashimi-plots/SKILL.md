@@ -1,8 +1,10 @@
 ---
 name: bio-sashimi-plots
 description: Creates sashimi plots showing RNA-seq read coverage and splice junction counts using ggsashimi or rmats2sashimiplot. Visualizes differential splicing events with grouped samples and junction read support. Use when visualizing specific splicing events or validating differential splicing results.
-tool_type: python
-primary_tool: ggsashimi
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: ggsashimi
 ---
 
 ## Version Compatibility

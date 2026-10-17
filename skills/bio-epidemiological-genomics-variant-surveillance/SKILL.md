@@ -1,8 +1,10 @@
 ---
 name: bio-epidemiological-genomics-variant-surveillance
 description: Assign pathogen lineages and track variants using Nextclade and pangolin for viral surveillance. Monitor variant prevalence and identify emerging variants of concern. Use when classifying viral sequences, tracking lineage dynamics, or monitoring for variants of concern.
-tool_type: cli
-primary_tool: nextclade
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: nextclade
 ---
 
 ## Version Compatibility

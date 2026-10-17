@@ -1,3 +1,15 @@
+---
+name: bio-genome-assembly-metagenome-assembly
+description: Metagenome assembly from long reads using metaFlye and metaSPAdes with binning strategies. Use when reconstructing genomes from microbial communities, recovering metagenome-assembled genomes (MAGs), or resolving strain-level variation in complex samples.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: metaFlye
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-genome-assembly-metagenome-assembly
-description: Metagenome assembly from long reads using metaFlye and metaSPAdes with binning strategies. Use when reconstructing genomes from microbial communities, recovering metagenome-assembled genomes (MAGs), or resolving strain-level variation in complex samples.
-tool_type: cli
-primary_tool: metaFlye
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Metagenome Assembly
 

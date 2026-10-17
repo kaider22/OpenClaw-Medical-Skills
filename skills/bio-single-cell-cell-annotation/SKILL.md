@@ -1,8 +1,10 @@
 ---
 name: bio-single-cell-cell-annotation
 description: Automated cell type annotation using reference-based methods including CellTypist, scPred, SingleR, and Azimuth for consistent, reproducible cell labeling. Use when automatically annotating cell types using reference datasets.
-tool_type: mixed
-primary_tool: CellTypist
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: CellTypist
 ---
 
 ## Version Compatibility

@@ -1,8 +1,10 @@
 ---
 name: bio-similarity-searching
 description: Performs molecular similarity searches using Tanimoto coefficient on fingerprints via RDKit. Finds structurally similar compounds using ECFP or MACCS keys and clusters molecules by structural similarity using Butina clustering. Use when finding analogs of a query compound or clustering chemical libraries.
-tool_type: python
-primary_tool: RDKit
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: RDKit
 ---
 
 ## Version Compatibility

@@ -1,8 +1,10 @@
 ---
 name: bio-reaction-enumeration
 description: Enumerates chemical libraries through reaction SMARTS transformations using RDKit. Generates virtual compound libraries from building blocks using defined chemical reactions with product validation. Use when creating combinatorial libraries or enumerating products from synthetic routes.
-tool_type: python
-primary_tool: RDKit
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: RDKit
 ---
 
 ## Version Compatibility

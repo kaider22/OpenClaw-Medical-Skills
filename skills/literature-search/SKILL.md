@@ -1,14 +1,16 @@
 ---
 name: literature-search
 description: Comprehensive scientific literature search across PubMed, arXiv, bioRxiv, medRxiv. Natural language queries powered by Valyu semantic search.
-keywords:
-  - literature-search
-  - scientific-literature
-  - multi-source-search
-  - comprehensive-search
-  - research-aggregation
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - literature-search
+    - scientific-literature
+    - multi-source-search
+    - comprehensive-search
+    - research-aggregation
+    - semantic-search
 ---
 
 

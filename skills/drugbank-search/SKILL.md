@@ -1,14 +1,16 @@
 ---
 name: drugbank-search
 description: Search DrugBank comprehensive drug database with natural language queries. Drug mechanisms, interactions, and safety data powered by Valyu.
-keywords:
-  - drugbank
-  - drugs
-  - pharmacology
-  - drug-interactions
-  - adverse-reactions
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - drugbank
+    - drugs
+    - pharmacology
+    - drug-interactions
+    - adverse-reactions
+    - semantic-search
 ---
 
 

@@ -1,3 +1,25 @@
+---
+name: computational-pathology-agent
+description: Analyze Whole Slide Images (WSI) for digital pathology, including tissue segmentation and feature extraction.
+license: MIT
+metadata:
+  author: MD BABU MIA, PhD
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - wsi
+    - digital-pathology
+    - deep-learning
+    - resnet
+    - openslide
+    measurable_outcome: Preprocess and extract tissue patches from a 1GB+ .svs slide within 15 minutes for downstream ML tasks.
+    compatibility:
+    - system: python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+- write_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +33,6 @@
 
 -->
 
----
-name: computational-pathology-agent
-description: Analyze Whole Slide Images (WSI) for digital pathology, including tissue segmentation and feature extraction.
-keywords:
-  - wsi
-  - digital-pathology
-  - deep-learning
-  - resnet
-  - openslide
-measurable_outcome: Preprocess and extract tissue patches from a 1GB+ .svs slide within 15 minutes for downstream ML tasks.
-license: MIT
-metadata:
-  author: MD BABU MIA, PhD
-  version: "1.0.0"
-compatibility:
-  - system: python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
-  - write_file
----
 
 # Computational Pathology Agent
 

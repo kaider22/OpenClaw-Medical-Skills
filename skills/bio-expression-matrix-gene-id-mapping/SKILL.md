@@ -1,3 +1,15 @@
+---
+name: bio-expression-matrix-gene-id-mapping
+description: Convert between gene identifier systems including Ensembl, Entrez, HGNC symbols, and UniProt. Use when mapping IDs for pathway analysis or matching different data sources.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: biomaRt
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-expression-matrix-gene-id-mapping
-description: Convert between gene identifier systems including Ensembl, Entrez, HGNC symbols, and UniProt. Use when mapping IDs for pathway analysis or matching different data sources.
-tool_type: mixed
-primary_tool: biomaRt
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Gene ID Mapping
 

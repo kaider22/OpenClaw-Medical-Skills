@@ -1,8 +1,10 @@
 ---
 name: bio-hi-c-analysis-matrix-operations
 description: Balance, normalize, and transform Hi-C contact matrices using cooler and cooltools. Apply iterative correction (ICE), compute expected values, and generate observed/expected matrices. Use when normalizing or transforming Hi-C matrices.
-tool_type: python
-primary_tool: cooltools
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: cooltools
 ---
 
 ## Version Compatibility

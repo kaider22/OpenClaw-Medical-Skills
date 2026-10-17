@@ -1,25 +1,28 @@
 ---
 name: lit-synthesizer
 description: Search PubMed and bioRxiv, summarise papers with LLM, build citation graphs, and generate literature review sections.
-version: 0.1.0
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env: []
       config: []
     always: false
-    emoji: "🦖"
+    emoji: 🦖
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: uv
-        package: biopython
-        bins: []
-      - kind: uv
-        package: httpx
-        bins: []
+    - kind: uv
+      package: biopython
+      bins: []
+    - kind: uv
+      package: httpx
+      bins: []
+  source_extensions:
+    version: 0.1.0
 ---
 
 # 🦖 Lit Synthesizer

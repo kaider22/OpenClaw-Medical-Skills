@@ -1,3 +1,13 @@
+---
+name: protein-structure-prediction
+description: Predicts 3D protein structures from amino acid sequences using ESMFold or AlphaFold3 (mock).
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'protein-structure-prediction'
-description: 'Predicts 3D protein structures from amino acid sequences using ESMFold or AlphaFold3 (mock).'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # Protein Structure Prediction (ESMFold/AF3)

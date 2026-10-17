@@ -1,8 +1,10 @@
 ---
 name: bio-molecular-descriptors
 description: Calculates molecular descriptors and fingerprints using RDKit. Computes Morgan fingerprints (ECFP), MACCS keys, Lipinski properties, QED drug-likeness, TPSA, and 3D conformer descriptors. Use when featurizing molecules for machine learning or filtering by drug-likeness criteria.
-tool_type: python
-primary_tool: RDKit
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: RDKit
 ---
 
 ## Version Compatibility

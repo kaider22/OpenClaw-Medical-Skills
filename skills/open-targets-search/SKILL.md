@@ -1,14 +1,16 @@
 ---
 name: open-targets-search
 description: Search Open Targets drug-disease associations with natural language queries. Target validation powered by Valyu semantic search.
-keywords:
-  - open-targets
-  - drug-targets
-  - target-validation
-  - disease-associations
-  - precision-medicine
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - open-targets
+    - drug-targets
+    - target-validation
+    - disease-associations
+    - precision-medicine
+    - semantic-search
 ---
 
 

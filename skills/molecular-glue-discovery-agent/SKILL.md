@@ -1,3 +1,13 @@
+---
+name: molecular-glue-discovery-agent
+description: AI-powered molecular glue discovery for targeted protein degradation, enabling neo-substrate recruitment and undruggable target degradation through E3 ligase interface modulation.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'molecular-glue-discovery-agent'
-description: 'AI-powered molecular glue discovery for targeted protein degradation, enabling neo-substrate recruitment and undruggable target degradation through E3 ligase interface modulation.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # Molecular Glue Discovery Agent

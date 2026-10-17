@@ -1,3 +1,15 @@
+---
+name: bio-genome-intervals-interval-arithmetic
+description: Core interval arithmetic operations including intersect, subtract, merge, complement, map, and groupby using bedtools and pybedtools. Use when finding overlapping regions, removing overlaps, combining adjacent intervals, or transferring annotations between interval files.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: bedtools
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-genome-intervals-interval-arithmetic
-description: Core interval arithmetic operations including intersect, subtract, merge, complement, map, and groupby using bedtools and pybedtools. Use when finding overlapping regions, removing overlaps, combining adjacent intervals, or transferring annotations between interval files.
-tool_type: mixed
-primary_tool: bedtools
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Interval Arithmetic
 

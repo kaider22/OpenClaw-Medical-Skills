@@ -1,14 +1,16 @@
 ---
 name: drug-discovery-search
 description: End-to-end drug discovery platform combining ChEMBL compounds, DrugBank, targets, and FDA labels. Natural language powered by Valyu.
-keywords:
-  - drug-discovery
-  - drug-development
-  - compound-screening
-  - target-validation
-  - comprehensive-search
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - drug-discovery
+    - drug-development
+    - compound-screening
+    - target-validation
+    - comprehensive-search
+    - semantic-search
 ---
 
 

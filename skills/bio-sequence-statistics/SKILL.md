@@ -1,8 +1,10 @@
 ---
 name: bio-sequence-statistics
 description: Calculate sequence statistics (N50, length distribution, GC content, summary reports) using Biopython. Use when analyzing sequence datasets, generating QC reports, or comparing assemblies.
-tool_type: python
-primary_tool: Bio.SeqIO
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Bio.SeqIO
 ---
 
 ## Version Compatibility

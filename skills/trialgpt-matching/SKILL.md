@@ -1,3 +1,23 @@
+---
+name: trialgpt-matching
+description: Trial shortlist
+license: MIT
+metadata:
+  author: TrialGPT Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - retrieval
+    - ranking
+    - ClinicalTrials
+    - patient-profile
+    measurable_outcome: Produce ≥5 ranked trials (when available) with rationale + missing-data notes within 3 minutes of receiving a patient query.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,25 +31,6 @@
 
 -->
 
----
-name: trialgpt-matching
-description: Trial shortlist
-keywords:
-  - retrieval
-  - ranking
-  - ClinicalTrials
-  - patient-profile
-measurable_outcome: Produce ≥5 ranked trials (when available) with rationale + missing-data notes within 3 minutes of receiving a patient query.
-license: MIT
-metadata:
-  author: TrialGPT Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # TrialGPT Matching
 

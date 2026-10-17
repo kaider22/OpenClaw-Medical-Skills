@@ -1,3 +1,8 @@
+---
+name: data-visualization-biomedical
+description: "Publication-quality visualizations for biomedical and genomics data. Use when creating volcano plots, heatmaps, UMAP plots, dot plots, survival curves, forest plots, or multi-panel figures. Includes scanpy, matplotlib, seaborn, plotly workflows with journal-ready aesthetics and proper statistical annotations."
+license: Proprietary
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,11 +16,6 @@
 
 -->
 
----
-name: data-visualization-biomedical
-description: "Publication-quality visualizations for biomedical and genomics data. Use when creating volcano plots, heatmaps, UMAP plots, dot plots, survival curves, forest plots, or multi-panel figures. Includes scanpy, matplotlib, seaborn, plotly workflows with journal-ready aesthetics and proper statistical annotations."
-license: Proprietary
----
 
 # Biomedical Data Visualization
 

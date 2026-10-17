@@ -1,8 +1,10 @@
 ---
 name: bio-crispr-screens-hit-calling
 description: Statistical methods for calling hits in CRISPR screens. Covers MAGeCK, BAGEL2, drugZ, and custom approaches for identifying essential and resistance genes. Use when identifying significant genes from screen count data after QC passes.
-tool_type: mixed
-primary_tool: bagel2
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: bagel2
 ---
 
 ## Version Compatibility

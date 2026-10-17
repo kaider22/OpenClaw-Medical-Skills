@@ -1,8 +1,10 @@
 ---
 name: bio-ribo-seq-translation-efficiency
 description: Calculate translation efficiency (TE) as the ratio of ribosome occupancy to mRNA abundance. Use when comparing translational regulation between conditions or identifying genes with altered translation independent of transcription.
-tool_type: mixed
-primary_tool: riborex
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: riborex
 ---
 
 ## Version Compatibility

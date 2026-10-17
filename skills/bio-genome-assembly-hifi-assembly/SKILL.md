@@ -1,3 +1,15 @@
+---
+name: bio-genome-assembly-hifi-assembly
+description: High-quality genome assembly from PacBio HiFi reads using hifiasm with phasing support. Use when building reference-quality diploid assemblies from HiFi data, especially with trio or Hi-C phasing for fully resolved haplotypes.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: hifiasm
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-genome-assembly-hifi-assembly
-description: High-quality genome assembly from PacBio HiFi reads using hifiasm with phasing support. Use when building reference-quality diploid assemblies from HiFi data, especially with trio or Hi-C phasing for fully resolved haplotypes.
-tool_type: cli
-primary_tool: hifiasm
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # HiFi Assembly
 

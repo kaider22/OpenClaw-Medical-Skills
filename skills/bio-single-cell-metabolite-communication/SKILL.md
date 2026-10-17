@@ -1,8 +1,10 @@
 ---
 name: bio-single-cell-metabolite-communication
 description: Analyze metabolite-mediated cell-cell communication using MeboCost for metabolic signaling inference between cell types. Predict metabolite secretion and sensing patterns from scRNA-seq data. Use when studying metabolic crosstalk between cell populations or metabolite-receptor interactions.
-tool_type: python
-primary_tool: MeboCost
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: MeboCost
 ---
 
 ## Version Compatibility

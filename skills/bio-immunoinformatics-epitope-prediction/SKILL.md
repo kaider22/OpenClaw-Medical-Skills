@@ -1,8 +1,10 @@
 ---
 name: bio-immunoinformatics-epitope-prediction
 description: Predict B-cell and T-cell epitopes using BepiPred, IEDB tools, and structure-based methods for vaccine and antibody design. Identify immunogenic regions in antigens. Use when designing vaccines, mapping antibody binding sites, or predicting immunogenic peptides.
-tool_type: python
-primary_tool: BepiPred
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: BepiPred
 ---
 
 ## Version Compatibility

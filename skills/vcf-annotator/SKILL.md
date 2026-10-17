@@ -1,26 +1,29 @@
 ---
 name: vcf-annotator
 description: Annotate VCF variants with VEP, ClinVar, gnomAD frequencies, and ancestry-aware context. Generates prioritised variant reports.
-version: 0.1.0
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
-        - vep
+      - python3
+      - vep
       env: []
       config: []
     always: false
-    emoji: "🦖"
+    emoji: 🦖
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: uv
-        package: cyvcf2
-        bins: []
-      - kind: uv
-        package: pandas
-        bins: []
+    - kind: uv
+      package: cyvcf2
+      bins: []
+    - kind: uv
+      package: pandas
+      bins: []
+  source_extensions:
+    version: 0.1.0
 ---
 
 # 🦖 VCF Annotator

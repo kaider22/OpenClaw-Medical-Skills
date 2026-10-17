@@ -1,3 +1,23 @@
+---
+name: biomcp-server
+description: MCP bio bridge
+license: MIT
+metadata:
+  author: BioMCP Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - MCP
+    - PubMed
+    - ClinicalTrials
+    - server
+    - uv
+    measurable_outcome: Stand up a working BioMCP endpoint (pip or uv) and return ≥1 PubMed + ≥1 ClinicalTrials.gov response to the client within 10 minutes.
+    compatibility:
+    - system: MCP-compliant clients
+allowed-tools:
+- web_fetch
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,25 +31,6 @@
 
 -->
 
----
-name: biomcp-server
-description: MCP bio bridge
-keywords:
-  - MCP
-  - PubMed
-  - ClinicalTrials
-  - server
-  - uv
-measurable_outcome: Stand up a working BioMCP endpoint (pip or uv) and return ≥1 PubMed + ≥1 ClinicalTrials.gov response to the client within 10 minutes.
-license: MIT
-metadata:
-  author: BioMCP Team
-  version: "1.0.0"
-compatibility:
-  - system: MCP-compliant clients
-allowed-tools:
-  - web_fetch
----
 
 # BioMCP Server
 

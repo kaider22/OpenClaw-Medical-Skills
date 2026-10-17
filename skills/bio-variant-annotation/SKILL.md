@@ -1,8 +1,10 @@
 ---
 name: bio-variant-annotation
 description: Comprehensive variant annotation using bcftools annotate/csq, VEP, SnpEff, and ANNOVAR. Add database annotations, predict functional consequences, and assess clinical significance. Use when annotating variants with functional and clinical information.
-tool_type: mixed
-primary_tool: VEP
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: VEP
 ---
 
 ## Version Compatibility

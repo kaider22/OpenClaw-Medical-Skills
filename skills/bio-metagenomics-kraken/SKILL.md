@@ -1,8 +1,10 @@
 ---
 name: bio-metagenomics-kraken
 description: Taxonomic classification of metagenomic reads using Kraken2. Fast k-mer based classification against RefSeq database. Use when performing initial taxonomic classification of shotgun metagenomic reads before abundance estimation with Bracken.
-tool_type: cli
-primary_tool: kraken2
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: kraken2
 ---
 
 ## Version Compatibility

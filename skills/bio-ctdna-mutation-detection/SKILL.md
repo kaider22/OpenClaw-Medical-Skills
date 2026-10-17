@@ -1,8 +1,10 @@
 ---
 name: bio-ctdna-mutation-detection
 description: Detects somatic mutations in circulating tumor DNA using variant callers optimized for low allele fractions with UMI-based error suppression. Reliably detects mutations at VAF above 0.5 percent using consensus-based approaches. Use when identifying tumor mutations from plasma DNA or tracking specific variants.
-tool_type: python
-primary_tool: VarDict
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: VarDict
 ---
 
 ## Version Compatibility

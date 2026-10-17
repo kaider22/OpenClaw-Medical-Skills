@@ -1,8 +1,10 @@
 ---
 name: bio-substructure-search
 description: Searches molecular libraries for substructure matches using SMARTS patterns with RDKit. Filters compounds by pharmacophore features, functional groups, or scaffold matches with atom mapping. Use when finding compounds containing specific chemical moieties or filtering libraries by structural features.
-tool_type: python
-primary_tool: RDKit
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: RDKit
 ---
 
 ## Version Compatibility

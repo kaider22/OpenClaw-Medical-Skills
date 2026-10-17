@@ -1,36 +1,44 @@
 ---
 name: scrna-orchestrator
 description: Local Scanpy pipeline for single-cell RNA-seq QC, clustering, marker discovery, and optional two-group differential expression from raw-count .h5ad.
-version: 0.1.0
-author: Yonghao Zhao
 license: MIT
-tags: [scrna, single-cell, scanpy, clustering, differential-expression]
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env: []
       config: []
     always: false
-    emoji: "🦖"
+    emoji: 🦖
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: uv
-        package: scanpy
-        bins: []
-      - kind: uv
-        package: anndata
-        bins: []
+    - kind: uv
+      package: scanpy
+      bins: []
+    - kind: uv
+      package: anndata
+      bins: []
     trigger_keywords:
-      - scrna
-      - single-cell
-      - scanpy
-      - h5ad
-      - leiden
-      - marker genes
-      - differential expression
+    - scrna
+    - single-cell
+    - scanpy
+    - h5ad
+    - leiden
+    - marker genes
+    - differential expression
+  source_extensions:
+    version: 0.1.0
+    author: Yonghao Zhao
+    tags:
+    - scrna
+    - single-cell
+    - scanpy
+    - clustering
+    - differential-expression
 ---
 
 # 🦖 scRNA Orchestrator

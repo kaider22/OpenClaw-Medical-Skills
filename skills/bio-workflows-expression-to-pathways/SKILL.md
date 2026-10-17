@@ -1,3 +1,25 @@
+---
+name: bio-workflows-expression-to-pathways
+description: Workflow from differential expression results to functional enrichment analysis. Covers GO, KEGG, Reactome enrichment with clusterProfiler and visualization. Use when taking DE results to pathway enrichment.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: clusterProfiler
+    workflow: true
+    depends_on:
+    - pathway-analysis/go-enrichment
+    - pathway-analysis/kegg-pathways
+    - pathway-analysis/reactome-pathways
+    - pathway-analysis/gsea
+    - pathway-analysis/enrichment-visualization
+    qc_checkpoints:
+    - input_validation: Valid gene IDs, sufficient DE genes
+    - enrichment_qc: Reasonable number of terms, p-values not all significant
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +33,6 @@
 
 -->
 
----
-name: bio-workflows-expression-to-pathways
-description: Workflow from differential expression results to functional enrichment analysis. Covers GO, KEGG, Reactome enrichment with clusterProfiler and visualization. Use when taking DE results to pathway enrichment.
-tool_type: r
-primary_tool: clusterProfiler
-workflow: true
-depends_on:
-  - pathway-analysis/go-enrichment
-  - pathway-analysis/kegg-pathways
-  - pathway-analysis/reactome-pathways
-  - pathway-analysis/gsea
-  - pathway-analysis/enrichment-visualization
-qc_checkpoints:
-  - input_validation: "Valid gene IDs, sufficient DE genes"
-  - enrichment_qc: "Reasonable number of terms, p-values not all significant"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Expression to Pathways Workflow
 

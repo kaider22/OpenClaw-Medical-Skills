@@ -1,3 +1,25 @@
+---
+name: deep-research-swarm
+description: Multi-agent research literature analysis
+license: MIT
+metadata:
+  author: Biomedical OS Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - research
+    - literature
+    - swarm
+    - multi-agent
+    - hypothesis
+    measurable_outcome: Generates comprehensive literature review with >50 citations in <5 minutes.
+    compatibility:
+    - system: Python 3.10+
+allowed-tools:
+- run_shell_command
+- read_file
+- google_web_search
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +33,6 @@
 
 -->
 
----
-name: deep-research-swarm
-description: Multi-agent research literature analysis
-keywords:
-  - research
-  - literature
-  - swarm
-  - multi-agent
-  - hypothesis
-measurable_outcome: Generates comprehensive literature review with >50 citations in <5 minutes.
-license: MIT
-metadata:
-  author: Biomedical OS Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.10+
-allowed-tools:
-  - run_shell_command
-  - read_file
-  - google_web_search
----
 
 # DeepResearch Swarm
 

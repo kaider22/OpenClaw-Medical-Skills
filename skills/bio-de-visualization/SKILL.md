@@ -1,8 +1,10 @@
 ---
 name: bio-de-visualization
 description: Visualize differential expression results using DESeq2/edgeR built-in functions. Covers plotMA, plotDispEsts, plotCounts, plotBCV, sample distance heatmaps, and p-value histograms. Use when visualizing differential expression results.
-tool_type: r
-primary_tool: DESeq2
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: DESeq2
 ---
 
 ## Version Compatibility

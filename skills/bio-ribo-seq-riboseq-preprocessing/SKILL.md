@@ -1,8 +1,10 @@
 ---
 name: bio-ribo-seq-riboseq-preprocessing
 description: Preprocess ribosome profiling data including adapter trimming, size selection, rRNA removal, and alignment. Use when preparing Ribo-seq reads for downstream analysis of translation.
-tool_type: cli
-primary_tool: bowtie2
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bowtie2
 ---
 
 ## Version Compatibility

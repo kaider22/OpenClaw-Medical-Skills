@@ -160,6 +160,20 @@ Your agent should list the installed skills with their capabilities.
 
 ---
 
+### For Codex CLI users
+
+Clone the repository and start Codex from its root directory. Codex discovers the project skills through `.agents/skills/`; each entry points to its original folder under `skills/`.
+
+```bash
+git clone --branch codex/codex-native-skills https://github.com/kaider22/OpenClaw-Medical-Skills.git
+cd OpenClaw-Medical-Skills
+codex
+```
+
+In Codex, use `/skills` to browse available skills or invoke one by name, for example `$pubmed-database`. Discovery does not install external programs, databases, API credentials, or services required by individual skills. This confirms Codex compatibility and discovery, not that every medical or research workflow has been functionally validated.
+
+---
+
 ## Skills Overview
 
 | Category | Count | Highlights |

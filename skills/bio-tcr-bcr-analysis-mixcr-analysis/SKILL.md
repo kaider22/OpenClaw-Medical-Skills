@@ -1,8 +1,10 @@
 ---
 name: bio-tcr-bcr-analysis-mixcr-analysis
 description: Perform V(D)J alignment and clonotype assembly from TCR-seq or BCR-seq data using MiXCR. Use when processing raw immune repertoire sequencing data to identify clonotypes and their frequencies.
-tool_type: cli
-primary_tool: MiXCR
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: MiXCR
 ---
 
 ## Version Compatibility

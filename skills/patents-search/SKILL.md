@@ -1,14 +1,16 @@
 ---
 name: patents-search
 description: Search global patents with natural language queries. Prior art, patent landscapes, and innovation tracking via Valyu.
-keywords:
-  - patents
-  - patent-search
-  - prior-art
-  - intellectual-property
-  - innovation-tracking
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - patents
+    - patent-search
+    - prior-art
+    - intellectual-property
+    - innovation-tracking
+    - semantic-search
 ---
 
 

@@ -1,8 +1,10 @@
 ---
 name: bio-spatial-transcriptomics-spatial-multiomics
 description: Analyze high-resolution spatial platforms like Slide-seq, Stereo-seq, and Visium HD. Use when working with subcellular resolution or high-density spatial data.
-tool_type: python
-primary_tool: squidpy
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: squidpy
 ---
 
 ## Version Compatibility

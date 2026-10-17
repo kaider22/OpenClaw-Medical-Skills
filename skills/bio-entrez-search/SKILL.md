@@ -1,3 +1,15 @@
+---
+name: bio-entrez-search
+description: Search NCBI databases using Biopython Bio.Entrez. Use when finding records by keyword, building complex search queries, discovering database structure, or getting global query counts across databases.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Bio.Entrez
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-entrez-search
-description: Search NCBI databases using Biopython Bio.Entrez. Use when finding records by keyword, building complex search queries, discovering database structure, or getting global query counts across databases.
-tool_type: python
-primary_tool: Bio.Entrez
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Entrez Search
 

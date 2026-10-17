@@ -1,3 +1,15 @@
+---
+name: bio-machine-learning-biomarker-discovery
+description: Selects informative features for biomarker discovery using Boruta all-relevant selection, mRMR minimum redundancy, and LASSO regularization. Use when identifying biomarkers from high-dimensional omics data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: boruta
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-machine-learning-biomarker-discovery
-description: Selects informative features for biomarker discovery using Boruta all-relevant selection, mRMR minimum redundancy, and LASSO regularization. Use when identifying biomarkers from high-dimensional omics data.
-tool_type: python
-primary_tool: boruta
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Feature Selection for Biomarker Discovery
 

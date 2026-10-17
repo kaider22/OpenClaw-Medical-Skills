@@ -1,8 +1,10 @@
 ---
 name: bio-vcf-statistics
 description: Generate variant statistics, sample concordance, and quality metrics using bcftools stats and gtcheck. Use when evaluating variant quality, comparing samples, or summarizing VCF contents.
-tool_type: cli
-primary_tool: bcftools
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bcftools
 ---
 
 ## Version Compatibility

@@ -1,3 +1,25 @@
+---
+name: biomedical-data-analysis
+description: Omics data forge
+license: MIT
+metadata:
+  author: BioSkills Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - pandas
+    - R-tidyverse
+    - SQL
+    - visualization
+    - reproducible
+    measurable_outcome: Deliver a cleaned dataset + statistical summary + at least one visualization or dashboard spec for each request within 1 working session (≤30 minutes).
+    compatibility:
+    - system: Python 3.9+ / R 4.0+
+allowed-tools:
+- run_shell_command
+- read_file
+- python_repl
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +33,6 @@
 
 -->
 
----
-name: biomedical-data-analysis
-description: Omics data forge
-keywords:
-  - pandas
-  - R-tidyverse
-  - SQL
-  - visualization
-  - reproducible
-measurable_outcome: Deliver a cleaned dataset + statistical summary + at least one visualization or dashboard spec for each request within 1 working session (≤30 minutes).
-license: MIT
-metadata:
-  author: BioSkills Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+ / R 4.0+
-allowed-tools:
-  - run_shell_command
-  - read_file
-  - python_repl
----
 
 # Biomedical Data Analysis
 

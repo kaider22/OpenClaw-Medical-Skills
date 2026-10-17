@@ -1,3 +1,15 @@
+---
+name: bio-genome-assembly-scaffolding
+description: Scaffold contigs into chromosome-level assemblies using Hi-C data with YaHS, 3D-DNA, SALSA2, and validate with BUSCO and contact maps. Use when scaffolding contigs to chromosome-level assemblies.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: YaHS
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-genome-assembly-scaffolding
-description: Scaffold contigs into chromosome-level assemblies using Hi-C data with YaHS, 3D-DNA, SALSA2, and validate with BUSCO and contact maps. Use when scaffolding contigs to chromosome-level assemblies.
-tool_type: cli
-primary_tool: YaHS
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Genome Scaffolding
 

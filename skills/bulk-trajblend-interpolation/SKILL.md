@@ -1,7 +1,9 @@
 ---
 name: bulktrajblend-trajectory-interpolation
-title: BulkTrajBlend trajectory interpolation
 description: Extend scRNA-seq developmental trajectories with BulkTrajBlend by generating intermediate cells from bulk RNA-seq, training beta-VAE and GNN models, and interpolating missing states.
+metadata:
+  source_extensions:
+    title: BulkTrajBlend trajectory interpolation
 ---
 
 # BulkTrajBlend trajectory interpolation

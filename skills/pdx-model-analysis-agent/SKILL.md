@@ -1,3 +1,13 @@
+---
+name: pdx-model-analysis-agent
+description: AI-powered analysis of patient-derived xenograft (PDX) models for drug response prediction, translational research, and personalized treatment selection.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'pdx-model-analysis-agent'
-description: 'AI-powered analysis of patient-derived xenograft (PDX) models for drug response prediction, translational research, and personalized treatment selection.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # PDX Model Analysis Agent

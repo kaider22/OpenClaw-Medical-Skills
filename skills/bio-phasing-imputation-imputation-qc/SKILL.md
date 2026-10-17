@@ -1,3 +1,15 @@
+---
+name: bio-phasing-imputation-imputation-qc
+description: Quality control of phasing and imputation results. Filter by INFO scores, assess accuracy, and prepare imputed data for downstream analysis. Use when filtering low-quality imputed variants or validating imputation accuracy before GWAS.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: bcftools
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-phasing-imputation-imputation-qc
-description: Quality control of phasing and imputation results. Filter by INFO scores, assess accuracy, and prepare imputed data for downstream analysis. Use when filtering low-quality imputed variants or validating imputation accuracy before GWAS.
-tool_type: mixed
-primary_tool: bcftools
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Imputation QC
 

@@ -1,3 +1,24 @@
+---
+name: radgpt-radiology-reporter
+description: Radiology Reporter
+license: MIT
+metadata:
+  author: Stanford Medicine
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - radiology
+    - report-generation
+    - patient-friendly
+    - summarization
+    - explanation
+    measurable_outcome: Generate a patient-friendly explanation of a radiology report with <1% hallucination rate within 30 seconds.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: radgpt-radiology-reporter
-description: Radiology Reporter
-keywords:
-  - radiology
-  - report-generation
-  - patient-friendly
-  - summarization
-  - explanation
-measurable_outcome: Generate a patient-friendly explanation of a radiology report with <1% hallucination rate within 30 seconds.
-license: MIT
-metadata:
-  author: Stanford Medicine
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # RadGPT (Radiology Report Assistant)
 

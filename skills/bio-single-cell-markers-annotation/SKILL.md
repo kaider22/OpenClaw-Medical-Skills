@@ -1,8 +1,10 @@
 ---
 name: bio-single-cell-markers-annotation
 description: Find marker genes and annotate cell types in single-cell RNA-seq using Seurat (R) and Scanpy (Python). Use for differential expression between clusters, identifying cluster-specific markers, scoring gene sets, and assigning cell type labels. Use when finding marker genes and annotating clusters.
-tool_type: mixed
-primary_tool: Seurat
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: Seurat
 ---
 
 ## Version Compatibility

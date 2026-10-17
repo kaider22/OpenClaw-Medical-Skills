@@ -1,8 +1,10 @@
 ---
 name: bio-hi-c-analysis-loop-calling
 description: Detect chromatin loops and point interactions from Hi-C data using cooltools, chromosight, and HiCCUPS-like methods. Identify CTCF-mediated loops and enhancer-promoter contacts. Use when detecting chromatin loops from Hi-C data.
-tool_type: mixed
-primary_tool: cooltools
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: cooltools
 ---
 
 ## Version Compatibility

@@ -1,3 +1,21 @@
+---
+name: bio-workflows-multi-omics-pipeline
+description: End-to-end multi-omics integration workflow. Orchestrates data harmonization, MOFA/mixOmics integration, factor interpretation, and downstream analysis across transcriptomics, proteomics, metabolomics, and other modalities. Use when integrating multiple omics datasets.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: MOFA2
+    workflow: true
+    depends_on:
+    - multi-omics-integration/data-harmonization
+    - multi-omics-integration/mofa-integration
+    - multi-omics-integration/mixomics-analysis
+    - multi-omics-integration/similarity-network
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,22 +29,6 @@
 
 -->
 
----
-name: bio-workflows-multi-omics-pipeline
-description: End-to-end multi-omics integration workflow. Orchestrates data harmonization, MOFA/mixOmics integration, factor interpretation, and downstream analysis across transcriptomics, proteomics, metabolomics, and other modalities. Use when integrating multiple omics datasets.
-tool_type: r
-primary_tool: MOFA2
-workflow: true
-depends_on:
-  - multi-omics-integration/data-harmonization
-  - multi-omics-integration/mofa-integration
-  - multi-omics-integration/mixomics-analysis
-  - multi-omics-integration/similarity-network
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Multi-omics Integration Pipeline
 

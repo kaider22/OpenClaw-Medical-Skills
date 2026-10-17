@@ -1,8 +1,10 @@
 ---
 name: bio-flow-cytometry-gating-analysis
 description: Manual and automated gating for defining cell populations in flow cytometry. Covers rectangular, polygon, and data-driven gates. Use when identifying cell populations through hierarchical gating strategies.
-tool_type: r
-primary_tool: flowWorkspace
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: flowWorkspace
 ---
 
 ## Version Compatibility

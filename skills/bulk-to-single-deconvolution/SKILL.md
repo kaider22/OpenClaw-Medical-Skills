@@ -1,7 +1,9 @@
 ---
 name: bulk-rna-seq-deconvolution-with-bulk2single
-title: Bulk RNA-seq deconvolution with Bulk2Single
 description: Turn bulk RNA-seq cohorts into synthetic single-cell datasets using omicverse's Bulk2Single workflow for cell fraction estimation, beta-VAE generation, and quality control comparisons against reference scRNA-seq.
+metadata:
+  source_extensions:
+    title: Bulk RNA-seq deconvolution with Bulk2Single
 ---
 
 # Bulk RNA-seq deconvolution with Bulk2Single

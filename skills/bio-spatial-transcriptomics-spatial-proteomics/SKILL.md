@@ -1,8 +1,10 @@
 ---
 name: bio-spatial-transcriptomics-spatial-proteomics
 description: Analyzes spatial proteomics data from CODEX, IMC, and MIBI platforms including cell segmentation and protein colocalization. Use when working with multiplexed imaging data, analyzing protein spatial patterns, or integrating spatial proteomics with transcriptomics.
-tool_type: python
-primary_tool: scimap
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: scimap
 ---
 
 ## Version Compatibility

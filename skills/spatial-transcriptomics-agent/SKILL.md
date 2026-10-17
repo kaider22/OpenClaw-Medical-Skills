@@ -1,3 +1,25 @@
+---
+name: spatial-transcriptomics-agent
+description: Spatial analyst
+license: MIT
+metadata:
+  author: LiuLab
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - spatial
+    - h5ad
+    - H&E
+    - clustering
+    - SVG
+    measurable_outcome: For each sample, deliver ≥1 spatial domain map + SVG list + narrative interpretation within 30 minutes.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+- web_fetch
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +33,6 @@
 
 -->
 
----
-name: spatial-transcriptomics-agent
-description: Spatial analyst
-keywords:
-  - spatial
-  - h5ad
-  - H&E
-  - clustering
-  - SVG
-measurable_outcome: For each sample, deliver ≥1 spatial domain map + SVG list + narrative interpretation within 30 minutes.
-license: MIT
-metadata:
-  author: LiuLab
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
-  - web_fetch
----
 
 # Spatial Transcriptomics Agent
 

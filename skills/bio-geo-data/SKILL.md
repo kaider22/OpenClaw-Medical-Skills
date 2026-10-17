@@ -1,3 +1,15 @@
+---
+name: bio-geo-data
+description: Query NCBI Gene Expression Omnibus (GEO) for expression datasets using Biopython Bio.Entrez. Use when finding microarray/RNA-seq datasets, downloading expression data, or linking GEO series to SRA runs.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Bio.Entrez
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-geo-data
-description: Query NCBI Gene Expression Omnibus (GEO) for expression datasets using Biopython Bio.Entrez. Use when finding microarray/RNA-seq datasets, downloading expression data, or linking GEO series to SRA runs.
-tool_type: python
-primary_tool: Bio.Entrez
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # GEO Data
 

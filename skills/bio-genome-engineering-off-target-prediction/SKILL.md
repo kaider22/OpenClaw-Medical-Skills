@@ -1,8 +1,10 @@
 ---
 name: bio-genome-engineering-off-target-prediction
 description: Predict CRISPR off-target sites using Cas-OFFinder and CFD scoring algorithms. Identify potential unintended cleavage sites genome-wide and assess guide specificity. Use when evaluating guide RNA specificity or selecting guides with minimal off-target risk.
-tool_type: cli
-primary_tool: Cas-OFFinder
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: Cas-OFFinder
 ---
 
 ## Version Compatibility

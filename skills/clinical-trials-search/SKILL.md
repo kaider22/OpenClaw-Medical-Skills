@@ -1,14 +1,16 @@
 ---
 name: clinical-trials-search
 description: Search ClinicalTrials.gov with natural language queries. Find clinical trials, enrollment, and outcomes using Valyu semantic search.
-keywords:
-  - clinical-trials
-  - trial-search
-  - patient-recruitment
-  - clinical-research
-  - trial-outcomes
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - clinical-trials
+    - trial-search
+    - patient-recruitment
+    - clinical-research
+    - trial-outcomes
+    - semantic-search
 ---
 
 

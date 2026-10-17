@@ -1,8 +1,10 @@
 ---
 name: bio-hi-c-analysis-hic-visualization
 description: Visualize Hi-C contact matrices, TADs, loops, and genomic features using matplotlib, cooltools, and HiCExplorer. Create triangle plots, virtual 4C, and multi-track figures. Use when visualizing contact matrices or genomic features.
-tool_type: python
-primary_tool: cooltools
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: cooltools
 ---
 
 ## Version Compatibility

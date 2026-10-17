@@ -1,8 +1,10 @@
 ---
 name: bio-virtual-screening
 description: Performs structure-based virtual screening using AutoDock Vina 1.2 for molecular docking. Prepares receptor PDBQT files, generates ligand conformers, defines binding site boxes, and ranks compounds by predicted binding affinity. Use when screening chemical libraries against a protein structure to find potential binders.
-tool_type: python
-primary_tool: vina
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: vina
 ---
 
 ## Version Compatibility

@@ -1,3 +1,13 @@
+---
+name: simo-multiomics-integration-agent
+description: AI-powered spatial integration of multi-omics datasets using probabilistic alignment for comprehensive tissue atlas construction and cellular state mapping.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'simo-multiomics-integration-agent'
-description: 'AI-powered spatial integration of multi-omics datasets using probabilistic alignment for comprehensive tissue atlas construction and cellular state mapping.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # SIMO Multiomics Integration Agent

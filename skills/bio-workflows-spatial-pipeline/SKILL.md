@@ -1,3 +1,27 @@
+---
+name: bio-workflows-spatial-pipeline
+description: End-to-end spatial transcriptomics workflow for Visium/Xenium data. Covers data loading, preprocessing, spatial analysis, domain detection, and visualization with Squidpy. Use when analyzing spatial transcriptomics data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Squidpy
+    workflow: true
+    depends_on:
+    - spatial-transcriptomics/spatial-data-io
+    - spatial-transcriptomics/spatial-preprocessing
+    - spatial-transcriptomics/spatial-neighbors
+    - spatial-transcriptomics/spatial-statistics
+    - spatial-transcriptomics/spatial-domains
+    - spatial-transcriptomics/spatial-visualization
+    qc_checkpoints:
+    - after_loading: Spots/cells detected, image aligned
+    - after_qc: Low-quality spots filtered, genes detected
+    - after_clustering: Spatial domains correspond to tissue regions
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +35,6 @@
 
 -->
 
----
-name: bio-workflows-spatial-pipeline
-description: End-to-end spatial transcriptomics workflow for Visium/Xenium data. Covers data loading, preprocessing, spatial analysis, domain detection, and visualization with Squidpy. Use when analyzing spatial transcriptomics data.
-tool_type: python
-primary_tool: Squidpy
-workflow: true
-depends_on:
-  - spatial-transcriptomics/spatial-data-io
-  - spatial-transcriptomics/spatial-preprocessing
-  - spatial-transcriptomics/spatial-neighbors
-  - spatial-transcriptomics/spatial-statistics
-  - spatial-transcriptomics/spatial-domains
-  - spatial-transcriptomics/spatial-visualization
-qc_checkpoints:
-  - after_loading: "Spots/cells detected, image aligned"
-  - after_qc: "Low-quality spots filtered, genes detected"
-  - after_clustering: "Spatial domains correspond to tissue regions"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Spatial Transcriptomics Pipeline
 

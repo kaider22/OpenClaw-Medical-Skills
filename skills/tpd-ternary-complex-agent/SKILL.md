@@ -1,3 +1,13 @@
+---
+name: tpd-ternary-complex-agent
+description: AI-powered ternary complex prediction for targeted protein degradation, modeling POI-degrader-E3 ligase assemblies to optimize PROTAC and molecular glue efficacy.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'tpd-ternary-complex-agent'
-description: 'AI-powered ternary complex prediction for targeted protein degradation, modeling POI-degrader-E3 ligase assemblies to optimize PROTAC and molecular glue efficacy.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # TPD Ternary Complex Agent

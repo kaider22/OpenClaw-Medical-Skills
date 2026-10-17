@@ -1,3 +1,24 @@
+---
+name: compbioagent-explorer
+description: scRNA-seq Explorer
+license: MIT
+metadata:
+  author: CompBioAgent Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - single-cell
+    - visualization
+    - web-app
+    - cellxgene
+    - exploration
+    measurable_outcome: Launch a local web instance for interactive scRNA-seq exploration and generate 3+ custom visualizations per session.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- web_fetch
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: compbioagent-explorer
-description: scRNA-seq Explorer
-keywords:
-  - single-cell
-  - visualization
-  - web-app
-  - cellxgene
-  - exploration
-measurable_outcome: Launch a local web instance for interactive scRNA-seq exploration and generate 3+ custom visualizations per session.
-license: MIT
-metadata:
-  author: CompBioAgent Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - web_fetch
----
 
 # CompBioAgent (Single-Cell Explorer)
 

@@ -1,7 +1,9 @@
 ---
 name: bulk-rna-seq-differential-expression-with-omicverse
-title: Bulk RNA-seq differential expression with omicverse
 description: Guide Claude through omicverse's bulk RNA-seq DEG pipeline, from gene ID mapping and DESeq2 normalization to statistical testing, visualization, and pathway enrichment. Use when a user has bulk count matrices and needs differential expression analysis in omicverse.
+metadata:
+  source_extensions:
+    title: Bulk RNA-seq differential expression with omicverse
 ---
 
 # Bulk RNA-seq differential expression with omicverse

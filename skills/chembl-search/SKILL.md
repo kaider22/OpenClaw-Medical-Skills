@@ -1,14 +1,16 @@
 ---
 name: chembl-search
 description: Search ChEMBL bioactive molecules database with natural language queries. Find compounds and assay data with Valyu semantic search.
-keywords:
-  - chembl
-  - drug-discovery
-  - bioactive-compounds
-  - molecular-database
-  - hit-identification
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - chembl
+    - drug-discovery
+    - bioactive-compounds
+    - molecular-database
+    - hit-identification
+    - semantic-search
 ---
 
 

@@ -1,3 +1,15 @@
+---
+name: bio-systems-biology-metabolic-reconstruction
+description: Build genome-scale metabolic models from genome sequences using CarveMe and gapseq for automated reconstruction. Generate draft models ready for curation and analysis. Use when creating metabolic models for organisms without existing models.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: CarveMe
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-systems-biology-metabolic-reconstruction
-description: Build genome-scale metabolic models from genome sequences using CarveMe and gapseq for automated reconstruction. Generate draft models ready for curation and analysis. Use when creating metabolic models for organisms without existing models.
-tool_type: cli
-primary_tool: CarveMe
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Metabolic Reconstruction
 

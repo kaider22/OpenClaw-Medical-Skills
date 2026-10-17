@@ -1,8 +1,10 @@
 ---
 name: bio-multi-omics-data-harmonization
 description: Preprocessing and harmonization of multi-omics data before integration. Covers normalization, batch correction, feature alignment, and missing value handling across data types. Use when preparing multi-omics datasets for integration analysis.
-tool_type: r
-primary_tool: MultiAssayExperiment
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: MultiAssayExperiment
 ---
 
 ## Version Compatibility

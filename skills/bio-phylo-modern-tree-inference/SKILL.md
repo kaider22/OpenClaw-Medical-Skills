@@ -1,3 +1,15 @@
+---
+name: bio-phylo-modern-tree-inference
+description: Build maximum likelihood phylogenetic trees using IQ-TREE2 and RAxML-ng. Use when inferring publication-quality trees with model selection, ultrafast bootstrap, or partitioned analyses from sequence alignments.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: IQ-TREE2
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-phylo-modern-tree-inference
-description: Build maximum likelihood phylogenetic trees using IQ-TREE2 and RAxML-ng. Use when inferring publication-quality trees with model selection, ultrafast bootstrap, or partitioned analyses from sequence alignments.
-tool_type: cli
-primary_tool: IQ-TREE2
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Modern ML Tree Inference
 

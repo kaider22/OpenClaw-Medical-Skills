@@ -1,3 +1,26 @@
+---
+name: bio-workflows-genome-assembly-pipeline
+description: End-to-end genome assembly workflow from reads to polished assembly with QC. Supports short reads (SPAdes), long reads (Flye), and hybrid approaches. Use when assembling genomes from raw reads.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: Flye
+    workflow: true
+    depends_on:
+    - read-qc/fastp-workflow
+    - genome-assembly/short-read-assembly
+    - genome-assembly/long-read-assembly
+    - genome-assembly/assembly-polishing
+    - genome-assembly/assembly-qc
+    qc_checkpoints:
+    - after_assembly: N50 reasonable, total length matches expected
+    - after_polishing: Error rate reduced, QV improved
+    - after_busco: Complete BUSCOs >90%
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +34,6 @@
 
 -->
 
----
-name: bio-workflows-genome-assembly-pipeline
-description: End-to-end genome assembly workflow from reads to polished assembly with QC. Supports short reads (SPAdes), long reads (Flye), and hybrid approaches. Use when assembling genomes from raw reads.
-tool_type: cli
-primary_tool: Flye
-workflow: true
-depends_on:
-  - read-qc/fastp-workflow
-  - genome-assembly/short-read-assembly
-  - genome-assembly/long-read-assembly
-  - genome-assembly/assembly-polishing
-  - genome-assembly/assembly-qc
-qc_checkpoints:
-  - after_assembly: "N50 reasonable, total length matches expected"
-  - after_polishing: "Error rate reduced, QV improved"
-  - after_busco: "Complete BUSCOs >90%"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Genome Assembly Pipeline
 

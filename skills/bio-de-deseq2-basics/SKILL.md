@@ -1,8 +1,10 @@
 ---
 name: bio-de-deseq2-basics
 description: Perform differential expression analysis using DESeq2 in R/Bioconductor. Use for analyzing RNA-seq count data, creating DESeqDataSet objects, running the DESeq workflow, and extracting results with log fold change shrinkage. Use when performing DE analysis with DESeq2.
-tool_type: r
-primary_tool: DESeq2
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: DESeq2
 ---
 
 ## Version Compatibility

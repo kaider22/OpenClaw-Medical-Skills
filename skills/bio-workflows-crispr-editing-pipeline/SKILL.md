@@ -1,3 +1,26 @@
+---
+name: bio-workflows-crispr-editing-pipeline
+description: End-to-end CRISPR experiment design from target selection to delivery-ready constructs. Covers guide RNA design, off-target assessment, and specialized editing strategies including knockouts, base editing, and HDR knockins. Use when designing complete CRISPR editing experiments for gene knockout, correction, or tagging.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: crisprscan
+    workflow: true
+    depends_on:
+    - genome-engineering/grna-design
+    - genome-engineering/off-target-prediction
+    - genome-engineering/base-editing-design
+    - genome-engineering/prime-editing-design
+    - genome-engineering/hdr-template-design
+    qc_checkpoints:
+    - after_grna_design: Activity score >0.6, no poly-T runs, GC 40-70%
+    - after_offtarget: Specificity score >0.7, no coding off-targets with <3 mismatches
+    - after_template: Homology arms verified, PAM disrupted in donor
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +34,6 @@
 
 -->
 
----
-name: bio-workflows-crispr-editing-pipeline
-description: End-to-end CRISPR experiment design from target selection to delivery-ready constructs. Covers guide RNA design, off-target assessment, and specialized editing strategies including knockouts, base editing, and HDR knockins. Use when designing complete CRISPR editing experiments for gene knockout, correction, or tagging.
-tool_type: mixed
-primary_tool: crisprscan
-workflow: true
-depends_on:
-  - genome-engineering/grna-design
-  - genome-engineering/off-target-prediction
-  - genome-engineering/base-editing-design
-  - genome-engineering/prime-editing-design
-  - genome-engineering/hdr-template-design
-qc_checkpoints:
-  - after_grna_design: "Activity score >0.6, no poly-T runs, GC 40-70%"
-  - after_offtarget: "Specificity score >0.7, no coding off-targets with <3 mismatches"
-  - after_template: "Homology arms verified, PAM disrupted in donor"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # CRISPR Editing Pipeline
 

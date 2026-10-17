@@ -1,3 +1,24 @@
+---
+name: biokernel
+description: Biomedical OS Core & MCP Server
+license: MIT
+metadata:
+  author: Biomedical OS Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - kernel
+    - os
+    - mcp
+    - api
+    - system
+    measurable_outcome: Routes 100% of API requests to correct sub-agent with <200ms latency.
+    compatibility:
+    - system: Python 3.10+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: biokernel
-description: Biomedical OS Core & MCP Server
-keywords:
-  - kernel
-  - os
-  - mcp
-  - api
-  - system
-measurable_outcome: Routes 100% of API requests to correct sub-agent with <200ms latency.
-license: MIT
-metadata:
-  author: Biomedical OS Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.10+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # BioKernel
 

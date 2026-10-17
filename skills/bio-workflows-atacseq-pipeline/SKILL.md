@@ -1,3 +1,29 @@
+---
+name: bio-workflows-atacseq-pipeline
+description: End-to-end ATAC-seq workflow from FASTQ files to differential accessibility and TF footprinting. Covers alignment, peak calling with MACS3, QC metrics, and optional TOBIAS footprinting. Use when running end-to-end ATAC-seq analysis from FASTQ to differential accessibility.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: MACS3
+    workflow: true
+    depends_on:
+    - read-qc/fastp-workflow
+    - read-alignment/bowtie2-alignment
+    - alignment-files/duplicate-handling
+    - atac-seq/atac-peak-calling
+    - atac-seq/atac-qc
+    - atac-seq/differential-accessibility
+    - atac-seq/footprinting
+    qc_checkpoints:
+    - after_qc: Q30 >85%, adapter content <5%
+    - after_alignment: Mapping rate >80%, mitochondrial <20%
+    - after_peaks: FRiP >20%, TSS enrichment >5
+    - after_footprinting: Motif enrichment validates TF activity
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,30 +37,6 @@
 
 -->
 
----
-name: bio-workflows-atacseq-pipeline
-description: End-to-end ATAC-seq workflow from FASTQ files to differential accessibility and TF footprinting. Covers alignment, peak calling with MACS3, QC metrics, and optional TOBIAS footprinting. Use when running end-to-end ATAC-seq analysis from FASTQ to differential accessibility.
-tool_type: mixed
-primary_tool: MACS3
-workflow: true
-depends_on:
-  - read-qc/fastp-workflow
-  - read-alignment/bowtie2-alignment
-  - alignment-files/duplicate-handling
-  - atac-seq/atac-peak-calling
-  - atac-seq/atac-qc
-  - atac-seq/differential-accessibility
-  - atac-seq/footprinting
-qc_checkpoints:
-  - after_qc: "Q30 >85%, adapter content <5%"
-  - after_alignment: "Mapping rate >80%, mitochondrial <20%"
-  - after_peaks: "FRiP >20%, TSS enrichment >5"
-  - after_footprinting: "Motif enrichment validates TF activity"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # ATAC-seq Pipeline
 

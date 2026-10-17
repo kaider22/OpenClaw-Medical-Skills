@@ -1,8 +1,10 @@
 ---
 name: bio-causal-genomics-mendelian-randomization
 description: Estimate causal effects between exposures and outcomes using genetic variants as instrumental variables with TwoSampleMR. Implements IVW, MR-Egger, weighted median, and MR-PRESSO methods for robust causal inference from GWAS summary statistics. Use when testing whether an exposure causally affects an outcome using genetic instruments.
-tool_type: r
-primary_tool: TwoSampleMR
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: TwoSampleMR
 ---
 
 ## Version Compatibility

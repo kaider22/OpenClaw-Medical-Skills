@@ -1,3 +1,25 @@
+---
+name: bio-workflows-biomarker-pipeline
+description: End-to-end biomarker discovery workflow from expression data to validated biomarker panels. Covers feature selection with Boruta/LASSO, classifier training with nested CV, and SHAP interpretation. Use when building and validating diagnostic or prognostic biomarker signatures from omics data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: sklearn
+    workflow: true
+    depends_on:
+    - machine-learning/biomarker-discovery
+    - machine-learning/model-validation
+    - machine-learning/omics-classifiers
+    - machine-learning/prediction-explanation
+    qc_checkpoints:
+    - after_selection: Selected features >5 and <200, stability >0.6
+    - after_cv: Nested CV AUC >0.7, fold variance <0.1
+    - after_interpretation: 'Top 20 SHAP features: >50% overlap with selected features'
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +33,6 @@
 
 -->
 
----
-name: bio-workflows-biomarker-pipeline
-description: End-to-end biomarker discovery workflow from expression data to validated biomarker panels. Covers feature selection with Boruta/LASSO, classifier training with nested CV, and SHAP interpretation. Use when building and validating diagnostic or prognostic biomarker signatures from omics data.
-tool_type: python
-primary_tool: sklearn
-workflow: true
-depends_on:
-  - machine-learning/biomarker-discovery
-  - machine-learning/model-validation
-  - machine-learning/omics-classifiers
-  - machine-learning/prediction-explanation
-qc_checkpoints:
-  - after_selection: "Selected features >5 and <200, stability >0.6"
-  - after_cv: "Nested CV AUC >0.7, fold variance <0.1"
-  - after_interpretation: "Top 20 SHAP features: >50% overlap with selected features"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Biomarker Discovery Pipeline
 

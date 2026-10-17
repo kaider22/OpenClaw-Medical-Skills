@@ -1,3 +1,15 @@
+---
+name: bio-phylo-tree-manipulation
+description: Modify phylogenetic tree structure using Biopython Bio.Phylo. Use when rooting trees with outgroups or midpoint, pruning taxa, collapsing clades, ladderizing branches, or extracting subtrees.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Bio.Phylo
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-phylo-tree-manipulation
-description: Modify phylogenetic tree structure using Biopython Bio.Phylo. Use when rooting trees with outgroups or midpoint, pruning taxa, collapsing clades, ladderizing branches, or extracting subtrees.
-tool_type: python
-primary_tool: Bio.Phylo
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Tree Manipulation
 

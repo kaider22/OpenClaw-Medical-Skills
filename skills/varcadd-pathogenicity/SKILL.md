@@ -1,3 +1,24 @@
+---
+name: varcadd-pathogenicity
+description: Variant Scorer
+license: Non-Commercial
+metadata:
+  author: Genome Medicine 2025
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - variant-interpretation
+    - CADD
+    - pathogenicity
+    - genomics
+    - prediction
+    measurable_outcome: Return pathogenicity scores for a VCF of 1000 variants within 2 minutes, flagging top 1% deleterious hits.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: varcadd-pathogenicity
-description: Variant Scorer
-keywords:
-  - variant-interpretation
-  - CADD
-  - pathogenicity
-  - genomics
-  - prediction
-measurable_outcome: Return pathogenicity scores for a VCF of 1000 variants within 2 minutes, flagging top 1% deleterious hits.
-license: Non-Commercial
-metadata:
-  author: Genome Medicine 2025
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # varCADD (Variant Pathogenicity Predictor)
 

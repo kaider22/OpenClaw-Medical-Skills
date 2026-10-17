@@ -1,8 +1,10 @@
 ---
 name: bio-causal-genomics-fine-mapping
 description: Identify likely causal variants within GWAS loci using SuSiE for sum of single effects regression and FINEMAP for shotgun stochastic search. Computes posterior inclusion probabilities and credible sets to prioritize variants for functional follow-up. Use when narrowing GWAS association signals to candidate causal variants or building credible sets for functional validation.
-tool_type: r
-primary_tool: susieR
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: susieR
 ---
 
 ## Version Compatibility

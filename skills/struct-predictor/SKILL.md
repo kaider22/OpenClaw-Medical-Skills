@@ -1,25 +1,28 @@
 ---
 name: struct-predictor
 description: Local protein structure prediction with AlphaFold, Boltz, or Chai. Compare predicted structures, compute RMSD, visualise 3D models.
-version: 0.1.0
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       anyBins:
-        - colabfold_batch
-        - boltz
+      - colabfold_batch
+      - boltz
       env: []
       config: []
     always: false
-    emoji: "🧱"
+    emoji: 🧱
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: uv
-        package: biopython
-        bins: []
+    - kind: uv
+      package: biopython
+      bins: []
+  source_extensions:
+    version: 0.1.0
 ---
 
 # Struct Predictor

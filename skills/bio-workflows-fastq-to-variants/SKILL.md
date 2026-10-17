@@ -1,3 +1,28 @@
+---
+name: bio-workflows-fastq-to-variants
+description: End-to-end DNA sequencing workflow from FASTQ files to variant calls. Covers QC, alignment with BWA, BAM processing, and variant calling with bcftools or GATK HaplotypeCaller. Use when calling variants from raw sequencing reads.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bcftools
+    workflow: true
+    depends_on:
+    - read-qc/fastp-workflow
+    - read-alignment/bwa-alignment
+    - alignment-files/alignment-sorting
+    - alignment-files/duplicate-handling
+    - variant-calling/variant-calling
+    - variant-calling/filtering-best-practices
+    qc_checkpoints:
+    - after_qc: Q30 >85%, adapter content <1%
+    - after_alignment: Mapping rate >95%, properly paired >90%
+    - after_dedup: Duplication rate <30% for WGS, <50% for exome
+    - after_calling: Ti/Tv ratio ~2.1 for WGS, dbSNP overlap >95%
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,29 +36,6 @@
 
 -->
 
----
-name: bio-workflows-fastq-to-variants
-description: End-to-end DNA sequencing workflow from FASTQ files to variant calls. Covers QC, alignment with BWA, BAM processing, and variant calling with bcftools or GATK HaplotypeCaller. Use when calling variants from raw sequencing reads.
-tool_type: cli
-primary_tool: bcftools
-workflow: true
-depends_on:
-  - read-qc/fastp-workflow
-  - read-alignment/bwa-alignment
-  - alignment-files/alignment-sorting
-  - alignment-files/duplicate-handling
-  - variant-calling/variant-calling
-  - variant-calling/filtering-best-practices
-qc_checkpoints:
-  - after_qc: "Q30 >85%, adapter content <1%"
-  - after_alignment: "Mapping rate >95%, properly paired >90%"
-  - after_dedup: "Duplication rate <30% for WGS, <50% for exome"
-  - after_calling: "Ti/Tv ratio ~2.1 for WGS, dbSNP overlap >95%"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # FASTQ to Variants Workflow
 

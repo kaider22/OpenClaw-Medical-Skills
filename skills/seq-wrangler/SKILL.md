@@ -1,30 +1,35 @@
 ---
 name: seq-wrangler
 description: Sequence QC, alignment, and BAM processing. Wraps FastQC, BWA/Bowtie2, SAMtools for automated read-to-BAM pipelines.
-version: 0.1.0
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
-        - samtools
+      - python3
+      - samtools
       anyBins:
-        - bwa
-        - bowtie2
-        - minimap2
+      - bwa
+      - bowtie2
+      - minimap2
       env: []
       config: []
     always: false
-    emoji: "🦖"
+    emoji: 🦖
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: brew
-        formula: samtools
-        bins: [samtools]
-      - kind: brew
-        formula: bwa
-        bins: [bwa]
+    - kind: brew
+      formula: samtools
+      bins:
+      - samtools
+    - kind: brew
+      formula: bwa
+      bins:
+      - bwa
+  source_extensions:
+    version: 0.1.0
 ---
 
 # 🦖 Seq Wrangler

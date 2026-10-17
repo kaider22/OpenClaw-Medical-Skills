@@ -1,3 +1,24 @@
+---
+name: chatehr-clinician-assistant
+description: EHR Chat Assistant
+license: Apache-2.0
+metadata:
+  author: Stanford Medicine
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - EHR
+    - clinical
+    - summarization
+    - patient-records
+    - FHIR
+    measurable_outcome: Answer 5 clinical queries and generate a discharge summary from a patient record with <10s latency.
+    compatibility:
+    - system: Python 3.10+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: chatehr-clinician-assistant
-description: EHR Chat Assistant
-keywords:
-  - EHR
-  - clinical
-  - summarization
-  - patient-records
-  - FHIR
-measurable_outcome: Answer 5 clinical queries and generate a discharge summary from a patient record with <10s latency.
-license: Apache-2.0
-metadata:
-  author: Stanford Medicine
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.10+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # ChatEHR
 

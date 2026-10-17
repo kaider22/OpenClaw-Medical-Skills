@@ -1,8 +1,10 @@
 ---
 name: bio-genome-engineering-grna-design
 description: Design guide RNAs for CRISPR-Cas9/Cas12a experiments using CRISPRscan and local scoring algorithms. Score guides for on-target activity using Rule Set 2 and Azimuth models. Use when designing sgRNAs for gene knockout, activation, or repression experiments.
-tool_type: python
-primary_tool: crisprscan
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: crisprscan
 ---
 
 ## Version Compatibility

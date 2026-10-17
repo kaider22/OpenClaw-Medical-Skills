@@ -1,3 +1,22 @@
+---
+name: bio-workflows-proteomics-pipeline
+description: End-to-end proteomics workflow from MaxQuant output to differential protein abundance. Orchestrates data import, normalization, imputation, and statistical testing with MSstats or limma. Use when processing mass spectrometry proteomics.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: MSstats
+    workflow: true
+    depends_on:
+    - proteomics/data-import
+    - proteomics/proteomics-qc
+    - proteomics/quantification
+    - proteomics/protein-inference
+    - proteomics/differential-abundance
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,23 +30,6 @@
 
 -->
 
----
-name: bio-workflows-proteomics-pipeline
-description: End-to-end proteomics workflow from MaxQuant output to differential protein abundance. Orchestrates data import, normalization, imputation, and statistical testing with MSstats or limma. Use when processing mass spectrometry proteomics.
-tool_type: mixed
-primary_tool: MSstats
-workflow: true
-depends_on:
-  - proteomics/data-import
-  - proteomics/proteomics-qc
-  - proteomics/quantification
-  - proteomics/protein-inference
-  - proteomics/differential-abundance
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Proteomics Pipeline
 

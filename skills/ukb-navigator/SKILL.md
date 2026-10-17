@@ -1,25 +1,28 @@
 ---
 name: ukb-navigator
 description: Semantic search across UK Biobank's 12,000+ data fields and publications — find the right variables for your research question.
-version: 0.1.0
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env: []
       config: []
     always: false
-    emoji: "🏥"
+    emoji: 🏥
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: pip
-        package: chromadb
-        bins: []
-      - kind: pip
-        package: voyageai
-        bins: []
+    - kind: pip
+      package: chromadb
+      bins: []
+    - kind: pip
+      package: voyageai
+      bins: []
+  source_extensions:
+    version: 0.1.0
 ---
 
 # 🏥 UKB Navigator

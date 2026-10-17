@@ -1,3 +1,25 @@
+---
+name: chemistry-agent
+description: Autonomous chemical synthesis & analysis
+license: MIT
+metadata:
+  author: Biomedical OS Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - chemistry
+    - synthesis
+    - molecules
+    - reaction
+    - lab-automation
+    measurable_outcome: Successfully plans valid synthesis routes for 90% of target small molecules.
+    compatibility:
+    - system: Python 3.10+
+allowed-tools:
+- run_shell_command
+- read_file
+- write_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +33,6 @@
 
 -->
 
----
-name: chemistry-agent
-description: Autonomous chemical synthesis & analysis
-keywords:
-  - chemistry
-  - synthesis
-  - molecules
-  - reaction
-  - lab-automation
-measurable_outcome: Successfully plans valid synthesis routes for 90% of target small molecules.
-license: MIT
-metadata:
-  author: Biomedical OS Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.10+
-allowed-tools:
-  - run_shell_command
-  - read_file
-  - write_file
----
 
 # Chemistry Agent
 

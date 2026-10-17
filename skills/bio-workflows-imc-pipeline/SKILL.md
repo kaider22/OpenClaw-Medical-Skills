@@ -1,3 +1,23 @@
+---
+name: bio-workflows-imc-pipeline
+description: End-to-end imaging mass cytometry workflow from raw acquisitions to spatial cell analysis. Orchestrates image preprocessing, segmentation, phenotyping, and spatial statistics. Use when analyzing imaging mass cytometry data end-to-end.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: steinbock
+    workflow: true
+    depends_on:
+    - imaging-mass-cytometry/data-preprocessing
+    - imaging-mass-cytometry/cell-segmentation
+    - imaging-mass-cytometry/phenotyping
+    - imaging-mass-cytometry/spatial-analysis
+    - imaging-mass-cytometry/interactive-annotation
+    - imaging-mass-cytometry/quality-metrics
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,24 +31,6 @@
 
 -->
 
----
-name: bio-workflows-imc-pipeline
-description: End-to-end imaging mass cytometry workflow from raw acquisitions to spatial cell analysis. Orchestrates image preprocessing, segmentation, phenotyping, and spatial statistics. Use when analyzing imaging mass cytometry data end-to-end.
-tool_type: python
-primary_tool: steinbock
-workflow: true
-depends_on:
-  - imaging-mass-cytometry/data-preprocessing
-  - imaging-mass-cytometry/cell-segmentation
-  - imaging-mass-cytometry/phenotyping
-  - imaging-mass-cytometry/spatial-analysis
-  - imaging-mass-cytometry/interactive-annotation
-  - imaging-mass-cytometry/quality-metrics
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Imaging Mass Cytometry Pipeline
 

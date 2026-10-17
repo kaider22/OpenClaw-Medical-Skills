@@ -1,8 +1,10 @@
 ---
 name: bio-metagenomics-abundance
 description: Species abundance estimation using Bracken with Kraken2 output. Redistributes reads from higher taxonomic levels to species for more accurate estimates. Use when accurate species-level abundances are needed from Kraken2 classification output.
-tool_type: cli
-primary_tool: bracken
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bracken
 ---
 
 ## Version Compatibility

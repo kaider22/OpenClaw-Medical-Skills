@@ -1,7 +1,9 @@
 ---
 name: fastq-analysis-pipeline
-title: FASTQ analysis and RNA-seq alignment with omicverse
 description: Guide through omicverse's alignment module for SRA downloading, FASTQ quality control, STAR alignment, gene quantification, and single-cell kallisto/bustools pipelines covering both bulk and single-cell RNA-seq workflows.
+metadata:
+  source_extensions:
+    title: FASTQ analysis and RNA-seq alignment with omicverse
 ---
 
 ## Overview

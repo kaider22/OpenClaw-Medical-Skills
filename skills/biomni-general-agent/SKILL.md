@@ -1,3 +1,10 @@
+---
+name: biomni-general-agent
+description: Use the local Biomni checkout to orchestrate its 150+ biomedical tools, databases, and know-how workflows for complex research questions.
+allowed-tools:
+  - read_file
+  - run_shell_command
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,13 +18,6 @@
 
 -->
 
----
-name: biomni-general-agent
-description: Use the local Biomni checkout to orchestrate its 150+ biomedical tools, databases, and know-how workflows for complex research questions.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 ## At-a-Glance
 - **description (10-20 chars):** Omni bio agent

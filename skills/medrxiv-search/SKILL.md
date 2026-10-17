@@ -1,14 +1,16 @@
 ---
 name: medrxiv-search
 description: Search medRxiv medical preprints with natural language queries. Powered by Valyu semantic search.
-keywords:
-  - medrxiv
-  - medical-preprints
-  - clinical-research
-  - epidemiology
-  - public-health
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - medrxiv
+    - medical-preprints
+    - clinical-research
+    - epidemiology
+    - public-health
+    - semantic-search
 ---
 
 

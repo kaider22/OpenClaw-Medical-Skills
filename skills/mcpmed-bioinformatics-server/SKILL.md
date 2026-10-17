@@ -4,11 +4,12 @@ description: Model Context Protocol (MCP) server for bioinformatics web services
 license: MIT
 metadata:
   author: Artificial Intelligence Group
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.10+
+  version: 1.0.0
+  source_extensions:
+    compatibility:
+    - system: Python 3.10+
 allowed-tools:
-  - run_shell_command
+- run_shell_command
 ---
 
 # MCPmed Bioinformatics Web Services

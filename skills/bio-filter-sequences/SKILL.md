@@ -1,8 +1,10 @@
 ---
 name: bio-filter-sequences
 description: Filter and select sequences by criteria (length, ID, GC content, patterns) using Biopython. Use when subsetting sequences, removing unwanted records, or selecting by specific criteria.
-tool_type: python
-primary_tool: Bio.SeqIO
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Bio.SeqIO
 ---
 
 ## Version Compatibility

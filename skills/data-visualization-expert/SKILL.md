@@ -1,3 +1,26 @@
+---
+name: data-visualization-expert
+description: Generate insightful, publication-quality visualizations from complex datasets.
+license: MIT
+metadata:
+  author: AI Agentic Skills Team
+  version: 2.0.0
+  source_extensions:
+    keywords:
+    - charts
+    - plots
+    - analysis
+    - pandas
+    - matplotlib
+    - seaborn
+    measurable_outcome: Create 3 high-resolution (300dpi) statistical plots (volcano, heatmap, scatter) within 15 minutes.
+    compatibility:
+    - system: linux, macos
+allowed-tools:
+- run_shell_command
+- write_file
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +34,6 @@
 
 -->
 
----
-name: data-visualization-expert
-description: Generate insightful, publication-quality visualizations from complex datasets.
-keywords:
-  - charts
-  - plots
-  - analysis
-  - pandas
-  - matplotlib
-  - seaborn
-measurable_outcome: Create 3 high-resolution (300dpi) statistical plots (volcano, heatmap, scatter) within 15 minutes.
-license: MIT
-metadata:
-  author: AI Agentic Skills Team
-  version: "2.0.0"
-compatibility:
-  - system: linux, macos
-allowed-tools:
-  - run_shell_command
-  - write_file
-  - read_file
----
 
 # Data Visualization Expert
 

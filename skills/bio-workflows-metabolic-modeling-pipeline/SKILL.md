@@ -1,3 +1,27 @@
+---
+name: bio-workflows-metabolic-modeling-pipeline
+description: End-to-end genome-scale metabolic modeling from genome sequence to flux predictions. Covers automated reconstruction with CarveMe, model validation with memote, FBA/FVA analysis, and gene essentiality prediction. Use when building metabolic models or predicting metabolic phenotypes from genomic data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: cobrapy
+    workflow: true
+    depends_on:
+    - systems-biology/metabolic-reconstruction
+    - systems-biology/model-curation
+    - systems-biology/flux-balance-analysis
+    - systems-biology/gene-essentiality
+    - systems-biology/context-specific-models
+    qc_checkpoints:
+    - after_reconstruction: Reactions 1000-2500, growth >0.01 on target media
+    - after_curation: Memote score >50%, <5% orphan reactions
+    - after_fba: Realistic growth rate, major pathways active
+    - after_essentiality: Core essential genes match literature >70%
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +35,6 @@
 
 -->
 
----
-name: bio-workflows-metabolic-modeling-pipeline
-description: End-to-end genome-scale metabolic modeling from genome sequence to flux predictions. Covers automated reconstruction with CarveMe, model validation with memote, FBA/FVA analysis, and gene essentiality prediction. Use when building metabolic models or predicting metabolic phenotypes from genomic data.
-tool_type: mixed
-primary_tool: cobrapy
-workflow: true
-depends_on:
-  - systems-biology/metabolic-reconstruction
-  - systems-biology/model-curation
-  - systems-biology/flux-balance-analysis
-  - systems-biology/gene-essentiality
-  - systems-biology/context-specific-models
-qc_checkpoints:
-  - after_reconstruction: "Reactions 1000-2500, growth >0.01 on target media"
-  - after_curation: "Memote score >50%, <5% orphan reactions"
-  - after_fba: "Realistic growth rate, major pathways active"
-  - after_essentiality: "Core essential genes match literature >70%"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Metabolic Modeling Pipeline
 

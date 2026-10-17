@@ -1,8 +1,10 @@
 ---
 name: bio-cfdna-preprocessing
 description: Preprocesses cell-free DNA sequencing data including adapter trimming, alignment optimized for short fragments, and UMI-aware duplicate removal using fgbio. Applies cfDNA-specific quality thresholds and fragment length filtering. Use when processing plasma cfDNA sequencing data before downstream analysis.
-tool_type: python
-primary_tool: fgbio
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: fgbio
 ---
 
 ## Version Compatibility

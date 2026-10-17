@@ -1,8 +1,10 @@
 ---
 name: bio-crispr-screens-library-design
 description: CRISPR library design for genetic screens. Covers sgRNA selection, library composition, control design, and oligo ordering. Use when designing custom sgRNA libraries for knockout, activation, or interference screens.
-tool_type: python
-primary_tool: crispor
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: crispor
 ---
 
 ## Version Compatibility

@@ -1,8 +1,10 @@
 ---
 name: bio-single-cell-perturb-seq
 description: Analyze Perturb-seq and CROP-seq CRISPR screening data integrated with scRNA-seq. Use when identifying gene function through pooled genetic perturbations in single cells.
-tool_type: python
-primary_tool: Pertpy
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Pertpy
 ---
 
 ## Version Compatibility

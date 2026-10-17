@@ -1,3 +1,24 @@
+---
+name: bio-workflows-longread-sv-pipeline
+description: End-to-end workflow for detecting structural variants from long-read sequencing data. Covers ONT/PacBio alignment with minimap2 and SV calling with Sniffles or cuteSV. Use when detecting structural variants from long reads.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: Sniffles
+    workflow: true
+    depends_on:
+    - long-read-sequencing/long-read-alignment
+    - long-read-sequencing/long-read-qc
+    - long-read-sequencing/structural-variants
+    qc_checkpoints:
+    - after_qc: Read N50 >10kb, quality score >Q10
+    - after_alignment: Mapping rate >90%, coverage sufficient
+    - after_calling: SV count reasonable, genotypes concordant
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,25 +32,6 @@
 
 -->
 
----
-name: bio-workflows-longread-sv-pipeline
-description: End-to-end workflow for detecting structural variants from long-read sequencing data. Covers ONT/PacBio alignment with minimap2 and SV calling with Sniffles or cuteSV. Use when detecting structural variants from long reads.
-tool_type: cli
-primary_tool: Sniffles
-workflow: true
-depends_on:
-  - long-read-sequencing/long-read-alignment
-  - long-read-sequencing/long-read-qc
-  - long-read-sequencing/structural-variants
-qc_checkpoints:
-  - after_qc: "Read N50 >10kb, quality score >Q10"
-  - after_alignment: "Mapping rate >90%, coverage sufficient"
-  - after_calling: "SV count reasonable, genotypes concordant"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Long-Read SV Pipeline
 

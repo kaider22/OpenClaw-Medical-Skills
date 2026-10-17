@@ -1,3 +1,24 @@
+---
+name: cellagent-annotation
+description: Cell tagger
+license: MIT
+metadata:
+  author: CellAgent Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - single-cell
+    - markers
+    - annotation
+    - confidence
+    - tissue
+    measurable_outcome: Label every provided cluster with a cell type + confidence + marker evidence (or "ambiguous") within 15 minutes per dataset.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: cellagent-annotation
-description: Cell tagger
-keywords:
-  - single-cell
-  - markers
-  - annotation
-  - confidence
-  - tissue
-measurable_outcome: Label every provided cluster with a cell type + confidence + marker evidence (or "ambiguous") within 15 minutes per dataset.
-license: MIT
-metadata:
-  author: CellAgent Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # CellAgent Annotation
 

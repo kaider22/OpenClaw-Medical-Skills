@@ -1,3 +1,15 @@
+---
+name: bio-genome-intervals-gtf-gff-handling
+description: Parse, query, and convert GTF and GFF3 annotation files. Extract gene, transcript, and exon coordinates using gffread, gtfparse, and gffutils. Use when extracting specific features from gene annotations or converting between annotation formats.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: gffread
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-genome-intervals-gtf-gff-handling
-description: Parse, query, and convert GTF and GFF3 annotation files. Extract gene, transcript, and exon coordinates using gffread, gtfparse, and gffutils. Use when extracting specific features from gene annotations or converting between annotation formats.
-tool_type: mixed
-primary_tool: gffread
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # GTF/GFF Handling
 

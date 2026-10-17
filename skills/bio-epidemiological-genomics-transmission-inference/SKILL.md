@@ -1,8 +1,10 @@
 ---
 name: bio-epidemiological-genomics-transmission-inference
 description: Infer pathogen transmission networks and identify likely transmission pairs using TransPhylo and outbreak reconstruction algorithms. Estimate who-infected-whom from genomic and epidemiological data. Use when investigating outbreak transmission chains or identifying superspreaders.
-tool_type: r
-primary_tool: TransPhylo
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: TransPhylo
 ---
 
 ## Version Compatibility

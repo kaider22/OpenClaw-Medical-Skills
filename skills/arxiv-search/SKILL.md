@@ -1,15 +1,17 @@
 ---
 name: arxiv-search
 description: Search arXiv physics, math, and computer science preprints using natural language queries. Powered by Valyu semantic search.
-keywords:
-  - arxiv
-  - preprints
-  - physics
-  - mathematics
-  - computer-science
-  - ai-research
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - arxiv
+    - preprints
+    - physics
+    - mathematics
+    - computer-science
+    - ai-research
+    - semantic-search
 ---
 
 

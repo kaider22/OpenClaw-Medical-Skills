@@ -1,8 +1,10 @@
 ---
 name: bio-de-edger-basics
 description: Perform differential expression analysis using edgeR in R/Bioconductor. Use for analyzing RNA-seq count data with the quasi-likelihood F-test framework, creating DGEList objects, normalization, dispersion estimation, and statistical testing. Use when performing DE analysis with edgeR.
-tool_type: r
-primary_tool: edgeR
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: edgeR
 ---
 
 ## Version Compatibility

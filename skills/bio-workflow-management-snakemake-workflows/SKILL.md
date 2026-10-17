@@ -1,3 +1,15 @@
+---
+name: bio-workflow-management-snakemake-workflows
+description: Build reproducible bioinformatics pipelines with Snakemake using rules, wildcards, and automatic dependency resolution. Use when creating Python-based workflows, automating multi-step analyses with make-like dependency tracking, or running pipelines on HPC clusters with SLURM.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: Snakemake
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,16 +23,6 @@
 
 -->
 
----
-name: bio-workflow-management-snakemake-workflows
-description: Build reproducible bioinformatics pipelines with Snakemake using rules, wildcards, and automatic dependency resolution. Use when creating Python-based workflows, automating multi-step analyses with make-like dependency tracking, or running pipelines on HPC clusters with SLURM.
-tool_type: python
-primary_tool: Snakemake
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Snakemake Workflows
 

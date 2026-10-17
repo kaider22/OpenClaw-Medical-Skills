@@ -1,3 +1,24 @@
+---
+name: biomaster-workflows
+description: Pipeline maestro
+license: MIT
+metadata:
+  author: BioMaster Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - workflows
+    - RNAseq
+    - ChIPseq
+    - automation
+    - YAML
+    measurable_outcome: Execute a configured pipeline end-to-end (including QC report + summary) within 24 hours of receiving inputs, logging every tool/parameter.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: biomaster-workflows
-description: Pipeline maestro
-keywords:
-  - workflows
-  - RNAseq
-  - ChIPseq
-  - automation
-  - YAML
-measurable_outcome: Execute a configured pipeline end-to-end (including QC report + summary) within 24 hours of receiving inputs, logging every tool/parameter.
-license: MIT
-metadata:
-  author: BioMaster Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # BioMaster Workflows
 

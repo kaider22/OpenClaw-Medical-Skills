@@ -1,8 +1,10 @@
 ---
 name: bio-splicing-qc
 description: Assesses RNA-seq data quality for splicing analysis including junction saturation curves, splice site strength scoring, and junction coverage metrics using RSeQC. Use when evaluating data suitability for splicing analysis or troubleshooting low event detection.
-tool_type: python
-primary_tool: RSeQC
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: RSeQC
 ---
 
 ## Version Compatibility

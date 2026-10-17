@@ -1,8 +1,10 @@
 ---
 name: bio-atac-seq-footprinting
 description: Detect transcription factor binding sites through footprinting analysis in ATAC-seq data using TOBIAS. Use when identifying TF occupancy patterns within accessible regions, as TF binding protects DNA from Tn5 cutting.
-tool_type: cli
-primary_tool: tobias
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: tobias
 ---
 
 ## Version Compatibility

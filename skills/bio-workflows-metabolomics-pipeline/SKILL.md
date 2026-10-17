@@ -1,3 +1,25 @@
+---
+name: bio-workflows-metabolomics-pipeline
+description: End-to-end metabolomics workflow from raw MS data to pathway analysis. Orchestrates XCMS preprocessing, annotation, normalization, statistical analysis, and pathway mapping. Use when processing LC-MS metabolomics data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: XCMS
+    workflow: true
+    depends_on:
+    - metabolomics/xcms-preprocessing
+    - metabolomics/metabolite-annotation
+    - metabolomics/normalization-qc
+    - metabolomics/statistical-analysis
+    - metabolomics/pathway-mapping
+    - metabolomics/lipidomics
+    - metabolomics/targeted-analysis
+    - metabolomics/msdial-preprocessing
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +33,6 @@
 
 -->
 
----
-name: bio-workflows-metabolomics-pipeline
-description: End-to-end metabolomics workflow from raw MS data to pathway analysis. Orchestrates XCMS preprocessing, annotation, normalization, statistical analysis, and pathway mapping. Use when processing LC-MS metabolomics data.
-tool_type: r
-primary_tool: XCMS
-workflow: true
-depends_on:
-  - metabolomics/xcms-preprocessing
-  - metabolomics/metabolite-annotation
-  - metabolomics/normalization-qc
-  - metabolomics/statistical-analysis
-  - metabolomics/pathway-mapping
-  - metabolomics/lipidomics
-  - metabolomics/targeted-analysis
-  - metabolomics/msdial-preprocessing
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Metabolomics Pipeline
 

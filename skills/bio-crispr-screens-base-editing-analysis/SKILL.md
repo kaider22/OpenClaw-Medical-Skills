@@ -1,8 +1,10 @@
 ---
 name: bio-crispr-screens-base-editing-analysis
 description: Analyzes base editing and prime editing outcomes including editing efficiency, bystander edits, and indel frequencies. Use when quantifying CRISPR base editor results, comparing ABE vs CBE efficiency, or assessing prime editing fidelity.
-tool_type: python
-primary_tool: CRISPResso2
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: CRISPResso2
 ---
 
 ## Version Compatibility

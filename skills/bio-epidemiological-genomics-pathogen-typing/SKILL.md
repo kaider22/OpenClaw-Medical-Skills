@@ -1,8 +1,10 @@
 ---
 name: bio-epidemiological-genomics-pathogen-typing
 description: Perform multi-locus sequence typing (MLST), core genome MLST, and SNP-based strain typing for bacterial isolate characterization using mlst and chewBBACA. Use when identifying strain types, tracking outbreak clones, or characterizing bacterial isolates.
-tool_type: cli
-primary_tool: mlst
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: mlst
 ---
 
 ## Version Compatibility

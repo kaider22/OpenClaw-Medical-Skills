@@ -1,8 +1,10 @@
 ---
 name: bio-crispr-screens-batch-correction
 description: Batch effect correction for CRISPR screens. Covers normalization across batches, technical replicate handling, and batch-aware analysis. Use when combining screens from multiple batches or correcting systematic technical variation.
-tool_type: python
-primary_tool: scipy
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: scipy
 ---
 
 ## Version Compatibility

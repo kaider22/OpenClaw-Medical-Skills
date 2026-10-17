@@ -1,3 +1,19 @@
+---
+name: pharmacogenomics-agent
+description: AI-driven pharmacogenomic analysis for precision dosing and adverse event prediction using multi-omics data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    keywords:
+    - pharmacogenomics
+    - precision-dosing
+    - cpic-guidelines
+    - adverse-events
+    - multi-omics
+    measurable_outcome: Provides validated dosing recommendations for >50 drugs with 99% concordance to CPIC guidelines.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,20 +27,6 @@
 
 -->
 
----
-name: 'pharmacogenomics-agent'
-description: 'AI-driven pharmacogenomic analysis for precision dosing and adverse event prediction using multi-omics data.'
-keywords:
-  - pharmacogenomics
-  - precision-dosing
-  - cpic-guidelines
-  - adverse-events
-  - multi-omics
-measurable_outcome: 'Provides validated dosing recommendations for >50 drugs with 99% concordance to CPIC guidelines.'
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # Pharmacogenomics Agent

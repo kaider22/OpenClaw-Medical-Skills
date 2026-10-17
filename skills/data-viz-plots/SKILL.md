@@ -1,7 +1,9 @@
 ---
 name: data-viz-plots
-title: Data Visualization (Universal)
 description: Create publication-quality plots and visualizations using matplotlib and seaborn. Works with ANY LLM provider (GPT, Gemini, Claude, etc.).
+metadata:
+  source_extensions:
+    title: Data Visualization (Universal)
 ---
 
 # Data Visualization (Universal)

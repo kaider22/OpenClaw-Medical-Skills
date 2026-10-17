@@ -1,8 +1,10 @@
 ---
 name: bio-flow-cytometry-bead-normalization
 description: Bead-based normalization for CyTOF and high-parameter flow cytometry. Covers EQ bead normalization, signal drift correction, and batch normalization. Use when correcting instrument drift in CyTOF or harmonizing data across batches.
-tool_type: r
-primary_tool: CATALYST
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: CATALYST
 ---
 
 ## Version Compatibility

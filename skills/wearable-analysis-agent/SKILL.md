@@ -1,3 +1,24 @@
+---
+name: wearable-analysis-agent
+description: Analyzes longitudinal wearable sensor data (heart rate, activity, sleep) to detect anomalies and provide personalized health insights.
+license: MIT
+metadata:
+  author: Biomedical AI Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - wearable
+    - sensor-data
+    - health-monitoring
+    - anomaly-detection
+    - longitudinal-analysis
+    measurable_outcome: Detects atrial fibrillation and sleep anomalies with >90% accuracy using continuous PPG and accelerometer data.
+    compatibility:
+    - system: Python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: wearable-analysis-agent
-description: Analyzes longitudinal wearable sensor data (heart rate, activity, sleep) to detect anomalies and provide personalized health insights.
-keywords:
-  - wearable
-  - sensor-data
-  - health-monitoring
-  - anomaly-detection
-  - longitudinal-analysis
-measurable_outcome: Detects atrial fibrillation and sleep anomalies with >90% accuracy using continuous PPG and accelerometer data.
-license: MIT
-metadata:
-  author: Biomedical AI Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # Wearable Analysis Agent
 

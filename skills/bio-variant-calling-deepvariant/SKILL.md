@@ -1,8 +1,10 @@
 ---
 name: bio-variant-calling-deepvariant
 description: Deep learning-based variant calling with Google DeepVariant. Provides high accuracy for germline SNPs and indels from Illumina, PacBio, and ONT data. Use when calling variants with DeepVariant deep learning caller.
-tool_type: cli
-primary_tool: DeepVariant
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: DeepVariant
 ---
 
 ## Version Compatibility

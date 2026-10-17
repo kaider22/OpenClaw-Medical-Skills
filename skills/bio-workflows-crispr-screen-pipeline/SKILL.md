@@ -1,3 +1,22 @@
+---
+name: bio-workflows-crispr-screen-pipeline
+description: End-to-end CRISPR screen analysis from FASTQ to hit genes. Orchestrates guide counting, QC, statistical analysis with MAGeCK, and hit calling with multiple methods. Use when analyzing pooled CRISPR screens from count data to hit calling.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: MAGeCK
+    workflow: true
+    depends_on:
+    - crispr-screens/screen-qc
+    - crispr-screens/mageck-analysis
+    - crispr-screens/hit-calling
+    - crispr-screens/library-design
+    - crispr-screens/batch-correction
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,23 +30,6 @@
 
 -->
 
----
-name: bio-workflows-crispr-screen-pipeline
-description: End-to-end CRISPR screen analysis from FASTQ to hit genes. Orchestrates guide counting, QC, statistical analysis with MAGeCK, and hit calling with multiple methods. Use when analyzing pooled CRISPR screens from count data to hit calling.
-tool_type: mixed
-primary_tool: MAGeCK
-workflow: true
-depends_on:
-  - crispr-screens/screen-qc
-  - crispr-screens/mageck-analysis
-  - crispr-screens/hit-calling
-  - crispr-screens/library-design
-  - crispr-screens/batch-correction
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # CRISPR Screen Pipeline
 

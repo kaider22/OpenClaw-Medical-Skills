@@ -1,8 +1,10 @@
 ---
 name: bio-splicing-quantification
 description: Quantifies alternative splicing events (PSI/percent spliced in) from RNA-seq using SUPPA2 from transcript TPM or rMATS-turbo from BAM files. Calculates inclusion levels for skipped exons, alternative splice sites, mutually exclusive exons, and retained introns. Use when measuring splice site usage or isoform ratios from RNA-seq data.
-tool_type: python
-primary_tool: SUPPA2
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: SUPPA2
 ---
 
 ## Version Compatibility

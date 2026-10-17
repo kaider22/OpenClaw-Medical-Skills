@@ -1,23 +1,26 @@
 ---
 name: labstep
 description: Interact with the Labstep electronic lab notebook API using labstepPy. Query experiments, protocols, resources, inventory, and other lab entities.
-version: 0.1.0
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env:
-        - LABSTEP_API_KEY
+      - LABSTEP_API_KEY
       config: []
     always: false
-    emoji: "🔬"
+    emoji: 🔬
     homepage: https://www.labstep.com
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install:
-      - kind: uv
-        package: labstep
-        bins: []
+    - kind: uv
+      package: labstep
+      bins: []
+  source_extensions:
+    version: 0.1.0
 ---
 
 # 🔬 Labstep

@@ -1,3 +1,27 @@
+---
+name: bio-workflows-chipseq-pipeline
+description: End-to-end ChIP-seq workflow from FASTQ files to annotated peaks. Covers QC, alignment, peak calling with MACS3, and peak annotation with ChIPseeker. Use when processing ChIP-seq data from alignment through peak annotation.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: MACS3
+    workflow: true
+    depends_on:
+    - read-qc/fastp-workflow
+    - read-alignment/bowtie2-alignment
+    - alignment-files/duplicate-handling
+    - chip-seq/peak-calling
+    - chip-seq/peak-annotation
+    - chip-seq/chipseq-qc
+    qc_checkpoints:
+    - after_qc: Q30 >85%, adapter content <5%
+    - after_alignment: Mapping rate >80%, unique mapping >70%
+    - after_peaks: FRiP >1% (ideally >5%), peak count reasonable
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +35,6 @@
 
 -->
 
----
-name: bio-workflows-chipseq-pipeline
-description: End-to-end ChIP-seq workflow from FASTQ files to annotated peaks. Covers QC, alignment, peak calling with MACS3, and peak annotation with ChIPseeker. Use when processing ChIP-seq data from alignment through peak annotation.
-tool_type: mixed
-primary_tool: MACS3
-workflow: true
-depends_on:
-  - read-qc/fastp-workflow
-  - read-alignment/bowtie2-alignment
-  - alignment-files/duplicate-handling
-  - chip-seq/peak-calling
-  - chip-seq/peak-annotation
-  - chip-seq/chipseq-qc
-qc_checkpoints:
-  - after_qc: "Q30 >85%, adapter content <5%"
-  - after_alignment: "Mapping rate >80%, unique mapping >70%"
-  - after_peaks: "FRiP >1% (ideally >5%), peak count reasonable"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # ChIP-seq Pipeline
 

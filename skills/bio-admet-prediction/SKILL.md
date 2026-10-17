@@ -1,8 +1,10 @@
 ---
 name: bio-admet-prediction
 description: Predicts ADMET properties using ADMETlab 3.0 API or DeepChem models. Estimates bioavailability, CYP inhibition, hERG liability, and 119 toxicity endpoints with uncertainty quantification. Filters for PAINS and other structural alerts. Use when filtering compounds for drug-likeness or prioritizing leads by predicted safety.
-tool_type: python
-primary_tool: ADMETlab
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: ADMETlab
 ---
 
 ## Version Compatibility

@@ -1,8 +1,10 @@
 ---
 name: bio-variant-calling
 description: Call SNPs and indels from aligned reads using bcftools mpileup and call. Use when detecting variants from BAM files or generating VCF from alignments.
-tool_type: cli
-primary_tool: bcftools
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bcftools
 ---
 
 ## Version Compatibility

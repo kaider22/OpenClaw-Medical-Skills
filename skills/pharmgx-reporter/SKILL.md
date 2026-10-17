@@ -1,30 +1,37 @@
 ---
 name: pharmgx-reporter
 description: Pharmacogenomic report from DTC genetic data (23andMe/AncestryDNA) — 12 genes, 31 SNPs, 51 drugs
-version: 0.1.0
-author: Manuel Corpas
 license: MIT
-tags: [pharmacogenomics, CPIC, DTC-genetics, precision-medicine]
 metadata:
   openclaw:
     requires:
       bins:
-        - python3
+      - python3
       env: []
       config: []
     always: false
-    emoji: "💊"
+    emoji: 💊
     homepage: https://github.com/ClawBio/ClawBio
-    os: [macos, linux]
+    os:
+    - macos
+    - linux
     install: []
     trigger_keywords:
-      - pharmacogenomics
-      - drug interactions
-      - 23andMe medications
-      - CYP2D6
-      - CYP2C19
-      - warfarin
-      - CPIC
+    - pharmacogenomics
+    - drug interactions
+    - 23andMe medications
+    - CYP2D6
+    - CYP2C19
+    - warfarin
+    - CPIC
+  source_extensions:
+    version: 0.1.0
+    author: Manuel Corpas
+    tags:
+    - pharmacogenomics
+    - CPIC
+    - DTC-genetics
+    - precision-medicine
 ---
 
 # 💊 PharmGx Reporter

@@ -1,3 +1,26 @@
+---
+name: bio-workflows-methylation-pipeline
+description: End-to-end bisulfite sequencing workflow from FASTQ to differentially methylated regions. Covers Bismark alignment, methylation calling, and DMR detection with methylKit. Use when analyzing bisulfite sequencing data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: Bismark
+    workflow: true
+    depends_on:
+    - read-qc/fastp-workflow
+    - methylation-analysis/bismark-alignment
+    - methylation-analysis/methylation-calling
+    - methylation-analysis/methylkit-analysis
+    - methylation-analysis/dmr-detection
+    qc_checkpoints:
+    - after_qc: Q30 >80%, adapter content removed
+    - after_alignment: Mapping efficiency >50%, bisulfite conversion >99%
+    - after_calling: Coverage distribution reasonable, no biased positions
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +34,6 @@
 
 -->
 
----
-name: bio-workflows-methylation-pipeline
-description: End-to-end bisulfite sequencing workflow from FASTQ to differentially methylated regions. Covers Bismark alignment, methylation calling, and DMR detection with methylKit. Use when analyzing bisulfite sequencing data.
-tool_type: mixed
-primary_tool: Bismark
-workflow: true
-depends_on:
-  - read-qc/fastp-workflow
-  - methylation-analysis/bismark-alignment
-  - methylation-analysis/methylation-calling
-  - methylation-analysis/methylkit-analysis
-  - methylation-analysis/dmr-detection
-qc_checkpoints:
-  - after_qc: "Q30 >80%, adapter content removed"
-  - after_alignment: "Mapping efficiency >50%, bisulfite conversion >99%"
-  - after_calling: "Coverage distribution reasonable, no biased positions"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Methylation Pipeline
 

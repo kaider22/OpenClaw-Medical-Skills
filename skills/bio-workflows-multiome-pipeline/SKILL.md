@@ -1,3 +1,27 @@
+---
+name: bio-workflows-multiome-pipeline
+description: End-to-end multiome workflow for joint scRNA-seq + scATAC-seq analysis. Covers data loading, separate modality processing, and WNN integration with Seurat/Signac. Use when analyzing joint scRNA+scATAC data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: Seurat
+    workflow: true
+    depends_on:
+    - single-cell/data-io
+    - single-cell/preprocessing
+    - single-cell/clustering
+    - single-cell/multimodal-integration
+    - single-cell/scatac-analysis
+    qc_checkpoints:
+    - after_loading: Both modalities detected per cell
+    - after_rna_qc: RNA quality filters passed
+    - after_atac_qc: TSS enrichment >2, nucleosome signal <4
+    - after_wnn: Joint embedding separates cell types
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +35,6 @@
 
 -->
 
----
-name: bio-workflows-multiome-pipeline
-description: End-to-end multiome workflow for joint scRNA-seq + scATAC-seq analysis. Covers data loading, separate modality processing, and WNN integration with Seurat/Signac. Use when analyzing joint scRNA+scATAC data.
-tool_type: r
-primary_tool: Seurat
-workflow: true
-depends_on:
-  - single-cell/data-io
-  - single-cell/preprocessing
-  - single-cell/clustering
-  - single-cell/multimodal-integration
-  - single-cell/scatac-analysis
-qc_checkpoints:
-  - after_loading: "Both modalities detected per cell"
-  - after_rna_qc: "RNA quality filters passed"
-  - after_atac_qc: "TSS enrichment >2, nucleosome signal <4"
-  - after_wnn: "Joint embedding separates cell types"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Multiome Pipeline
 

@@ -1,5 +1,5 @@
 ---
-name: torch-geometric
+name: torch-geometric-alternate
 description: "Graph Neural Networks (PyG). Node/graph classification, link prediction, GCN, GAT, GraphSAGE, heterogeneous graphs, molecular property prediction, for geometric deep learning."
 ---
 

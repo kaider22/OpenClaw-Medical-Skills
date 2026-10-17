@@ -1,3 +1,25 @@
+---
+name: spatial-transcriptomics-analysis
+description: Automated analysis pipeline for Spatial Transcriptomics (Visium, Xenium) integrating histology and gene expression.
+license: MIT
+metadata:
+  author: MD BABU MIA, PhD
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - spatial-transcriptomics
+    - visium
+    - xenium
+    - scanpy
+    - squidpy
+    measurable_outcome: Process a Visium dataset, identify spatially variable genes, and generate spatial feature plots within 30 minutes.
+    compatibility:
+    - system: python 3.9+
+allowed-tools:
+- run_shell_command
+- read_file
+- write_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,27 +33,6 @@
 
 -->
 
----
-name: spatial-transcriptomics-analysis
-description: Automated analysis pipeline for Spatial Transcriptomics (Visium, Xenium) integrating histology and gene expression.
-keywords:
-  - spatial-transcriptomics
-  - visium
-  - xenium
-  - scanpy
-  - squidpy
-measurable_outcome: Process a Visium dataset, identify spatially variable genes, and generate spatial feature plots within 30 minutes.
-license: MIT
-metadata:
-  author: MD BABU MIA, PhD
-  version: "1.0.0"
-compatibility:
-  - system: python 3.9+
-allowed-tools:
-  - run_shell_command
-  - read_file
-  - write_file
----
 
 # Spatial Transcriptomics Skill
 

@@ -1,14 +1,16 @@
 ---
 name: biomedical-search
 description: Complete biomedical information search combining PubMed, preprints, clinical trials, and FDA drug labels. Powered by Valyu semantic search.
-keywords:
-  - biomedical-search
-  - clinical-research
-  - evidence-based-medicine
-  - medical-research
-  - comprehensive-search
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - biomedical-search
+    - clinical-research
+    - evidence-based-medicine
+    - medical-research
+    - comprehensive-search
+    - semantic-search
 ---
 
 

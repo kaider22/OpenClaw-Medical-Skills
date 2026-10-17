@@ -1,14 +1,16 @@
 ---
 name: drug-labels-search
 description: Search FDA drug labels with natural language queries. Official drug information, indications, and safety data via Valyu.
-keywords:
-  - fda-drug-labels
-  - drug-safety
-  - indications
-  - pharmacology
-  - drug-interactions
-  - semantic-search
 license: MIT
+metadata:
+  source_extensions:
+    keywords:
+    - fda-drug-labels
+    - drug-safety
+    - indications
+    - pharmacology
+    - drug-interactions
+    - semantic-search
 ---
 
 

@@ -1,8 +1,10 @@
 ---
 name: bio-consensus-sequences
 description: Generate consensus FASTA sequences by applying VCF variants to a reference using bcftools consensus. Use when creating sample-specific reference sequences or reconstructing haplotypes.
-tool_type: cli
-primary_tool: bcftools
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: bcftools
 ---
 
 ## Version Compatibility

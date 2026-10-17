@@ -1,8 +1,10 @@
 ---
 name: bio-metabolomics-statistical-analysis
 description: Statistical analysis for metabolomics data. Covers univariate testing, multivariate methods (PCA, PLS-DA), and biomarker discovery. Use when identifying differentially abundant metabolites or building classification models.
-tool_type: r
-primary_tool: mixOmics
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: mixOmics
 ---
 
 ## Version Compatibility

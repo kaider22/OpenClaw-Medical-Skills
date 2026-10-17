@@ -1,7 +1,9 @@
 ---
 name: bulk-rna-seq-deseq2-analysis-with-omicverse
-title: Bulk RNA-seq DESeq2 analysis with omicverse
 description: Walk Claude through PyDESeq2-based differential expression, including ID mapping, DE testing, fold-change thresholding, and enrichment visualisation.
+metadata:
+  source_extensions:
+    title: Bulk RNA-seq DESeq2 analysis with omicverse
 ---
 
 # Bulk RNA-seq DESeq2 analysis with omicverse

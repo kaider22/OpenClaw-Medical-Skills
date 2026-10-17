@@ -1,3 +1,13 @@
+---
+name: gene-panel-design-agent
+description: AI-powered design of targeted gene panels for clinical and research applications including cancer diagnostics, pharmacogenomics, and rare disease testing.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,14 +21,6 @@
 
 -->
 
----
-name: 'gene-panel-design-agent'
-description: 'AI-powered design of targeted gene panels for clinical and research applications including cancer diagnostics, pharmacogenomics, and rare disease testing.'
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 
 # Gene Panel Design Agent

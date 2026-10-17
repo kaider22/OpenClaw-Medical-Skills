@@ -1,8 +1,10 @@
 ---
 name: bio-microbiome-taxonomy-assignment
 description: Taxonomic classification of ASVs using reference databases like SILVA, GTDB, or UNITE. Covers naive Bayes classifiers (DADA2, IDTAXA) and exact matching approaches. Use when assigning taxonomy to ASVs after DADA2 amplicon processing.
-tool_type: mixed
-primary_tool: dada2
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: dada2
 ---
 
 ## Version Compatibility

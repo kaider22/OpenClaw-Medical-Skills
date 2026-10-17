@@ -1,8 +1,10 @@
 ---
 name: bio-single-cell-splicing
 description: Analyzes alternative splicing at single-cell resolution using BRIE2 for probabilistic PSI estimation or leafcutter2 for cluster-based analysis with NMD detection. Identifies cell-type-specific splicing patterns. Use when analyzing isoform usage in scRNA-seq or finding splicing differences between cell populations.
-tool_type: python
-primary_tool: BRIE2
+metadata:
+  source_extensions:
+    tool_type: python
+    primary_tool: BRIE2
 ---
 
 ## Version Compatibility

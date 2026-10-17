@@ -1,3 +1,19 @@
+---
+name: search-strategy
+description: Query decomposition and multi-source search orchestration. Breaks natural language questions into targeted searches per source, translates queries into source-specific syntax, ranks results by relevance, and handles ambiguity and fallback strategies.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    keywords:
+    - search
+    - query-decomposition
+    - ranking
+    - multi-source
+    - strategy
+    measurable_outcome: Successfully decomposes 100% of complex queries into source-specific sub-queries targeting relevant databases.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,20 +27,6 @@
 
 -->
 
----
-name: search-strategy
-description: Query decomposition and multi-source search orchestration. Breaks natural language questions into targeted searches per source, translates queries into source-specific syntax, ranks results by relevance, and handles ambiguity and fallback strategies.
-keywords:
-  - search
-  - query-decomposition
-  - ranking
-  - multi-source
-  - strategy
-measurable_outcome: Successfully decomposes 100% of complex queries into source-specific sub-queries targeting relevant databases.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Search Strategy
 

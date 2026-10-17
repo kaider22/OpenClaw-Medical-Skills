@@ -1,8 +1,10 @@
 ---
 name: bio-atac-seq-motif-deviation
 description: Analyze transcription factor motif accessibility variability using chromVAR. Use when identifying which TF motifs show variable accessibility across samples or conditions in ATAC-seq data.
-tool_type: r
-primary_tool: chromVAR
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: chromVAR
 ---
 
 ## Version Compatibility

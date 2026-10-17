@@ -1,7 +1,9 @@
 ---
 name: bulk-wgcna-analysis-with-omicverse
-title: Bulk WGCNA analysis with omicverse
 description: Assist Claude in running PyWGCNA through omicverse—preprocessing expression matrices, constructing co-expression modules, visualising eigengenes, and extracting hub genes.
+metadata:
+  source_extensions:
+    title: Bulk WGCNA analysis with omicverse
 ---
 
 # Bulk WGCNA analysis with omicverse

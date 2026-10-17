@@ -1,3 +1,25 @@
+---
+name: bio-workflows-cytometry-pipeline
+description: End-to-end flow cytometry workflow from FCS files to differential analysis. Orchestrates compensation, transformation, gating/clustering, and statistical testing with CATALYST/diffcyt. Use when processing flow or mass cytometry data end-to-end.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: r
+    primary_tool: CATALYST
+    workflow: true
+    depends_on:
+    - flow-cytometry/fcs-handling
+    - flow-cytometry/compensation-transformation
+    - flow-cytometry/gating-analysis
+    - flow-cytometry/clustering-phenotyping
+    - flow-cytometry/differential-analysis
+    - flow-cytometry/doublet-detection
+    - flow-cytometry/bead-normalization
+    - flow-cytometry/cytometry-qc
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +33,6 @@
 
 -->
 
----
-name: bio-workflows-cytometry-pipeline
-description: End-to-end flow cytometry workflow from FCS files to differential analysis. Orchestrates compensation, transformation, gating/clustering, and statistical testing with CATALYST/diffcyt. Use when processing flow or mass cytometry data end-to-end.
-tool_type: r
-primary_tool: CATALYST
-workflow: true
-depends_on:
-  - flow-cytometry/fcs-handling
-  - flow-cytometry/compensation-transformation
-  - flow-cytometry/gating-analysis
-  - flow-cytometry/clustering-phenotyping
-  - flow-cytometry/differential-analysis
-  - flow-cytometry/doublet-detection
-  - flow-cytometry/bead-normalization
-  - flow-cytometry/cytometry-qc
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Flow Cytometry Pipeline
 

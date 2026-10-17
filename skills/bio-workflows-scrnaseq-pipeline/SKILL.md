@@ -1,3 +1,27 @@
+---
+name: bio-workflows-scrnaseq-pipeline
+description: End-to-end single-cell RNA-seq workflow from 10X Genomics data to annotated cell types. Covers QC, normalization, clustering, marker detection, and cell type annotation. Use when analyzing single-cell RNA-seq data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: Seurat
+    workflow: true
+    depends_on:
+    - single-cell/data-io
+    - single-cell/preprocessing
+    - single-cell/doublet-detection
+    - single-cell/clustering
+    - single-cell/markers-annotation
+    qc_checkpoints:
+    - after_loading: Expected cell count, reasonable UMI distribution
+    - after_qc: Remove low-quality cells and doublets
+    - after_normalization: No batch effects, HVGs look sensible
+    - after_clustering: Clusters are biologically meaningful
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +35,6 @@
 
 -->
 
----
-name: bio-workflows-scrnaseq-pipeline
-description: End-to-end single-cell RNA-seq workflow from 10X Genomics data to annotated cell types. Covers QC, normalization, clustering, marker detection, and cell type annotation. Use when analyzing single-cell RNA-seq data.
-tool_type: mixed
-primary_tool: Seurat
-workflow: true
-depends_on:
-  - single-cell/data-io
-  - single-cell/preprocessing
-  - single-cell/doublet-detection
-  - single-cell/clustering
-  - single-cell/markers-annotation
-qc_checkpoints:
-  - after_loading: "Expected cell count, reasonable UMI distribution"
-  - after_qc: "Remove low-quality cells and doublets"
-  - after_normalization: "No batch effects, HVGs look sensible"
-  - after_clustering: "Clusters are biologically meaningful"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Single-Cell RNA-seq Pipeline
 

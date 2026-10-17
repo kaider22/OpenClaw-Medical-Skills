@@ -1,8 +1,10 @@
 ---
 name: bio-hi-c-analysis-hic-data-io
 description: Load, convert, and manipulate Hi-C contact matrices using cooler format. Read .cool/.mcool files, convert from .hic format, access matrix data, and export to different formats. Use when loading or converting Hi-C contact matrices.
-tool_type: mixed
-primary_tool: cooler
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: cooler
 ---
 
 ## Version Compatibility

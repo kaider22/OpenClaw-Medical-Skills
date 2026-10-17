@@ -1,3 +1,19 @@
+---
+name: knowledge-synthesis
+description: Combines search results from multiple sources into coherent, deduplicated answers with source attribution. Handles confidence scoring based on freshness and authority, and summarizes large result sets effectively.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    keywords:
+    - synthesis
+    - deduplication
+    - summarization
+    - answers
+    - reporting
+    measurable_outcome: Produces a single coherent answer from >5 diverse sources with clear attribution and <10% duplication.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,20 +27,6 @@
 
 -->
 
----
-name: knowledge-synthesis
-description: Combines search results from multiple sources into coherent, deduplicated answers with source attribution. Handles confidence scoring based on freshness and authority, and summarizes large result sets effectively.
-keywords:
-  - synthesis
-  - deduplication
-  - summarization
-  - answers
-  - reporting
-measurable_outcome: Produces a single coherent answer from >5 diverse sources with clear attribution and <10% duplication.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # Knowledge Synthesis
 

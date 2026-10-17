@@ -1,3 +1,24 @@
+---
+name: mage-antibody-generator
+description: Ab seq forge
+license: MIT
+metadata:
+  author: MAGE Team
+  version: 1.0.0
+  source_extensions:
+    keywords:
+    - antibody
+    - antigen
+    - FASTA
+    - generation
+    - validation
+    measurable_outcome: Generate the requested number of antibody sequences (default ≥5) with metadata (model checkpoint, seed) and deliver FASTA files within 10 minutes.
+    compatibility:
+    - system: Python 3.9+ / GPU
+allowed-tools:
+- run_shell_command
+- read_file
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,26 +32,6 @@
 
 -->
 
----
-name: mage-antibody-generator
-description: Ab seq forge
-keywords:
-  - antibody
-  - antigen
-  - FASTA
-  - generation
-  - validation
-measurable_outcome: Generate the requested number of antibody sequences (default ≥5) with metadata (model checkpoint, seed) and deliver FASTA files within 10 minutes.
-license: MIT
-metadata:
-  author: MAGE Team
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+ / GPU
-allowed-tools:
-  - run_shell_command
-  - read_file
----
 
 # MAGE (Monoclonal Antibody Generator)
 

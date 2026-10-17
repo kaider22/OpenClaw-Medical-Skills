@@ -1,3 +1,26 @@
+---
+name: biomni-research-agent
+description: Bio-Research Generalist
+license: MIT
+metadata:
+  author: Stanford (Snap Lab)
+  source: https://github.com/snap-stanford/Biomni
+  version: 1.0.0
+  source_extensions:
+    compatibility:
+    - system: Python 3.9+
+    keywords:
+    - biomni
+    - automation
+    - biomedical
+    - reasoning
+    - tools
+    measurable_outcome: Execute complex research tasks with >95% success rate and validated tool usage.
+allowed-tools:
+- run_shell_command
+- web_fetch
+- python_repl
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,28 +34,6 @@
 
 -->
 
----
-name: biomni-research-agent
-description: Bio-Research Generalist
-license: MIT
-metadata:
-  author: Stanford (Snap Lab)
-  source: "https://github.com/snap-stanford/Biomni"
-  version: "1.0.0"
-compatibility:
-  - system: Python 3.9+
-allowed-tools:
-  - run_shell_command
-  - web_fetch
-  - python_repl
-keywords:
-  - biomni
-  - automation
-  - biomedical
-  - reasoning
-  - tools
-measurable_outcome: Execute complex research tasks with >95% success rate and validated tool usage.
----
 
 # Biomni (General Biomedical Agent)
 

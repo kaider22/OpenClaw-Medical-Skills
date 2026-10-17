@@ -1,3 +1,24 @@
+---
+name: bio-workflows-cnv-pipeline
+description: End-to-end copy number variant detection workflow from BAM files. Covers CNVkit analysis for exome/targeted sequencing with visualization and annotation. Use when detecting copy number alterations from sequencing data.
+allowed-tools:
+- read_file
+- run_shell_command
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: CNVkit
+    workflow: true
+    depends_on:
+    - copy-number/cnvkit-analysis
+    - copy-number/cnv-visualization
+    - copy-number/cnv-annotation
+    qc_checkpoints:
+    - after_coverage: Uniform coverage across targets
+    - after_calling: Reasonable CNV count, expected ploidy
+    - after_annotation: Known CNVs detected if present
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+---
 <!--
 # COPYRIGHT NOTICE
 # This file is part of the "Universal Biomedical Skills" project.
@@ -11,25 +32,6 @@
 
 -->
 
----
-name: bio-workflows-cnv-pipeline
-description: End-to-end copy number variant detection workflow from BAM files. Covers CNVkit analysis for exome/targeted sequencing with visualization and annotation. Use when detecting copy number alterations from sequencing data.
-tool_type: mixed
-primary_tool: CNVkit
-workflow: true
-depends_on:
-  - copy-number/cnvkit-analysis
-  - copy-number/cnv-visualization
-  - copy-number/cnv-annotation
-qc_checkpoints:
-  - after_coverage: "Uniform coverage across targets"
-  - after_calling: "Reasonable CNV count, expected ploidy"
-  - after_annotation: "Known CNVs detected if present"
-measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
-allowed-tools:
-  - read_file
-  - run_shell_command
----
 
 # CNV Pipeline
 
