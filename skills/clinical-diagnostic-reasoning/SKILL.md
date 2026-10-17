@@ -1,8 +1,6 @@
 ---
 name: clinical-diagnostic-reasoning
-description: Identify and counteract cognitive biases in medical decision-making through systematic error analysis and contextual algorithm application. For diagnostic reasoning, treatment decisions, and
-  clinical judgment improvement. NOT for basic medical knowledge, technical procedures, or non-clinical healthcare domains.
-allowed-tools: Read
+description: 提供通过反锚定、鉴别诊断和偏倚检查辅助临床判断的方法与调用指南；用于处理个体病例信息和待决策问题。
 metadata:
   tags:
   - clinical
@@ -15,9 +13,20 @@ metadata:
     reason: Diagnostic checklists reduce cognitive bias errors in medical decision-making
   - skill: crisis-detection-intervention-ai
     reason: Crisis detection requires the same bias-aware reasoning used in clinical diagnostics
+  source_extensions:
+    allowed-tools: Read
 ---
 
 # Clinical Diagnostic Reasoning
+
+## Codex 调用
+
+- **选择**：请求涉及“通过反锚定、鉴别诊断和偏倚检查辅助临床判断”时使用；显式调用 `$clinical-diagnostic-reasoning`。
+- **输入**：个体病例信息和待决策问题。
+- **预期产物**：偏倚核查清单、鉴别诊断思路和沟通框架；按正文的方法约束和质量检查核对本次输入与产物。
+- **执行方式**：由当前 Codex 根据正文完成所述分析、设计或文档任务；需要计算或实时信息的环节必须使用实际可用的工具，不能用文字生成代替执行。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
+
 Improve diagnostic accuracy and treatment decisions by recognizing and overcoming systematic cognitive errors in clinical thinking.
 
 ## When to Use

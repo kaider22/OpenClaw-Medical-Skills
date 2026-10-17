@@ -1,12 +1,12 @@
 ---
 name: drug-interaction-checker
-description: Checks for potential drug-drug interactions (DDIs) between a list of medications.
-allowed-tools:
-- read_file
-- run_shell_command
+description: 检查药物相互作用并按严重度分类；用于处理药物名称列表。
 metadata:
   source_extensions:
     measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+    allowed-tools:
+    - read_file
+    - run_shell_command
 ---
 <!--
 # COPYRIGHT NOTICE
@@ -24,6 +24,14 @@ metadata:
 
 
 # Drug-Drug Interaction (DDI) Checker
+
+## Codex 调用
+
+- **选择**：请求涉及“检查药物相互作用并按严重度分类”时使用；显式调用 `$drug-interaction-checker`。
+- **输入**：药物名称列表。
+- **预期产物**：相互作用、严重度和机制报告；按正文的方法约束和质量检查核对本次输入与产物。
+- **本地资源**：[impl.py](impl.py)。先读取函数/命令参数并选择与本次任务相关的入口；普通相对命令以本技能目录为基准，正文另有 `cd` 时遵循所示目录。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
 
 This skill analyzes a list of medications to identify known interactions, focusing on safety and contraindications.
 
@@ -51,7 +59,7 @@ This skill analyzes a list of medications to identify known interactions, focusi
 
 **Agent Action**:
 ```bash
-python3 Skills/Pharma/Drug_Interaction/impl.py --drugs "Warfarin, Aspirin"
+python3 impl.py --drugs "Warfarin, Aspirin"
 ```
 
 

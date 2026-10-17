@@ -1,16 +1,25 @@
 ---
 name: imaging-data-commons
-description: Query and download public cancer imaging data from NCI Imaging Data Commons using idc-index. Use for accessing large-scale radiology (CT, MR, PET) and pathology datasets for AI training or research. No authentication required. Query by metadata, visualize in browser, check licenses.
+description: 提供查询并下载IDC公共癌症影像，生成可复现数据清单的方法与调用指南；用于处理IDC SQL条件、集合/序列UID及许可筛选条件。
 license: This skill is provided under the MIT License. IDC data itself has individual licensing (mostly CC-BY, some CC-NC) that must be respected when using the data.
 metadata:
-    version: 1.4.0
-    skill-author: Andrey Fedorov, @fedorov
-    idc-index: "0.11.10"
-    idc-data-version: "v23"
-    repository: https://github.com/ImagingDataCommons/idc-claude-skill
+  version: 1.4.0
+  skill-author: Andrey Fedorov, @fedorov
+  idc-index: 0.11.10
+  idc-data-version: v23
+  repository: https://github.com/ImagingDataCommons/idc-claude-skill
 ---
 
 # Imaging Data Commons
+
+## Codex 调用
+
+- **选择**：请求涉及“查询并下载IDC公共癌症影像，生成可复现数据清单”时使用；显式调用 `$imaging-data-commons`。
+- **输入**：IDC SQL条件、集合/序列UID及许可筛选条件。
+- **预期产物**：影像元数据、DICOM文件、manifest、浏览链接和引用；按正文的方法约束和质量检查核对本次输入与产物。
+- **执行方式**：按正文的库/命令行示例在当前终端执行与本次输入相符的分支；这是按指南运行，不是仓库自带完整算法入口。先确认所选软件和版本。
+- **环境核对**：`SimpleITK`、`idc_index`、`numpy`、`pandas`、`pydicom`、`webbrowser`（原文涉及的工具或导入名，按实际执行分支检查，不将导入名直接当作安装包名）。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
 
 ## Overview
 
@@ -796,18 +805,18 @@ For segmentation and annotation details, also see `references/digital_pathology_
 The following skills complement IDC workflows for downstream analysis and visualization:
 
 ### DICOM Processing
-- **pydicom** - Read, write, and manipulate downloaded DICOM files. Use for extracting pixel data, reading metadata, anonymization, and format conversion. Essential for working with IDC radiology data (CT, MR, PET).
+- **imaging-pydicom-data-processing** - Read, write, and manipulate downloaded DICOM files. Use for extracting pixel data, reading metadata, anonymization, and format conversion. Essential for working with IDC radiology data (CT, MR, PET).
 
 ### Pathology and Slide Microscopy
 See `references/digital_pathology_guide.md` for DICOM-compatible tools (highdicom, wsidicom, TIA-Toolbox, Slim viewer).
 
 ### Metadata Visualization
-- **matplotlib** - Low-level plotting for full customization. Use for creating static figures summarizing IDC query results (bar charts of modalities, histograms of series counts, etc.).
-- **seaborn** - Statistical visualization with pandas integration. Use for quick exploration of IDC metadata distributions, relationships between variables, and categorical comparisons with attractive defaults.
-- **plotly** - Interactive visualization. Use when you need hover info, zoom, and pan for exploring IDC metadata, or for creating web-embeddable dashboards of collection statistics.
+- **research-matplotlib-figure-generation** - Low-level plotting for full customization. Use for creating static figures summarizing IDC query results (bar charts of modalities, histograms of series counts, etc.).
+- **research-seaborn-statistical-visualization** - Statistical visualization with pandas integration. Use for quick exploration of IDC metadata distributions, relationships between variables, and categorical comparisons with attractive defaults.
+- **research-plotly-interactive-visualization** - Interactive visualization. Use when you need hover info, zoom, and pan for exploring IDC metadata, or for creating web-embeddable dashboards of collection statistics.
 
 ### Data Exploration
-- **exploratory-data-analysis** - Comprehensive EDA on scientific data files. Use after downloading IDC data to understand file structure, quality, and characteristics before analysis.
+- **research-exploratory-data-analysis** - Comprehensive EDA on scientific data files. Use after downloading IDC data to understand file structure, quality, and characteristics before analysis.
 
 ## Resources
 

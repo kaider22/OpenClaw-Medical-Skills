@@ -162,7 +162,7 @@ Your agent should list the installed skills with their capabilities.
 
 ### For Codex CLI users
 
-Clone the repository and start Codex from its root directory. Codex discovers the project skills through `.agents/skills/`; each entry points to its original folder under `skills/`.
+Clone the repository and start Codex from its root directory. Codex discovers the project skills through `.agents/skills/`; each entry points to its canonical folder under `skills/`.
 
 ```bash
 git clone --branch codex/codex-native-skills https://github.com/kaider22/OpenClaw-Medical-Skills.git
@@ -170,7 +170,9 @@ cd OpenClaw-Medical-Skills
 codex
 ```
 
-In Codex, use `/skills` to browse available skills or invoke one by name, for example `$pubmed-database`. Discovery does not install external programs, databases, API credentials, or services required by individual skills. This confirms Codex compatibility and discovery, not that every medical or research workflow has been functionally validated.
+In Codex, use `/skills` to browse available skills or invoke one by name, for example `$evidence-pubmed-api-search`. Discovery does not install external programs, databases, API credentials, or services required by individual skills. All 869 skills now have canonical names and task-specific Codex invocation instructions, including inputs, outputs, execution resources and missing prerequisites. Format and discovery checks do not establish functional validation of every research workflow.
+
+See the [authoring standard](skill-authoring-standard.md), [complete name and invocation map](skill-migration.csv), and [migration verification report](codex-migration-report.md). The map retains previous names; source URLs retain upstream provenance.
 
 ---
 
@@ -279,16 +281,16 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [agent-browser](skills/agent-browser/) | Browse the web for any task — research topics, read articles, interact with web apps, fill forms, take screenshots, extract data, and test web pages. Use whenever a browser would be useful. |
-| [find-skills](skills/find-skills/) | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. |
-| [multi-search-engine](skills/multi-search-engine/) | Multi search engine integration with 17 engines (8 CN + 9 Global). Supports Baidu, Bing, 360, Sogou, WeChat, Google, DuckDuckGo, WolframAlpha and more. Supports advanced operators, time filters, site search. No API keys required. |
-| [wikipedia-search](skills/wikipedia-search/) | Search and fetch structured content from Wikipedia using the MediaWiki API for reliable, encyclopedic information. Supports multi-language queries. |
-| [deep-research](skills/deep-research/) | Execute autonomous multi-step deep research on any topic. Searches multiple sources, reads full content, synthesizes findings, and produces a structured report. Use for comprehensive research, literature reviews, competitive analysis, or topic deep-dives. |
-| [pdf](skills/pdf/) | Comprehensive PDF toolkit — extract text and tables, create new PDFs, merge/split documents, handle forms, OCR scanned PDFs. Use when working with any .pdf file. |
-| [docx](skills/docx/) | Create, edit, and analyze Word documents (.docx). Supports tracked changes, comments, formatting preservation, and text extraction. Use for drafting, redlining, or extracting content from Word files. |
-| [xlsx](skills/xlsx/) | Spreadsheet creation, editing, and analysis. Supports formulas, formatting, data analysis, and visualization. Use for any .xlsx, .xlsm, .csv, or .tsv task. |
-| [pptx](skills/pptx/) | Presentation creation, editing, and analysis. Supports layouts, speaker notes, templates, and design. Use for any .pptx file. |
-| [doc-coauthoring](skills/doc-coauthoring/) | Guide users through a structured workflow for co-authoring documentation. Use when writing documentation, proposals, technical specs, decision docs, or similar structured content. |
+| [research-browser-automation](skills/research-browser-automation/) | Browse the web for any task — research topics, read articles, interact with web apps, fill forms, take screenshots, extract data, and test web pages. Use whenever a browser would be useful. |
+| [research-skill-discovery](skills/research-skill-discovery/) | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. |
+| [evidence-multi-engine-web-search](skills/evidence-multi-engine-web-search/) | Multi search engine integration with 17 engines (8 CN + 9 Global). Supports Baidu, Bing, 360, Sogou, WeChat, Google, DuckDuckGo, WolframAlpha and more. Supports advanced operators, time filters, site search. No API keys required. |
+| [evidence-wikipedia-search](skills/evidence-wikipedia-search/) | Search and fetch structured content from Wikipedia using the MediaWiki API for reliable, encyclopedic information. Supports multi-language queries. |
+| [evidence-multisource-research](skills/evidence-multisource-research/) | Execute autonomous multi-step deep research on any topic. Searches multiple sources, reads full content, synthesizes findings, and produces a structured report. Use for comprehensive research, literature reviews, competitive analysis, or topic deep-dives. |
+| [research-pdf-edit](skills/research-pdf-edit/) | Comprehensive PDF toolkit — extract text and tables, create new PDFs, merge/split documents, handle forms, OCR scanned PDFs. Use when working with any .pdf file. |
+| [research-docx-edit](skills/research-docx-edit/) | Create, edit, and analyze Word documents (.docx). Supports tracked changes, comments, formatting preservation, and text extraction. Use for drafting, redlining, or extracting content from Word files. |
+| [research-xlsx-analysis](skills/research-xlsx-analysis/) | Spreadsheet creation, editing, and analysis. Supports formulas, formatting, data analysis, and visualization. Use for any .xlsx, .xlsm, .csv, or .tsv task. |
+| [research-pptx-edit](skills/research-pptx-edit/) | Presentation creation, editing, and analysis. Supports layouts, speaker notes, templates, and design. Use for any .pptx file. |
+| [research-doc-coauthoring](skills/research-doc-coauthoring/) | Guide users through a structured workflow for co-authoring documentation. Use when writing documentation, proposals, technical specs, decision docs, or similar structured content. |
 
 </details>
 
@@ -306,81 +308,81 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [pubmed-search](skills/pubmed-search/) | Search PubMed for scientific literature. Use when the user asks to find papers, search literature, look up research, find publications, or asks about recent studies. |
-| [medical-research-toolkit](skills/medical-research-toolkit/) | Query 14+ biomedical databases for drug repurposing, target discovery, clinical trials, and literature research. Access ChEMBL, PubMed, ClinicalTrials.gov, OpenTargets, OpenFDA, OMIM, Reactome, KEGG, UniProt, and more through a unified MCP endpoint. |
-| [medical-specialty-briefs](skills/medical-specialty-briefs/) | Generate daily or on-demand medical research briefs for any medical specialty. Searches latest research from top-tier journals (NEJM, Lancet, JAMA, BMJ, Nature Medicine), delivers concise summaries with 1-sentence takeaways and direct links. Use when user asks for medical news, research updates, or specialty-specific updates (endocrinology, cardiology, oncology, neurology, etc.). |
-| [usmle](skills/usmle/) | Prepare for US medical licensing exams with progress tracking, weak area analysis, question bank management, and residency match planning. Covers Step 1/2 CK/Step 3, IMG-specific guidance, score prediction, and wellbeing support. |
-| [medical-entity-extractor](skills/medical-entity-extractor/) | Extract medical entities (symptoms, medications, lab values, diagnoses) from patient messages. |
-| [patiently-ai](skills/patiently-ai/) | Simplifies medical documents for patients. Takes doctor's letters, test results, prescriptions, discharge summaries, and clinical notes and explains them in clear, personalised language. |
-| [biomedical-search](skills/biomedical-search/) | Complete biomedical information search combining PubMed, preprints, clinical trials, and FDA drug labels. Powered by Valyu semantic search. |
-| [medical-imaging-review](skills/medical-imaging-review/) | Write comprehensive literature reviews for medical imaging AI research. Use when writing survey papers, systematic reviews, or literature analyses on imaging topics. |
-| [fhir-developer-skill](skills/fhir-developer-skill/) | FHIR API development guide for building healthcare endpoints (Patient, Observation, Encounter, Condition, MedicationRequest). Use when developing or integrating FHIR REST APIs. |
-| [clinical-trial-protocol-skill](skills/clinical-trial-protocol-skill/) | Generate clinical trial protocols for medical devices or drugs. Use when designing clinical studies, creating FDA submission documentation, or developing protocols for investigational products. |
-| [prior-auth-review-skill](skills/prior-auth-review-skill/) | Automate payer review of prior authorization (PA) requests. Assesses medical necessity, validates against coverage policies, and generates PA decisions. |
-| [clinical-reports](skills/clinical-reports/) | Write comprehensive clinical reports — case reports (CARE guidelines), diagnostic reports (radiology/pathology/lab), clinical trial reports (ICH-E3, CSR), and patient documentation (SOAP, H&P, discharge summaries). HIPAA/FDA/ICH-GCP compliant. |
-| [clinicaltrials-database](skills/clinicaltrials-database/) | Query ClinicalTrials.gov via API v2. Search trials by condition, drug, location, status, or phase. Retrieve trial details by NCT ID, export data for clinical research and patient matching. |
+| [evidence-pubmed-entrez-search](skills/evidence-pubmed-entrez-search/) | Search PubMed for scientific literature. Use when the user asks to find papers, search literature, look up research, find publications, or asks about recent studies. |
+| [evidence-biomedical-database-query](skills/evidence-biomedical-database-query/) | Query 14+ biomedical databases for drug repurposing, target discovery, clinical trials, and literature research. Access ChEMBL, PubMed, ClinicalTrials.gov, OpenTargets, OpenFDA, OMIM, Reactome, KEGG, UniProt, and more through a unified MCP endpoint. |
+| [evidence-medical-specialty-briefs](skills/evidence-medical-specialty-briefs/) | Generate daily or on-demand medical research briefs for any medical specialty. Searches latest research from top-tier journals (NEJM, Lancet, JAMA, BMJ, Nature Medicine), delivers concise summaries with 1-sentence takeaways and direct links. Use when user asks for medical news, research updates, or specialty-specific updates (endocrinology, cardiology, oncology, neurology, etc.). |
+| [health-usmle-study-planning](skills/health-usmle-study-planning/) | Prepare for US medical licensing exams with progress tracking, weak area analysis, question bank management, and residency match planning. Covers Step 1/2 CK/Step 3, IMG-specific guidance, score prediction, and wellbeing support. |
+| [clinical-message-entity-extraction](skills/clinical-message-entity-extraction/) | Extract medical entities (symptoms, medications, lab values, diagnoses) from patient messages. |
+| [clinical-patient-document-explanation](skills/clinical-patient-document-explanation/) | Simplifies medical documents for patients. Takes doctor's letters, test results, prescriptions, discharge summaries, and clinical notes and explains them in clear, personalised language. |
+| [evidence-biomedical-search](skills/evidence-biomedical-search/) | Complete biomedical information search combining PubMed, preprints, clinical trials, and FDA drug labels. Powered by Valyu semantic search. |
+| [evidence-medical-imaging-review](skills/evidence-medical-imaging-review/) | Write comprehensive literature reviews for medical imaging AI research. Use when writing survey papers, systematic reviews, or literature analyses on imaging topics. |
+| [research-fhir-resource-development](skills/research-fhir-resource-development/) | FHIR API development guide for building healthcare endpoints (Patient, Observation, Encounter, Condition, MedicationRequest). Use when developing or integrating FHIR REST APIs. |
+| [clinical-trial-protocol-planning](skills/clinical-trial-protocol-planning/) | Generate clinical trial protocols for medical devices or drugs. Use when designing clinical studies, creating FDA submission documentation, or developing protocols for investigational products. |
+| [clinical-prior-authorization-review](skills/clinical-prior-authorization-review/) | Automate payer review of prior authorization (PA) requests. Assesses medical necessity, validates against coverage policies, and generates PA decisions. |
+| [research-clinical-reports](skills/research-clinical-reports/) | Write comprehensive clinical reports — case reports (CARE guidelines), diagnostic reports (radiology/pathology/lab), clinical trial reports (ICH-E3, CSR), and patient documentation (SOAP, H&P, discharge summaries). HIPAA/FDA/ICH-GCP compliant. |
+| [evidence-clinicaltrials-api-search](skills/evidence-clinicaltrials-api-search/) | Query ClinicalTrials.gov via API v2. Search trials by condition, drug, location, status, or phase. Retrieve trial details by NCT ID, export data for clinical research and patient matching. |
 | [clinical-decision-support](skills/clinical-decision-support/) | Generate clinical decision support (CDS) documents for pharmaceutical and clinical research — patient cohort analyses, treatment recommendation reports with GRADE evidence grading, biomarker integration, and statistical outputs (hazard ratios, survival curves). |
-| [tooluniverse-clinical-trial-design](skills/tooluniverse-clinical-trial-design/) | Strategic clinical trial design feasibility assessment. Evaluates patient population sizing, biomarker prevalence, endpoint selection, comparator analysis, safety monitoring, and regulatory pathways. Use when planning Phase 1/2 trials or assessing trial feasibility. |
-| [tooluniverse-disease-research](skills/tooluniverse-disease-research/) | Generate comprehensive disease research reports covering epidemiology, mechanisms, diagnostics, treatments, and ongoing trials. Use when asking about diseases, syndromes, or needing systematic disease analysis. |
-| [tooluniverse-literature-deep-research](skills/tooluniverse-literature-deep-research/) | Deep literature research with target disambiguation, evidence grading, and structured theme extraction. Resolves gene/protein IDs, identifies synonyms, synthesizes biological models, and generates testable hypotheses. Use for thorough literature reviews or target profiles. |
-| [tooluniverse-clinical-guidelines](skills/tooluniverse-clinical-guidelines/) | Search and retrieve clinical practice guidelines from 12+ sources (NICE, WHO, ADA, AHA/ACC, NCCN, SIGN, CPIC, etc.). Covers cardiology, oncology, diabetes, pharmacogenomics, and more. Use when asking about treatment recommendations or standard of care. |
-| [tooluniverse-drug-research](skills/tooluniverse-drug-research/) | Comprehensive drug research reports covering identity, pharmacology, targets, clinical trials, safety, pharmacogenomics, and ADMET. Use for drug profiling, safety assessment, or clinical development research. |
-| [tooluniverse-drug-repurposing](skills/tooluniverse-drug-repurposing/) | Identify drug repurposing candidates using target-based, compound-based, and disease-driven strategies. Finds new indications for approved drugs by analyzing targets, bioactivity, and safety profiles. |
-| [tooluniverse-drug-drug-interaction](skills/tooluniverse-drug-drug-interaction/) | Drug-drug interaction prediction and risk assessment. Analyzes CYP450/transporter mechanisms, severity classification, and provides management strategies. Supports polypharmacy analysis (3+ drugs) and alternative drug recommendations. |
-| [tooluniverse-rare-disease-diagnosis](skills/tooluniverse-rare-disease-diagnosis/) | Differential diagnosis for rare diseases based on phenotype and genetic data. Matches symptoms to HPO terms, identifies candidate diseases from Orphanet/OMIM, and interprets variants of uncertain significance. |
-| [tooluniverse-pharmacovigilance](skills/tooluniverse-pharmacovigilance/) | Analyze drug safety signals from FDA adverse event reports, label warnings, and pharmacogenomic data. Calculates PRR/ROR, identifies serious adverse events, and assesses pharmacogenomic risk. |
-| [tooluniverse-clinical-trial-matching](skills/tooluniverse-clinical-trial-matching/) | Patient-to-trial matching for precision medicine and oncology. Ranks trials from ClinicalTrials.gov by molecular eligibility, clinical criteria, biomarker alignment, and geographic feasibility with a quantitative Trial Match Score (0-100). |
-| [literature-review](skills/literature-review/) | Systematic literature reviews across multiple databases (PubMed, arXiv, bioRxiv, Semantic Scholar). Produces professionally formatted reports with verified citations in APA, Nature, Vancouver styles. |
-| [tooluniverse-precision-oncology](skills/tooluniverse-precision-oncology/) | Actionable treatment recommendations for cancer patients based on molecular profile. Interprets tumor mutations, identifies FDA-approved therapies, clinical trials, and resistance mechanisms. |
-| [tooluniverse-cancer-variant-interpretation](skills/tooluniverse-cancer-variant-interpretation/) | Clinical interpretation of somatic mutations in cancer. Given gene+variant (e.g., EGFR L858R, BRAF V600E), assesses oncogenicity, therapeutic implications, and trial eligibility. |
-| [tooluniverse-variant-analysis](skills/tooluniverse-variant-analysis/) | Production-ready VCF processing, variant annotation, and mutation analysis. Parses VCF files, annotates with ClinVar/gnomAD/COSMIC, and interprets clinical significance. |
-| [tooluniverse-variant-interpretation](skills/tooluniverse-variant-interpretation/) | Systematic clinical variant interpretation from raw calls to ACMG-classified recommendations. Aggregates evidence from ClinVar, gnomAD, literature, and population databases. |
-| [tooluniverse-structural-variant-analysis](skills/tooluniverse-structural-variant-analysis/) | Comprehensive structural variant (SV/CNV) analysis for clinical genomics. Classifies SVs, assesses pathogenicity, and interprets copy number alterations. |
-| [tooluniverse-polygenic-risk-score](skills/tooluniverse-polygenic-risk-score/) | Build and interpret polygenic risk scores (PRS) for complex diseases using GWAS summary statistics. Calculates genetic risk profiles and interprets PRS percentiles. |
-| [tooluniverse-precision-medicine-stratification](skills/tooluniverse-precision-medicine-stratification/) | Patient stratification for precision medicine by integrating genomic, clinical, and therapeutic data. Identifies treatment-relevant subgroups and biomarker-driven therapy options. |
-| [tooluniverse-gwas-trait-to-gene](skills/tooluniverse-gwas-trait-to-gene/) | Discover genes associated with diseases and traits using GWAS Catalog (500k+ associations) and Open Targets Genetics locus-to-gene predictions. |
-| [tooluniverse-gwas-drug-discovery](skills/tooluniverse-gwas-drug-discovery/) | Transform GWAS signals into drug targets and repurposing opportunities. Performs locus-to-gene mapping, druggability assessment, and existing drug identification. |
-| [tooluniverse-gwas-study-explorer](skills/tooluniverse-gwas-study-explorer/) | Compare GWAS studies and assess replication across cohorts. Integrates NHGRI-EBI GWAS Catalog and Open Targets Genetics for cross-study meta-analysis. |
-| [tooluniverse-gwas-finemapping](skills/tooluniverse-gwas-finemapping/) | Identify and prioritize causal variants at GWAS loci using statistical fine-mapping. Computes posterior probabilities and credible sets for causal variant identification. |
-| [tooluniverse-gwas-snp-interpretation](skills/tooluniverse-gwas-snp-interpretation/) | Interpret SNPs from GWAS studies by aggregating evidence from GWAS Catalog, Open Targets Genetics, and ClinVar. Retrieves variant-trait associations and functional annotations. |
-| [tooluniverse-phylogenetics](skills/tooluniverse-phylogenetics/) | Phylogenetics and sequence analysis — alignment processing, evolutionary tree construction, and evolutionary metrics for pathogens or species. |
-| [tooluniverse-epigenomics](skills/tooluniverse-epigenomics/) | Epigenomics data processing — methylation array analysis (CpG filtering, differential methylation), chromatin accessibility, and histone modification analysis. |
-| [tooluniverse-rnaseq-deseq2](skills/tooluniverse-rnaseq-deseq2/) | RNA-seq differential expression analysis using PyDESeq2. Performs normalization, dispersion estimation, Wald testing, LFC shrinkage, and pathway enrichment. |
-| [tooluniverse-single-cell](skills/tooluniverse-single-cell/) | Single-cell RNA-seq analysis using scanpy. Performs QC, normalization, PCA, UMAP, Leiden clustering, trajectory analysis, and cell type annotation. |
-| [tooluniverse-spatial-transcriptomics](skills/tooluniverse-spatial-transcriptomics/) | Spatial transcriptomics data analysis — maps gene expression in tissue architecture. Supports 10x Visium, MERFISH, seqFISH, and Slide-seq platforms. |
-| [tooluniverse-spatial-omics-analysis](skills/tooluniverse-spatial-omics-analysis/) | Computational analysis for spatial multi-omics data integration — spatially variable genes, domain annotation, and tissue-resolved omics. |
-| [tooluniverse-proteomics-analysis](skills/tooluniverse-proteomics-analysis/) | Mass spectrometry proteomics analysis — protein quantification, differential expression, PTMs, and protein-protein interaction network construction. |
-| [tooluniverse-metabolomics](skills/tooluniverse-metabolomics/) | Metabolomics research — identifies metabolites and searches databases (HMDB 220k+ metabolites, MetaboLights, Metabolomics Workbench). |
-| [tooluniverse-metabolomics-analysis](skills/tooluniverse-metabolomics-analysis/) | Metabolomics data analysis — metabolite identification, quantification, pathway analysis, and metabolic flux from LC-MS, GC-MS, or NMR data. |
-| [tooluniverse-multi-omics-integration](skills/tooluniverse-multi-omics-integration/) | Integrate transcriptomics, proteomics, epigenomics, genomics, and metabolomics for systems biology and precision medicine. |
-| [tooluniverse-multiomic-disease-characterization](skills/tooluniverse-multiomic-disease-characterization/) | Systems-level disease characterization integrating genomics, transcriptomics, proteomics, pathway, and therapeutic layers. |
-| [tooluniverse-expression-data-retrieval](skills/tooluniverse-expression-data-retrieval/) | Retrieve gene expression and omics datasets from ArrayExpress and BioStudies with quality assessment and structured reports. |
-| [tooluniverse-gene-enrichment](skills/tooluniverse-gene-enrichment/) | Gene enrichment and pathway analysis using gseapy, PANTHER, STRING, Reactome. Supports GO enrichment, KEGG pathways, and 40+ ToolUniverse tools. |
-| [tooluniverse-systems-biology](skills/tooluniverse-systems-biology/) | Systems biology and pathway analysis using Reactome, KEGG, WikiPathways, Pathway Commons, and BioModels. Network modeling and pathway simulation. |
-| [tooluniverse-protein-interactions](skills/tooluniverse-protein-interactions/) | Protein-protein interaction network analysis using STRING, BioGRID, and SASBDB. Maps interaction networks with confidence scores and functional modules. |
-| [tooluniverse-protein-structure-retrieval](skills/tooluniverse-protein-structure-retrieval/) | Retrieve protein structure data from RCSB PDB, PDBe, and AlphaFold with quality assessment and comprehensive structural profiles. |
-| [tooluniverse-protein-therapeutic-design](skills/tooluniverse-protein-therapeutic-design/) | Design novel protein therapeutics (binders, enzymes, scaffolds) using AI-guided de novo design — RFdiffusion, ProteinMPNN, and ESM. |
-| [tooluniverse-antibody-engineering](skills/tooluniverse-antibody-engineering/) | Antibody engineering and optimization for therapeutics — humanization, affinity maturation, developability assessment, and immunogenicity prediction. |
-| [tooluniverse-immune-repertoire-analysis](skills/tooluniverse-immune-repertoire-analysis/) | TCR/BCR repertoire analysis from sequencing data — clonality, diversity, V(D)J gene usage, clonal expansion, and antigen specificity prediction. |
-| [tooluniverse-immunotherapy-response-prediction](skills/tooluniverse-immunotherapy-response-prediction/) | Predict patient response to immune checkpoint inhibitors using multi-biomarker integration — TMB, MSI, PD-L1, TIL signatures, and HLA typing. |
-| [tooluniverse-infectious-disease](skills/tooluniverse-infectious-disease/) | Pathogen characterization and drug repurposing for infectious disease outbreaks. Identifies taxonomy, essential proteins, structural targets, and treatment options. |
-| [tooluniverse-crispr-screen-analysis](skills/tooluniverse-crispr-screen-analysis/) | CRISPR screen analysis for functional genomics — pooled or arrayed screens (knockout/activation/interference) to identify essential genes and hits. |
-| [tooluniverse-target-research](skills/tooluniverse-target-research/) | Comprehensive biological target intelligence — protein info, structure, interactions, pathways, expression, variant landscape, and drug pipeline. |
-| [tooluniverse-network-pharmacology](skills/tooluniverse-network-pharmacology/) | Compound-target-disease network analysis for drug repurposing, polypharmacology discovery, and systems pharmacology. |
-| [tooluniverse-statistical-modeling](skills/tooluniverse-statistical-modeling/) | Statistical modeling on biomedical datasets — linear/logistic regression, mixed-effects models, survival analysis, and Bayesian methods. |
-| [tooluniverse-image-analysis](skills/tooluniverse-image-analysis/) | Biomedical microscopy image analysis — colony morphometry, cell counting, fluorescence quantification, and statistical comparison of imaging data. |
-| [literature-search](skills/literature-search/) | Comprehensive scientific literature search across PubMed, arXiv, bioRxiv, medRxiv using natural language queries powered by Valyu semantic search. |
-| [medrxiv-search](skills/medrxiv-search/) | Search medRxiv medical preprints with natural language queries powered by Valyu semantic search. |
-| [clinical-trials-search](skills/clinical-trials-search/) | Search ClinicalTrials.gov with natural language queries — find trials by condition, enrollment status, and outcomes via Valyu. |
+| [clinical-tooluniverse-clinical-trial-design](skills/clinical-tooluniverse-clinical-trial-design/) | Strategic clinical trial design feasibility assessment. Evaluates patient population sizing, biomarker prevalence, endpoint selection, comparator analysis, safety monitoring, and regulatory pathways. Use when planning Phase 1/2 trials or assessing trial feasibility. |
+| [evidence-tooluniverse-disease-research](skills/evidence-tooluniverse-disease-research/) | Generate comprehensive disease research reports covering epidemiology, mechanisms, diagnostics, treatments, and ongoing trials. Use when asking about diseases, syndromes, or needing systematic disease analysis. |
+| [evidence-tooluniverse-literature-deep-research](skills/evidence-tooluniverse-literature-deep-research/) | Deep literature research with target disambiguation, evidence grading, and structured theme extraction. Resolves gene/protein IDs, identifies synonyms, synthesizes biological models, and generates testable hypotheses. Use for thorough literature reviews or target profiles. |
+| [evidence-tooluniverse-clinical-guidelines](skills/evidence-tooluniverse-clinical-guidelines/) | Search and retrieve clinical practice guidelines from 12+ sources (NICE, WHO, ADA, AHA/ACC, NCCN, SIGN, CPIC, etc.). Covers cardiology, oncology, diabetes, pharmacogenomics, and more. Use when asking about treatment recommendations or standard of care. |
+| [drug-tooluniverse-drug-research](skills/drug-tooluniverse-drug-research/) | Comprehensive drug research reports covering identity, pharmacology, targets, clinical trials, safety, pharmacogenomics, and ADMET. Use for drug profiling, safety assessment, or clinical development research. |
+| [drug-tooluniverse-drug-repurposing](skills/drug-tooluniverse-drug-repurposing/) | Identify drug repurposing candidates using target-based, compound-based, and disease-driven strategies. Finds new indications for approved drugs by analyzing targets, bioactivity, and safety profiles. |
+| [drug-tooluniverse-drug-drug-interaction](skills/drug-tooluniverse-drug-drug-interaction/) | Drug-drug interaction prediction and risk assessment. Analyzes CYP450/transporter mechanisms, severity classification, and provides management strategies. Supports polypharmacy analysis (3+ drugs) and alternative drug recommendations. |
+| [health-tooluniverse-rare-disease-diagnosis](skills/health-tooluniverse-rare-disease-diagnosis/) | Differential diagnosis for rare diseases based on phenotype and genetic data. Matches symptoms to HPO terms, identifies candidate diseases from Orphanet/OMIM, and interprets variants of uncertain significance. |
+| [drug-tooluniverse-pharmacovigilance](skills/drug-tooluniverse-pharmacovigilance/) | Analyze drug safety signals from FDA adverse event reports, label warnings, and pharmacogenomic data. Calculates PRR/ROR, identifies serious adverse events, and assesses pharmacogenomic risk. |
+| [clinical-tooluniverse-clinical-trial-matching](skills/clinical-tooluniverse-clinical-trial-matching/) | Patient-to-trial matching for precision medicine and oncology. Ranks trials from ClinicalTrials.gov by molecular eligibility, clinical criteria, biomarker alignment, and geographic feasibility with a quantitative Trial Match Score (0-100). |
+| [evidence-literature-review](skills/evidence-literature-review/) | Systematic literature reviews across multiple databases (PubMed, arXiv, bioRxiv, Semantic Scholar). Produces professionally formatted reports with verified citations in APA, Nature, Vancouver styles. |
+| [clinical-tooluniverse-precision-oncology](skills/clinical-tooluniverse-precision-oncology/) | Actionable treatment recommendations for cancer patients based on molecular profile. Interprets tumor mutations, identifies FDA-approved therapies, clinical trials, and resistance mechanisms. |
+| [clinical-tooluniverse-cancer-variant-interpretation](skills/clinical-tooluniverse-cancer-variant-interpretation/) | Clinical interpretation of somatic mutations in cancer. Given gene+variant (e.g., EGFR L858R, BRAF V600E), assesses oncogenicity, therapeutic implications, and trial eligibility. |
+| [omics-tooluniverse-variant-analysis](skills/omics-tooluniverse-variant-analysis/) | Production-ready VCF processing, variant annotation, and mutation analysis. Parses VCF files, annotates with ClinVar/gnomAD/COSMIC, and interprets clinical significance. |
+| [omics-tooluniverse-variant-interpretation](skills/omics-tooluniverse-variant-interpretation/) | Systematic clinical variant interpretation from raw calls to ACMG-classified recommendations. Aggregates evidence from ClinVar, gnomAD, literature, and population databases. |
+| [omics-tooluniverse-structural-variant-analysis](skills/omics-tooluniverse-structural-variant-analysis/) | Comprehensive structural variant (SV/CNV) analysis for clinical genomics. Classifies SVs, assesses pathogenicity, and interprets copy number alterations. |
+| [omics-tooluniverse-polygenic-risk-score](skills/omics-tooluniverse-polygenic-risk-score/) | Build and interpret polygenic risk scores (PRS) for complex diseases using GWAS summary statistics. Calculates genetic risk profiles and interprets PRS percentiles. |
+| [clinical-tooluniverse-precision-medicine-stratification](skills/clinical-tooluniverse-precision-medicine-stratification/) | Patient stratification for precision medicine by integrating genomic, clinical, and therapeutic data. Identifies treatment-relevant subgroups and biomarker-driven therapy options. |
+| [omics-tooluniverse-gwas-trait-to-gene](skills/omics-tooluniverse-gwas-trait-to-gene/) | Discover genes associated with diseases and traits using GWAS Catalog (500k+ associations) and Open Targets Genetics locus-to-gene predictions. |
+| [drug-tooluniverse-gwas-drug-discovery](skills/drug-tooluniverse-gwas-drug-discovery/) | Transform GWAS signals into drug targets and repurposing opportunities. Performs locus-to-gene mapping, druggability assessment, and existing drug identification. |
+| [omics-tooluniverse-gwas-study-explorer](skills/omics-tooluniverse-gwas-study-explorer/) | Compare GWAS studies and assess replication across cohorts. Integrates NHGRI-EBI GWAS Catalog and Open Targets Genetics for cross-study meta-analysis. |
+| [omics-tooluniverse-gwas-finemapping](skills/omics-tooluniverse-gwas-finemapping/) | Identify and prioritize causal variants at GWAS loci using statistical fine-mapping. Computes posterior probabilities and credible sets for causal variant identification. |
+| [omics-tooluniverse-gwas-snp-interpretation](skills/omics-tooluniverse-gwas-snp-interpretation/) | Interpret SNPs from GWAS studies by aggregating evidence from GWAS Catalog, Open Targets Genetics, and ClinVar. Retrieves variant-trait associations and functional annotations. |
+| [omics-tooluniverse-phylogenetics](skills/omics-tooluniverse-phylogenetics/) | Phylogenetics and sequence analysis — alignment processing, evolutionary tree construction, and evolutionary metrics for pathogens or species. |
+| [omics-tooluniverse-epigenomics](skills/omics-tooluniverse-epigenomics/) | Epigenomics data processing — methylation array analysis (CpG filtering, differential methylation), chromatin accessibility, and histone modification analysis. |
+| [omics-tooluniverse-rnaseq-deseq2](skills/omics-tooluniverse-rnaseq-deseq2/) | RNA-seq differential expression analysis using PyDESeq2. Performs normalization, dispersion estimation, Wald testing, LFC shrinkage, and pathway enrichment. |
+| [omics-tooluniverse-single-cell](skills/omics-tooluniverse-single-cell/) | Single-cell RNA-seq analysis using scanpy. Performs QC, normalization, PCA, UMAP, Leiden clustering, trajectory analysis, and cell type annotation. |
+| [omics-tooluniverse-spatial-transcriptomics](skills/omics-tooluniverse-spatial-transcriptomics/) | Spatial transcriptomics data analysis — maps gene expression in tissue architecture. Supports 10x Visium, MERFISH, seqFISH, and Slide-seq platforms. |
+| [omics-tooluniverse-spatial-omics-analysis](skills/omics-tooluniverse-spatial-omics-analysis/) | Computational analysis for spatial multi-omics data integration — spatially variable genes, domain annotation, and tissue-resolved omics. |
+| [omics-tooluniverse-proteomics-analysis](skills/omics-tooluniverse-proteomics-analysis/) | Mass spectrometry proteomics analysis — protein quantification, differential expression, PTMs, and protein-protein interaction network construction. |
+| [omics-tooluniverse-metabolomics](skills/omics-tooluniverse-metabolomics/) | Metabolomics research — identifies metabolites and searches databases (HMDB 220k+ metabolites, MetaboLights, Metabolomics Workbench). |
+| [omics-tooluniverse-metabolomics-analysis](skills/omics-tooluniverse-metabolomics-analysis/) | Metabolomics data analysis — metabolite identification, quantification, pathway analysis, and metabolic flux from LC-MS, GC-MS, or NMR data. |
+| [omics-tooluniverse-multi-omics-integration](skills/omics-tooluniverse-multi-omics-integration/) | Integrate transcriptomics, proteomics, epigenomics, genomics, and metabolomics for systems biology and precision medicine. |
+| [omics-tooluniverse-multiomic-disease-characterization](skills/omics-tooluniverse-multiomic-disease-characterization/) | Systems-level disease characterization integrating genomics, transcriptomics, proteomics, pathway, and therapeutic layers. |
+| [omics-tooluniverse-expression-data-retrieval](skills/omics-tooluniverse-expression-data-retrieval/) | Retrieve gene expression and omics datasets from ArrayExpress and BioStudies with quality assessment and structured reports. |
+| [omics-tooluniverse-gene-enrichment](skills/omics-tooluniverse-gene-enrichment/) | Gene enrichment and pathway analysis using gseapy, PANTHER, STRING, Reactome. Supports GO enrichment, KEGG pathways, and 40+ ToolUniverse tools. |
+| [omics-tooluniverse-systems-biology](skills/omics-tooluniverse-systems-biology/) | Systems biology and pathway analysis using Reactome, KEGG, WikiPathways, Pathway Commons, and BioModels. Network modeling and pathway simulation. |
+| [omics-tooluniverse-protein-interactions](skills/omics-tooluniverse-protein-interactions/) | Protein-protein interaction network analysis using STRING, BioGRID, and SASBDB. Maps interaction networks with confidence scores and functional modules. |
+| [omics-tooluniverse-protein-structure-retrieval](skills/omics-tooluniverse-protein-structure-retrieval/) | Retrieve protein structure data from RCSB PDB, PDBe, and AlphaFold with quality assessment and comprehensive structural profiles. |
+| [omics-tooluniverse-protein-therapeutic-design](skills/omics-tooluniverse-protein-therapeutic-design/) | Design novel protein therapeutics (binders, enzymes, scaffolds) using AI-guided de novo design — RFdiffusion, ProteinMPNN, and ESM. |
+| [omics-tooluniverse-antibody-engineering](skills/omics-tooluniverse-antibody-engineering/) | Antibody engineering and optimization for therapeutics — humanization, affinity maturation, developability assessment, and immunogenicity prediction. |
+| [omics-tooluniverse-immune-repertoire-analysis](skills/omics-tooluniverse-immune-repertoire-analysis/) | TCR/BCR repertoire analysis from sequencing data — clonality, diversity, V(D)J gene usage, clonal expansion, and antigen specificity prediction. |
+| [clinical-tooluniverse-immunotherapy-response-prediction](skills/clinical-tooluniverse-immunotherapy-response-prediction/) | Predict patient response to immune checkpoint inhibitors using multi-biomarker integration — TMB, MSI, PD-L1, TIL signatures, and HLA typing. |
+| [omics-tooluniverse-infectious-disease](skills/omics-tooluniverse-infectious-disease/) | Pathogen characterization and drug repurposing for infectious disease outbreaks. Identifies taxonomy, essential proteins, structural targets, and treatment options. |
+| [omics-tooluniverse-crispr-screen-analysis](skills/omics-tooluniverse-crispr-screen-analysis/) | CRISPR screen analysis for functional genomics — pooled or arrayed screens (knockout/activation/interference) to identify essential genes and hits. |
+| [drug-tooluniverse-target-research](skills/drug-tooluniverse-target-research/) | Comprehensive biological target intelligence — protein info, structure, interactions, pathways, expression, variant landscape, and drug pipeline. |
+| [drug-tooluniverse-network-pharmacology](skills/drug-tooluniverse-network-pharmacology/) | Compound-target-disease network analysis for drug repurposing, polypharmacology discovery, and systems pharmacology. |
+| [clinical-tooluniverse-statistical-modeling](skills/clinical-tooluniverse-statistical-modeling/) | Statistical modeling on biomedical datasets — linear/logistic regression, mixed-effects models, survival analysis, and Bayesian methods. |
+| [imaging-tooluniverse-image-analysis](skills/imaging-tooluniverse-image-analysis/) | Biomedical microscopy image analysis — colony morphometry, cell counting, fluorescence quantification, and statistical comparison of imaging data. |
+| [evidence-literature-search](skills/evidence-literature-search/) | Comprehensive scientific literature search across PubMed, arXiv, bioRxiv, medRxiv using natural language queries powered by Valyu semantic search. |
+| [evidence-medrxiv-search](skills/evidence-medrxiv-search/) | Search medRxiv medical preprints with natural language queries powered by Valyu semantic search. |
+| [evidence-clinicaltrials-semantic-search](skills/evidence-clinicaltrials-semantic-search/) | Search ClinicalTrials.gov with natural language queries — find trials by condition, enrollment status, and outcomes via Valyu. |
 | [drug-discovery-search](skills/drug-discovery-search/) | End-to-end drug discovery platform combining ChEMBL, DrugBank, targets, and FDA labels via natural language Valyu search. |
 | [drug-labels-search](skills/drug-labels-search/) | Search FDA drug labels with natural language queries — indications, dosing, and safety data via Valyu. |
-| [chembl-search](skills/chembl-search/) | Search ChEMBL bioactive molecules database — compounds, assay data, and bioactivity via Valyu semantic search. |
-| [open-targets-search](skills/open-targets-search/) | Search Open Targets drug-disease associations and target validation via Valyu semantic search. |
-| [patents-search](skills/patents-search/) | Search global patents with natural language queries — prior art, patent landscapes, and innovation tracking via Valyu. |
-| [drugbank-search](skills/drugbank-search/) | Search DrugBank comprehensive drug database — mechanisms, interactions, and safety data via Valyu semantic search. |
-| [arxiv-search](skills/arxiv-search/) | Search arXiv preprints (biology, medicine, AI) using natural language queries powered by Valyu semantic search. |
-| [gwas-database](skills/gwas-database/) | Query NHGRI-EBI GWAS Catalog for SNP-trait associations by rs ID, disease/trait, or gene. Retrieve p-values and summary statistics for genetic epidemiology. |
-| [scikit-survival](skills/scikit-survival/) | Survival analysis and time-to-event modeling in Python — Kaplan-Meier, Cox regression, log-rank tests, and censored data handling using scikit-survival. |
+| [drug-chembl-search](skills/drug-chembl-search/) | Search ChEMBL bioactive molecules database — compounds, assay data, and bioactivity via Valyu semantic search. |
+| [drug-open-targets-search](skills/drug-open-targets-search/) | Search Open Targets drug-disease associations and target validation via Valyu semantic search. |
+| [evidence-patents-search](skills/evidence-patents-search/) | Search global patents with natural language queries — prior art, patent landscapes, and innovation tracking via Valyu. |
+| [drug-drugbank-search](skills/drug-drugbank-search/) | Search DrugBank comprehensive drug database — mechanisms, interactions, and safety data via Valyu semantic search. |
+| [evidence-arxiv-search](skills/evidence-arxiv-search/) | Search arXiv preprints (biology, medicine, AI) using natural language queries powered by Valyu semantic search. |
+| [omics-gwas-query](skills/omics-gwas-query/) | Query NHGRI-EBI GWAS Catalog for SNP-trait associations by rs ID, disease/trait, or gene. Retrieve p-values and summary statistics for genetic epidemiology. |
+| [clinical-scikit-survival-modeling](skills/clinical-scikit-survival-modeling/) | Survival analysis and time-to-event modeling in Python — Kaplan-Meier, Cox regression, log-rank tests, and censored data handling using scikit-survival. |
 
 </details>
 
@@ -391,12 +393,12 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [tooluniverse-adverse-event-detection](skills/tooluniverse-adverse-event-detection/) | Detect and analyze adverse drug event signals using FDA FAERS data, drug labels, disproportionality analysis (PRR, ROR, IC), and biomedical evidence. Generates quantitative safety signal scores (0-100). |
-| [tooluniverse-binder-discovery](skills/tooluniverse-binder-discovery/) | Discover novel small molecule binders for protein targets using structure-based and ligand-based approaches. Creates actionable reports with candidate compounds, ADMET profiles, and synthesis feasibility. |
-| [tooluniverse-chemical-compound-retrieval](skills/tooluniverse-chemical-compound-retrieval/) | Retrieves chemical compound information from PubChem and ChEMBL with disambiguation, cross-referencing, and quality assessment. Comprehensive compound profiles with identifiers, properties, bioactivity. |
-| [tooluniverse-chemical-safety](skills/tooluniverse-chemical-safety/) | Comprehensive chemical safety and toxicology assessment integrating ADMET-AI predictions, CTD toxicogenomics, FDA label safety data, DrugBank safety profiles, and STITCH chemical-protein interactions. |
-| [tooluniverse-drug-target-validation](skills/tooluniverse-drug-target-validation/) | Computational validation of drug targets across 10 dimensions: disambiguation, disease association, druggability, chemical matter, clinical precedent, safety, and expression evidence. |
-| [tooluniverse-sequence-retrieval](skills/tooluniverse-sequence-retrieval/) | Retrieve biological sequences (DNA, RNA, protein) from NCBI and ENA with gene disambiguation, accession type handling, and comprehensive sequence profiles. |
+| [drug-tooluniverse-adverse-event-detection](skills/drug-tooluniverse-adverse-event-detection/) | Detect and analyze adverse drug event signals using FDA FAERS data, drug labels, disproportionality analysis (PRR, ROR, IC), and biomedical evidence. Generates quantitative safety signal scores (0-100). |
+| [drug-tooluniverse-binder-discovery](skills/drug-tooluniverse-binder-discovery/) | Discover novel small molecule binders for protein targets using structure-based and ligand-based approaches. Creates actionable reports with candidate compounds, ADMET profiles, and synthesis feasibility. |
+| [drug-tooluniverse-chemical-compound-retrieval](skills/drug-tooluniverse-chemical-compound-retrieval/) | Retrieves chemical compound information from PubChem and ChEMBL with disambiguation, cross-referencing, and quality assessment. Comprehensive compound profiles with identifiers, properties, bioactivity. |
+| [drug-tooluniverse-chemical-safety](skills/drug-tooluniverse-chemical-safety/) | Comprehensive chemical safety and toxicology assessment integrating ADMET-AI predictions, CTD toxicogenomics, FDA label safety data, DrugBank safety profiles, and STITCH chemical-protein interactions. |
+| [drug-tooluniverse-drug-target-validation](skills/drug-tooluniverse-drug-target-validation/) | Computational validation of drug targets across 10 dimensions: disambiguation, disease association, druggability, chemical matter, clinical precedent, safety, and expression evidence. |
+| [omics-tooluniverse-sequence-retrieval](skills/omics-tooluniverse-sequence-retrieval/) | Retrieve biological sequences (DNA, RNA, protein) from NCBI and ENA with gene disambiguation, accession type handling, and comprehensive sequence profiles. |
 
 </details>
 
@@ -407,12 +409,12 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [pydicom](skills/pydicom/) | Python library for working with DICOM medical imaging files. Reading, writing, modifying DICOM data, extracting pixel data, handling metadata and multi-frame files. |
-| [histolab](skills/histolab/) | Digital pathology image processing toolkit for whole slide images (WSI). Process H&E or IHC stained tissue images, extract tiles from gigapixel slides. |
-| [pathml](skills/pathml/) | Computational pathology toolkit for analyzing WSI and multiparametric imaging data. H&E stained images, multiplex immunofluorescence, spatial omics integration. |
-| [omero-integration](skills/omero-integration/) | Microscopy data management platform. Access images via Python, retrieve datasets, analyze pixels, manage ROIs/annotations, for high-content screening workflows. |
-| [neurokit2](skills/neurokit2/) | Comprehensive biosignal processing: ECG, EEG, EDA, RSP, PPG, EMG, EOG signals. Cardiovascular signal analysis, neurophysiology, and physiological data processing. |
-| [neuropixels-analysis](skills/neuropixels-analysis/) | Neuropixels neural recording analysis. Load SpikeGLX/OpenEphys data, Kilosort4 spike sorting, quality metrics, Allen/IBL curation, for neuroscience research. |
+| [imaging-pydicom-data-processing](skills/imaging-pydicom-data-processing/) | Python library for working with DICOM medical imaging files. Reading, writing, modifying DICOM data, extracting pixel data, handling metadata and multi-frame files. |
+| [imaging-histolab-slide-preprocessing](skills/imaging-histolab-slide-preprocessing/) | Digital pathology image processing toolkit for whole slide images (WSI). Process H&E or IHC stained tissue images, extract tiles from gigapixel slides. |
+| [imaging-pathml](skills/imaging-pathml/) | Computational pathology toolkit for analyzing WSI and multiparametric imaging data. H&E stained images, multiplex immunofluorescence, spatial omics integration. |
+| [imaging-omero-integration](skills/imaging-omero-integration/) | Microscopy data management platform. Access images via Python, retrieve datasets, analyze pixels, manage ROIs/annotations, for high-content screening workflows. |
+| [research-neurokit-physiological-signal-analysis](skills/research-neurokit-physiological-signal-analysis/) | Comprehensive biosignal processing: ECG, EEG, EDA, RSP, PPG, EMG, EOG signals. Cardiovascular signal analysis, neurophysiology, and physiological data processing. |
+| [research-neuropixels-signal-analysis](skills/research-neuropixels-signal-analysis/) | Neuropixels neural recording analysis. Load SpikeGLX/OpenEphys data, Kilosort4 spike sorting, quality metrics, Allen/IBL curation, for neuroscience research. |
 
 </details>
 
@@ -423,11 +425,11 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [pyhealth](skills/pyhealth/) | Comprehensive healthcare AI toolkit for developing ML models with clinical data (EHR, claims). Task definition API, model training, evaluation for clinical NLP and prediction. |
-| [scikit-learn](skills/scikit-learn/) | Machine learning in Python: supervised learning (classification, regression), unsupervised learning (clustering, dimensionality reduction), model evaluation, hyperparameter tuning. |
-| [transformers](skills/transformers/) | Pre-trained transformer models for NLP, computer vision, audio, and multimodal tasks. Text generation, classification, question answering, and biomedical NLP (BioBERT, ClinicalBERT). |
-| [shap](skills/shap/) | Model interpretability using SHAP (SHapley Additive exPlanations). Explain ML model predictions, compute feature importance, generate SHAP plots for biomedical models. |
-| [umap-learn](skills/umap-learn/) | UMAP dimensionality reduction. Fast nonlinear manifold learning for 2D/3D visualization, clustering preprocessing (HDBSCAN), for high-dimensional omics data. |
+| [clinical-pyhealth-model-training](skills/clinical-pyhealth-model-training/) | Comprehensive healthcare AI toolkit for developing ML models with clinical data (EHR, claims). Task definition API, model training, evaluation for clinical NLP and prediction. |
+| [research-sklearn-model-training](skills/research-sklearn-model-training/) | Machine learning in Python: supervised learning (classification, regression), unsupervised learning (clustering, dimensionality reduction), model evaluation, hyperparameter tuning. |
+| [research-transformers-model-use](skills/research-transformers-model-use/) | Pre-trained transformer models for NLP, computer vision, audio, and multimodal tasks. Text generation, classification, question answering, and biomedical NLP (BioBERT, ClinicalBERT). |
+| [research-shap-model-explanation](skills/research-shap-model-explanation/) | Model interpretability using SHAP (SHapley Additive exPlanations). Explain ML model predictions, compute feature importance, generate SHAP plots for biomedical models. |
+| [research-umap-dimensionality-reduction](skills/research-umap-dimensionality-reduction/) | UMAP dimensionality reduction. Fast nonlinear manifold learning for 2D/3D visualization, clustering preprocessing (HDBSCAN), for high-dimensional omics data. |
 
 </details>
 
@@ -438,21 +440,21 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [nutrition-analyzer](skills/nutrition-analyzer/) | Comprehensive nutrition analysis: macro/micronutrient tracking, dietary assessment, meal planning, food data lookup, and nutritional recommendations. |
-| [mental-health-analyzer](skills/mental-health-analyzer/) | Mental health data analysis: mood tracking, symptom patterns, PHQ/GAD scoring, behavioral insights, and wellness recommendations. |
-| [sleep-analyzer](skills/sleep-analyzer/) | Sleep quality analysis: sleep stages, duration, efficiency metrics, circadian rhythm assessment, and sleep hygiene recommendations. |
-| [rehabilitation-analyzer](skills/rehabilitation-analyzer/) | Rehabilitation progress tracking: functional assessments, exercise programs, recovery milestones, and outcome measurement for physical/occupational therapy. |
-| [fitness-analyzer](skills/fitness-analyzer/) | Fitness performance analysis: exercise tracking, strength/cardio metrics, training load, VO2max estimation, and periodization planning. |
+| [health-nutrition-analyzer](skills/health-nutrition-analyzer/) | Comprehensive nutrition analysis: macro/micronutrient tracking, dietary assessment, meal planning, food data lookup, and nutritional recommendations. |
+| [health-mental-health-analyzer](skills/health-mental-health-analyzer/) | Mental health data analysis: mood tracking, symptom patterns, PHQ/GAD scoring, behavioral insights, and wellness recommendations. |
+| [health-sleep-analyzer](skills/health-sleep-analyzer/) | Sleep quality analysis: sleep stages, duration, efficiency metrics, circadian rhythm assessment, and sleep hygiene recommendations. |
+| [health-rehabilitation-analyzer](skills/health-rehabilitation-analyzer/) | Rehabilitation progress tracking: functional assessments, exercise programs, recovery milestones, and outcome measurement for physical/occupational therapy. |
+| [health-fitness-analyzer](skills/health-fitness-analyzer/) | Fitness performance analysis: exercise tracking, strength/cardio metrics, training load, VO2max estimation, and periodization planning. |
 | [health-trend-analyzer](skills/health-trend-analyzer/) | Longitudinal health trend analysis: vital sign tracking, biomarker trends, risk factor monitoring, and predictive health insights. |
-| [weightloss-analyzer](skills/weightloss-analyzer/) | Weight management analytics: caloric balance, body composition tracking, progress monitoring, and evidence-based weight loss strategies. |
-| [goal-analyzer](skills/goal-analyzer/) | Health goal tracking and analysis: SMART goal setting, progress metrics, habit formation, and motivational insights for wellness objectives. |
-| [occupational-health-analyzer](skills/occupational-health-analyzer/) | Occupational health assessment: workplace ergonomics, exposure risk, work-related illness surveillance, and return-to-work planning. |
-| [travel-health-analyzer](skills/travel-health-analyzer/) | Travel medicine: destination health risks, vaccination requirements, malaria prophylaxis, altitude sickness, and traveler health preparation. |
-| [family-health-analyzer](skills/family-health-analyzer/) | Family health management: pediatric milestones, family medical history, preventive screening schedules, and multigenerational health tracking. |
-| [tcm-constitution-analyzer](skills/tcm-constitution-analyzer/) | Traditional Chinese Medicine constitution analysis: TCM body type assessment, pattern differentiation, herbal recommendations, and lifestyle guidance. |
-| [emergency-card](skills/emergency-card/) | Generate emergency medical information cards with critical health data, medications, allergies, and emergency contacts for patient safety. |
-| [ai-analyzer](skills/ai-analyzer/) | AI-powered comprehensive health data interpretation combining multiple biomarkers and health metrics for holistic wellness assessment. |
-| [wellally-tech](skills/wellally-tech/) | Technical framework for WellAlly health analytics platform: integration patterns, data pipelines, and health AI infrastructure. |
+| [health-weightloss-analyzer](skills/health-weightloss-analyzer/) | Weight management analytics: caloric balance, body composition tracking, progress monitoring, and evidence-based weight loss strategies. |
+| [health-goal-analyzer](skills/health-goal-analyzer/) | Health goal tracking and analysis: SMART goal setting, progress metrics, habit formation, and motivational insights for wellness objectives. |
+| [health-occupational-health-analyzer](skills/health-occupational-health-analyzer/) | Occupational health assessment: workplace ergonomics, exposure risk, work-related illness surveillance, and return-to-work planning. |
+| [health-travel-health-analyzer](skills/health-travel-health-analyzer/) | Travel medicine: destination health risks, vaccination requirements, malaria prophylaxis, altitude sickness, and traveler health preparation. |
+| [health-family-health-analyzer](skills/health-family-health-analyzer/) | Family health management: pediatric milestones, family medical history, preventive screening schedules, and multigenerational health tracking. |
+| [health-tcm-constitution-analyzer](skills/health-tcm-constitution-analyzer/) | Traditional Chinese Medicine constitution analysis: TCM body type assessment, pattern differentiation, herbal recommendations, and lifestyle guidance. |
+| [health-emergency-card](skills/health-emergency-card/) | Generate emergency medical information cards with critical health data, medications, allergies, and emergency contacts for patient safety. |
+| [health-records-analysis](skills/health-records-analysis/) | AI-powered comprehensive health data interpretation combining multiple biomarkers and health metrics for holistic wellness assessment. |
+| [health-wellally-tech](skills/health-wellally-tech/) | Technical framework for WellAlly health analytics platform: integration patterns, data pipelines, and health AI infrastructure. |
 
 </details>
 
@@ -463,17 +465,17 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [crisis-detection-intervention-ai](skills/crisis-detection-intervention-ai/) | Detect crisis signals using NLP and mental health sentiment analysis. Implements suicide ideation detection, automated escalation, and crisis resource integration for mental health apps and recovery platforms. |
-| [crisis-response-protocol](skills/crisis-response-protocol/) | Handle mental health crisis situations safely: crisis detection, safety protocols, emergency escalation, suicide prevention, and hotline integration for AI coaching applications. |
-| [hipaa-compliance](skills/hipaa-compliance/) | Ensure HIPAA compliance when handling PHI. Audit logging, data access controls, security event tracking, and compliance verification for health data applications. |
+| [health-crisis-detection-intervention-ai](skills/health-crisis-detection-intervention-ai/) | Detect crisis signals using NLP and mental health sentiment analysis. Implements suicide ideation detection, automated escalation, and crisis resource integration for mental health apps and recovery platforms. |
+| [health-crisis-response-protocol](skills/health-crisis-response-protocol/) | Handle mental health crisis situations safely: crisis detection, safety protocols, emergency escalation, suicide prevention, and hotline integration for AI coaching applications. |
+| [research-hipaa-compliance](skills/research-hipaa-compliance/) | Ensure HIPAA compliance when handling PHI. Audit logging, data access controls, security event tracking, and compliance verification for health data applications. |
 | [clinical-diagnostic-reasoning](skills/clinical-diagnostic-reasoning/) | Identify and counteract cognitive biases in medical decision-making through systematic error analysis, differential diagnosis frameworks, and clinical judgment improvement. |
-| [speech-pathology-ai](skills/speech-pathology-ai/) | AI-powered speech-language pathology: phoneme analysis, articulation visualization, voice disorder assessment, fluency intervention, AAC, and stuttering treatment support. |
-| [hrv-alexithymia-expert](skills/hrv-alexithymia-expert/) | Heart rate variability biometrics and emotional awareness training. HRV analysis, interoception training, biofeedback, vagal tone assessment, and autonomic nervous system evaluation. |
-| [adhd-daily-planner](skills/adhd-daily-planner/) | ADHD-optimized daily planning: time-blind friendly scheduling, executive function support, dopamine-aware task design, and neurodivergent-friendly productivity systems. |
-| [grief-companion](skills/grief-companion/) | Compassionate bereavement support, memorial creation, grief education, and healing journey guidance through the non-linear path of loss. |
-| [jungian-psychologist](skills/jungian-psychologist/) | Jungian analytical psychology: shadow work, archetypal analysis, dream interpretation, active imagination, addiction/recovery through depth psychology lens, and individuation process. |
-| [modern-drug-rehab-computer](skills/modern-drug-rehab-computer/) | Comprehensive addiction recovery knowledge system: evidence-based treatment (CBT, DBT, MI, EMDR, MAT), recovery resources, crisis intervention, and family systems for rehab environments. |
-| [recovery-community-moderator](skills/recovery-community-moderator/) | Trauma-informed AI moderation for addiction recovery communities: harm reduction, 12-step traditions, conflict detection, and crisis post identification. |
+| [health-speech-pathology-guidance](skills/health-speech-pathology-guidance/) | AI-powered speech-language pathology: phoneme analysis, articulation visualization, voice disorder assessment, fluency intervention, AAC, and stuttering treatment support. |
+| [health-hrv-alexithymia-expert](skills/health-hrv-alexithymia-expert/) | Heart rate variability biometrics and emotional awareness training. HRV analysis, interoception training, biofeedback, vagal tone assessment, and autonomic nervous system evaluation. |
+| [health-adhd-daily-planner](skills/health-adhd-daily-planner/) | ADHD-optimized daily planning: time-blind friendly scheduling, executive function support, dopamine-aware task design, and neurodivergent-friendly productivity systems. |
+| [health-grief-companion](skills/health-grief-companion/) | Compassionate bereavement support, memorial creation, grief education, and healing journey guidance through the non-linear path of loss. |
+| [health-jungian-psychologist](skills/health-jungian-psychologist/) | Jungian analytical psychology: shadow work, archetypal analysis, dream interpretation, active imagination, addiction/recovery through depth psychology lens, and individuation process. |
+| [health-modern-drug-rehab-computer](skills/health-modern-drug-rehab-computer/) | Comprehensive addiction recovery knowledge system: evidence-based treatment (CBT, DBT, MI, EMDR, MAT), recovery resources, crisis intervention, and family systems for rehab environments. |
+| [health-recovery-community-moderator](skills/health-recovery-community-moderator/) | Trauma-informed AI moderation for addiction recovery communities: harm reduction, 12-step traditions, conflict detection, and crisis post identification. |
 
 </details>
 
@@ -484,7 +486,7 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [iso-13485-certification](skills/iso-13485-certification/) | Comprehensive toolkit for ISO 13485 QMS documentation for medical devices: gap analysis, Quality Manuals, procedures, Medical Device Files. Covers FDA QMSR, EU MDR compliance. |
+| [research-iso-13485-certification](skills/research-iso-13485-certification/) | Comprehensive toolkit for ISO 13485 QMS documentation for medical devices: gap analysis, Quality Manuals, procedures, Medical Device Files. Covers FDA QMSR, EU MDR compliance. |
 
 </details>
 
@@ -502,15 +504,15 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [clinvar-database](skills/clinvar-database/) | Query NCBI ClinVar for variant clinical significance. Search by gene/position, interpret pathogenicity classifications, access via E-utilities API or FTP, annotate VCFs, for genomic medicine. |
-| [clinpgx-database](skills/clinpgx-database/) | Access ClinPGx pharmacogenomics data (successor to PharmGKB). Query gene-drug interactions, CPIC guidelines, allele functions, for precision medicine and genotype-guided dosing decisions. |
-| [cosmic-database](skills/cosmic-database/) | Access COSMIC cancer mutation database. Query somatic mutations, Cancer Gene Census, mutational signatures, gene fusions, for cancer research and precision oncology. Requires authentication. |
-| [ensembl-database](skills/ensembl-database/) | Query Ensembl genome database REST API for 250+ species. Gene lookups, sequence retrieval, variant analysis, comparative genomics, orthologs, VEP predictions, for genomic research. |
-| [gene-database](skills/gene-database/) | Query NCBI Gene via E-utilities/Datasets API. Search by symbol/ID, retrieve gene info (RefSeqs, GO, locations, phenotypes), batch lookups, for gene annotation and functional analysis. |
-| [geo-database](skills/geo-database/) | Access NCBI GEO for gene expression/genomics data. Search/download microarray and RNA-seq datasets (GSE, GSM, GPL), retrieve SOFT/Matrix files, for transcriptomics and expression analysis. |
-| [ena-database](skills/ena-database/) | Access European Nucleotide Archive via API/FTP. Retrieve DNA/RNA sequences, raw reads (FASTQ), genome assemblies by accession, for genomics and bioinformatics pipelines. |
-| [gget](skills/gget/) | CLI/Python toolkit for rapid bioinformatics queries with access to 20+ databases: Ensembl, UniProt, AlphaFold, ARCHS4, Enrichr, OpenTargets, COSMIC, BLAST, and more. |
-| [pysam](skills/pysam/) | Genomic file toolkit. Read/write SAM/BAM/CRAM alignments, VCF/BCF variants, FASTA/FASTQ sequences, extract regions, calculate coverage, for NGS data processing pipelines. |
+| [omics-clinvar-query](skills/omics-clinvar-query/) | Query NCBI ClinVar for variant clinical significance. Search by gene/position, interpret pathogenicity classifications, access via E-utilities API or FTP, annotate VCFs, for genomic medicine. |
+| [omics-clinpgx-database-query](skills/omics-clinpgx-database-query/) | Access ClinPGx pharmacogenomics data (successor to PharmGKB). Query gene-drug interactions, CPIC guidelines, allele functions, for precision medicine and genotype-guided dosing decisions. |
+| [clinical-cosmic-query](skills/clinical-cosmic-query/) | Access COSMIC cancer mutation database. Query somatic mutations, Cancer Gene Census, mutational signatures, gene fusions, for cancer research and precision oncology. Requires authentication. |
+| [omics-ensembl-annotation-query](skills/omics-ensembl-annotation-query/) | Query Ensembl genome database REST API for 250+ species. Gene lookups, sequence retrieval, variant analysis, comparative genomics, orthologs, VEP predictions, for genomic research. |
+| [omics-gene-query](skills/omics-gene-query/) | Query NCBI Gene via E-utilities/Datasets API. Search by symbol/ID, retrieve gene info (RefSeqs, GO, locations, phenotypes), batch lookups, for gene annotation and functional analysis. |
+| [omics-geo-query](skills/omics-geo-query/) | Access NCBI GEO for gene expression/genomics data. Search/download microarray and RNA-seq datasets (GSE, GSM, GPL), retrieve SOFT/Matrix files, for transcriptomics and expression analysis. |
+| [omics-ena-sequence-query](skills/omics-ena-sequence-query/) | Access European Nucleotide Archive via API/FTP. Retrieve DNA/RNA sequences, raw reads (FASTQ), genome assemblies by accession, for genomics and bioinformatics pipelines. |
+| [omics-gget-database-query](skills/omics-gget-database-query/) | CLI/Python toolkit for rapid bioinformatics queries with access to 20+ databases: Ensembl, UniProt, AlphaFold, ARCHS4, Enrichr, OpenTargets, COSMIC, BLAST, and more. |
+| [omics-pysam-sequence-file-processing](skills/omics-pysam-sequence-file-processing/) | Genomic file toolkit. Read/write SAM/BAM/CRAM alignments, VCF/BCF variants, FASTA/FASTQ sequences, extract regions, calculate coverage, for NGS data processing pipelines. |
 
 </details>
 
@@ -521,26 +523,26 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [alphafold-database](skills/alphafold-database/) | Access AlphaFold's 200M+ AI-predicted protein structures. Retrieve structures by UniProt ID, download PDB/mmCIF files, analyze confidence metrics (pLDDT, PAE), for drug discovery and structural biology. |
-| [pdb-database](skills/pdb-database/) | Access RCSB PDB for 3D protein/nucleic acid structures. Search by text/sequence/structure, download coordinates (PDB/mmCIF), retrieve metadata, for structural biology and drug discovery. |
-| [uniprot-database](skills/uniprot-database/) | Direct REST API access to UniProt. Protein searches, FASTA retrieval, ID mapping, Swiss-Prot/TrEMBL. For multi-database workflows, prefer bioservices (unified interface to 40+ services). |
-| [string-database](skills/string-database/) | Query STRING API for protein-protein interactions (59M proteins, 20B interactions). Network analysis, GO/KEGG enrichment, interaction discovery, 5000+ species, for systems biology. |
-| [kegg-database](skills/kegg-database/) | Direct REST API access to KEGG (academic use). Pathway analysis, gene-pathway mapping, metabolic pathways, drug interactions, ID conversion. |
-| [reactome-database](skills/reactome-database/) | Query Reactome REST API for pathway analysis, enrichment, gene-pathway mapping, disease pathways, molecular interactions, expression analysis, for systems biology. |
-| [brenda-database](skills/brenda-database/) | Access BRENDA enzyme database via SOAP API. Retrieve kinetic parameters (Km, kcat), reaction equations, organism data, substrate-specific enzyme info for biochemical research. |
-| [hmdb-database](skills/hmdb-database/) | Access Human Metabolome Database (220K+ metabolites). Search by name/ID/structure, retrieve chemical properties, biomarker data, NMR/MS spectra, pathways, for metabolomics. |
-| [metabolomics-workbench-database](skills/metabolomics-workbench-database/) | Access NIH Metabolomics Workbench via REST API (4,200+ studies). Query metabolites, RefMet nomenclature, MS/NMR data, m/z searches, for metabolomics and biomarker discovery. |
-| [pubchem-database](skills/pubchem-database/) | Query PubChem via PUG-REST API (110M+ compounds). Search by name/CID/SMILES, retrieve properties, similarity/substructure searches, bioactivity, for cheminformatics. |
-| [chembl-database](skills/chembl-database/) | Query ChEMBL's bioactive molecules and drug discovery data. Search compounds by structure/properties, retrieve bioactivity data (IC50, Ki), find inhibitors, for medicinal chemistry. |
-| [drugbank-database](skills/drugbank-database/) | Access comprehensive drug information from DrugBank including drug properties, interactions, targets, pathways, chemical structures, and pharmacology data. |
-| [zinc-database](skills/zinc-database/) | Access ZINC (230M+ purchasable compounds). Search by ZINC ID/SMILES, similarity searches, 3D-ready structures for docking, analog discovery, for virtual screening. |
-| [opentargets-database](skills/opentargets-database/) | Query Open Targets Platform for target-disease associations, drug target discovery, tractability/safety data, genetics/omics evidence, known drugs, for therapeutic target identification. |
-| [fda-database](skills/fda-database/) | Query openFDA API for drugs, devices, adverse events, recalls, regulatory submissions (510k, PMA), substance identification (UNII), for FDA regulatory data analysis. |
-| [pubmed-database](skills/pubmed-database/) | Direct REST API access to PubMed. Advanced Boolean/MeSH queries, E-utilities API, batch processing, citation management. |
-| [openalex-database](skills/openalex-database/) | Query and analyze scholarly literature using the OpenAlex database. Search for academic papers, analyze research trends, find works by authors or institutions. |
-| [biorxiv-database](skills/biorxiv-database/) | Search bioRxiv preprint server by keywords, authors, date ranges, or categories, retrieving paper metadata for life sciences preprint discovery. |
-| [bioservices](skills/bioservices/) | Primary Python tool for 40+ bioinformatics services. Unified API for UniProt, KEGG, ChEMBL, PubChem, Reactome, QuickGO — preferred for multi-database workflows. |
-| [uspto-database](skills/uspto-database/) | Access USPTO APIs for patent/trademark searches, examination history (PEDS), assignments, citations, office actions, for IP analysis and prior art searches. |
+| [omics-alphafold-structure-retrieval](skills/omics-alphafold-structure-retrieval/) | Access AlphaFold's 200M+ AI-predicted protein structures. Retrieve structures by UniProt ID, download PDB/mmCIF files, analyze confidence metrics (pLDDT, PAE), for drug discovery and structural biology. |
+| [omics-rcsb-structure-query](skills/omics-rcsb-structure-query/) | Access RCSB PDB for 3D protein/nucleic acid structures. Search by text/sequence/structure, download coordinates (PDB/mmCIF), retrieve metadata, for structural biology and drug discovery. |
+| [omics-uniprot-query](skills/omics-uniprot-query/) | Direct REST API access to UniProt. Protein searches, FASTA retrieval, ID mapping, Swiss-Prot/TrEMBL. For multi-database workflows, prefer bioservices (unified interface to 40+ services). |
+| [omics-string-query](skills/omics-string-query/) | Query STRING API for protein-protein interactions (59M proteins, 20B interactions). Network analysis, GO/KEGG enrichment, interaction discovery, 5000+ species, for systems biology. |
+| [omics-kegg-pathway-query](skills/omics-kegg-pathway-query/) | Direct REST API access to KEGG (academic use). Pathway analysis, gene-pathway mapping, metabolic pathways, drug interactions, ID conversion. |
+| [omics-reactome-query](skills/omics-reactome-query/) | Query Reactome REST API for pathway analysis, enrichment, gene-pathway mapping, disease pathways, molecular interactions, expression analysis, for systems biology. |
+| [omics-brenda-enzyme-query](skills/omics-brenda-enzyme-query/) | Access BRENDA enzyme database via SOAP API. Retrieve kinetic parameters (Km, kcat), reaction equations, organism data, substrate-specific enzyme info for biochemical research. |
+| [omics-hmdb-metabolite-query](skills/omics-hmdb-metabolite-query/) | Access Human Metabolome Database (220K+ metabolites). Search by name/ID/structure, retrieve chemical properties, biomarker data, NMR/MS spectra, pathways, for metabolomics. |
+| [omics-metabolomics-workbench-query](skills/omics-metabolomics-workbench-query/) | Access NIH Metabolomics Workbench via REST API (4,200+ studies). Query metabolites, RefMet nomenclature, MS/NMR data, m/z searches, for metabolomics and biomarker discovery. |
+| [drug-pubchem-query](skills/drug-pubchem-query/) | Query PubChem via PUG-REST API (110M+ compounds). Search by name/CID/SMILES, retrieve properties, similarity/substructure searches, bioactivity, for cheminformatics. |
+| [drug-chembl-query](skills/drug-chembl-query/) | Query ChEMBL's bioactive molecules and drug discovery data. Search compounds by structure/properties, retrieve bioactivity data (IC50, Ki), find inhibitors, for medicinal chemistry. |
+| [drug-drugbank-query](skills/drug-drugbank-query/) | Access comprehensive drug information from DrugBank including drug properties, interactions, targets, pathways, chemical structures, and pharmacology data. |
+| [drug-zinc-query](skills/drug-zinc-query/) | Access ZINC (230M+ purchasable compounds). Search by ZINC ID/SMILES, similarity searches, 3D-ready structures for docking, analog discovery, for virtual screening. |
+| [drug-opentargets-query](skills/drug-opentargets-query/) | Query Open Targets Platform for target-disease associations, drug target discovery, tractability/safety data, genetics/omics evidence, known drugs, for therapeutic target identification. |
+| [clinical-fda-query](skills/clinical-fda-query/) | Query openFDA API for drugs, devices, adverse events, recalls, regulatory submissions (510k, PMA), substance identification (UNII), for FDA regulatory data analysis. |
+| [evidence-pubmed-api-search](skills/evidence-pubmed-api-search/) | Direct REST API access to PubMed. Advanced Boolean/MeSH queries, E-utilities API, batch processing, citation management. |
+| [evidence-openalex-query](skills/evidence-openalex-query/) | Query and analyze scholarly literature using the OpenAlex database. Search for academic papers, analyze research trends, find works by authors or institutions. |
+| [evidence-biorxiv-query](skills/evidence-biorxiv-query/) | Search bioRxiv preprint server by keywords, authors, date ranges, or categories, retrieving paper metadata for life sciences preprint discovery. |
+| [omics-bioservices-database-query](skills/omics-bioservices-database-query/) | Primary Python tool for 40+ bioinformatics services. Unified API for UniProt, KEGG, ChEMBL, PubChem, Reactome, QuickGO — preferred for multi-database workflows. |
+| [evidence-uspto-patent-query](skills/evidence-uspto-patent-query/) | Access USPTO APIs for patent/trademark searches, examination history (PEDS), assignments, citations, office actions, for IP analysis and prior art searches. |
 
 </details>
 
@@ -551,8 +553,8 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [cbioportal-database](skills/cbioportal-database/) | Query cBioPortal for cancer genomics: somatic mutations, copy number, gene expression, and survival data across hundreds of cancer studies. Cancer target validation, oncogene analysis, and patient-level genomic profiling. |
-| [depmap](skills/depmap/) | Query the Cancer Dependency Map (DepMap) for cancer cell line gene dependency scores (CRISPR Chronos), drug sensitivity, and gene effect profiles. Identify cancer-specific vulnerabilities and synthetic lethal interactions. |
+| [clinical-cbioportal-query](skills/clinical-cbioportal-query/) | Query cBioPortal for cancer genomics: somatic mutations, copy number, gene expression, and survival data across hundreds of cancer studies. Cancer target validation, oncogene analysis, and patient-level genomic profiling. |
+| [drug-depmap-dependency-query](skills/drug-depmap-dependency-query/) | Query the Cancer Dependency Map (DepMap) for cancer cell line gene dependency scores (CRISPR Chronos), drug sensitivity, and gene effect profiles. Identify cancer-specific vulnerabilities and synthetic lethal interactions. |
 | [imaging-data-commons](skills/imaging-data-commons/) | Query and download public cancer imaging data from NCI Imaging Data Commons. Access radiology (CT, MR, PET) and pathology datasets for AI training or research. No authentication required. |
 
 </details>
@@ -564,13 +566,13 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bindingdb-database](skills/bindingdb-database/) | Query BindingDB for measured drug-target binding affinities (Ki, Kd, IC50, EC50). Drug discovery, lead optimization, polypharmacology, and SAR studies. |
-| [gnomad-database](skills/gnomad-database/) | Query gnomAD for population allele frequencies, variant constraint scores (pLI, LOEUF), and loss-of-function intolerance. Variant pathogenicity interpretation and rare disease genetics. |
-| [gtex-database](skills/gtex-database/) | Query GTEx for tissue-specific gene expression, eQTLs, and sQTLs. Link GWAS variants to gene regulation and interpret non-coding variant effects. |
-| [interpro-database](skills/interpro-database/) | Query InterPro for protein family, domain, and functional site annotations. Integrates Pfam, PANTHER, PRINTS, SMART, and 11+ databases for protein function prediction. |
-| [jaspar-database](skills/jaspar-database/) | Query JASPAR for transcription factor binding site profiles (PWMs/PFMs). Regulatory genomics, motif analysis, and GWAS regulatory variant interpretation. |
-| [monarch-database](skills/monarch-database/) | Query the Monarch Initiative knowledge graph for disease-gene-phenotype associations. Integrates OMIM, ORPHANET, HPO, ClinVar for rare disease gene discovery. |
-| [tiledbvcf](skills/tiledbvcf/) | Scalable VCF/BCF ingestion, storage, and parallel queries using TileDB for population genomics at scale. |
+| [drug-bindingdb-query](skills/drug-bindingdb-query/) | Query BindingDB for measured drug-target binding affinities (Ki, Kd, IC50, EC50). Drug discovery, lead optimization, polypharmacology, and SAR studies. |
+| [omics-gnomad-frequency-query](skills/omics-gnomad-frequency-query/) | Query gnomAD for population allele frequencies, variant constraint scores (pLI, LOEUF), and loss-of-function intolerance. Variant pathogenicity interpretation and rare disease genetics. |
+| [omics-gtex-expression-query](skills/omics-gtex-expression-query/) | Query GTEx for tissue-specific gene expression, eQTLs, and sQTLs. Link GWAS variants to gene regulation and interpret non-coding variant effects. |
+| [omics-interpro-domain-query](skills/omics-interpro-domain-query/) | Query InterPro for protein family, domain, and functional site annotations. Integrates Pfam, PANTHER, PRINTS, SMART, and 11+ databases for protein function prediction. |
+| [omics-jaspar-motif-query](skills/omics-jaspar-motif-query/) | Query JASPAR for transcription factor binding site profiles (PWMs/PFMs). Regulatory genomics, motif analysis, and GWAS regulatory variant interpretation. |
+| [omics-monarch-query](skills/omics-monarch-query/) | Query the Monarch Initiative knowledge graph for disease-gene-phenotype associations. Integrates OMIM, ORPHANET, HPO, ClinVar for rare disease gene discovery. |
+| [omics-tiledbvcf-cohort-query](skills/omics-tiledbvcf-cohort-query/) | Scalable VCF/BCF ingestion, storage, and parallel queries using TileDB for population genomics at scale. |
 
 </details>
 
@@ -581,10 +583,10 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [molecular-dynamics](skills/molecular-dynamics/) | Run and analyze molecular dynamics simulations with OpenMM and MDAnalysis. Protein/small molecule systems, force fields, energy minimization, RMSD/RMSF analysis, free energy surfaces. |
-| [glycoengineering](skills/glycoengineering/) | Analyze and engineer protein glycosylation. Predict N/O-glycosylation sites, access glycoengineering tools (NetOGlyc, GlycoShield). Therapeutic antibody optimization and vaccine design. |
-| [adaptyv](skills/adaptyv/) | Cloud laboratory platform for automated protein testing: binding assays, expression testing, thermostability, enzyme activity. Protein sequence optimization with NetSolP, SoluProt, ESM. |
-| [ginkgo-cloud-lab](skills/ginkgo-cloud-lab/) | Submit and manage protocols on Ginkgo Bioworks Cloud Lab for autonomous lab execution. Cell-free protein expression, protocol workflows, and biotech automation. |
+| [omics-molecular-dynamics](skills/omics-molecular-dynamics/) | Run and analyze molecular dynamics simulations with OpenMM and MDAnalysis. Protein/small molecule systems, force fields, energy minimization, RMSD/RMSF analysis, free energy surfaces. |
+| [drug-protein-glycosylation-design](skills/drug-protein-glycosylation-design/) | Analyze and engineer protein glycosylation. Predict N/O-glycosylation sites, access glycoengineering tools (NetOGlyc, GlycoShield). Therapeutic antibody optimization and vaccine design. |
+| [research-adaptyv-protein-testing](skills/research-adaptyv-protein-testing/) | Cloud laboratory platform for automated protein testing: binding assays, expression testing, thermostability, enzyme activity. Protein sequence optimization with NetSolP, SoluProt, ESM. |
+| [research-ginkgo-experiment-submission](skills/research-ginkgo-experiment-submission/) | Submit and manage protocols on Ginkgo Bioworks Cloud Lab for autonomous lab execution. Cell-free protein expression, protocol workflows, and biotech automation. |
 
 </details>
 
@@ -602,18 +604,18 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [biopython](skills/biopython/) | Primary Python toolkit for molecular biology: PubMed/NCBI queries (Bio.Entrez), sequence manipulation, file parsing (FASTA, GenBank, FASTQ, PDB), BLAST workflows. |
-| [scikit-bio](skills/scikit-bio/) | Biological data toolkit. Sequence analysis, alignments, phylogenetic trees, diversity metrics (alpha/beta, UniFrac), ordination (PCoA), PERMANOVA, for microbiome analysis. |
-| [etetoolkit](skills/etetoolkit/) | Phylogenetic tree toolkit (ETE). Tree manipulation (Newick/NHX), evolutionary event detection, orthology/paralogy, NCBI taxonomy, visualization (PDF/SVG), for phylogenomics. |
-| [deeptools](skills/deeptools/) | NGS analysis toolkit. BAM to bigWig conversion, QC (correlation, PCA, fingerprints), heatmaps/profiles (TSS, peaks), for ChIP-seq, RNA-seq, ATAC-seq visualization. |
-| [nextflow-development](skills/nextflow-development/) | Run nf-core bioinformatics pipelines (rnaseq, sarek, atacseq) on sequencing data. Use for RNA-seq, WGS/WES, or ATAC-seq from local FASTQs or public datasets (GEO/SRA). |
-| [fastq-analysis](skills/fastq-analysis/) | SRA downloading, FASTQ quality control, STAR alignment, gene quantification, and single-cell kallisto/bustools pipelines for bulk and single-cell sequencing data. |
-| [geniml](skills/geniml/) | Genomic interval data (BED files) for machine learning tasks. Train region embeddings (Region2Vec, BEDspace), single-cell ATAC-seq analysis. |
-| [gtars](skills/gtars/) | High-performance genomic interval analysis in Rust with Python bindings. Genomic regions, BED files, coverage tracks, overlap detection, tokenization for ML models. |
-| [arboreto](skills/arboreto/) | Infer gene regulatory networks (GRNs) from gene expression data using GRNBoost2 and GENIE3 algorithms. For bulk RNA-seq and single-cell RNA-seq regulatory network inference. |
-| [lamindb](skills/lamindb/) | Open-source biological data framework for queryable, traceable, reproducible, and FAIR datasets (scRNA-seq, genomics, imaging). |
-| [dnanexus-integration](skills/dnanexus-integration/) | DNAnexus cloud genomics platform. Build apps/applets, manage data, dxpy Python SDK, run workflows, FASTQ/BAM/VCF, for genomics pipeline development. |
-| [latchbio-integration](skills/latchbio-integration/) | Latch platform for bioinformatics workflows. Build pipelines with Latch SDK, @workflow/@task decorators, deploy serverless workflows, Nextflow/Snakemake integration. |
+| [omics-biopython-sequence-analysis](skills/omics-biopython-sequence-analysis/) | Primary Python toolkit for molecular biology: PubMed/NCBI queries (Bio.Entrez), sequence manipulation, file parsing (FASTA, GenBank, FASTQ, PDB), BLAST workflows. |
+| [omics-scikit-bio-sequence-analysis](skills/omics-scikit-bio-sequence-analysis/) | Biological data toolkit. Sequence analysis, alignments, phylogenetic trees, diversity metrics (alpha/beta, UniFrac), ordination (PCoA), PERMANOVA, for microbiome analysis. |
+| [omics-ete-tree-analysis](skills/omics-ete-tree-analysis/) | Phylogenetic tree toolkit (ETE). Tree manipulation (Newick/NHX), evolutionary event detection, orthology/paralogy, NCBI taxonomy, visualization (PDF/SVG), for phylogenomics. |
+| [omics-deeptools-signal-analysis](skills/omics-deeptools-signal-analysis/) | NGS analysis toolkit. BAM to bigWig conversion, QC (correlation, PCA, fingerprints), heatmaps/profiles (TSS, peaks), for ChIP-seq, RNA-seq, ATAC-seq visualization. |
+| [sop-omics-nextflow-analysis](skills/sop-omics-nextflow-analysis/) | Run nf-core bioinformatics pipelines (rnaseq, sarek, atacseq) on sequencing data. Use for RNA-seq, WGS/WES, or ATAC-seq from local FASTQs or public datasets (GEO/SRA). |
+| [omics-fastq-analysis](skills/omics-fastq-analysis/) | SRA downloading, FASTQ quality control, STAR alignment, gene quantification, and single-cell kallisto/bustools pipelines for bulk and single-cell sequencing data. |
+| [omics-geniml-interval-modeling](skills/omics-geniml-interval-modeling/) | Genomic interval data (BED files) for machine learning tasks. Train region embeddings (Region2Vec, BEDspace), single-cell ATAC-seq analysis. |
+| [omics-gtars-interval-processing](skills/omics-gtars-interval-processing/) | High-performance genomic interval analysis in Rust with Python bindings. Genomic regions, BED files, coverage tracks, overlap detection, tokenization for ML models. |
+| [omics-arboreto-regulatory-network-inference](skills/omics-arboreto-regulatory-network-inference/) | Infer gene regulatory networks (GRNs) from gene expression data using GRNBoost2 and GENIE3 algorithms. For bulk RNA-seq and single-cell RNA-seq regulatory network inference. |
+| [research-lamindb-data-management](skills/research-lamindb-data-management/) | Open-source biological data framework for queryable, traceable, reproducible, and FAIR datasets (scRNA-seq, genomics, imaging). |
+| [omics-dnanexus-integration](skills/omics-dnanexus-integration/) | DNAnexus cloud genomics platform. Build apps/applets, manage data, dxpy Python SDK, run workflows, FASTQ/BAM/VCF, for genomics pipeline development. |
+| [research-latchbio-integration](skills/research-latchbio-integration/) | Latch platform for bioinformatics workflows. Build pipelines with Latch SDK, @workflow/@task decorators, deploy serverless workflows, Nextflow/Snakemake integration. |
 
 </details>
 
@@ -624,37 +626,37 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-clinical-databases-clinvar-lookup](skills/bio-clinical-databases-clinvar-lookup/) | Query ClinVar for clinical variant classifications, pathogenicity assertions, and review status. |
-| [bio-clinical-databases-dbsnp-queries](skills/bio-clinical-databases-dbsnp-queries/) | Query dbSNP for SNP frequency, allele, and functional annotation data. |
-| [bio-clinical-databases-gnomad-frequencies](skills/bio-clinical-databases-gnomad-frequencies/) | Retrieve population allele frequencies from gnomAD for rare variant interpretation. |
-| [bio-clinical-databases-hla-typing](skills/bio-clinical-databases-hla-typing/) | HLA typing from sequencing data using standard typing tools and databases. |
-| [bio-clinical-databases-myvariant-queries](skills/bio-clinical-databases-myvariant-queries/) | Batch query MyVariant.info for aggregated variant annotations from multiple databases. |
-| [bio-clinical-databases-pharmacogenomics](skills/bio-clinical-databases-pharmacogenomics/) | PharmGKB/CPIC pharmacogenomics variant lookup for drug-gene interactions. |
-| [bio-clinical-databases-polygenic-risk](skills/bio-clinical-databases-polygenic-risk/) | Calculate polygenic risk scores from GWAS summary statistics and genotype data. |
-| [bio-clinical-databases-somatic-signatures](skills/bio-clinical-databases-somatic-signatures/) | Extract and classify mutational signatures from somatic variant catalogs (COSMIC). |
-| [bio-clinical-databases-tumor-mutational-burden](skills/bio-clinical-databases-tumor-mutational-burden/) | Compute tumor mutational burden (TMB) from somatic variant calls. |
-| [bio-clinical-databases-variant-prioritization](skills/bio-clinical-databases-variant-prioritization/) | Rank and filter candidate variants by pathogenicity scores, inheritance, and phenotype match. |
-| [bio-variant-calling](skills/bio-variant-calling/) | GATK-based germline variant calling pipeline from aligned BAM/CRAM files. |
-| [bio-variant-calling-clinical-interpretation](skills/bio-variant-calling-clinical-interpretation/) | Interpret variant calls in clinical context with ACMG guidelines. |
-| [bio-variant-calling-deepvariant](skills/bio-variant-calling-deepvariant/) | DeepVariant deep-learning variant caller for short-read WGS/WES data. |
-| [bio-variant-calling-filtering-best-practices](skills/bio-variant-calling-filtering-best-practices/) | Apply VQSR and hard-filtering best practices to variant call sets. |
-| [bio-variant-calling-joint-calling](skills/bio-variant-calling-joint-calling/) | Joint genotyping across multiple samples for improved variant discovery. |
-| [bio-variant-calling-structural-variant-calling](skills/bio-variant-calling-structural-variant-calling/) | Call structural variants (SVs) from long-read or paired-end sequencing. |
-| [bio-variant-annotation](skills/bio-variant-annotation/) | Annotate VCF files with functional, population, and clinical consequence data. |
-| [bio-variant-normalization](skills/bio-variant-normalization/) | Normalize variant representations (left-alignment, decomposition) for consistent comparison. |
-| [bio-vcf-basics](skills/bio-vcf-basics/) | Read, write, and parse VCF files; filter by quality, region, and sample. |
-| [bio-vcf-manipulation](skills/bio-vcf-manipulation/) | Advanced VCF manipulation: merging, splitting, reformatting, subset extraction. |
-| [bio-vcf-statistics](skills/bio-vcf-statistics/) | Compute variant statistics: ts/tv ratio, heterozygosity, depth distributions. |
-| [bio-gatk-variant-calling](skills/bio-gatk-variant-calling/) | End-to-end GATK HaplotypeCaller variant calling with BQSR and joint genotyping. |
-| [bio-copy-number-cnv-annotation](skills/bio-copy-number-cnv-annotation/) | Annotate CNV calls with gene content, database overlap, and clinical significance. |
-| [bio-copy-number-cnv-visualization](skills/bio-copy-number-cnv-visualization/) | Visualize copy number profiles and segment plots from WGS/WES data. |
-| [bio-copy-number-cnvkit-analysis](skills/bio-copy-number-cnvkit-analysis/) | CNVKit copy number analysis for targeted sequencing and WES data. |
-| [bio-copy-number-gatk-cnv](skills/bio-copy-number-gatk-cnv/) | GATK4 somatic copy number alteration calling pipeline. |
-| [bio-tumor-fraction-estimation](skills/bio-tumor-fraction-estimation/) | Estimate tumor purity and ploidy from allele frequencies and copy number data. |
-| [bio-ctdna-mutation-detection](skills/bio-ctdna-mutation-detection/) | Detect circulating tumor DNA mutations from liquid biopsy ultra-deep sequencing. |
-| [bio-cfdna-preprocessing](skills/bio-cfdna-preprocessing/) | Process cell-free DNA sequencing data: adapter trimming, deduplication, QC. |
-| [bio-methylation-based-detection](skills/bio-methylation-based-detection/) | Detect methylation-based cancer signals from cfDNA methylation data. |
-| [bio-longitudinal-monitoring](skills/bio-longitudinal-monitoring/) | Track somatic variant evolution and clonal dynamics across serial samples. |
+| [omics-clinical-databases-clinvar-lookup](skills/omics-clinical-databases-clinvar-lookup/) | Query ClinVar for clinical variant classifications, pathogenicity assertions, and review status. |
+| [omics-clinical-databases-dbsnp-queries](skills/omics-clinical-databases-dbsnp-queries/) | Query dbSNP for SNP frequency, allele, and functional annotation data. |
+| [omics-clinical-databases-gnomad-frequencies](skills/omics-clinical-databases-gnomad-frequencies/) | Retrieve population allele frequencies from gnomAD for rare variant interpretation. |
+| [omics-clinical-databases-hla-typing](skills/omics-clinical-databases-hla-typing/) | HLA typing from sequencing data using standard typing tools and databases. |
+| [omics-clinical-databases-myvariant-queries](skills/omics-clinical-databases-myvariant-queries/) | Batch query MyVariant.info for aggregated variant annotations from multiple databases. |
+| [omics-clinical-databases-pharmacogenomics](skills/omics-clinical-databases-pharmacogenomics/) | PharmGKB/CPIC pharmacogenomics variant lookup for drug-gene interactions. |
+| [omics-clinical-databases-polygenic-risk](skills/omics-clinical-databases-polygenic-risk/) | Calculate polygenic risk scores from GWAS summary statistics and genotype data. |
+| [omics-clinical-databases-somatic-signatures](skills/omics-clinical-databases-somatic-signatures/) | Extract and classify mutational signatures from somatic variant catalogs (COSMIC). |
+| [omics-clinical-databases-tumor-mutational-burden](skills/omics-clinical-databases-tumor-mutational-burden/) | Compute tumor mutational burden (TMB) from somatic variant calls. |
+| [omics-clinical-databases-variant-prioritization](skills/omics-clinical-databases-variant-prioritization/) | Rank and filter candidate variants by pathogenicity scores, inheritance, and phenotype match. |
+| [omics-variant-calling](skills/omics-variant-calling/) | GATK-based germline variant calling pipeline from aligned BAM/CRAM files. |
+| [omics-variant-calling-clinical-interpretation](skills/omics-variant-calling-clinical-interpretation/) | Interpret variant calls in clinical context with ACMG guidelines. |
+| [omics-variant-calling-deepvariant](skills/omics-variant-calling-deepvariant/) | DeepVariant deep-learning variant caller for short-read WGS/WES data. |
+| [omics-variant-calling-filtering-best-practices](skills/omics-variant-calling-filtering-best-practices/) | Apply VQSR and hard-filtering best practices to variant call sets. |
+| [omics-variant-calling-joint-calling](skills/omics-variant-calling-joint-calling/) | Joint genotyping across multiple samples for improved variant discovery. |
+| [omics-variant-calling-structural-variant-calling](skills/omics-variant-calling-structural-variant-calling/) | Call structural variants (SVs) from long-read or paired-end sequencing. |
+| [omics-variant-annotation](skills/omics-variant-annotation/) | Annotate VCF files with functional, population, and clinical consequence data. |
+| [omics-variant-normalization](skills/omics-variant-normalization/) | Normalize variant representations (left-alignment, decomposition) for consistent comparison. |
+| [omics-vcf-basics](skills/omics-vcf-basics/) | Read, write, and parse VCF files; filter by quality, region, and sample. |
+| [omics-vcf-manipulation](skills/omics-vcf-manipulation/) | Advanced VCF manipulation: merging, splitting, reformatting, subset extraction. |
+| [omics-vcf-statistics](skills/omics-vcf-statistics/) | Compute variant statistics: ts/tv ratio, heterozygosity, depth distributions. |
+| [omics-gatk-variant-calling](skills/omics-gatk-variant-calling/) | End-to-end GATK HaplotypeCaller variant calling with BQSR and joint genotyping. |
+| [omics-copy-number-cnv-annotation](skills/omics-copy-number-cnv-annotation/) | Annotate CNV calls with gene content, database overlap, and clinical significance. |
+| [omics-copy-number-cnv-visualization](skills/omics-copy-number-cnv-visualization/) | Visualize copy number profiles and segment plots from WGS/WES data. |
+| [omics-copy-number-cnvkit-analysis](skills/omics-copy-number-cnvkit-analysis/) | CNVKit copy number analysis for targeted sequencing and WES data. |
+| [omics-copy-number-gatk-cnv](skills/omics-copy-number-gatk-cnv/) | GATK4 somatic copy number alteration calling pipeline. |
+| [omics-tumor-fraction-estimation](skills/omics-tumor-fraction-estimation/) | Estimate tumor purity and ploidy from allele frequencies and copy number data. |
+| [omics-ctdna-mutation-detection](skills/omics-ctdna-mutation-detection/) | Detect circulating tumor DNA mutations from liquid biopsy ultra-deep sequencing. |
+| [omics-cfdna-preprocessing](skills/omics-cfdna-preprocessing/) | Process cell-free DNA sequencing data: adapter trimming, deduplication, QC. |
+| [omics-methylation-based-detection](skills/omics-methylation-based-detection/) | Detect methylation-based cancer signals from cfDNA methylation data. |
+| [omics-longitudinal-monitoring](skills/omics-longitudinal-monitoring/) | Track somatic variant evolution and clonal dynamics across serial samples. |
 
 </details>
 
@@ -665,38 +667,38 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-fastq-quality](skills/bio-fastq-quality/) | Assess FASTQ read quality with FastQC/MultiQC; generate per-sample QC reports. |
-| [bio-read-qc-adapter-trimming](skills/bio-read-qc-adapter-trimming/) | Trim sequencing adapters with Trimmomatic, Cutadapt, or fastp. |
-| [bio-read-qc-contamination-screening](skills/bio-read-qc-contamination-screening/) | Screen reads for human/microbial contamination using FastQ Screen or Kraken. |
-| [bio-read-qc-fastp-workflow](skills/bio-read-qc-fastp-workflow/) | End-to-end read QC and preprocessing with fastp including UMI handling. |
-| [bio-read-qc-quality-filtering](skills/bio-read-qc-quality-filtering/) | Apply quality-score and length filters to remove low-quality reads. |
-| [bio-read-qc-quality-reports](skills/bio-read-qc-quality-reports/) | Aggregate multi-sample QC reports with MultiQC. |
-| [bio-read-qc-umi-processing](skills/bio-read-qc-umi-processing/) | Deduplicate PCR duplicates using UMI-tools for accurate quantification. |
-| [bio-paired-end-fastq](skills/bio-paired-end-fastq/) | Handle paired-end FASTQ files: validation, interleaving, splitting. |
-| [bio-alignment-io](skills/bio-alignment-io/) | Read/write SAM/BAM/CRAM alignment files with pysam and samtools. |
-| [bio-alignment-msa-parsing](skills/bio-alignment-msa-parsing/) | Parse and analyze multiple sequence alignments (FASTA, ClustalW, Stockholm). |
-| [bio-alignment-msa-statistics](skills/bio-alignment-msa-statistics/) | Compute MSA statistics: conservation, gap content, entropy. |
-| [bio-alignment-pairwise](skills/bio-alignment-pairwise/) | Pairwise sequence alignment using Smith-Waterman, Needleman-Wunsch, BLAST. |
-| [bio-longread-alignment](skills/bio-longread-alignment/) | Align long reads (ONT/PacBio) with minimap2; sort and index BAM files. |
-| [bio-longread-qc](skills/bio-longread-qc/) | Quality control for long-read sequencing: read length, N50, error rate. |
-| [bio-longread-medaka](skills/bio-longread-medaka/) | Consensus polishing and variant calling with Oxford Nanopore Medaka. |
-| [bio-longread-structural-variants](skills/bio-longread-structural-variants/) | Call large structural variants from long-read data with Sniffles/PBSV. |
-| [bio-basecalling](skills/bio-basecalling/) | Base-call raw ONT signals with Dorado/Guppy; convert FAST5 to FASTQ. |
-| [bio-compressed-files](skills/bio-compressed-files/) | Handle compressed bioinformatics files: bgzip, tabix, zstd, htslib. |
-| [bio-format-conversion](skills/bio-format-conversion/) | Convert between bioinformatics formats: FASTQ↔FASTA, BAM↔CRAM, BED↔GTF. |
-| [bio-sequence-statistics](skills/bio-sequence-statistics/) | Compute sequence statistics: GC content, length distributions, complexity. |
-| [bio-read-sequences](skills/bio-read-sequences/) | Read and iterate over biological sequences from FASTA/FASTQ files. |
-| [bio-write-sequences](skills/bio-write-sequences/) | Write biological sequences to FASTA/FASTQ with metadata preservation. |
-| [bio-filter-sequences](skills/bio-filter-sequences/) | Filter sequences by length, quality, pattern, or taxonomy label. |
-| [bio-batch-processing](skills/bio-batch-processing/) | Batch-process large bioinformatics datasets across samples and cohorts. |
-| [bio-rnaseq-qc](skills/bio-rnaseq-qc/) | RNA-seq specific QC: strandedness, rRNA contamination, gene body coverage. |
-| [bio-long-read-sequencing-clair3-variants](skills/bio-long-read-sequencing-clair3-variants/) | Call variants from long-read sequencing with Clair3 deep-learning model. |
-| [bio-long-read-sequencing-isoseq-analysis](skills/bio-long-read-sequencing-isoseq-analysis/) | Iso-Seq full-length transcript analysis for isoform discovery. |
-| [bio-long-read-sequencing-nanopore-methylation](skills/bio-long-read-sequencing-nanopore-methylation/) | Call CpG methylation from Oxford Nanopore sequencing with Modbam2bed. |
-| [bio-splicing-qc](skills/bio-splicing-qc/) | RNA splicing quality assessment: junction read coverage, novel splice sites. |
-| [bio-splicing-quantification](skills/bio-splicing-quantification/) | Quantify alternative splicing events: PSI/inclusion levels per isoform. |
-| [bio-sashimi-plots](skills/bio-sashimi-plots/) | Generate sashimi plots for visualizing RNA-seq splicing at specific loci. |
-| [bio-consensus-sequences](skills/bio-consensus-sequences/) | Generate consensus FASTA sequences by applying VCF variants to a reference using `bcftools consensus`; useful for sample-specific references and haplotype reconstruction. |
+| [omics-fastq-quality](skills/omics-fastq-quality/) | Assess FASTQ read quality with FastQC/MultiQC; generate per-sample QC reports. |
+| [omics-read-qc-adapter-trimming](skills/omics-read-qc-adapter-trimming/) | Trim sequencing adapters with Trimmomatic, Cutadapt, or fastp. |
+| [omics-read-qc-contamination-screening](skills/omics-read-qc-contamination-screening/) | Screen reads for human/microbial contamination using FastQ Screen or Kraken. |
+| [omics-read-qc-fastp-workflow](skills/omics-read-qc-fastp-workflow/) | End-to-end read QC and preprocessing with fastp including UMI handling. |
+| [omics-read-qc-quality-filtering](skills/omics-read-qc-quality-filtering/) | Apply quality-score and length filters to remove low-quality reads. |
+| [omics-read-qc-quality-reports](skills/omics-read-qc-quality-reports/) | Aggregate multi-sample QC reports with MultiQC. |
+| [omics-read-qc-umi-processing](skills/omics-read-qc-umi-processing/) | Deduplicate PCR duplicates using UMI-tools for accurate quantification. |
+| [omics-paired-end-fastq](skills/omics-paired-end-fastq/) | Handle paired-end FASTQ files: validation, interleaving, splitting. |
+| [omics-alignment-io](skills/omics-alignment-io/) | Read/write SAM/BAM/CRAM alignment files with pysam and samtools. |
+| [omics-alignment-msa-parsing](skills/omics-alignment-msa-parsing/) | Parse and analyze multiple sequence alignments (FASTA, ClustalW, Stockholm). |
+| [omics-alignment-msa-statistics](skills/omics-alignment-msa-statistics/) | Compute MSA statistics: conservation, gap content, entropy. |
+| [omics-alignment-pairwise](skills/omics-alignment-pairwise/) | Pairwise sequence alignment using Smith-Waterman, Needleman-Wunsch, BLAST. |
+| [omics-longread-alignment](skills/omics-longread-alignment/) | Align long reads (ONT/PacBio) with minimap2; sort and index BAM files. |
+| [omics-longread-qc](skills/omics-longread-qc/) | Quality control for long-read sequencing: read length, N50, error rate. |
+| [omics-longread-medaka](skills/omics-longread-medaka/) | Consensus polishing and variant calling with Oxford Nanopore Medaka. |
+| [omics-longread-structural-variants](skills/omics-longread-structural-variants/) | Call large structural variants from long-read data with Sniffles/PBSV. |
+| [omics-basecalling](skills/omics-basecalling/) | Base-call raw ONT signals with Dorado/Guppy; convert FAST5 to FASTQ. |
+| [omics-compressed-files](skills/omics-compressed-files/) | Handle compressed bioinformatics files: bgzip, tabix, zstd, htslib. |
+| [omics-format-conversion](skills/omics-format-conversion/) | Convert between bioinformatics formats: FASTQ↔FASTA, BAM↔CRAM, BED↔GTF. |
+| [omics-sequence-statistics](skills/omics-sequence-statistics/) | Compute sequence statistics: GC content, length distributions, complexity. |
+| [omics-read-sequences](skills/omics-read-sequences/) | Read and iterate over biological sequences from FASTA/FASTQ files. |
+| [omics-write-sequences](skills/omics-write-sequences/) | Write biological sequences to FASTA/FASTQ with metadata preservation. |
+| [omics-filter-sequences](skills/omics-filter-sequences/) | Filter sequences by length, quality, pattern, or taxonomy label. |
+| [omics-batch-processing](skills/omics-batch-processing/) | Batch-process large bioinformatics datasets across samples and cohorts. |
+| [omics-rnaseq-qc](skills/omics-rnaseq-qc/) | RNA-seq specific QC: strandedness, rRNA contamination, gene body coverage. |
+| [omics-long-read-sequencing-clair3-variants](skills/omics-long-read-sequencing-clair3-variants/) | Call variants from long-read sequencing with Clair3 deep-learning model. |
+| [omics-long-read-sequencing-isoseq-analysis](skills/omics-long-read-sequencing-isoseq-analysis/) | Iso-Seq full-length transcript analysis for isoform discovery. |
+| [omics-long-read-sequencing-nanopore-methylation](skills/omics-long-read-sequencing-nanopore-methylation/) | Call CpG methylation from Oxford Nanopore sequencing with Modbam2bed. |
+| [omics-splicing-qc](skills/omics-splicing-qc/) | RNA splicing quality assessment: junction read coverage, novel splice sites. |
+| [omics-splicing-quantification](skills/omics-splicing-quantification/) | Quantify alternative splicing events: PSI/inclusion levels per isoform. |
+| [omics-sashimi-plots](skills/omics-sashimi-plots/) | Generate sashimi plots for visualizing RNA-seq splicing at specific loci. |
+| [omics-consensus-sequences](skills/omics-consensus-sequences/) | Generate consensus FASTA sequences by applying VCF variants to a reference using `bcftools consensus`; useful for sample-specific references and haplotype reconstruction. |
 
 </details>
 
@@ -707,19 +709,19 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-de-deseq2-basics](skills/bio-de-deseq2-basics/) | DESeq2 differential expression analysis: design matrix, size factors, dispersion. |
-| [bio-de-edger-basics](skills/bio-de-edger-basics/) | EdgeR differential expression for count data with empirical Bayes dispersion. |
-| [bio-de-results](skills/bio-de-results/) | Extract, filter, and annotate DESeq2/EdgeR results tables. |
-| [bio-de-visualization](skills/bio-de-visualization/) | Volcano plots, MA plots, and heatmaps for differential expression results. |
-| [bio-differential-expression-batch-correction](skills/bio-differential-expression-batch-correction/) | Remove batch effects with ComBat/limma for multi-cohort DE analysis. |
-| [bio-differential-expression-timeseries-de](skills/bio-differential-expression-timeseries-de/) | Time-series differential expression with splines and mixed models. |
-| [bio-differential-splicing](skills/bio-differential-splicing/) | Detect differential alternative splicing events with rMATS or MAJIQ. |
-| [bio-isoform-switching](skills/bio-isoform-switching/) | Identify isoform switching events with DRIMSeq and IsoformSwitchAnalyzeR. |
-| [bio-ribo-seq-orf-detection](skills/bio-ribo-seq-orf-detection/) | Detect translated ORFs from ribosome profiling data with RiboTaper/Ribo-TISH. |
-| [bio-ribo-seq-riboseq-preprocessing](skills/bio-ribo-seq-riboseq-preprocessing/) | Preprocess ribosome profiling reads: adapter trimming, rRNA removal, alignment. |
-| [bio-ribo-seq-ribosome-periodicity](skills/bio-ribo-seq-ribosome-periodicity/) | Assess triplet periodicity and ribosome footprint quality in Ribo-seq data. |
-| [bio-ribo-seq-ribosome-stalling](skills/bio-ribo-seq-ribosome-stalling/) | Identify ribosome stalling sites and pausing from Ribo-seq profiles. |
-| [bio-ribo-seq-translation-efficiency](skills/bio-ribo-seq-translation-efficiency/) | Compute translation efficiency ratios from matched RNA-seq and Ribo-seq. |
+| [omics-de-deseq2-basics](skills/omics-de-deseq2-basics/) | DESeq2 differential expression analysis: design matrix, size factors, dispersion. |
+| [omics-de-edger-basics](skills/omics-de-edger-basics/) | EdgeR differential expression for count data with empirical Bayes dispersion. |
+| [omics-de-results](skills/omics-de-results/) | Extract, filter, and annotate DESeq2/EdgeR results tables. |
+| [omics-de-visualization](skills/omics-de-visualization/) | Volcano plots, MA plots, and heatmaps for differential expression results. |
+| [omics-differential-expression-batch-correction](skills/omics-differential-expression-batch-correction/) | Remove batch effects with ComBat/limma for multi-cohort DE analysis. |
+| [omics-differential-expression-timeseries-de](skills/omics-differential-expression-timeseries-de/) | Time-series differential expression with splines and mixed models. |
+| [omics-differential-splicing](skills/omics-differential-splicing/) | Detect differential alternative splicing events with rMATS or MAJIQ. |
+| [omics-isoform-switching](skills/omics-isoform-switching/) | Identify isoform switching events with DRIMSeq and IsoformSwitchAnalyzeR. |
+| [omics-ribo-seq-orf-detection](skills/omics-ribo-seq-orf-detection/) | Detect translated ORFs from ribosome profiling data with RiboTaper/Ribo-TISH. |
+| [omics-ribo-seq-riboseq-preprocessing](skills/omics-ribo-seq-riboseq-preprocessing/) | Preprocess ribosome profiling reads: adapter trimming, rRNA removal, alignment. |
+| [omics-ribo-seq-ribosome-periodicity](skills/omics-ribo-seq-ribosome-periodicity/) | Assess triplet periodicity and ribosome footprint quality in Ribo-seq data. |
+| [omics-ribo-seq-ribosome-stalling](skills/omics-ribo-seq-ribosome-stalling/) | Identify ribosome stalling sites and pausing from Ribo-seq profiles. |
+| [omics-ribo-seq-translation-efficiency](skills/omics-ribo-seq-translation-efficiency/) | Compute translation efficiency ratios from matched RNA-seq and Ribo-seq. |
 
 </details>
 
@@ -730,12 +732,12 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-pathway-go-enrichment](skills/bio-pathway-go-enrichment/) | Gene Ontology enrichment analysis with clusterProfiler or g:Profiler. |
-| [bio-pathway-gsea](skills/bio-pathway-gsea/) | Gene Set Enrichment Analysis (GSEA) with pre-ranked or count-based statistics. |
-| [bio-pathway-kegg-pathways](skills/bio-pathway-kegg-pathways/) | KEGG pathway enrichment and visualization for metabolic/signaling pathways. |
-| [bio-pathway-reactome](skills/bio-pathway-reactome/) | Reactome pathway analysis with hierarchical enrichment and visualization. |
-| [bio-pathway-wikipathways](skills/bio-pathway-wikipathways/) | WikiPathways enrichment and network visualization. |
-| [bio-pathway-enrichment-visualization](skills/bio-pathway-enrichment-visualization/) | Dot plots, enrichment maps, and network visualizations for pathway results. |
+| [omics-pathway-go-enrichment](skills/omics-pathway-go-enrichment/) | Gene Ontology enrichment analysis with clusterProfiler or g:Profiler. |
+| [omics-pathway-gsea](skills/omics-pathway-gsea/) | Gene Set Enrichment Analysis (GSEA) with pre-ranked or count-based statistics. |
+| [omics-pathway-kegg-pathways](skills/omics-pathway-kegg-pathways/) | KEGG pathway enrichment and visualization for metabolic/signaling pathways. |
+| [omics-pathway-reactome](skills/omics-pathway-reactome/) | Reactome pathway analysis with hierarchical enrichment and visualization. |
+| [omics-pathway-wikipathways](skills/omics-pathway-wikipathways/) | WikiPathways enrichment and network visualization. |
+| [omics-pathway-enrichment-visualization](skills/omics-pathway-enrichment-visualization/) | Dot plots, enrichment maps, and network visualizations for pathway results. |
 
 </details>
 
@@ -746,32 +748,32 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-single-cell-batch-integration](skills/bio-single-cell-batch-integration/) | Integrate scRNA-seq datasets across batches with Harmony, BBKNN, scVI. |
-| [bio-single-cell-cell-annotation](skills/bio-single-cell-cell-annotation/) | Annotate single-cell clusters using marker genes and reference atlases. |
-| [bio-single-cell-cell-communication](skills/bio-single-cell-cell-communication/) | Infer ligand-receptor cell-cell communication with CellChat or NicheNet. |
-| [bio-single-cell-clustering](skills/bio-single-cell-clustering/) | Cluster single cells with Leiden/Louvain algorithms in Scanpy/Seurat. |
-| [bio-single-cell-data-io](skills/bio-single-cell-data-io/) | Read/write AnnData, Seurat, and 10x Genomics h5ad/h5 formats. |
-| [bio-single-cell-doublet-detection](skills/bio-single-cell-doublet-detection/) | Remove doublets from scRNA-seq with Scrublet or DoubletFinder. |
-| [bio-single-cell-lineage-tracing](skills/bio-single-cell-lineage-tracing/) | Reconstruct cell lineage trees from scRNA-seq with clonal barcodes. |
-| [bio-single-cell-markers-annotation](skills/bio-single-cell-markers-annotation/) | Identify cluster marker genes and auto-annotate cell types. |
-| [bio-single-cell-metabolite-communication](skills/bio-single-cell-metabolite-communication/) | Infer metabolite-mediated intercellular communication from scRNA-seq. |
-| [bio-single-cell-multimodal-integration](skills/bio-single-cell-multimodal-integration/) | Integrate scRNA-seq with ATAC, CITE-seq, or spatial using WNN/MultiVI. |
-| [bio-single-cell-perturb-seq](skills/bio-single-cell-perturb-seq/) | Analyze genetic perturbation screens from Perturb-seq / CROP-seq data. |
-| [bio-single-cell-preprocessing](skills/bio-single-cell-preprocessing/) | Single-cell preprocessing: count filtering, normalization, HVG selection. |
-| [bio-single-cell-scatac-analysis](skills/bio-single-cell-scatac-analysis/) | scATAC-seq peak calling, TF motif enrichment, and chromatin accessibility. |
-| [bio-single-cell-splicing](skills/bio-single-cell-splicing/) | RNA velocity and splicing dynamics with scVelo or Alevin. |
-| [bio-single-cell-trajectory-inference](skills/bio-single-cell-trajectory-inference/) | Infer pseudotime trajectories with Monocle3, PAGA, or Slingshot. |
-| [bio-spatial-transcriptomics-image-analysis](skills/bio-spatial-transcriptomics-image-analysis/) | Analyze histology images co-registered with spatial transcriptomics data. |
-| [bio-spatial-transcriptomics-spatial-communication](skills/bio-spatial-transcriptomics-spatial-communication/) | Ligand-receptor communication analysis with spatial context (COMMOT, SpatialDE). |
-| [bio-spatial-transcriptomics-spatial-data-io](skills/bio-spatial-transcriptomics-spatial-data-io/) | Load and process Visium, Slide-seq, MERFISH, and STARmap datasets. |
-| [bio-spatial-transcriptomics-spatial-deconvolution](skills/bio-spatial-transcriptomics-spatial-deconvolution/) | Deconvolve cell type proportions in spatial spots with RCTD, SPOTlight. |
-| [bio-spatial-transcriptomics-spatial-domains](skills/bio-spatial-transcriptomics-spatial-domains/) | Identify spatially variable genes and tissue domains with SpatialDE/BANKSY. |
-| [bio-spatial-transcriptomics-spatial-multiomics](skills/bio-spatial-transcriptomics-spatial-multiomics/) | Integrate spatial transcriptomics with proteomics, metabolomics, or imaging. |
-| [bio-spatial-transcriptomics-spatial-neighbors](skills/bio-spatial-transcriptomics-spatial-neighbors/) | Build spatial neighbor graphs and perform neighborhood enrichment analysis. |
-| [bio-spatial-transcriptomics-spatial-preprocessing](skills/bio-spatial-transcriptomics-spatial-preprocessing/) | Preprocess spatial transcriptomics: QC, normalization, spot filtering. |
-| [bio-spatial-transcriptomics-spatial-proteomics](skills/bio-spatial-transcriptomics-spatial-proteomics/) | Analyze spatial proteomics data from CODEX, IMC, or MIBI platforms. |
-| [bio-spatial-transcriptomics-spatial-statistics](skills/bio-spatial-transcriptomics-spatial-statistics/) | Spatial statistics: Moran's I, spatial autocorrelation, co-localization. |
-| [bio-spatial-transcriptomics-spatial-visualization](skills/bio-spatial-transcriptomics-spatial-visualization/) | Visualize spatial gene expression maps and tissue section overlays. |
+| [omics-single-cell-batch-integration](skills/omics-single-cell-batch-integration/) | Integrate scRNA-seq datasets across batches with Harmony, BBKNN, scVI. |
+| [omics-single-cell-cell-annotation](skills/omics-single-cell-cell-annotation/) | Annotate single-cell clusters using marker genes and reference atlases. |
+| [omics-single-cell-cell-communication](skills/omics-single-cell-cell-communication/) | Infer ligand-receptor cell-cell communication with CellChat or NicheNet. |
+| [omics-single-cell-clustering](skills/omics-single-cell-clustering/) | Cluster single cells with Leiden/Louvain algorithms in Scanpy/Seurat. |
+| [omics-single-cell-data-io](skills/omics-single-cell-data-io/) | Read/write AnnData, Seurat, and 10x Genomics h5ad/h5 formats. |
+| [omics-single-cell-doublet-detection](skills/omics-single-cell-doublet-detection/) | Remove doublets from scRNA-seq with Scrublet or DoubletFinder. |
+| [omics-single-cell-lineage-tracing](skills/omics-single-cell-lineage-tracing/) | Reconstruct cell lineage trees from scRNA-seq with clonal barcodes. |
+| [omics-single-cell-markers-annotation](skills/omics-single-cell-markers-annotation/) | Identify cluster marker genes and auto-annotate cell types. |
+| [omics-single-cell-metabolite-communication](skills/omics-single-cell-metabolite-communication/) | Infer metabolite-mediated intercellular communication from scRNA-seq. |
+| [omics-single-cell-multimodal-integration](skills/omics-single-cell-multimodal-integration/) | Integrate scRNA-seq with ATAC, CITE-seq, or spatial using WNN/MultiVI. |
+| [omics-single-cell-perturb-seq](skills/omics-single-cell-perturb-seq/) | Analyze genetic perturbation screens from Perturb-seq / CROP-seq data. |
+| [omics-single-cell-preprocessing](skills/omics-single-cell-preprocessing/) | Single-cell preprocessing: count filtering, normalization, HVG selection. |
+| [omics-single-cell-scatac-analysis](skills/omics-single-cell-scatac-analysis/) | scATAC-seq peak calling, TF motif enrichment, and chromatin accessibility. |
+| [omics-single-cell-splicing](skills/omics-single-cell-splicing/) | RNA velocity and splicing dynamics with scVelo or Alevin. |
+| [omics-single-cell-trajectory-inference](skills/omics-single-cell-trajectory-inference/) | Infer pseudotime trajectories with Monocle3, PAGA, or Slingshot. |
+| [omics-spatial-transcriptomics-image-analysis](skills/omics-spatial-transcriptomics-image-analysis/) | Analyze histology images co-registered with spatial transcriptomics data. |
+| [omics-spatial-transcriptomics-spatial-communication](skills/omics-spatial-transcriptomics-spatial-communication/) | Ligand-receptor communication analysis with spatial context (COMMOT, SpatialDE). |
+| [omics-spatial-transcriptomics-spatial-data-io](skills/omics-spatial-transcriptomics-spatial-data-io/) | Load and process Visium, Slide-seq, MERFISH, and STARmap datasets. |
+| [omics-spatial-transcriptomics-spatial-deconvolution](skills/omics-spatial-transcriptomics-spatial-deconvolution/) | Deconvolve cell type proportions in spatial spots with RCTD, SPOTlight. |
+| [omics-spatial-transcriptomics-spatial-domains](skills/omics-spatial-transcriptomics-spatial-domains/) | Identify spatially variable genes and tissue domains with SpatialDE/BANKSY. |
+| [omics-spatial-transcriptomics-spatial-multiomics](skills/omics-spatial-transcriptomics-spatial-multiomics/) | Integrate spatial transcriptomics with proteomics, metabolomics, or imaging. |
+| [omics-spatial-transcriptomics-spatial-neighbors](skills/omics-spatial-transcriptomics-spatial-neighbors/) | Build spatial neighbor graphs and perform neighborhood enrichment analysis. |
+| [omics-spatial-transcriptomics-spatial-preprocessing](skills/omics-spatial-transcriptomics-spatial-preprocessing/) | Preprocess spatial transcriptomics: QC, normalization, spot filtering. |
+| [omics-spatial-transcriptomics-spatial-proteomics](skills/omics-spatial-transcriptomics-spatial-proteomics/) | Analyze spatial proteomics data from CODEX, IMC, or MIBI platforms. |
+| [omics-spatial-transcriptomics-spatial-statistics](skills/omics-spatial-transcriptomics-spatial-statistics/) | Spatial statistics: Moran's I, spatial autocorrelation, co-localization. |
+| [omics-spatial-transcriptomics-spatial-visualization](skills/omics-spatial-transcriptomics-spatial-visualization/) | Visualize spatial gene expression maps and tissue section overlays. |
 
 </details>
 
@@ -782,31 +784,31 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-atac-seq-atac-peak-calling](skills/bio-atac-seq-atac-peak-calling/) | Call ATAC-seq chromatin accessibility peaks with MACS2/MACS3. |
-| [bio-atac-seq-atac-qc](skills/bio-atac-seq-atac-qc/) | ATAC-seq quality control: TSS enrichment, fragment size, FRiP score. |
-| [bio-atac-seq-differential-accessibility](skills/bio-atac-seq-differential-accessibility/) | Differential chromatin accessibility between conditions with DESeq2/DiffBind. |
-| [bio-atac-seq-footprinting](skills/bio-atac-seq-footprinting/) | Transcription factor footprinting from ATAC-seq with TOBIAS or HINT-ATAC. |
-| [bio-atac-seq-motif-deviation](skills/bio-atac-seq-motif-deviation/) | TF motif deviation scoring with chromVAR for single-cell ATAC data. |
-| [bio-atac-seq-nucleosome-positioning](skills/bio-atac-seq-nucleosome-positioning/) | Infer nucleosome positioning from ATAC-seq fragment length distributions. |
-| [bio-chipseq-differential-binding](skills/bio-chipseq-differential-binding/) | Differential ChIP-seq binding analysis with DiffBind. |
-| [bio-chipseq-motif-analysis](skills/bio-chipseq-motif-analysis/) | De novo and known motif discovery from ChIP-seq peaks with HOMER/MEME. |
-| [bio-chipseq-peak-annotation](skills/bio-chipseq-peak-annotation/) | Annotate ChIP-seq peaks with genomic features and nearest genes. |
-| [bio-chipseq-peak-calling](skills/bio-chipseq-peak-calling/) | Call ChIP-seq peaks with MACS2 for TF binding and histone marks. |
-| [bio-chipseq-qc](skills/bio-chipseq-qc/) | ChIP-seq quality metrics: FRiP, SCC, phantompeakqualtools. |
-| [bio-chipseq-super-enhancers](skills/bio-chipseq-super-enhancers/) | Identify super enhancers from H3K27ac ChIP-seq with ROSE. |
-| [bio-chipseq-visualization](skills/bio-chipseq-visualization/) | Heatmaps and aggregate profiles at peak regions with deepTools. |
-| [bio-hi-c-analysis-compartment-analysis](skills/bio-hi-c-analysis-compartment-analysis/) | Call A/B compartments from Hi-C contact matrices. |
-| [bio-hi-c-analysis-contact-pairs](skills/bio-hi-c-analysis-contact-pairs/) | Process Hi-C contact pairs: filtering, deduplication, binning. |
-| [bio-hi-c-analysis-hic-data-io](skills/bio-hi-c-analysis-hic-data-io/) | Read and write Hi-C data formats: .hic, cool, mcool with cooler/hicstuff. |
-| [bio-hi-c-analysis-hic-differential](skills/bio-hi-c-analysis-hic-differential/) | Differential Hi-C interaction analysis between conditions. |
-| [bio-hi-c-analysis-hic-visualization](skills/bio-hi-c-analysis-hic-visualization/) | Visualize Hi-C contact maps, TADs, and loops with pyGenomeTracks. |
-| [bio-hi-c-analysis-loop-calling](skills/bio-hi-c-analysis-loop-calling/) | Detect chromatin loops from Hi-C data with Mustache or HICCUPS. |
-| [bio-hi-c-analysis-matrix-operations](skills/bio-hi-c-analysis-matrix-operations/) | Normalize Hi-C matrices: ICE, KR, VC; compute observed/expected. |
-| [bio-hi-c-analysis-tad-detection](skills/bio-hi-c-analysis-tad-detection/) | Identify topologically associating domains (TADs) from Hi-C data. |
-| [bio-methylation-bismark-alignment](skills/bio-methylation-bismark-alignment/) | Align bisulfite sequencing reads and extract CpG methylation with Bismark. |
-| [bio-methylation-calling](skills/bio-methylation-calling/) | Call CpG methylation from WGBS/RRBS alignments. |
-| [bio-methylation-dmr-detection](skills/bio-methylation-dmr-detection/) | Identify differentially methylated regions (DMRs) with DSS or MethylKit. |
-| [bio-methylation-methylkit](skills/bio-methylation-methylkit/) | Methylation analysis with MethylKit: CpG tiles, DMR calling, annotation. |
+| [omics-atac-seq-atac-peak-calling](skills/omics-atac-seq-atac-peak-calling/) | Call ATAC-seq chromatin accessibility peaks with MACS2/MACS3. |
+| [omics-atac-seq-atac-qc](skills/omics-atac-seq-atac-qc/) | ATAC-seq quality control: TSS enrichment, fragment size, FRiP score. |
+| [omics-atac-seq-differential-accessibility](skills/omics-atac-seq-differential-accessibility/) | Differential chromatin accessibility between conditions with DESeq2/DiffBind. |
+| [omics-atac-seq-footprinting](skills/omics-atac-seq-footprinting/) | Transcription factor footprinting from ATAC-seq with TOBIAS or HINT-ATAC. |
+| [omics-atac-seq-motif-deviation](skills/omics-atac-seq-motif-deviation/) | TF motif deviation scoring with chromVAR for single-cell ATAC data. |
+| [omics-atac-seq-nucleosome-positioning](skills/omics-atac-seq-nucleosome-positioning/) | Infer nucleosome positioning from ATAC-seq fragment length distributions. |
+| [omics-chipseq-differential-binding](skills/omics-chipseq-differential-binding/) | Differential ChIP-seq binding analysis with DiffBind. |
+| [omics-chipseq-motif-analysis](skills/omics-chipseq-motif-analysis/) | De novo and known motif discovery from ChIP-seq peaks with HOMER/MEME. |
+| [omics-chipseq-peak-annotation](skills/omics-chipseq-peak-annotation/) | Annotate ChIP-seq peaks with genomic features and nearest genes. |
+| [omics-chipseq-peak-calling](skills/omics-chipseq-peak-calling/) | Call ChIP-seq peaks with MACS2 for TF binding and histone marks. |
+| [omics-chipseq-qc](skills/omics-chipseq-qc/) | ChIP-seq quality metrics: FRiP, SCC, phantompeakqualtools. |
+| [omics-chipseq-super-enhancers](skills/omics-chipseq-super-enhancers/) | Identify super enhancers from H3K27ac ChIP-seq with ROSE. |
+| [omics-chipseq-visualization](skills/omics-chipseq-visualization/) | Heatmaps and aggregate profiles at peak regions with deepTools. |
+| [omics-hi-c-analysis-compartment-analysis](skills/omics-hi-c-analysis-compartment-analysis/) | Call A/B compartments from Hi-C contact matrices. |
+| [omics-hi-c-analysis-contact-pairs](skills/omics-hi-c-analysis-contact-pairs/) | Process Hi-C contact pairs: filtering, deduplication, binning. |
+| [omics-hi-c-analysis-hic-data-io](skills/omics-hi-c-analysis-hic-data-io/) | Read and write Hi-C data formats: .hic, cool, mcool with cooler/hicstuff. |
+| [omics-hi-c-analysis-hic-differential](skills/omics-hi-c-analysis-hic-differential/) | Differential Hi-C interaction analysis between conditions. |
+| [omics-hi-c-analysis-hic-visualization](skills/omics-hi-c-analysis-hic-visualization/) | Visualize Hi-C contact maps, TADs, and loops with pyGenomeTracks. |
+| [omics-hi-c-analysis-loop-calling](skills/omics-hi-c-analysis-loop-calling/) | Detect chromatin loops from Hi-C data with Mustache or HICCUPS. |
+| [omics-hi-c-analysis-matrix-operations](skills/omics-hi-c-analysis-matrix-operations/) | Normalize Hi-C matrices: ICE, KR, VC; compute observed/expected. |
+| [omics-hi-c-analysis-tad-detection](skills/omics-hi-c-analysis-tad-detection/) | Identify topologically associating domains (TADs) from Hi-C data. |
+| [omics-methylation-bismark-alignment](skills/omics-methylation-bismark-alignment/) | Align bisulfite sequencing reads and extract CpG methylation with Bismark. |
+| [omics-methylation-calling](skills/omics-methylation-calling/) | Call CpG methylation from WGBS/RRBS alignments. |
+| [omics-methylation-dmr-detection](skills/omics-methylation-dmr-detection/) | Identify differentially methylated regions (DMRs) with DSS or MethylKit. |
+| [omics-methylation-methylkit](skills/omics-methylation-methylkit/) | Methylation analysis with MethylKit: CpG tiles, DMR calling, annotation. |
 
 </details>
 
@@ -817,19 +819,19 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-metagenomics-abundance](skills/bio-metagenomics-abundance/) | Estimate microbial taxon abundances from shotgun metagenomics. |
-| [bio-metagenomics-amr-detection](skills/bio-metagenomics-amr-detection/) | Detect antimicrobial resistance genes with AMRFinder or RGI/CARD. |
-| [bio-metagenomics-functional-profiling](skills/bio-metagenomics-functional-profiling/) | Functional profiling of metagenomes with HUMAnN3 for pathway/gene families. |
-| [bio-metagenomics-kraken](skills/bio-metagenomics-kraken/) | Taxonomic classification of metagenomic reads with Kraken2/Bracken. |
-| [bio-metagenomics-metaphlan](skills/bio-metagenomics-metaphlan/) | Clade-specific marker-based profiling of microbial communities with MetaPhlAn4. |
-| [bio-metagenomics-strain-tracking](skills/bio-metagenomics-strain-tracking/) | Track microbial strains across samples with StrainPhlan or inStrain. |
-| [bio-metagenomics-visualization](skills/bio-metagenomics-visualization/) | Visualize microbiome composition with Krona charts and stacked bar plots. |
-| [bio-microbiome-amplicon-processing](skills/bio-microbiome-amplicon-processing/) | Process 16S/ITS amplicon sequencing with QIIME2 or DADA2. |
-| [bio-microbiome-differential-abundance](skills/bio-microbiome-differential-abundance/) | Test differential microbial abundance with ANCOM-BC, MaAsLin2, or ALDEx2. |
-| [bio-microbiome-diversity-analysis](skills/bio-microbiome-diversity-analysis/) | Alpha/beta diversity analysis: Shannon, PD, UniFrac, PCoA. |
-| [bio-microbiome-functional-prediction](skills/bio-microbiome-functional-prediction/) | Predict functional capacity from 16S data with PICRUSt2 or Tax4Fun. |
-| [bio-microbiome-qiime2-workflow](skills/bio-microbiome-qiime2-workflow/) | End-to-end QIIME2 workflow: denoising, diversity, differential abundance. |
-| [bio-microbiome-taxonomy-assignment](skills/bio-microbiome-taxonomy-assignment/) | Assign taxonomy to ASVs/OTUs using SILVA, GTDB, or Greengenes2. |
+| [omics-metagenomics-abundance](skills/omics-metagenomics-abundance/) | Estimate microbial taxon abundances from shotgun metagenomics. |
+| [omics-metagenomics-amr-detection](skills/omics-metagenomics-amr-detection/) | Detect antimicrobial resistance genes with AMRFinder or RGI/CARD. |
+| [omics-metagenomics-functional-profiling](skills/omics-metagenomics-functional-profiling/) | Functional profiling of metagenomes with HUMAnN3 for pathway/gene families. |
+| [omics-metagenomics-kraken](skills/omics-metagenomics-kraken/) | Taxonomic classification of metagenomic reads with Kraken2/Bracken. |
+| [omics-metagenomics-metaphlan](skills/omics-metagenomics-metaphlan/) | Clade-specific marker-based profiling of microbial communities with MetaPhlAn4. |
+| [omics-metagenomics-strain-tracking](skills/omics-metagenomics-strain-tracking/) | Track microbial strains across samples with StrainPhlan or inStrain. |
+| [omics-metagenomics-visualization](skills/omics-metagenomics-visualization/) | Visualize microbiome composition with Krona charts and stacked bar plots. |
+| [omics-microbiome-amplicon-processing](skills/omics-microbiome-amplicon-processing/) | Process 16S/ITS amplicon sequencing with QIIME2 or DADA2. |
+| [omics-microbiome-differential-abundance](skills/omics-microbiome-differential-abundance/) | Test differential microbial abundance with ANCOM-BC, MaAsLin2, or ALDEx2. |
+| [omics-microbiome-diversity-analysis](skills/omics-microbiome-diversity-analysis/) | Alpha/beta diversity analysis: Shannon, PD, UniFrac, PCoA. |
+| [omics-microbiome-functional-prediction](skills/omics-microbiome-functional-prediction/) | Predict functional capacity from 16S data with PICRUSt2 or Tax4Fun. |
+| [omics-microbiome-qiime2-workflow](skills/omics-microbiome-qiime2-workflow/) | End-to-end QIIME2 workflow: denoising, diversity, differential abundance. |
+| [omics-microbiome-taxonomy-assignment](skills/omics-microbiome-taxonomy-assignment/) | Assign taxonomy to ASVs/OTUs using SILVA, GTDB, or Greengenes2. |
 
 </details>
 
@@ -840,30 +842,30 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-immunoinformatics-epitope-prediction](skills/bio-immunoinformatics-epitope-prediction/) | Predict MHC-I/II epitopes from protein sequences with NetMHCpan/MHCflurry. |
-| [bio-immunoinformatics-immunogenicity-scoring](skills/bio-immunoinformatics-immunogenicity-scoring/) | Score peptide immunogenicity for vaccine and neoantigen prioritization. |
-| [bio-immunoinformatics-mhc-binding-prediction](skills/bio-immunoinformatics-mhc-binding-prediction/) | Predict peptide-MHC binding affinities for multiple alleles. |
-| [bio-immunoinformatics-neoantigen-prediction](skills/bio-immunoinformatics-neoantigen-prediction/) | Predict neoantigens from somatic mutations for personalized cancer vaccines. |
-| [bio-immunoinformatics-tcr-epitope-binding](skills/bio-immunoinformatics-tcr-epitope-binding/) | Predict TCR-epitope binding with ERGO, pMTnet, or NetTCR. |
-| [bio-tcr-bcr-analysis-immcantation-analysis](skills/bio-tcr-bcr-analysis-immcantation-analysis/) | Analyze B/T cell receptor repertoires with the Immcantation suite. |
-| [bio-tcr-bcr-analysis-mixcr-analysis](skills/bio-tcr-bcr-analysis-mixcr-analysis/) | MiXCR V(D)J alignment and clonotype assembly for immune repertoires. |
-| [bio-tcr-bcr-analysis-repertoire-visualization](skills/bio-tcr-bcr-analysis-repertoire-visualization/) | Visualize repertoire diversity, clonal expansion, and V-gene usage. |
-| [bio-tcr-bcr-analysis-scirpy-analysis](skills/bio-tcr-bcr-analysis-scirpy-analysis/) | Single-cell TCR/BCR analysis integrated with scRNA-seq using Scirpy. |
-| [bio-tcr-bcr-analysis-vdjtools-analysis](skills/bio-tcr-bcr-analysis-vdjtools-analysis/) | Immune repertoire statistics and overlap analysis with VDJtools. |
-| [bio-flow-cytometry-bead-normalization](skills/bio-flow-cytometry-bead-normalization/) | Normalize flow cytometry data using calibration beads. |
-| [bio-flow-cytometry-clustering-phenotyping](skills/bio-flow-cytometry-clustering-phenotyping/) | Cluster and phenotype cell populations with FlowSOM, PhenoGraph, or UMAP. |
-| [bio-flow-cytometry-compensation-transformation](skills/bio-flow-cytometry-compensation-transformation/) | Apply compensation matrices and biexponential/arcsinh transformations. |
-| [bio-flow-cytometry-cytometry-qc](skills/bio-flow-cytometry-cytometry-qc/) | Quality control for flow/mass cytometry: signal drift, spillover, outlier detection. |
-| [bio-flow-cytometry-differential-analysis](skills/bio-flow-cytometry-differential-analysis/) | Statistical comparison of cell populations between conditions. |
-| [bio-flow-cytometry-doublet-detection](skills/bio-flow-cytometry-doublet-detection/) | Detect and remove doublets from flow cytometry data. |
-| [bio-flow-cytometry-fcs-handling](skills/bio-flow-cytometry-fcs-handling/) | Read, write, and manipulate FCS files with FlowCore/FlowKit. |
-| [bio-flow-cytometry-gating-analysis](skills/bio-flow-cytometry-gating-analysis/) | Manual and algorithmic gating strategies for cell population identification. |
-| [bio-imaging-mass-cytometry-cell-segmentation](skills/bio-imaging-mass-cytometry-cell-segmentation/) | Segment cells in IMC images with Mesmer or CellProfiler. |
-| [bio-imaging-mass-cytometry-data-preprocessing](skills/bio-imaging-mass-cytometry-data-preprocessing/) | Preprocess imaging mass cytometry data: hot pixel removal, normalization. |
-| [bio-imaging-mass-cytometry-interactive-annotation](skills/bio-imaging-mass-cytometry-interactive-annotation/) | Interactively annotate cell types in IMC spatial datasets. |
-| [bio-imaging-mass-cytometry-phenotyping](skills/bio-imaging-mass-cytometry-phenotyping/) | Phenotype immune and tumor cells from multi-marker IMC panels. |
-| [bio-imaging-mass-cytometry-quality-metrics](skills/bio-imaging-mass-cytometry-quality-metrics/) | Quality metrics for IMC acquisitions: signal-to-noise, tissue coverage. |
-| [bio-imaging-mass-cytometry-spatial-analysis](skills/bio-imaging-mass-cytometry-spatial-analysis/) | Spatial cell neighborhood analysis from imaging mass cytometry data. |
+| [omics-immunoinformatics-epitope-prediction](skills/omics-immunoinformatics-epitope-prediction/) | Predict MHC-I/II epitopes from protein sequences with NetMHCpan/MHCflurry. |
+| [omics-immunoinformatics-immunogenicity-scoring](skills/omics-immunoinformatics-immunogenicity-scoring/) | Score peptide immunogenicity for vaccine and neoantigen prioritization. |
+| [omics-immunoinformatics-mhc-binding-prediction](skills/omics-immunoinformatics-mhc-binding-prediction/) | Predict peptide-MHC binding affinities for multiple alleles. |
+| [omics-immunoinformatics-neoantigen-prediction](skills/omics-immunoinformatics-neoantigen-prediction/) | Predict neoantigens from somatic mutations for personalized cancer vaccines. |
+| [omics-immunoinformatics-tcr-epitope-binding](skills/omics-immunoinformatics-tcr-epitope-binding/) | Predict TCR-epitope binding with ERGO, pMTnet, or NetTCR. |
+| [omics-tcr-bcr-analysis-immcantation-analysis](skills/omics-tcr-bcr-analysis-immcantation-analysis/) | Analyze B/T cell receptor repertoires with the Immcantation suite. |
+| [omics-tcr-bcr-analysis-mixcr-analysis](skills/omics-tcr-bcr-analysis-mixcr-analysis/) | MiXCR V(D)J alignment and clonotype assembly for immune repertoires. |
+| [omics-tcr-bcr-analysis-repertoire-visualization](skills/omics-tcr-bcr-analysis-repertoire-visualization/) | Visualize repertoire diversity, clonal expansion, and V-gene usage. |
+| [omics-tcr-bcr-analysis-scirpy-analysis](skills/omics-tcr-bcr-analysis-scirpy-analysis/) | Single-cell TCR/BCR analysis integrated with scRNA-seq using Scirpy. |
+| [omics-tcr-bcr-analysis-vdjtools-analysis](skills/omics-tcr-bcr-analysis-vdjtools-analysis/) | Immune repertoire statistics and overlap analysis with VDJtools. |
+| [omics-flow-cytometry-bead-normalization](skills/omics-flow-cytometry-bead-normalization/) | Normalize flow cytometry data using calibration beads. |
+| [omics-flow-cytometry-clustering-phenotyping](skills/omics-flow-cytometry-clustering-phenotyping/) | Cluster and phenotype cell populations with FlowSOM, PhenoGraph, or UMAP. |
+| [omics-flow-cytometry-compensation-transformation](skills/omics-flow-cytometry-compensation-transformation/) | Apply compensation matrices and biexponential/arcsinh transformations. |
+| [omics-flow-cytometry-cytometry-qc](skills/omics-flow-cytometry-cytometry-qc/) | Quality control for flow/mass cytometry: signal drift, spillover, outlier detection. |
+| [omics-flow-cytometry-differential-analysis](skills/omics-flow-cytometry-differential-analysis/) | Statistical comparison of cell populations between conditions. |
+| [omics-flow-cytometry-doublet-detection](skills/omics-flow-cytometry-doublet-detection/) | Detect and remove doublets from flow cytometry data. |
+| [omics-flow-cytometry-fcs-handling](skills/omics-flow-cytometry-fcs-handling/) | Read, write, and manipulate FCS files with FlowCore/FlowKit. |
+| [omics-flow-cytometry-gating-analysis](skills/omics-flow-cytometry-gating-analysis/) | Manual and algorithmic gating strategies for cell population identification. |
+| [omics-imaging-mass-cytometry-cell-segmentation](skills/omics-imaging-mass-cytometry-cell-segmentation/) | Segment cells in IMC images with Mesmer or CellProfiler. |
+| [omics-imaging-mass-cytometry-data-preprocessing](skills/omics-imaging-mass-cytometry-data-preprocessing/) | Preprocess imaging mass cytometry data: hot pixel removal, normalization. |
+| [omics-imaging-mass-cytometry-interactive-annotation](skills/omics-imaging-mass-cytometry-interactive-annotation/) | Interactively annotate cell types in IMC spatial datasets. |
+| [omics-imaging-mass-cytometry-phenotyping](skills/omics-imaging-mass-cytometry-phenotyping/) | Phenotype immune and tumor cells from multi-marker IMC panels. |
+| [omics-imaging-mass-cytometry-quality-metrics](skills/omics-imaging-mass-cytometry-quality-metrics/) | Quality metrics for IMC acquisitions: signal-to-noise, tissue coverage. |
+| [omics-imaging-mass-cytometry-spatial-analysis](skills/omics-imaging-mass-cytometry-spatial-analysis/) | Spatial cell neighborhood analysis from imaging mass cytometry data. |
 
 </details>
 
@@ -874,10 +876,10 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-multi-omics-data-harmonization](skills/bio-multi-omics-data-harmonization/) | Harmonize multi-omics datasets: sample matching, batch correction, feature alignment. |
-| [bio-multi-omics-mixomics-analysis](skills/bio-multi-omics-mixomics-analysis/) | Multi-omics factor analysis with mixOmics (DIABLO, MOFA, sPLS-DA). |
-| [bio-multi-omics-mofa-integration](skills/bio-multi-omics-mofa-integration/) | Multi-Omics Factor Analysis (MOFA+) for latent factor discovery across modalities. |
-| [bio-multi-omics-similarity-network](skills/bio-multi-omics-similarity-network/) | Similarity Network Fusion (SNF) for patient stratification from multi-omics. |
+| [omics-multi-omics-data-harmonization](skills/omics-multi-omics-data-harmonization/) | Harmonize multi-omics datasets: sample matching, batch correction, feature alignment. |
+| [omics-multi-omics-mixomics-analysis](skills/omics-multi-omics-mixomics-analysis/) | Multi-omics factor analysis with mixOmics (DIABLO, MOFA, sPLS-DA). |
+| [omics-multi-omics-mofa-integration](skills/omics-multi-omics-mofa-integration/) | Multi-Omics Factor Analysis (MOFA+) for latent factor discovery across modalities. |
+| [omics-multi-omics-similarity-network](skills/omics-multi-omics-similarity-network/) | Similarity Network Fusion (SNF) for patient stratification from multi-omics. |
 
 </details>
 
@@ -888,23 +890,23 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-proteomics-data-import](skills/bio-proteomics-data-import/) | Import DDA/DIA proteomics data from MaxQuant, Proteome Discoverer, FragPipe. |
-| [bio-proteomics-dia-analysis](skills/bio-proteomics-dia-analysis/) | DIA proteomics analysis with DIA-NN or Spectronaut. |
-| [bio-proteomics-differential-abundance](skills/bio-proteomics-differential-abundance/) | Differential protein abundance with limma, MSstats, or DEqMS. |
-| [bio-proteomics-peptide-identification](skills/bio-proteomics-peptide-identification/) | Peptide spectrum matching and database search result parsing. |
-| [bio-proteomics-protein-inference](skills/bio-proteomics-protein-inference/) | Protein grouping, parsimony, and FDR control for proteomics experiments. |
-| [bio-proteomics-proteomics-qc](skills/bio-proteomics-proteomics-qc/) | Proteomics QC: peptide counts, coverage, missing values, CV. |
-| [bio-proteomics-ptm-analysis](skills/bio-proteomics-ptm-analysis/) | Post-translational modification analysis: phospho, ubiquitin, glycan enrichment. |
-| [bio-proteomics-quantification](skills/bio-proteomics-quantification/) | Label-free, TMT/iTRAQ, and SILAC quantification workflows. |
-| [bio-proteomics-spectral-libraries](skills/bio-proteomics-spectral-libraries/) | Build and use spectral libraries for DIA data analysis. |
-| [bio-metabolomics-lipidomics](skills/bio-metabolomics-lipidomics/) | Lipidomics data analysis: lipid class annotation, fatty acid composition. |
-| [bio-metabolomics-metabolite-annotation](skills/bio-metabolomics-metabolite-annotation/) | Annotate mass spec features with HMDB, MZmine, SIRIUS, or MetFrag. |
-| [bio-metabolomics-msdial-preprocessing](skills/bio-metabolomics-msdial-preprocessing/) | MS-DIAL-based LC-MS/GC-MS data preprocessing and peak detection. |
-| [bio-metabolomics-normalization-qc](skills/bio-metabolomics-normalization-qc/) | Metabolomics normalization: PQN, LOESS, median, batch correction. |
-| [bio-metabolomics-pathway-mapping](skills/bio-metabolomics-pathway-mapping/) | Map identified metabolites to KEGG, MetaCyc, or Reactome pathways. |
-| [bio-metabolomics-statistical-analysis](skills/bio-metabolomics-statistical-analysis/) | Univariate/multivariate stats for metabolomics: PCA, PLS-DA, ANOVA. |
-| [bio-metabolomics-targeted-analysis](skills/bio-metabolomics-targeted-analysis/) | Targeted metabolomics with MRM/SRM: calibration curves, quantification. |
-| [bio-metabolomics-xcms-preprocessing](skills/bio-metabolomics-xcms-preprocessing/) | XCMS-based LC-MS peak detection, alignment, and grouping. |
+| [omics-proteomics-data-import](skills/omics-proteomics-data-import/) | Import DDA/DIA proteomics data from MaxQuant, Proteome Discoverer, FragPipe. |
+| [omics-proteomics-dia-analysis](skills/omics-proteomics-dia-analysis/) | DIA proteomics analysis with DIA-NN or Spectronaut. |
+| [omics-proteomics-differential-abundance](skills/omics-proteomics-differential-abundance/) | Differential protein abundance with limma, MSstats, or DEqMS. |
+| [omics-proteomics-peptide-identification](skills/omics-proteomics-peptide-identification/) | Peptide spectrum matching and database search result parsing. |
+| [omics-proteomics-protein-inference](skills/omics-proteomics-protein-inference/) | Protein grouping, parsimony, and FDR control for proteomics experiments. |
+| [omics-proteomics-proteomics-qc](skills/omics-proteomics-proteomics-qc/) | Proteomics QC: peptide counts, coverage, missing values, CV. |
+| [omics-proteomics-ptm-analysis](skills/omics-proteomics-ptm-analysis/) | Post-translational modification analysis: phospho, ubiquitin, glycan enrichment. |
+| [omics-proteomics-quantification](skills/omics-proteomics-quantification/) | Label-free, TMT/iTRAQ, and SILAC quantification workflows. |
+| [omics-proteomics-spectral-libraries](skills/omics-proteomics-spectral-libraries/) | Build and use spectral libraries for DIA data analysis. |
+| [omics-metabolomics-lipidomics](skills/omics-metabolomics-lipidomics/) | Lipidomics data analysis: lipid class annotation, fatty acid composition. |
+| [omics-metabolomics-metabolite-annotation](skills/omics-metabolomics-metabolite-annotation/) | Annotate mass spec features with HMDB, MZmine, SIRIUS, or MetFrag. |
+| [omics-metabolomics-msdial-preprocessing](skills/omics-metabolomics-msdial-preprocessing/) | MS-DIAL-based LC-MS/GC-MS data preprocessing and peak detection. |
+| [omics-metabolomics-normalization-qc](skills/omics-metabolomics-normalization-qc/) | Metabolomics normalization: PQN, LOESS, median, batch correction. |
+| [omics-metabolomics-pathway-mapping](skills/omics-metabolomics-pathway-mapping/) | Map identified metabolites to KEGG, MetaCyc, or Reactome pathways. |
+| [omics-metabolomics-statistical-analysis](skills/omics-metabolomics-statistical-analysis/) | Univariate/multivariate stats for metabolomics: PCA, PLS-DA, ANOVA. |
+| [omics-metabolomics-targeted-analysis](skills/omics-metabolomics-targeted-analysis/) | Targeted metabolomics with MRM/SRM: calibration curves, quantification. |
+| [omics-metabolomics-xcms-preprocessing](skills/omics-metabolomics-xcms-preprocessing/) | XCMS-based LC-MS peak detection, alignment, and grouping. |
 
 </details>
 
@@ -915,19 +917,19 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-structural-biology-alphafold-predictions](skills/bio-structural-biology-alphafold-predictions/) | Use AlphaFold2/3 predictions: model quality assessment, confidence scores. |
-| [bio-structural-biology-modern-structure-prediction](skills/bio-structural-biology-modern-structure-prediction/) | Modern structure prediction with ESMFold, RoseTTAFold, and OpenFold. |
-| [bio-pdb-geometric-analysis](skills/bio-pdb-geometric-analysis/) | Geometric analysis of protein structures: distances, angles, contacts, RMSD. |
-| [bio-pdb-structure-io](skills/bio-pdb-structure-io/) | Read and write PDB/mmCIF structure files with BioPython or Gemmi. |
-| [bio-pdb-structure-modification](skills/bio-pdb-structure-modification/) | Modify protein structures: add hydrogens, mutate residues, energy minimize. |
-| [bio-pdb-structure-navigation](skills/bio-pdb-structure-navigation/) | Navigate and inspect PDB structures: chain, residue, atom selection. |
-| [bio-molecular-descriptors](skills/bio-molecular-descriptors/) | Calculate molecular descriptors (RDKit): MW, LogP, TPSA, fingerprints. |
-| [bio-molecular-io](skills/bio-molecular-io/) | Read/write chemical structure formats: SDF, SMILES, MOL2, PDB with RDKit. |
-| [bio-reaction-enumeration](skills/bio-reaction-enumeration/) | Enumerate reactions and products from SMARTS reaction templates. |
-| [bio-similarity-searching](skills/bio-similarity-searching/) | Molecular similarity search: Tanimoto, fingerprint-based, scaffold hopping. |
-| [bio-substructure-search](skills/bio-substructure-search/) | Substructure searching in chemical databases using SMARTS patterns. |
-| [bio-virtual-screening](skills/bio-virtual-screening/) | Virtual screening workflows: docking, scoring, pose filtering with AutoDock/Vina. |
-| [bio-admet-prediction](skills/bio-admet-prediction/) | Predict ADMET properties: absorption, distribution, metabolism, excretion, toxicity. |
+| [omics-structural-biology-alphafold-predictions](skills/omics-structural-biology-alphafold-predictions/) | Use AlphaFold2/3 predictions: model quality assessment, confidence scores. |
+| [omics-structural-biology-modern-structure-prediction](skills/omics-structural-biology-modern-structure-prediction/) | Modern structure prediction with ESMFold, RoseTTAFold, and OpenFold. |
+| [omics-pdb-geometric-analysis](skills/omics-pdb-geometric-analysis/) | Geometric analysis of protein structures: distances, angles, contacts, RMSD. |
+| [omics-pdb-structure-io](skills/omics-pdb-structure-io/) | Read and write PDB/mmCIF structure files with BioPython or Gemmi. |
+| [omics-pdb-structure-modification](skills/omics-pdb-structure-modification/) | Modify protein structures: add hydrogens, mutate residues, energy minimize. |
+| [omics-pdb-structure-navigation](skills/omics-pdb-structure-navigation/) | Navigate and inspect PDB structures: chain, residue, atom selection. |
+| [drug-molecular-descriptors](skills/drug-molecular-descriptors/) | Calculate molecular descriptors (RDKit): MW, LogP, TPSA, fingerprints. |
+| [drug-molecular-io](skills/drug-molecular-io/) | Read/write chemical structure formats: SDF, SMILES, MOL2, PDB with RDKit. |
+| [drug-reaction-enumeration](skills/drug-reaction-enumeration/) | Enumerate reactions and products from SMARTS reaction templates. |
+| [drug-similarity-searching](skills/drug-similarity-searching/) | Molecular similarity search: Tanimoto, fingerprint-based, scaffold hopping. |
+| [drug-substructure-search](skills/drug-substructure-search/) | Substructure searching in chemical databases using SMARTS patterns. |
+| [drug-virtual-screening](skills/drug-virtual-screening/) | Virtual screening workflows: docking, scoring, pose filtering with AutoDock/Vina. |
+| [drug-admet-prediction](skills/drug-admet-prediction/) | Predict ADMET properties: absorption, distribution, metabolism, excretion, toxicity. |
 
 </details>
 
@@ -938,29 +940,29 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-epidemiological-genomics-amr-surveillance](skills/bio-epidemiological-genomics-amr-surveillance/) | Antimicrobial resistance surveillance from genomic epidemiology data. |
-| [bio-epidemiological-genomics-pathogen-typing](skills/bio-epidemiological-genomics-pathogen-typing/) | Pathogen molecular typing: MLST, wgMLST, cgMLST for outbreak analysis. |
-| [bio-epidemiological-genomics-phylodynamics](skills/bio-epidemiological-genomics-phylodynamics/) | Phylodynamics: molecular clock, population dynamics, BEAST2/TreeTime. |
-| [bio-epidemiological-genomics-transmission-inference](skills/bio-epidemiological-genomics-transmission-inference/) | Infer transmission networks from pathogen genomics with TransPhylo/outbreaker2. |
-| [bio-epidemiological-genomics-variant-surveillance](skills/bio-epidemiological-genomics-variant-surveillance/) | Track pathogen variant emergence and spread from genomic surveillance. |
-| [bio-causal-genomics-colocalization-analysis](skills/bio-causal-genomics-colocalization-analysis/) | Colocalization analysis of GWAS and eQTL signals with coloc or eCAVIAR. |
-| [bio-causal-genomics-fine-mapping](skills/bio-causal-genomics-fine-mapping/) | Fine-map causal variants at GWAS loci with SuSiE or FINEMAP. |
-| [bio-causal-genomics-mediation-analysis](skills/bio-causal-genomics-mediation-analysis/) | Causal mediation analysis for gene expression intermediaries. |
-| [bio-causal-genomics-mendelian-randomization](skills/bio-causal-genomics-mendelian-randomization/) | Two-sample Mendelian randomization with MR-Base/TwoSampleMR. |
-| [bio-causal-genomics-pleiotropy-detection](skills/bio-causal-genomics-pleiotropy-detection/) | Detect horizontal pleiotropy and heterogeneity in MR analyses. |
-| [bio-genome-engineering-base-editing-design](skills/bio-genome-engineering-base-editing-design/) | Design base editors (CBE/ABE) for precise single-base correction. |
-| [bio-genome-engineering-grna-design](skills/bio-genome-engineering-grna-design/) | Design and score CRISPR guide RNAs with Cas-OFFinder and CRISPOR. |
-| [bio-genome-engineering-hdr-template-design](skills/bio-genome-engineering-hdr-template-design/) | Design HDR templates for precise knock-in via homology-directed repair. |
-| [bio-genome-engineering-off-target-prediction](skills/bio-genome-engineering-off-target-prediction/) | Predict CRISPR off-target sites genome-wide for safety assessment. |
-| [bio-genome-engineering-prime-editing-design](skills/bio-genome-engineering-prime-editing-design/) | Design pegRNAs and nickase gRNAs for prime editing experiments. |
-| [bio-crispr-screens-base-editing-analysis](skills/bio-crispr-screens-base-editing-analysis/) | Analyze base editing screens: guide efficiency, editing outcomes. |
-| [bio-crispr-screens-batch-correction](skills/bio-crispr-screens-batch-correction/) | Correct batch effects in CRISPR screen data across replicates. |
-| [bio-crispr-screens-crispresso-editing](skills/bio-crispr-screens-crispresso-editing/) | Quantify editing outcomes with CRISPResso2 from amplicon sequencing. |
-| [bio-crispr-screens-hit-calling](skills/bio-crispr-screens-hit-calling/) | Call hits from CRISPR screens using MAGeCK, BAGEL2, or casTLE. |
-| [bio-crispr-screens-jacks-analysis](skills/bio-crispr-screens-jacks-analysis/) | CRISPR screen analysis with JACKS hierarchical Bayesian model. |
-| [bio-crispr-screens-library-design](skills/bio-crispr-screens-library-design/) | Design CRISPR screen libraries: guide selection, controls, coverage. |
-| [bio-crispr-screens-mageck-analysis](skills/bio-crispr-screens-mageck-analysis/) | MAGeCK MLE/RRA analysis for CRISPR pooled screens. |
-| [bio-crispr-screens-screen-qc](skills/bio-crispr-screens-screen-qc/) | Quality control for CRISPR screens: Gini index, read distribution. |
+| [omics-epidemiological-genomics-amr-surveillance](skills/omics-epidemiological-genomics-amr-surveillance/) | Antimicrobial resistance surveillance from genomic epidemiology data. |
+| [omics-epidemiological-genomics-pathogen-typing](skills/omics-epidemiological-genomics-pathogen-typing/) | Pathogen molecular typing: MLST, wgMLST, cgMLST for outbreak analysis. |
+| [omics-epidemiological-genomics-phylodynamics](skills/omics-epidemiological-genomics-phylodynamics/) | Phylodynamics: molecular clock, population dynamics, BEAST2/TreeTime. |
+| [omics-epidemiological-genomics-transmission-inference](skills/omics-epidemiological-genomics-transmission-inference/) | Infer transmission networks from pathogen genomics with TransPhylo/outbreaker2. |
+| [omics-epidemiological-genomics-variant-surveillance](skills/omics-epidemiological-genomics-variant-surveillance/) | Track pathogen variant emergence and spread from genomic surveillance. |
+| [omics-causal-genomics-colocalization-analysis](skills/omics-causal-genomics-colocalization-analysis/) | Colocalization analysis of GWAS and eQTL signals with coloc or eCAVIAR. |
+| [omics-causal-genomics-fine-mapping](skills/omics-causal-genomics-fine-mapping/) | Fine-map causal variants at GWAS loci with SuSiE or FINEMAP. |
+| [omics-causal-genomics-mediation-analysis](skills/omics-causal-genomics-mediation-analysis/) | Causal mediation analysis for gene expression intermediaries. |
+| [omics-causal-genomics-mendelian-randomization](skills/omics-causal-genomics-mendelian-randomization/) | Two-sample Mendelian randomization with MR-Base/TwoSampleMR. |
+| [omics-causal-genomics-pleiotropy-detection](skills/omics-causal-genomics-pleiotropy-detection/) | Detect horizontal pleiotropy and heterogeneity in MR analyses. |
+| [omics-genome-engineering-base-editing-design](skills/omics-genome-engineering-base-editing-design/) | Design base editors (CBE/ABE) for precise single-base correction. |
+| [omics-genome-engineering-grna-design](skills/omics-genome-engineering-grna-design/) | Design and score CRISPR guide RNAs with Cas-OFFinder and CRISPOR. |
+| [omics-genome-engineering-hdr-template-design](skills/omics-genome-engineering-hdr-template-design/) | Design HDR templates for precise knock-in via homology-directed repair. |
+| [omics-genome-engineering-off-target-prediction](skills/omics-genome-engineering-off-target-prediction/) | Predict CRISPR off-target sites genome-wide for safety assessment. |
+| [omics-genome-engineering-prime-editing-design](skills/omics-genome-engineering-prime-editing-design/) | Design pegRNAs and nickase gRNAs for prime editing experiments. |
+| [omics-crispr-screens-base-editing-analysis](skills/omics-crispr-screens-base-editing-analysis/) | Analyze base editing screens: guide efficiency, editing outcomes. |
+| [omics-crispr-screens-batch-correction](skills/omics-crispr-screens-batch-correction/) | Correct batch effects in CRISPR screen data across replicates. |
+| [omics-crispr-screens-crispresso-editing](skills/omics-crispr-screens-crispresso-editing/) | Quantify editing outcomes with CRISPResso2 from amplicon sequencing. |
+| [omics-crispr-screens-hit-calling](skills/omics-crispr-screens-hit-calling/) | Call hits from CRISPR screens using MAGeCK, BAGEL2, or casTLE. |
+| [omics-crispr-screens-jacks-analysis](skills/omics-crispr-screens-jacks-analysis/) | CRISPR screen analysis with JACKS hierarchical Bayesian model. |
+| [omics-crispr-screens-library-design](skills/omics-crispr-screens-library-design/) | Design CRISPR screen libraries: guide selection, controls, coverage. |
+| [omics-crispr-screens-mageck-analysis](skills/omics-crispr-screens-mageck-analysis/) | MAGeCK MLE/RRA analysis for CRISPR pooled screens. |
+| [omics-crispr-screens-screen-qc](skills/omics-crispr-screens-screen-qc/) | Quality control for CRISPR screens: Gini index, read distribution. |
 
 </details>
 
@@ -978,30 +980,30 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [anndata](skills/anndata/) | Working with annotated data matrices in Python for single-cell genomics analysis, managing experimental measurements with metadata and large-scale omics data. |
-| [scanpy](skills/scanpy/) | Single-cell RNA-seq analysis. Load .h5ad/10X data, QC, normalization, PCA/UMAP/t-SNE, Leiden clustering, marker genes, cell type annotation, trajectory. |
-| [scvi-tools](skills/scvi-tools/) | Deep learning for single-cell analysis: data integration/batch correction (scVI/scANVI), ATAC-seq (PeakVI), CITE-seq (totalVI), multiome (MultiVI), spatial deconvolution (DestVI). |
-| [single-cell-rna-qc](skills/single-cell-rna-qc/) | Quality control on single-cell RNA-seq data (.h5ad or .h5 files) using scverse best practices with MAD-based filtering and comprehensive visualizations. |
-| [cellxgene-census](skills/cellxgene-census/) | Query CZ CELLxGENE Census (61M+ cells). Filter by cell type/tissue/disease, retrieve expression data, integrate with scanpy/PyTorch, for population-scale single-cell analysis. |
-| [pydeseq2](skills/pydeseq2/) | Differential gene expression analysis (Python DESeq2). Identify DE genes from bulk RNA-seq counts, Wald tests, FDR correction, volcano/MA plots. |
-| [bulk-combat-correction](skills/bulk-combat-correction/) | Remove batch effects from merged bulk RNA-seq or microarray cohorts using pyComBat, with corrected matrix export and pre/post correction visualizations. |
-| [bulk-deg-analysis](skills/bulk-deg-analysis/) | Bulk RNA-seq DEG pipeline: gene ID mapping, DESeq2 normalization, statistical testing, visualization, and pathway enrichment via OmicVerse. |
-| [bulk-deseq2-analysis](skills/bulk-deseq2-analysis/) | PyDESeq2-based differential expression analysis with ID mapping, DE testing, fold-change thresholding, and enrichment visualization. |
-| [bulk-stringdb-ppi](skills/bulk-stringdb-ppi/) | Query STRING for protein interactions, build PPI graphs with pyPPI, and render network figures for bulk gene lists. |
-| [bulk-to-single-deconvolution](skills/bulk-to-single-deconvolution/) | Convert bulk RNA-seq cohorts to synthetic single-cell datasets using Bulk2Single workflow for cell fraction estimation and beta-VAE generation. |
-| [bulk-trajblend-interpolation](skills/bulk-trajblend-interpolation/) | Extend scRNA-seq developmental trajectories with BulkTrajBlend by generating intermediate cells from bulk RNA-seq using beta-VAE and GNN models. |
-| [bulk-wgcna-analysis](skills/bulk-wgcna-analysis/) | Run PyWGCNA through OmicVerse — co-expression module construction, eigengene visualization, and hub gene extraction. |
-| [single-annotation](skills/single-annotation/) | Single-cell annotation workflows: SCSA, MetaTiME, CellVote, CellMatch, GPTAnno, and weighted KNN transfer for annotating cell types across modalities. |
-| [single-cellphone-db](skills/single-cellphone-db/) | Run CellPhoneDB v5 on annotated single-cell data to infer ligand-receptor networks and produce CellChat-style visualizations. |
-| [single-clustering](skills/single-clustering/) | Single-cell clustering workflow: QC, multimethod clustering, topic modeling, cNMF, and cross-batch integration in OmicVerse. |
-| [single-downstream-analysis](skills/single-downstream-analysis/) | OmicVerse downstream tutorials covering AUCell scoring, metacell DEG, and related exports for single-cell data. |
-| [single-multiomics](skills/single-multiomics/) | OmicVerse multi-omics tutorials: MOFA, GLUE pairing, SIMBA integration, TOSICA transfer, and StaVIA cartography. |
-| [single-preprocessing](skills/single-preprocessing/) | Single-cell preprocessing in OmicVerse: QC, normalization, HVG detection, PCA/embedding pipelines (CPU/GPU). |
-| [single-to-spatial-mapping](skills/single-to-spatial-mapping/) | Map scRNA-seq atlases onto spatial transcriptomics slides using Single2Spatial workflow for deep-forest training and marker visualization. |
-| [single-trajectory](skills/single-trajectory/) | OmicVerse trajectory workflows: PAGA, Palantir, VIA, velocity coupling, and fate scoring. |
-| [spatial-tutorials](skills/spatial-tutorials/) | Spatial transcriptomics tutorials: preprocessing, deconvolution, and downstream modeling across Visium, Visium HD, Stereo-seq, and Slide-seq. |
-| [tcga-preprocessing](skills/tcga-preprocessing/) | Ingest TCGA sample sheets, expression archives, and clinical carts into OmicVerse, with survival metadata initialization and AnnData export. |
-| [gsea-enrichment](skills/gsea-enrichment/) | Gene set enrichment analysis in OmicVerse with correct geneset format handling for loading pathway databases and running GSEA. |
+| [omics-anndata-matrix-management](skills/omics-anndata-matrix-management/) | Working with annotated data matrices in Python for single-cell genomics analysis, managing experimental measurements with metadata and large-scale omics data. |
+| [omics-scanpy-single-cell-analysis](skills/omics-scanpy-single-cell-analysis/) | Single-cell RNA-seq analysis. Load .h5ad/10X data, QC, normalization, PCA/UMAP/t-SNE, Leiden clustering, marker genes, cell type annotation, trajectory. |
+| [omics-scvi-single-cell-integration](skills/omics-scvi-single-cell-integration/) | Deep learning for single-cell analysis: data integration/batch correction (scVI/scANVI), ATAC-seq (PeakVI), CITE-seq (totalVI), multiome (MultiVI), spatial deconvolution (DestVI). |
+| [omics-single-cell-rna-qc](skills/omics-single-cell-rna-qc/) | Quality control on single-cell RNA-seq data (.h5ad or .h5 files) using scverse best practices with MAD-based filtering and comprehensive visualizations. |
+| [omics-cellxgene-census-query](skills/omics-cellxgene-census-query/) | Query CZ CELLxGENE Census (61M+ cells). Filter by cell type/tissue/disease, retrieve expression data, integrate with scanpy/PyTorch, for population-scale single-cell analysis. |
+| [omics-pydeseq2-differential-expression](skills/omics-pydeseq2-differential-expression/) | Differential gene expression analysis (Python DESeq2). Identify DE genes from bulk RNA-seq counts, Wald tests, FDR correction, volcano/MA plots. |
+| [omics-bulk-combat-correction](skills/omics-bulk-combat-correction/) | Remove batch effects from merged bulk RNA-seq or microarray cohorts using pyComBat, with corrected matrix export and pre/post correction visualizations. |
+| [omics-bulk-deg-analysis](skills/omics-bulk-deg-analysis/) | Bulk RNA-seq DEG pipeline: gene ID mapping, DESeq2 normalization, statistical testing, visualization, and pathway enrichment via OmicVerse. |
+| [omics-bulk-deseq2-analysis](skills/omics-bulk-deseq2-analysis/) | PyDESeq2-based differential expression analysis with ID mapping, DE testing, fold-change thresholding, and enrichment visualization. |
+| [omics-bulk-stringdb-ppi](skills/omics-bulk-stringdb-ppi/) | Query STRING for protein interactions, build PPI graphs with pyPPI, and render network figures for bulk gene lists. |
+| [omics-bulk-to-single-deconvolution](skills/omics-bulk-to-single-deconvolution/) | Convert bulk RNA-seq cohorts to synthetic single-cell datasets using Bulk2Single workflow for cell fraction estimation and beta-VAE generation. |
+| [omics-bulk-trajblend-interpolation](skills/omics-bulk-trajblend-interpolation/) | Extend scRNA-seq developmental trajectories with BulkTrajBlend by generating intermediate cells from bulk RNA-seq using beta-VAE and GNN models. |
+| [omics-bulk-wgcna-analysis](skills/omics-bulk-wgcna-analysis/) | Run PyWGCNA through OmicVerse — co-expression module construction, eigengene visualization, and hub gene extraction. |
+| [omics-single-annotation](skills/omics-single-annotation/) | Single-cell annotation workflows: SCSA, MetaTiME, CellVote, CellMatch, GPTAnno, and weighted KNN transfer for annotating cell types across modalities. |
+| [omics-single-cellphone-db](skills/omics-single-cellphone-db/) | Run CellPhoneDB v5 on annotated single-cell data to infer ligand-receptor networks and produce CellChat-style visualizations. |
+| [omics-single-clustering](skills/omics-single-clustering/) | Single-cell clustering workflow: QC, multimethod clustering, topic modeling, cNMF, and cross-batch integration in OmicVerse. |
+| [omics-single-downstream-analysis](skills/omics-single-downstream-analysis/) | OmicVerse downstream tutorials covering AUCell scoring, metacell DEG, and related exports for single-cell data. |
+| [omics-single-multiomics](skills/omics-single-multiomics/) | OmicVerse multi-omics tutorials: MOFA, GLUE pairing, SIMBA integration, TOSICA transfer, and StaVIA cartography. |
+| [omics-single-preprocessing](skills/omics-single-preprocessing/) | Single-cell preprocessing in OmicVerse: QC, normalization, HVG detection, PCA/embedding pipelines (CPU/GPU). |
+| [omics-single-to-spatial-mapping](skills/omics-single-to-spatial-mapping/) | Map scRNA-seq atlases onto spatial transcriptomics slides using Single2Spatial workflow for deep-forest training and marker visualization. |
+| [omics-single-trajectory](skills/omics-single-trajectory/) | OmicVerse trajectory workflows: PAGA, Palantir, VIA, velocity coupling, and fate scoring. |
+| [omics-spatial-tutorials](skills/omics-spatial-tutorials/) | Spatial transcriptomics tutorials: preprocessing, deconvolution, and downstream modeling across Visium, Visium HD, Stereo-seq, and Slide-seq. |
+| [omics-tcga-preprocessing](skills/omics-tcga-preprocessing/) | Ingest TCGA sample sheets, expression archives, and clinical carts into OmicVerse, with survival metadata initialization and AnnData export. |
+| [omics-gsea-enrichment](skills/omics-gsea-enrichment/) | Gene set enrichment analysis in OmicVerse with correct geneset format handling for loading pathway databases and running GSEA. |
 
 </details>
 
@@ -1012,16 +1014,16 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [rdkit](skills/rdkit/) | Cheminformatics toolkit for fine-grained molecular control. SMILES/SDF parsing, descriptors (MW, LogP, TPSA), fingerprints, substructure search, 2D/3D generation, similarity. |
-| [datamol](skills/datamol/) | Pythonic RDKit wrapper with simplified interface for standard drug discovery: SMILES parsing, standardization, descriptors, fingerprints, clustering, 3D conformer generation. |
-| [medchem](skills/medchem/) | Medicinal chemistry filters. Apply drug-likeness rules (Lipinski, Veber), PAINS filters, structural alerts, complexity metrics, for compound prioritization and library filtering. |
-| [diffdock](skills/diffdock/) | Diffusion-based molecular docking. Predict protein-ligand binding poses from PDB/SMILES, confidence scores, virtual screening, for structure-based drug design. |
-| [molfeat](skills/molfeat/) | Molecular featurization for ML (100+ featurizers). ECFP, MACCS, descriptors, pretrained models (ChemBERTa), convert SMILES to features, for QSAR and molecular ML. |
-| [deepchem](skills/deepchem/) | Molecular machine learning toolkit. Property prediction (ADMET, toxicity), GNNs (GCN, MPNN), MoleculeNet benchmarks, pretrained models, for drug discovery ML. |
-| [torchdrug](skills/torchdrug/) | Graph-based drug discovery toolkit. Molecular property prediction (ADMET), protein modeling, knowledge graph reasoning, molecular generation, retrosynthesis, GNNs. |
-| [torch_geometric](skills/torch_geometric/) | Graph Neural Networks (PyG). Node/graph classification, link prediction, GCN, GAT, GraphSAGE, molecular property prediction, for geometric deep learning in drug discovery. |
-| [pytdc](skills/pytdc/) | Therapeutics Data Commons. AI-ready drug discovery datasets (ADME, toxicity, DTI), benchmarks, scaffold splits, molecular oracles, for therapeutic ML. |
-| [cobrapy](skills/cobrapy/) | Constraint-based metabolic modeling (COBRA). FBA, FVA, gene knockouts, flux sampling, SBML models, for systems biology and metabolic engineering. |
+| [drug-rdkit-molecule-processing](skills/drug-rdkit-molecule-processing/) | Cheminformatics toolkit for fine-grained molecular control. SMILES/SDF parsing, descriptors (MW, LogP, TPSA), fingerprints, substructure search, 2D/3D generation, similarity. |
+| [drug-datamol-molecule-processing](skills/drug-datamol-molecule-processing/) | Pythonic RDKit wrapper with simplified interface for standard drug discovery: SMILES parsing, standardization, descriptors, fingerprints, clustering, 3D conformer generation. |
+| [drug-medchem-molecule-filtering](skills/drug-medchem-molecule-filtering/) | Medicinal chemistry filters. Apply drug-likeness rules (Lipinski, Veber), PAINS filters, structural alerts, complexity metrics, for compound prioritization and library filtering. |
+| [drug-diffdock-pose-prediction](skills/drug-diffdock-pose-prediction/) | Diffusion-based molecular docking. Predict protein-ligand binding poses from PDB/SMILES, confidence scores, virtual screening, for structure-based drug design. |
+| [drug-molfeat-feature-generation](skills/drug-molfeat-feature-generation/) | Molecular featurization for ML (100+ featurizers). ECFP, MACCS, descriptors, pretrained models (ChemBERTa), convert SMILES to features, for QSAR and molecular ML. |
+| [drug-deepchem-model-training](skills/drug-deepchem-model-training/) | Molecular machine learning toolkit. Property prediction (ADMET, toxicity), GNNs (GCN, MPNN), MoleculeNet benchmarks, pretrained models, for drug discovery ML. |
+| [drug-torchdrug-graph-modeling](skills/drug-torchdrug-graph-modeling/) | Graph-based drug discovery toolkit. Molecular property prediction (ADMET), protein modeling, knowledge graph reasoning, molecular generation, retrosynthesis, GNNs. |
+| [research-torch-geometric-reference](skills/research-torch-geometric-reference/) | Graph Neural Networks (PyG). Node/graph classification, link prediction, GCN, GAT, GraphSAGE, molecular property prediction, for geometric deep learning in drug discovery. |
+| [drug-tdc-benchmark-evaluation](skills/drug-tdc-benchmark-evaluation/) | Therapeutics Data Commons. AI-ready drug discovery datasets (ADME, toxicity, DTI), benchmarks, scaffold splits, molecular oracles, for therapeutic ML. |
+| [omics-cobrapy-metabolic-modeling](skills/omics-cobrapy-metabolic-modeling/) | Constraint-based metabolic modeling (COBRA). FBA, FVA, gene knockouts, flux sampling, SBML models, for systems biology and metabolic engineering. |
 
 </details>
 
@@ -1032,9 +1034,9 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [matchms](skills/matchms/) | Mass spectrometry spectral analysis. Process mzML/MGF/MSP files, spectral similarity (cosine, modified cosine), metadata harmonization, compound identification. |
-| [pyopenms](skills/pyopenms/) | Python interface to OpenMS for LC-MS/MS proteomics and metabolomics workflows. File handling (mzML, mzXML, mzTab, pepXML, mzIdentML) and quantification. |
-| [flowio](skills/flowio/) | Parse FCS (Flow Cytometry Standard) files v2.0-3.1. Extract events as NumPy arrays, read metadata/channels, convert to CSV/DataFrame, for flow cytometry data preprocessing. |
+| [omics-matchms-spectrum-comparison](skills/omics-matchms-spectrum-comparison/) | Mass spectrometry spectral analysis. Process mzML/MGF/MSP files, spectral similarity (cosine, modified cosine), metadata harmonization, compound identification. |
+| [omics-pyopenms-spectrum-processing](skills/omics-pyopenms-spectrum-processing/) | Python interface to OpenMS for LC-MS/MS proteomics and metabolomics workflows. File handling (mzML, mzXML, mzTab, pepXML, mzIdentML) and quantification. |
+| [omics-fcs-data-io](skills/omics-fcs-data-io/) | Parse FCS (Flow Cytometry Standard) files v2.0-3.1. Extract events as NumPy arrays, read metadata/channels, convert to CSV/DataFrame, for flow cytometry data preprocessing. |
 
 </details>
 
@@ -1045,24 +1047,24 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [esm](skills/esm/) | ESM3 generative multimodal protein design (sequence, structure, function) and ESM C efficient protein embeddings. Protein language models for sequence scoring and embedding. |
-| [alphafold](skills/alphafold/) | Validate protein designs using AlphaFold2 structure prediction. Validates designed sequences, predicts binder-target complex structures, calculates pLDDT/PAE metrics. |
-| [boltz](skills/boltz/) | Structure prediction using Boltz-1/Boltz-2, an open biomolecular structure predictor for protein complexes, binder validation, and open-source AlphaFold alternative. |
-| [boltzgen](skills/boltzgen/) | All-atom protein design using BoltzGen diffusion model. Side-chain aware design from the start, designing around small molecules or ligands. |
-| [chai](skills/chai/) | Structure prediction using Chai-1 foundation model for protein-protein complexes, binder validation, and protein-small molecule interaction prediction. |
-| [rfdiffusion](skills/rfdiffusion/) | Generate protein backbones using RFdiffusion diffusion model for de novo protein structure generation and binder scaffold design. |
-| [bindcraft](skills/bindcraft/) | End-to-end binder design using BindCraft hallucination with built-in AF2 validation for production-quality binder campaigns. |
-| [binder-design](skills/binder-design/) | Guidance for choosing the right protein binder design tool (BoltzGen, BindCraft, or RFdiffusion) and planning binder design campaigns. |
-| [proteinmpnn](skills/proteinmpnn/) | Design protein sequences using ProteinMPNN inverse folding for RFdiffusion backbones, sequence redesign, and partial fixed-position design. |
-| [ligandmpnn](skills/ligandmpnn/) | Ligand-aware protein sequence design using LigandMPNN for sequences around small molecules, enzyme active site design, and binding pocket optimization. |
-| [solublempnn](skills/solublempnn/) | Solubility-optimized protein sequence design using SolubleMPNN for E. coli expression, reducing aggregation, and solubility optimization. |
-| [foldseek](skills/foldseek/) | Structure similarity search with Foldseek for finding similar structures in PDB/AFDB databases, structural homology search, and evolutionary relationship discovery. |
-| [ipsae](skills/ipsae/) | Binder design ranking using ipSAE (interprotein Score from Aligned Errors) for ranking binder designs and filtering BindCraft or RFdiffusion outputs. |
-| [pdb](skills/pdb/) | Fetch and analyze protein structures from RCSB PDB by PDB ID, search for similar structures, prepare targets for binder design. |
-| [protein-design-workflow](skills/protein-design-workflow/) | End-to-end guidance for protein design pipelines from project initiation to experimental validation. |
-| [protein-qc](skills/protein-qc/) | Quality control metrics and filtering thresholds for protein design: pLDDT, PAE, ipTM for binding, expression, and structure evaluation. |
-| [cell-free-expression](skills/cell-free-expression/) | Guidance for cell-free protein synthesis (CFPS) optimization, troubleshooting low yield/aggregation, and optimizing DNA template design. |
-| [binding-characterization](skills/binding-characterization/) | Guidance for SPR and BLI binding characterization experiments, kinetics interpretation, and troubleshooting poor binding signal. |
+| [omics-esm-protein-modeling](skills/omics-esm-protein-modeling/) | ESM3 generative multimodal protein design (sequence, structure, function) and ESM C efficient protein embeddings. Protein language models for sequence scoring and embedding. |
+| [omics-alphafold-structure-prediction](skills/omics-alphafold-structure-prediction/) | Validate protein designs using AlphaFold2 structure prediction. Validates designed sequences, predicts binder-target complex structures, calculates pLDDT/PAE metrics. |
+| [omics-boltz-complex-prediction](skills/omics-boltz-complex-prediction/) | Structure prediction using Boltz-1/Boltz-2, an open biomolecular structure predictor for protein complexes, binder validation, and open-source AlphaFold alternative. |
+| [drug-boltzgen-binder-design](skills/drug-boltzgen-binder-design/) | All-atom protein design using BoltzGen diffusion model. Side-chain aware design from the start, designing around small molecules or ligands. |
+| [omics-chai-complex-prediction](skills/omics-chai-complex-prediction/) | Structure prediction using Chai-1 foundation model for protein-protein complexes, binder validation, and protein-small molecule interaction prediction. |
+| [drug-rfdiffusion-backbone-design](skills/drug-rfdiffusion-backbone-design/) | Generate protein backbones using RFdiffusion diffusion model for de novo protein structure generation and binder scaffold design. |
+| [drug-bindcraft-binder-design](skills/drug-bindcraft-binder-design/) | End-to-end binder design using BindCraft hallucination with built-in AF2 validation for production-quality binder campaigns. |
+| [drug-protein-binder-method-selection](skills/drug-protein-binder-method-selection/) | Guidance for choosing the right protein binder design tool (BoltzGen, BindCraft, or RFdiffusion) and planning binder design campaigns. |
+| [drug-proteinmpnn-sequence-design](skills/drug-proteinmpnn-sequence-design/) | Design protein sequences using ProteinMPNN inverse folding for RFdiffusion backbones, sequence redesign, and partial fixed-position design. |
+| [drug-ligandmpnn-sequence-design](skills/drug-ligandmpnn-sequence-design/) | Ligand-aware protein sequence design using LigandMPNN for sequences around small molecules, enzyme active site design, and binding pocket optimization. |
+| [drug-solublempnn-sequence-design](skills/drug-solublempnn-sequence-design/) | Solubility-optimized protein sequence design using SolubleMPNN for E. coli expression, reducing aggregation, and solubility optimization. |
+| [omics-foldseek-structure-search](skills/omics-foldseek-structure-search/) | Structure similarity search with Foldseek for finding similar structures in PDB/AFDB databases, structural homology search, and evolutionary relationship discovery. |
+| [omics-ipsae-interface-scoring](skills/omics-ipsae-interface-scoring/) | Binder design ranking using ipSAE (interprotein Score from Aligned Errors) for ranking binder designs and filtering BindCraft or RFdiffusion outputs. |
+| [omics-pdb-structure-processing](skills/omics-pdb-structure-processing/) | Fetch and analyze protein structures from RCSB PDB by PDB ID, search for similar structures, prepare targets for binder design. |
+| [sop-drug-protein-design](skills/sop-drug-protein-design/) | End-to-end guidance for protein design pipelines from project initiation to experimental validation. |
+| [omics-protein-qc](skills/omics-protein-qc/) | Quality control metrics and filtering thresholds for protein design: pLDDT, PAE, ipTM for binding, expression, and structure evaluation. |
+| [research-cell-free-expression-planning](skills/research-cell-free-expression-planning/) | Guidance for cell-free protein synthesis (CFPS) optimization, troubleshooting low yield/aggregation, and optimizing DNA template design. |
+| [research-protein-binding-experiment-design](skills/research-protein-binding-experiment-design/) | Guidance for SPR and BLI binding characterization experiments, kinetics interpretation, and troubleshooting poor binding signal. |
 
 </details>
 
@@ -1073,7 +1075,7 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [scvelo](skills/scvelo/) | RNA velocity analysis. Estimate cell state transitions from unspliced/spliced mRNA dynamics, infer trajectory directions, compute latent time, and identify driver genes in scRNA-seq data. |
+| [omics-scvelo-rna-velocity](skills/omics-scvelo-rna-velocity/) | RNA velocity analysis. Estimate cell state transitions from unspliced/spliced mRNA dynamics, infer trajectory directions, compute latent time, and identify driver genes in scRNA-seq data. |
 
 </details>
 
@@ -1084,9 +1086,9 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [phylogenetics](skills/phylogenetics/) | Build and analyze phylogenetic trees using MAFFT, IQ-TREE 2, and FastTree. Evolutionary analysis, microbial genomics, viral phylodynamics, and molecular clock studies. |
-| [networkx](skills/networkx/) | Network and graph analysis in Python. Biological network analysis, protein interaction networks, pathway graphs, community detection, and centrality measures. |
-| [torch-geometric](skills/torch-geometric/) | Graph Neural Networks (PyG) for molecular property prediction, drug-target interaction modeling, and geometric deep learning on biological graphs. |
+| [omics-phylogenetics](skills/omics-phylogenetics/) | Build and analyze phylogenetic trees using MAFFT, IQ-TREE 2, and FastTree. Evolutionary analysis, microbial genomics, viral phylodynamics, and molecular clock studies. |
+| [research-networkx-network-analysis](skills/research-networkx-network-analysis/) | Network and graph analysis in Python. Biological network analysis, protein interaction networks, pathway graphs, community detection, and centrality measures. |
+| [research-torch-geometric-analysis](skills/research-torch-geometric-analysis/) | Graph Neural Networks (PyG) for molecular property prediction, drug-target interaction modeling, and geometric deep learning on biological graphs. |
 
 </details>
 
@@ -1104,12 +1106,12 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-orchestrator](skills/bio-orchestrator/) | Meta-agent routing bioinformatics requests to specialized sub-skills. Handles file type detection (VCF, FASTQ, BAM, PDB, h5ad), analysis planning, report generation, and reproducibility export. |
-| [scrna-orchestrator](skills/scrna-orchestrator/) | Local Scanpy pipeline for single-cell RNA-seq QC, clustering, marker discovery, and two-group differential expression from raw-count .h5ad files. |
-| [seq-wrangler](skills/seq-wrangler/) | Sequence QC, alignment, and BAM processing. Wraps FastQC, BWA/Bowtie2, SAMtools for automated read-to-BAM pipelines. |
-| [vcf-annotator](skills/vcf-annotator/) | Annotate VCF variants with VEP, ClinVar, gnomAD frequencies, and ancestry-aware context. Generates prioritized variant reports. |
-| [repro-enforcer](skills/repro-enforcer/) | Export bioinformatics analyses as reproducible bundles with Conda environment, Singularity container definition, and Nextflow pipeline. |
-| [galaxy-bridge](skills/galaxy-bridge/) | Galaxy tool discovery, recommendation, and execution — 8,000+ bioinformatics tools from usegalaxy.org with multi-signal scoring and workflow suggestions. |
+| [research-bioinformatics-task-routing](skills/research-bioinformatics-task-routing/) | Meta-agent routing bioinformatics requests to specialized sub-skills. Handles file type detection (VCF, FASTQ, BAM, PDB, h5ad), analysis planning, report generation, and reproducibility export. |
+| [sop-omics-single-cell-analysis](skills/sop-omics-single-cell-analysis/) | Local Scanpy pipeline for single-cell RNA-seq QC, clustering, marker discovery, and two-group differential expression from raw-count .h5ad files. |
+| [sop-omics-read-alignment-planning](skills/sop-omics-read-alignment-planning/) | Sequence QC, alignment, and BAM processing. Wraps FastQC, BWA/Bowtie2, SAMtools for automated read-to-BAM pipelines. |
+| [omics-vcf-annotator](skills/omics-vcf-annotator/) | Annotate VCF variants with VEP, ClinVar, gnomAD frequencies, and ancestry-aware context. Generates prioritized variant reports. |
+| [research-analysis-reproducibility](skills/research-analysis-reproducibility/) | Export bioinformatics analyses as reproducible bundles with Conda environment, Singularity container definition, and Nextflow pipeline. |
+| [research-galaxy-tool-execution](skills/research-galaxy-tool-execution/) | Galaxy tool discovery, recommendation, and execution — 8,000+ bioinformatics tools from usegalaxy.org with multi-signal scoring and workflow suggestions. |
 
 </details>
 
@@ -1120,16 +1122,16 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [gwas-lookup](skills/gwas-lookup/) | Federated variant lookup across 9 genomic databases: GWAS Catalog, Open Targets, PheWeb (UKB, FinnGen, BBJ), GTEx, eQTL Catalogue, and more. |
-| [gwas-prs](skills/gwas-prs/) | Calculate polygenic risk scores from DTC genetic data (23andMe/AncestryDNA) using the PGS Catalog. |
-| [pharmgx-reporter](skills/pharmgx-reporter/) | Pharmacogenomic report from DTC genetic data — 12 genes, 31 SNPs, 51 drugs with CPIC guidelines and personalized dosage cards. |
-| [clinpgx](skills/clinpgx/) | Query the ClinPGx API for pharmacogenomic gene-drug data, clinical annotations, CPIC guidelines, and FDA drug labels. |
-| [drug-photo](skills/drug-photo/) | Identify a medication from a packaging photo via Claude vision, then retrieve genotype-informed dosage guidance. |
-| [claw-ancestry-pca](skills/claw-ancestry-pca/) | Ancestry decomposition PCA against the Simons Genome Diversity Project (345 samples, 164 global populations). |
-| [genome-compare](skills/genome-compare/) | Compare genome to reference individuals and estimate ancestry composition via IBS and EM admixture. |
-| [equity-scorer](skills/equity-scorer/) | Compute HEIM diversity and equity metrics from VCF or ancestry data. Generates heterozygosity, FST, PCA plots, and HEIM Equity Score with markdown reports. |
-| [claw-metagenomics](skills/claw-metagenomics/) | Shotgun metagenomics profiling: taxonomy (Kraken2/Bracken), resistome (CARD/RGI), and functional pathways (HUMAnN3) from paired-end FASTQ. |
-| [ukb-navigator](skills/ukb-navigator/) | Semantic search across UK Biobank's 12,000+ data fields and publications — find the right variables for your research question. |
+| [omics-gwas-lookup](skills/omics-gwas-lookup/) | Federated variant lookup across 9 genomic databases: GWAS Catalog, Open Targets, PheWeb (UKB, FinnGen, BBJ), GTEx, eQTL Catalogue, and more. |
+| [omics-pgs-catalog-score-calculation](skills/omics-pgs-catalog-score-calculation/) | Calculate polygenic risk scores from DTC genetic data (23andMe/AncestryDNA) using the PGS Catalog. |
+| [omics-pharmgx-reporter](skills/omics-pharmgx-reporter/) | Pharmacogenomic report from DTC genetic data — 12 genes, 31 SNPs, 51 drugs with CPIC guidelines and personalized dosage cards. |
+| [omics-clinpgx-guideline-query](skills/omics-clinpgx-guideline-query/) | Query the ClinPGx API for pharmacogenomic gene-drug data, clinical annotations, CPIC guidelines, and FDA drug labels. |
+| [health-drug-photo](skills/health-drug-photo/) | Identify a medication from a packaging photo via Claude vision, then retrieve genotype-informed dosage guidance. |
+| [omics-ancestry-pca-analysis](skills/omics-ancestry-pca-analysis/) | Ancestry decomposition PCA against the Simons Genome Diversity Project (345 samples, 164 global populations). |
+| [omics-genome-compare](skills/omics-genome-compare/) | Compare genome to reference individuals and estimate ancestry composition via IBS and EM admixture. |
+| [omics-population-representation-assessment](skills/omics-population-representation-assessment/) | Compute HEIM diversity and equity metrics from VCF or ancestry data. Generates heterozygosity, FST, PCA plots, and HEIM Equity Score with markdown reports. |
+| [sop-omics-metagenomics-profiling](skills/sop-omics-metagenomics-profiling/) | Shotgun metagenomics profiling: taxonomy (Kraken2/Bracken), resistome (CARD/RGI), and functional pathways (HUMAnN3) from paired-end FASTQ. |
+| [clinical-ukb-navigator](skills/clinical-ukb-navigator/) | Semantic search across UK Biobank's 12,000+ data fields and publications — find the right variables for your research question. |
 
 </details>
 
@@ -1140,11 +1142,11 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [struct-predictor](skills/struct-predictor/) | Local protein structure prediction with AlphaFold, Boltz, or Chai. Compare structures, compute RMSD, visualize 3D models. |
-| [lit-synthesizer](skills/lit-synthesizer/) | Search PubMed and bioRxiv, summarize papers with LLM, build citation graphs, and generate literature review sections. |
-| [claw-semantic-sim](skills/claw-semantic-sim/) | Semantic Similarity Index for disease research literature using PubMedBERT embeddings. Compute research equity metrics (HEIM). |
-| [labstep](skills/labstep/) | Interact with the Labstep electronic lab notebook API. Query experiments, protocols, resources, and inventory. |
-| [profile-report](skills/profile-report/) | Generate structured bioinformatics analysis profile reports. |
+| [omics-protein-structure-planning](skills/omics-protein-structure-planning/) | Local protein structure prediction with AlphaFold, Boltz, or Chai. Compare structures, compute RMSD, visualize 3D models. |
+| [evidence-literature-synthesis](skills/evidence-literature-synthesis/) | Search PubMed and bioRxiv, summarize papers with LLM, build citation graphs, and generate literature review sections. |
+| [evidence-disease-semantic-comparison](skills/evidence-disease-semantic-comparison/) | Semantic Similarity Index for disease research literature using PubMedBERT embeddings. Compute research equity metrics (HEIM). |
+| [research-labstep-record-query](skills/research-labstep-record-query/) | Interact with the Labstep electronic lab notebook API. Query experiments, protocols, resources, and inventory. |
+| [health-genomic-profile-report](skills/health-genomic-profile-report/) | Generate structured bioinformatics analysis profile reports. |
 
 </details>
 
@@ -1164,24 +1166,24 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-alignment-sorting](skills/bio-alignment-sorting/) | Sort SAM/BAM files by coordinate or name with samtools sort. |
-| [bio-alignment-filtering](skills/bio-alignment-filtering/) | Filter alignments by flag, quality, region, or paired status. |
-| [bio-alignment-indexing](skills/bio-alignment-indexing/) | Index BAM/CRAM files with samtools index for random access. |
-| [bio-alignment-validation](skills/bio-alignment-validation/) | Validate alignment file integrity and detect truncated/corrupt files. |
-| [bio-alignment-files-bam-statistics](skills/bio-alignment-files-bam-statistics/) | Compute alignment statistics: flagstat, idxstats, coverage depth. |
-| [bio-sam-bam-basics](skills/bio-sam-bam-basics/) | Read, inspect, and manipulate SAM/BAM files with samtools/pysam. |
-| [bio-duplicate-handling](skills/bio-duplicate-handling/) | Mark and remove PCR duplicates with Picard or samtools markdup. |
-| [bio-pileup-generation](skills/bio-pileup-generation/) | Generate base-level pileup from BAM for variant calling and coverage. |
-| [bio-reference-operations](skills/bio-reference-operations/) | Download, index, and manage reference genome FASTA files. |
-| [bio-blast-searches](skills/bio-blast-searches/) | Run BLAST searches against local or remote databases for sequence homology. |
-| [bio-local-blast](skills/bio-local-blast/) | Set up and run BLAST+ locally with custom databases. |
-| [bio-entrez-search](skills/bio-entrez-search/) | Search NCBI Entrez databases (PubMed, gene, nucleotide, protein, SRA). |
-| [bio-entrez-fetch](skills/bio-entrez-fetch/) | Fetch records from NCBI Entrez by accession or UID. |
-| [bio-entrez-link](skills/bio-entrez-link/) | Retrieve linked records across NCBI Entrez databases. |
-| [bio-uniprot-access](skills/bio-uniprot-access/) | Query UniProt for protein sequences, annotations, and cross-references. |
-| [bio-geo-data](skills/bio-geo-data/) | Download and parse GEO datasets and series matrices. |
-| [bio-sra-data](skills/bio-sra-data/) | Download raw sequencing data from NCBI SRA with fasterq-dump. |
-| [bio-batch-downloads](skills/bio-batch-downloads/) | Batch download bioinformatics data from NCBI, EBI, Ensembl. |
+| [omics-alignment-sorting](skills/omics-alignment-sorting/) | Sort SAM/BAM files by coordinate or name with samtools sort. |
+| [omics-alignment-filtering](skills/omics-alignment-filtering/) | Filter alignments by flag, quality, region, or paired status. |
+| [omics-alignment-indexing](skills/omics-alignment-indexing/) | Index BAM/CRAM files with samtools index for random access. |
+| [omics-alignment-validation](skills/omics-alignment-validation/) | Validate alignment file integrity and detect truncated/corrupt files. |
+| [omics-alignment-files-bam-statistics](skills/omics-alignment-files-bam-statistics/) | Compute alignment statistics: flagstat, idxstats, coverage depth. |
+| [omics-sam-bam-basics](skills/omics-sam-bam-basics/) | Read, inspect, and manipulate SAM/BAM files with samtools/pysam. |
+| [omics-duplicate-handling](skills/omics-duplicate-handling/) | Mark and remove PCR duplicates with Picard or samtools markdup. |
+| [omics-pileup-generation](skills/omics-pileup-generation/) | Generate base-level pileup from BAM for variant calling and coverage. |
+| [omics-reference-operations](skills/omics-reference-operations/) | Download, index, and manage reference genome FASTA files. |
+| [omics-blast-searches](skills/omics-blast-searches/) | Run BLAST searches against local or remote databases for sequence homology. |
+| [omics-local-blast](skills/omics-local-blast/) | Set up and run BLAST+ locally with custom databases. |
+| [omics-entrez-search](skills/omics-entrez-search/) | Search NCBI Entrez databases (PubMed, gene, nucleotide, protein, SRA). |
+| [omics-entrez-fetch](skills/omics-entrez-fetch/) | Fetch records from NCBI Entrez by accession or UID. |
+| [omics-entrez-link](skills/omics-entrez-link/) | Retrieve linked records across NCBI Entrez databases. |
+| [omics-uniprot-access](skills/omics-uniprot-access/) | Query UniProt for protein sequences, annotations, and cross-references. |
+| [omics-geo-data](skills/omics-geo-data/) | Download and parse GEO datasets and series matrices. |
+| [omics-sra-data](skills/omics-sra-data/) | Download raw sequencing data from NCBI SRA with fasterq-dump. |
+| [omics-batch-downloads](skills/omics-batch-downloads/) | Batch download bioinformatics data from NCBI, EBI, Ensembl. |
 
 </details>
 
@@ -1192,21 +1194,21 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-seq-objects](skills/bio-seq-objects/) | Work with BioPython sequence objects: SeqRecord, features, annotations. |
-| [bio-sequence-properties](skills/bio-sequence-properties/) | Compute sequence properties: MW, pI, hydrophobicity, extinction coefficient. |
-| [bio-sequence-similarity](skills/bio-sequence-similarity/) | Compute sequence similarity with pairwise alignment and percent identity. |
-| [bio-sequence-slicing](skills/bio-sequence-slicing/) | Slice, extract, and manipulate subsequences from FASTA/FASTQ. |
-| [bio-motif-search](skills/bio-motif-search/) | Search sequences for regulatory motifs using FIMO, MAST, or regex. |
-| [bio-codon-usage](skills/bio-codon-usage/) | Analyze codon usage bias and optimize sequences for expression. |
-| [bio-transcription-translation](skills/bio-transcription-translation/) | Transcribe and translate DNA sequences; handle genetic code variations. |
-| [bio-reverse-complement](skills/bio-reverse-complement/) | Compute reverse complement and strand-aware sequence operations. |
-| [bio-primer-design-primer-basics](skills/bio-primer-design-primer-basics/) | Design PCR primers with Primer3 for standard amplification. |
-| [bio-primer-design-primer-validation](skills/bio-primer-design-primer-validation/) | Validate primer specificity by BLAST and thermodynamic analysis. |
-| [bio-primer-design-qpcr-primers](skills/bio-primer-design-qpcr-primers/) | Design qPCR/RT-PCR primers with efficiency and specificity optimization. |
-| [bio-restriction-sites](skills/bio-restriction-sites/) | Find restriction enzyme recognition sites in DNA sequences. |
-| [bio-restriction-mapping](skills/bio-restriction-mapping/) | Create restriction maps and in silico digestion patterns. |
-| [bio-restriction-fragment-analysis](skills/bio-restriction-fragment-analysis/) | Analyze restriction fragment patterns for cloning and gel prediction. |
-| [bio-restriction-enzyme-selection](skills/bio-restriction-enzyme-selection/) | Select restriction enzymes for cloning based on cut sites and compatibility. |
+| [omics-seq-objects](skills/omics-seq-objects/) | Work with BioPython sequence objects: SeqRecord, features, annotations. |
+| [omics-sequence-properties](skills/omics-sequence-properties/) | Compute sequence properties: MW, pI, hydrophobicity, extinction coefficient. |
+| [omics-sequence-similarity](skills/omics-sequence-similarity/) | Compute sequence similarity with pairwise alignment and percent identity. |
+| [omics-sequence-slicing](skills/omics-sequence-slicing/) | Slice, extract, and manipulate subsequences from FASTA/FASTQ. |
+| [omics-motif-search](skills/omics-motif-search/) | Search sequences for regulatory motifs using FIMO, MAST, or regex. |
+| [omics-codon-usage](skills/omics-codon-usage/) | Analyze codon usage bias and optimize sequences for expression. |
+| [omics-transcription-translation](skills/omics-transcription-translation/) | Transcribe and translate DNA sequences; handle genetic code variations. |
+| [omics-reverse-complement](skills/omics-reverse-complement/) | Compute reverse complement and strand-aware sequence operations. |
+| [omics-primer-design-primer-basics](skills/omics-primer-design-primer-basics/) | Design PCR primers with Primer3 for standard amplification. |
+| [omics-primer-design-primer-validation](skills/omics-primer-design-primer-validation/) | Validate primer specificity by BLAST and thermodynamic analysis. |
+| [omics-primer-design-qpcr-primers](skills/omics-primer-design-qpcr-primers/) | Design qPCR/RT-PCR primers with efficiency and specificity optimization. |
+| [omics-restriction-sites](skills/omics-restriction-sites/) | Find restriction enzyme recognition sites in DNA sequences. |
+| [omics-restriction-mapping](skills/omics-restriction-mapping/) | Create restriction maps and in silico digestion patterns. |
+| [omics-restriction-fragment-analysis](skills/omics-restriction-fragment-analysis/) | Analyze restriction fragment patterns for cloning and gel prediction. |
+| [omics-restriction-enzyme-selection](skills/omics-restriction-enzyme-selection/) | Select restriction enzymes for cloning based on cut sites and compatibility. |
 
 </details>
 
@@ -1217,10 +1219,10 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-read-alignment-bwa-alignment](skills/bio-read-alignment-bwa-alignment/) | Align short reads to reference genome with BWA-MEM. |
-| [bio-read-alignment-bowtie2-alignment](skills/bio-read-alignment-bowtie2-alignment/) | Align short reads with Bowtie2; local and end-to-end modes. |
-| [bio-read-alignment-hisat2-alignment](skills/bio-read-alignment-hisat2-alignment/) | Splice-aware RNA-seq alignment with HISAT2. |
-| [bio-read-alignment-star-alignment](skills/bio-read-alignment-star-alignment/) | High-speed STAR aligner for RNA-seq with junction detection. |
+| [omics-read-alignment-bwa-alignment](skills/omics-read-alignment-bwa-alignment/) | Align short reads to reference genome with BWA-MEM. |
+| [omics-read-alignment-bowtie2-alignment](skills/omics-read-alignment-bowtie2-alignment/) | Align short reads with Bowtie2; local and end-to-end modes. |
+| [omics-read-alignment-hisat2-alignment](skills/omics-read-alignment-hisat2-alignment/) | Splice-aware RNA-seq alignment with HISAT2. |
+| [omics-read-alignment-star-alignment](skills/omics-read-alignment-star-alignment/) | High-speed STAR aligner for RNA-seq with junction detection. |
 
 </details>
 
@@ -1231,14 +1233,14 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-genome-assembly-long-read-assembly](skills/bio-genome-assembly-long-read-assembly/) | De novo assembly from ONT/PacBio long reads with Flye or Canu. |
-| [bio-genome-assembly-hifi-assembly](skills/bio-genome-assembly-hifi-assembly/) | HiFi (CCS) read assembly with Hifiasm for high-accuracy genomes. |
-| [bio-genome-assembly-short-read-assembly](skills/bio-genome-assembly-short-read-assembly/) | Illumina de novo assembly with SPAdes for metagenomes/bacteria/transcriptomes. |
-| [bio-genome-assembly-metagenome-assembly](skills/bio-genome-assembly-metagenome-assembly/) | Metagenomic assembly: co-assembly, binning, MAG recovery. |
-| [bio-genome-assembly-assembly-qc](skills/bio-genome-assembly-assembly-qc/) | Assess assembly quality with QUAST, BUSCO, and NGA50 metrics. |
-| [bio-genome-assembly-assembly-polishing](skills/bio-genome-assembly-assembly-polishing/) | Polish assemblies with Medaka (ONT) or NextPolish (Illumina). |
-| [bio-genome-assembly-scaffolding](skills/bio-genome-assembly-scaffolding/) | Scaffold contigs with Hi-C, optical mapping, or long reads. |
-| [bio-genome-assembly-contamination-detection](skills/bio-genome-assembly-contamination-detection/) | Detect and remove contamination in assembled genomes. |
+| [omics-genome-assembly-long-read-assembly](skills/omics-genome-assembly-long-read-assembly/) | De novo assembly from ONT/PacBio long reads with Flye or Canu. |
+| [omics-genome-assembly-hifi-assembly](skills/omics-genome-assembly-hifi-assembly/) | HiFi (CCS) read assembly with Hifiasm for high-accuracy genomes. |
+| [omics-genome-assembly-short-read-assembly](skills/omics-genome-assembly-short-read-assembly/) | Illumina de novo assembly with SPAdes for metagenomes/bacteria/transcriptomes. |
+| [omics-genome-assembly-metagenome-assembly](skills/omics-genome-assembly-metagenome-assembly/) | Metagenomic assembly: co-assembly, binning, MAG recovery. |
+| [omics-genome-assembly-assembly-qc](skills/omics-genome-assembly-assembly-qc/) | Assess assembly quality with QUAST, BUSCO, and NGA50 metrics. |
+| [omics-genome-assembly-assembly-polishing](skills/omics-genome-assembly-assembly-polishing/) | Polish assemblies with Medaka (ONT) or NextPolish (Illumina). |
+| [omics-genome-assembly-scaffolding](skills/omics-genome-assembly-scaffolding/) | Scaffold contigs with Hi-C, optical mapping, or long reads. |
+| [omics-genome-assembly-contamination-detection](skills/omics-genome-assembly-contamination-detection/) | Detect and remove contamination in assembled genomes. |
 
 </details>
 
@@ -1249,13 +1251,13 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-genome-intervals-bed-file-basics](skills/bio-genome-intervals-bed-file-basics/) | Read, write, and filter BED files with pybedtools/bedtools. |
-| [bio-genome-intervals-interval-arithmetic](skills/bio-genome-intervals-interval-arithmetic/) | Intersect, subtract, merge, and complement genomic intervals. |
-| [bio-genome-intervals-proximity-operations](skills/bio-genome-intervals-proximity-operations/) | Find nearest features and compute distances between intervals. |
-| [bio-genome-intervals-coverage-analysis](skills/bio-genome-intervals-coverage-analysis/) | Compute read depth coverage across genomic regions. |
-| [bio-genome-intervals-bigwig-tracks](skills/bio-genome-intervals-bigwig-tracks/) | Create and query BigWig signal tracks from BAM/bedGraph. |
-| [bio-genome-intervals-gtf-gff-handling](skills/bio-genome-intervals-gtf-gff-handling/) | Parse and manipulate GTF/GFF annotation files. |
-| [bio-bedgraph-handling](skills/bio-bedgraph-handling/) | Process bedGraph coverage files: arithmetic, normalization, conversion. |
+| [omics-genome-intervals-bed-file-basics](skills/omics-genome-intervals-bed-file-basics/) | Read, write, and filter BED files with pybedtools/bedtools. |
+| [omics-genome-intervals-interval-arithmetic](skills/omics-genome-intervals-interval-arithmetic/) | Intersect, subtract, merge, and complement genomic intervals. |
+| [omics-genome-intervals-proximity-operations](skills/omics-genome-intervals-proximity-operations/) | Find nearest features and compute distances between intervals. |
+| [omics-genome-intervals-coverage-analysis](skills/omics-genome-intervals-coverage-analysis/) | Compute read depth coverage across genomic regions. |
+| [omics-genome-intervals-bigwig-tracks](skills/omics-genome-intervals-bigwig-tracks/) | Create and query BigWig signal tracks from BAM/bedGraph. |
+| [omics-genome-intervals-gtf-gff-handling](skills/omics-genome-intervals-gtf-gff-handling/) | Parse and manipulate GTF/GFF annotation files. |
+| [omics-bedgraph-handling](skills/omics-bedgraph-handling/) | Process bedGraph coverage files: arithmetic, normalization, conversion. |
 
 </details>
 
@@ -1266,14 +1268,14 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-rna-quantification-featurecounts-counting](skills/bio-rna-quantification-featurecounts-counting/) | Count reads per gene with featureCounts from subread package. |
-| [bio-rna-quantification-alignment-free-quant](skills/bio-rna-quantification-alignment-free-quant/) | Pseudo-alignment quantification with Salmon or Kallisto. |
-| [bio-rna-quantification-tximport-workflow](skills/bio-rna-quantification-tximport-workflow/) | Import Salmon/Kallisto quantification into R/DESeq2 with tximport. |
-| [bio-rna-quantification-count-matrix-qc](skills/bio-rna-quantification-count-matrix-qc/) | QC count matrices: library size, zero inflation, gene detection rates. |
-| [bio-expression-matrix-counts-ingest](skills/bio-expression-matrix-counts-ingest/) | Load and validate count matrices from multiple quantification tools. |
-| [bio-expression-matrix-gene-id-mapping](skills/bio-expression-matrix-gene-id-mapping/) | Map between Ensembl, Entrez, HGNC, and gene symbol identifiers. |
-| [bio-expression-matrix-metadata-joins](skills/bio-expression-matrix-metadata-joins/) | Join sample metadata to expression matrices for downstream analysis. |
-| [bio-expression-matrix-sparse-handling](skills/bio-expression-matrix-sparse-handling/) | Handle sparse count matrices efficiently with scipy sparse formats. |
+| [omics-rna-quantification-featurecounts-counting](skills/omics-rna-quantification-featurecounts-counting/) | Count reads per gene with featureCounts from subread package. |
+| [omics-rna-quantification-alignment-free-quant](skills/omics-rna-quantification-alignment-free-quant/) | Pseudo-alignment quantification with Salmon or Kallisto. |
+| [omics-rna-quantification-tximport-workflow](skills/omics-rna-quantification-tximport-workflow/) | Import Salmon/Kallisto quantification into R/DESeq2 with tximport. |
+| [omics-rna-quantification-count-matrix-qc](skills/omics-rna-quantification-count-matrix-qc/) | QC count matrices: library size, zero inflation, gene detection rates. |
+| [omics-expression-matrix-counts-ingest](skills/omics-expression-matrix-counts-ingest/) | Load and validate count matrices from multiple quantification tools. |
+| [omics-expression-matrix-gene-id-mapping](skills/omics-expression-matrix-gene-id-mapping/) | Map between Ensembl, Entrez, HGNC, and gene symbol identifiers. |
+| [omics-expression-matrix-metadata-joins](skills/omics-expression-matrix-metadata-joins/) | Join sample metadata to expression matrices for downstream analysis. |
+| [omics-expression-matrix-sparse-handling](skills/omics-expression-matrix-sparse-handling/) | Handle sparse count matrices efficiently with scipy sparse formats. |
 
 </details>
 
@@ -1284,16 +1286,16 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-epitranscriptomics-merip-preprocessing](skills/bio-epitranscriptomics-merip-preprocessing/) | Preprocess MeRIP-seq data for m6A methylation analysis. |
-| [bio-epitranscriptomics-m6a-peak-calling](skills/bio-epitranscriptomics-m6a-peak-calling/) | Call m6A peaks from MeRIP-seq with exomePeak2 or MACS2. |
-| [bio-epitranscriptomics-m6anet-analysis](skills/bio-epitranscriptomics-m6anet-analysis/) | Nanopore direct RNA m6A detection with m6Anet deep learning. |
-| [bio-epitranscriptomics-m6a-differential](skills/bio-epitranscriptomics-m6a-differential/) | Differential m6A methylation analysis between conditions. |
-| [bio-epitranscriptomics-modification-visualization](skills/bio-epitranscriptomics-modification-visualization/) | Visualize RNA modification profiles and metagene plots. |
-| [bio-clip-seq-clip-preprocessing](skills/bio-clip-seq-clip-preprocessing/) | Preprocess CLIP-seq/eCLIP data: adapter trimming, demultiplexing. |
-| [bio-clip-seq-clip-alignment](skills/bio-clip-seq-clip-alignment/) | Align CLIP-seq reads with STAR; handle unique mappers. |
-| [bio-clip-seq-clip-peak-calling](skills/bio-clip-seq-clip-peak-calling/) | Call RBP binding peaks from CLIP-seq with PureCLIP or MACS2. |
-| [bio-clip-seq-binding-site-annotation](skills/bio-clip-seq-binding-site-annotation/) | Annotate CLIP-seq peaks with genomic features and RNA regions. |
-| [bio-clip-seq-clip-motif-analysis](skills/bio-clip-seq-clip-motif-analysis/) | Discover RBP binding motifs from CLIP-seq peak sequences. |
+| [omics-epitranscriptomics-merip-preprocessing](skills/omics-epitranscriptomics-merip-preprocessing/) | Preprocess MeRIP-seq data for m6A methylation analysis. |
+| [omics-epitranscriptomics-m6a-peak-calling](skills/omics-epitranscriptomics-m6a-peak-calling/) | Call m6A peaks from MeRIP-seq with exomePeak2 or MACS2. |
+| [omics-epitranscriptomics-m6anet-analysis](skills/omics-epitranscriptomics-m6anet-analysis/) | Nanopore direct RNA m6A detection with m6Anet deep learning. |
+| [omics-epitranscriptomics-m6a-differential](skills/omics-epitranscriptomics-m6a-differential/) | Differential m6A methylation analysis between conditions. |
+| [omics-epitranscriptomics-modification-visualization](skills/omics-epitranscriptomics-modification-visualization/) | Visualize RNA modification profiles and metagene plots. |
+| [omics-clip-seq-clip-preprocessing](skills/omics-clip-seq-clip-preprocessing/) | Preprocess CLIP-seq/eCLIP data: adapter trimming, demultiplexing. |
+| [omics-clip-seq-clip-alignment](skills/omics-clip-seq-clip-alignment/) | Align CLIP-seq reads with STAR; handle unique mappers. |
+| [omics-clip-seq-clip-peak-calling](skills/omics-clip-seq-clip-peak-calling/) | Call RBP binding peaks from CLIP-seq with PureCLIP or MACS2. |
+| [omics-clip-seq-binding-site-annotation](skills/omics-clip-seq-binding-site-annotation/) | Annotate CLIP-seq peaks with genomic features and RNA regions. |
+| [omics-clip-seq-clip-motif-analysis](skills/omics-clip-seq-clip-motif-analysis/) | Discover RBP binding motifs from CLIP-seq peak sequences. |
 
 </details>
 
@@ -1304,11 +1306,11 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-small-rna-seq-smrna-preprocessing](skills/bio-small-rna-seq-smrna-preprocessing/) | Preprocess small RNA-seq: adapter trimming, size selection. |
-| [bio-small-rna-seq-mirdeep2-analysis](skills/bio-small-rna-seq-mirdeep2-analysis/) | Identify and quantify known/novel miRNAs with miRDeep2. |
-| [bio-small-rna-seq-mirge3-analysis](skills/bio-small-rna-seq-mirge3-analysis/) | miRNA annotation and quantification with miRge3.0. |
-| [bio-small-rna-seq-target-prediction](skills/bio-small-rna-seq-target-prediction/) | Predict miRNA target genes with TargetScan or miRDB. |
-| [bio-small-rna-seq-differential-mirna](skills/bio-small-rna-seq-differential-mirna/) | Differential miRNA expression analysis with DESeq2/edgeR. |
+| [omics-small-rna-seq-smrna-preprocessing](skills/omics-small-rna-seq-smrna-preprocessing/) | Preprocess small RNA-seq: adapter trimming, size selection. |
+| [omics-small-rna-seq-mirdeep2-analysis](skills/omics-small-rna-seq-mirdeep2-analysis/) | Identify and quantify known/novel miRNAs with miRDeep2. |
+| [omics-small-rna-seq-mirge3-analysis](skills/omics-small-rna-seq-mirge3-analysis/) | miRNA annotation and quantification with miRge3.0. |
+| [omics-small-rna-seq-target-prediction](skills/omics-small-rna-seq-target-prediction/) | Predict miRNA target genes with TargetScan or miRDB. |
+| [omics-small-rna-seq-differential-mirna](skills/omics-small-rna-seq-differential-mirna/) | Differential miRNA expression analysis with DESeq2/edgeR. |
 
 </details>
 
@@ -1319,16 +1321,16 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-population-genetics-plink-basics](skills/bio-population-genetics-plink-basics/) | PLINK2 for GWAS QC, LD pruning, and basic population genetics. |
-| [bio-population-genetics-population-structure](skills/bio-population-genetics-population-structure/) | Population stratification with PCA, ADMIXTURE, and STRUCTURE. |
-| [bio-population-genetics-linkage-disequilibrium](skills/bio-population-genetics-linkage-disequilibrium/) | Compute LD metrics (r², D') and LD decay analysis. |
-| [bio-population-genetics-association-testing](skills/bio-population-genetics-association-testing/) | GWAS association testing with PLINK, BOLT-LMM, or SAIGE. |
-| [bio-population-genetics-scikit-allel-analysis](skills/bio-population-genetics-scikit-allel-analysis/) | Population genetics analysis with scikit-allel: diversity, Fst, haplotypes. |
-| [bio-population-genetics-selection-statistics](skills/bio-population-genetics-selection-statistics/) | Detect natural selection signatures: iHS, XP-EHH, Tajima's D. |
-| [bio-phasing-imputation-haplotype-phasing](skills/bio-phasing-imputation-haplotype-phasing/) | Phase variants with SHAPEIT4 or BEAGLE. |
-| [bio-phasing-imputation-genotype-imputation](skills/bio-phasing-imputation-genotype-imputation/) | Impute missing genotypes using Michigan/TOPMed imputation servers. |
-| [bio-phasing-imputation-reference-panels](skills/bio-phasing-imputation-reference-panels/) | Select and prepare reference panels (1KGP, HRC, TOPMed) for imputation. |
-| [bio-phasing-imputation-imputation-qc](skills/bio-phasing-imputation-imputation-qc/) | QC imputed data: R² filter, INFO score, allele concordance. |
+| [omics-population-genetics-plink-basics](skills/omics-population-genetics-plink-basics/) | PLINK2 for GWAS QC, LD pruning, and basic population genetics. |
+| [omics-population-genetics-population-structure](skills/omics-population-genetics-population-structure/) | Population stratification with PCA, ADMIXTURE, and STRUCTURE. |
+| [omics-population-genetics-linkage-disequilibrium](skills/omics-population-genetics-linkage-disequilibrium/) | Compute LD metrics (r², D') and LD decay analysis. |
+| [omics-population-genetics-association-testing](skills/omics-population-genetics-association-testing/) | GWAS association testing with PLINK, BOLT-LMM, or SAIGE. |
+| [omics-population-genetics-scikit-allel-analysis](skills/omics-population-genetics-scikit-allel-analysis/) | Population genetics analysis with scikit-allel: diversity, Fst, haplotypes. |
+| [omics-population-genetics-selection-statistics](skills/omics-population-genetics-selection-statistics/) | Detect natural selection signatures: iHS, XP-EHH, Tajima's D. |
+| [omics-phasing-imputation-haplotype-phasing](skills/omics-phasing-imputation-haplotype-phasing/) | Phase variants with SHAPEIT4 or BEAGLE. |
+| [omics-phasing-imputation-genotype-imputation](skills/omics-phasing-imputation-genotype-imputation/) | Impute missing genotypes using Michigan/TOPMed imputation servers. |
+| [omics-phasing-imputation-reference-panels](skills/omics-phasing-imputation-reference-panels/) | Select and prepare reference panels (1KGP, HRC, TOPMed) for imputation. |
+| [omics-phasing-imputation-imputation-qc](skills/omics-phasing-imputation-imputation-qc/) | QC imputed data: R² filter, INFO score, allele concordance. |
 
 </details>
 
@@ -1339,16 +1341,16 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-comparative-genomics-ortholog-inference](skills/bio-comparative-genomics-ortholog-inference/) | Infer orthologs and paralogs with OrthoFinder or OMA. |
-| [bio-comparative-genomics-synteny-analysis](skills/bio-comparative-genomics-synteny-analysis/) | Detect syntenic blocks between genomes with MCScan or SyRI. |
-| [bio-comparative-genomics-positive-selection](skills/bio-comparative-genomics-positive-selection/) | Test for positive selection with PAML, HyPhy, or dN/dS ratios. |
-| [bio-comparative-genomics-hgt-detection](skills/bio-comparative-genomics-hgt-detection/) | Detect horizontal gene transfer events in microbial genomes. |
-| [bio-comparative-genomics-ancestral-reconstruction](skills/bio-comparative-genomics-ancestral-reconstruction/) | Reconstruct ancestral sequences and traits with ASR methods. |
-| [bio-phylo-tree-io](skills/bio-phylo-tree-io/) | Read/write phylogenetic trees in Newick, Nexus, PhyloXML formats. |
-| [bio-phylo-modern-tree-inference](skills/bio-phylo-modern-tree-inference/) | Maximum likelihood tree inference with IQ-TREE 2 or FastTree. |
-| [bio-phylo-tree-manipulation](skills/bio-phylo-tree-manipulation/) | Root, prune, reorder, and annotate phylogenetic trees. |
-| [bio-phylo-tree-visualization](skills/bio-phylo-tree-visualization/) | Visualize trees with iTOL, ETE3, or ggtree. |
-| [bio-phylo-distance-calculations](skills/bio-phylo-distance-calculations/) | Compute pairwise phylogenetic distances and diversity metrics. |
+| [omics-comparative-genomics-ortholog-inference](skills/omics-comparative-genomics-ortholog-inference/) | Infer orthologs and paralogs with OrthoFinder or OMA. |
+| [omics-comparative-genomics-synteny-analysis](skills/omics-comparative-genomics-synteny-analysis/) | Detect syntenic blocks between genomes with MCScan or SyRI. |
+| [omics-comparative-genomics-positive-selection](skills/omics-comparative-genomics-positive-selection/) | Test for positive selection with PAML, HyPhy, or dN/dS ratios. |
+| [omics-comparative-genomics-hgt-detection](skills/omics-comparative-genomics-hgt-detection/) | Detect horizontal gene transfer events in microbial genomes. |
+| [omics-comparative-genomics-ancestral-reconstruction](skills/omics-comparative-genomics-ancestral-reconstruction/) | Reconstruct ancestral sequences and traits with ASR methods. |
+| [omics-phylo-tree-io](skills/omics-phylo-tree-io/) | Read/write phylogenetic trees in Newick, Nexus, PhyloXML formats. |
+| [omics-phylo-modern-tree-inference](skills/omics-phylo-modern-tree-inference/) | Maximum likelihood tree inference with IQ-TREE 2 or FastTree. |
+| [omics-phylo-tree-manipulation](skills/omics-phylo-tree-manipulation/) | Root, prune, reorder, and annotate phylogenetic trees. |
+| [omics-phylo-tree-visualization](skills/omics-phylo-tree-visualization/) | Visualize trees with iTOL, ETE3, or ggtree. |
+| [omics-phylo-distance-calculations](skills/omics-phylo-distance-calculations/) | Compute pairwise phylogenetic distances and diversity metrics. |
 
 </details>
 
@@ -1359,11 +1361,11 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-systems-biology-flux-balance-analysis](skills/bio-systems-biology-flux-balance-analysis/) | Flux balance analysis (FBA) with COBRApy for metabolic network modeling. |
-| [bio-systems-biology-metabolic-reconstruction](skills/bio-systems-biology-metabolic-reconstruction/) | Reconstruct genome-scale metabolic models from genome annotations. |
-| [bio-systems-biology-gene-essentiality](skills/bio-systems-biology-gene-essentiality/) | Predict essential genes by single gene knockouts in metabolic models. |
-| [bio-systems-biology-context-specific-models](skills/bio-systems-biology-context-specific-models/) | Build context-specific metabolic models from expression data (GIMME, iMAT). |
-| [bio-systems-biology-model-curation](skills/bio-systems-biology-model-curation/) | Curate SBML metabolic models: mass/charge balance, gap filling. |
+| [omics-systems-biology-flux-balance-analysis](skills/omics-systems-biology-flux-balance-analysis/) | Flux balance analysis (FBA) with COBRApy for metabolic network modeling. |
+| [omics-systems-biology-metabolic-reconstruction](skills/omics-systems-biology-metabolic-reconstruction/) | Reconstruct genome-scale metabolic models from genome annotations. |
+| [omics-systems-biology-gene-essentiality](skills/omics-systems-biology-gene-essentiality/) | Predict essential genes by single gene knockouts in metabolic models. |
+| [omics-systems-biology-context-specific-models](skills/omics-systems-biology-context-specific-models/) | Build context-specific metabolic models from expression data (GIMME, iMAT). |
+| [omics-systems-biology-model-curation](skills/omics-systems-biology-model-curation/) | Curate SBML metabolic models: mass/charge balance, gap filling. |
 
 </details>
 
@@ -1374,22 +1376,22 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-experimental-design-sample-size](skills/bio-experimental-design-sample-size/) | Power analysis and sample size calculation for omics experiments. |
-| [bio-experimental-design-power-analysis](skills/bio-experimental-design-power-analysis/) | Statistical power analysis for detecting differential signals. |
-| [bio-experimental-design-batch-design](skills/bio-experimental-design-batch-design/) | Optimize sample batching to minimize confounding with ComBat design. |
-| [bio-experimental-design-multiple-testing](skills/bio-experimental-design-multiple-testing/) | Multiple testing correction: Bonferroni, BH/FDR, q-values. |
-| [bio-machine-learning-omics-classifiers](skills/bio-machine-learning-omics-classifiers/) | Train classifiers on omics data: random forest, SVM, XGBoost. |
-| [bio-machine-learning-biomarker-discovery](skills/bio-machine-learning-biomarker-discovery/) | Identify biomarkers from omics data with LASSO, elastic net, SHAP. |
-| [bio-machine-learning-model-validation](skills/bio-machine-learning-model-validation/) | Cross-validation, AUC-ROC, calibration, and permutation testing. |
-| [bio-machine-learning-survival-analysis](skills/bio-machine-learning-survival-analysis/) | Survival ML: RSF, DeepSurv, CoxBoost from omics features. |
-| [bio-machine-learning-atlas-mapping](skills/bio-machine-learning-atlas-mapping/) | Map query cells to reference atlases with scANVI or Symphony. |
-| [bio-machine-learning-prediction-explanation](skills/bio-machine-learning-prediction-explanation/) | Explain omics ML predictions with SHAP and feature importance. |
-| [bio-reporting-automated-qc-reports](skills/bio-reporting-automated-qc-reports/) | Generate automated MultiQC-style reports for omics pipelines. |
-| [bio-reporting-jupyter-reports](skills/bio-reporting-jupyter-reports/) | Create Jupyter notebook reports with reproducible analysis code. |
-| [bio-reporting-rmarkdown-reports](skills/bio-reporting-rmarkdown-reports/) | Render Rmarkdown reports with integrated plots and statistics. |
-| [bio-reporting-quarto-reports](skills/bio-reporting-quarto-reports/) | Build Quarto multi-format reports (HTML/PDF) from analysis code. |
-| [bio-reporting-figure-export](skills/bio-reporting-figure-export/) | Export publication-quality figures in PDF/SVG/TIFF at specified DPI. |
-| [bio-research-tools-biomarker-signature-studio](skills/bio-research-tools-biomarker-signature-studio/) | Build, validate, and visualize multi-omic biomarker signatures. |
+| [omics-experimental-design-sample-size](skills/omics-experimental-design-sample-size/) | Power analysis and sample size calculation for omics experiments. |
+| [omics-experimental-design-power-analysis](skills/omics-experimental-design-power-analysis/) | Statistical power analysis for detecting differential signals. |
+| [omics-experimental-design-batch-design](skills/omics-experimental-design-batch-design/) | Optimize sample batching to minimize confounding with ComBat design. |
+| [omics-experimental-design-multiple-testing](skills/omics-experimental-design-multiple-testing/) | Multiple testing correction: Bonferroni, BH/FDR, q-values. |
+| [omics-machine-learning-omics-classifiers](skills/omics-machine-learning-omics-classifiers/) | Train classifiers on omics data: random forest, SVM, XGBoost. |
+| [omics-machine-learning-biomarker-discovery](skills/omics-machine-learning-biomarker-discovery/) | Identify biomarkers from omics data with LASSO, elastic net, SHAP. |
+| [omics-machine-learning-model-validation](skills/omics-machine-learning-model-validation/) | Cross-validation, AUC-ROC, calibration, and permutation testing. |
+| [omics-machine-learning-survival-analysis](skills/omics-machine-learning-survival-analysis/) | Survival ML: RSF, DeepSurv, CoxBoost from omics features. |
+| [omics-machine-learning-atlas-mapping](skills/omics-machine-learning-atlas-mapping/) | Map query cells to reference atlases with scANVI or Symphony. |
+| [omics-machine-learning-prediction-explanation](skills/omics-machine-learning-prediction-explanation/) | Explain omics ML predictions with SHAP and feature importance. |
+| [research-reporting-automated-qc-reports](skills/research-reporting-automated-qc-reports/) | Generate automated MultiQC-style reports for omics pipelines. |
+| [research-reporting-jupyter-reports](skills/research-reporting-jupyter-reports/) | Create Jupyter notebook reports with reproducible analysis code. |
+| [research-reporting-rmarkdown-reports](skills/research-reporting-rmarkdown-reports/) | Render Rmarkdown reports with integrated plots and statistics. |
+| [research-reporting-quarto-reports](skills/research-reporting-quarto-reports/) | Build Quarto multi-format reports (HTML/PDF) from analysis code. |
+| [research-reporting-figure-export](skills/research-reporting-figure-export/) | Export publication-quality figures in PDF/SVG/TIFF at specified DPI. |
+| [omics-research-tools-biomarker-signature-studio](skills/omics-research-tools-biomarker-signature-studio/) | Build, validate, and visualize multi-omic biomarker signatures. |
 
 </details>
 
@@ -1400,45 +1402,45 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-workflows-fastq-to-variants](skills/bio-workflows-fastq-to-variants/) | Complete FASTQ → alignment → variant calling pipeline. |
-| [bio-workflows-rnaseq-to-de](skills/bio-workflows-rnaseq-to-de/) | RNA-seq → alignment → counts → DESeq2 differential expression. |
-| [bio-workflows-scrnaseq-pipeline](skills/bio-workflows-scrnaseq-pipeline/) | Single-cell RNA-seq end-to-end: Cell Ranger → Scanpy → clustering. |
-| [bio-workflows-atacseq-pipeline](skills/bio-workflows-atacseq-pipeline/) | ATAC-seq: trimming → alignment → peak calling → differential. |
-| [bio-workflows-chipseq-pipeline](skills/bio-workflows-chipseq-pipeline/) | ChIP-seq: alignment → peak calling → motif analysis → annotation. |
-| [bio-workflows-methylation-pipeline](skills/bio-workflows-methylation-pipeline/) | WGBS/RRBS: bismark alignment → methylation calling → DMR detection. |
-| [bio-workflows-metagenomics-pipeline](skills/bio-workflows-metagenomics-pipeline/) | Metagenomics: QC → classification → functional profiling → AMR. |
-| [bio-workflows-metabolomics-pipeline](skills/bio-workflows-metabolomics-pipeline/) | LC-MS/GC-MS: preprocessing → annotation → statistical analysis. |
-| [bio-workflows-proteomics-pipeline](skills/bio-workflows-proteomics-pipeline/) | DDA/DIA proteomics: search → quantification → differential abundance. |
-| [bio-workflows-gwas-pipeline](skills/bio-workflows-gwas-pipeline/) | GWAS: QC → imputation → association → fine-mapping → annotation. |
-| [bio-workflows-somatic-variant-pipeline](skills/bio-workflows-somatic-variant-pipeline/) | Tumor-normal somatic variant calling with GATK Mutect2/Strelka2. |
-| [bio-workflows-cnv-pipeline](skills/bio-workflows-cnv-pipeline/) | Copy number variant detection: WGS/WES CNV calling and annotation. |
-| [bio-workflows-spatial-pipeline](skills/bio-workflows-spatial-pipeline/) | Spatial transcriptomics: alignment → deconvolution → domain detection. |
-| [bio-workflows-multi-omics-pipeline](skills/bio-workflows-multi-omics-pipeline/) | Multi-omics integration pipeline: MOFA, SNF, similarity network fusion. |
-| [bio-workflows-multiome-pipeline](skills/bio-workflows-multiome-pipeline/) | 10x Multiome: joint scRNA-seq + scATAC-seq processing and integration. |
-| [bio-workflows-hic-pipeline](skills/bio-workflows-hic-pipeline/) | Hi-C contact map generation, normalization, TAD/loop calling. |
-| [bio-workflows-neoantigen-pipeline](skills/bio-workflows-neoantigen-pipeline/) | Neoantigen prediction: somatic variants → MHC binding → immunogenicity. |
-| [bio-workflows-microbiome-pipeline](skills/bio-workflows-microbiome-pipeline/) | Microbiome: 16S/ITS amplicon or shotgun → diversity → differential. |
-| [bio-workflows-crispr-screen-pipeline](skills/bio-workflows-crispr-screen-pipeline/) | CRISPR screen: guide counting → MAGeCK → hit calling → visualization. |
-| [bio-workflows-crispr-editing-pipeline](skills/bio-workflows-crispr-editing-pipeline/) | CRISPR editing: amplicon sequencing → CRISPResso2 → outcome analysis. |
-| [bio-workflows-tcr-pipeline](skills/bio-workflows-tcr-pipeline/) | TCR/BCR: V(D)J alignment → clonotype → repertoire analysis. |
-| [bio-workflows-riboseq-pipeline](skills/bio-workflows-riboseq-pipeline/) | Ribo-seq: footprint alignment → periodicity → ORF detection. |
-| [bio-workflows-smrna-pipeline](skills/bio-workflows-smrna-pipeline/) | Small RNA-seq: miRNA identification → quantification → DE analysis. |
-| [bio-workflows-merip-pipeline](skills/bio-workflows-merip-pipeline/) | MeRIP-seq: m6A peak calling → differential → motif analysis. |
-| [bio-workflows-clip-pipeline](skills/bio-workflows-clip-pipeline/) | CLIP-seq: peak calling → binding site annotation → motif discovery. |
-| [bio-workflows-imc-pipeline](skills/bio-workflows-imc-pipeline/) | Imaging mass cytometry: segmentation → phenotyping → spatial analysis. |
-| [bio-workflows-cytometry-pipeline](skills/bio-workflows-cytometry-pipeline/) | Flow/mass cytometry: QC → gating → clustering → differential. |
-| [bio-workflows-longread-sv-pipeline](skills/bio-workflows-longread-sv-pipeline/) | Long-read structural variant calling and annotation pipeline. |
-| [bio-workflows-genome-assembly-pipeline](skills/bio-workflows-genome-assembly-pipeline/) | De novo genome assembly: raw reads → assembly → QC → annotation. |
-| [bio-workflows-outbreak-pipeline](skills/bio-workflows-outbreak-pipeline/) | Pathogen genomics: assembly → typing → phylodynamics → transmission. |
-| [bio-workflows-biomarker-pipeline](skills/bio-workflows-biomarker-pipeline/) | Biomarker discovery: omics → feature selection → validation → report. |
-| [bio-workflows-metabolic-modeling-pipeline](skills/bio-workflows-metabolic-modeling-pipeline/) | Metabolic model reconstruction → FBA → simulation → visualization. |
-| [bio-splicing-pipeline](skills/bio-splicing-pipeline/) | Alternative splicing analysis: rMATS → PSI → differential → sashimi. |
-| [bio-liquid-biopsy-pipeline](skills/bio-liquid-biopsy-pipeline/) | Liquid biopsy: cfDNA/ctDNA QC → mutation detection → TMB → MRD. |
-| [bio-workflow-management-snakemake-workflows](skills/bio-workflow-management-snakemake-workflows/) | Create and manage Snakemake reproducible bioinformatics workflows. |
-| [bio-workflow-management-nextflow-pipelines](skills/bio-workflow-management-nextflow-pipelines/) | Build and run Nextflow (DSL2) bioinformatics pipelines. |
-| [bio-workflow-management-cwl-workflows](skills/bio-workflow-management-cwl-workflows/) | Write Common Workflow Language (CWL) portable workflow definitions. |
-| [bio-workflow-management-wdl-workflows](skills/bio-workflow-management-wdl-workflows/) | Create WDL workflows for Terra/Cromwell bioinformatics execution. |
-| [bio-workflows-expression-to-pathways](skills/bio-workflows-expression-to-pathways/) | End-to-end workflow from differential expression to GO/KEGG/Reactome enrichment and pathway visualization. |
+| [sop-omics-fastq-to-variants](skills/sop-omics-fastq-to-variants/) | Complete FASTQ → alignment → variant calling pipeline. |
+| [sop-omics-rnaseq-to-de](skills/sop-omics-rnaseq-to-de/) | RNA-seq → alignment → counts → DESeq2 differential expression. |
+| [sop-omics-scrnaseq-pipeline](skills/sop-omics-scrnaseq-pipeline/) | Single-cell RNA-seq end-to-end: Cell Ranger → Scanpy → clustering. |
+| [sop-omics-atacseq-pipeline](skills/sop-omics-atacseq-pipeline/) | ATAC-seq: trimming → alignment → peak calling → differential. |
+| [sop-omics-chipseq-pipeline](skills/sop-omics-chipseq-pipeline/) | ChIP-seq: alignment → peak calling → motif analysis → annotation. |
+| [sop-omics-methylation-pipeline](skills/sop-omics-methylation-pipeline/) | WGBS/RRBS: bismark alignment → methylation calling → DMR detection. |
+| [sop-omics-metagenomics-pipeline](skills/sop-omics-metagenomics-pipeline/) | Metagenomics: QC → classification → functional profiling → AMR. |
+| [sop-omics-metabolomics-pipeline](skills/sop-omics-metabolomics-pipeline/) | LC-MS/GC-MS: preprocessing → annotation → statistical analysis. |
+| [sop-omics-proteomics-pipeline](skills/sop-omics-proteomics-pipeline/) | DDA/DIA proteomics: search → quantification → differential abundance. |
+| [sop-omics-gwas-pipeline](skills/sop-omics-gwas-pipeline/) | GWAS: QC → imputation → association → fine-mapping → annotation. |
+| [sop-omics-somatic-variant-pipeline](skills/sop-omics-somatic-variant-pipeline/) | Tumor-normal somatic variant calling with GATK Mutect2/Strelka2. |
+| [sop-omics-cnv-pipeline](skills/sop-omics-cnv-pipeline/) | Copy number variant detection: WGS/WES CNV calling and annotation. |
+| [sop-omics-spatial-pipeline](skills/sop-omics-spatial-pipeline/) | Spatial transcriptomics: alignment → deconvolution → domain detection. |
+| [sop-omics-multi-omics-pipeline](skills/sop-omics-multi-omics-pipeline/) | Multi-omics integration pipeline: MOFA, SNF, similarity network fusion. |
+| [sop-omics-multiome-pipeline](skills/sop-omics-multiome-pipeline/) | 10x Multiome: joint scRNA-seq + scATAC-seq processing and integration. |
+| [sop-omics-hic-pipeline](skills/sop-omics-hic-pipeline/) | Hi-C contact map generation, normalization, TAD/loop calling. |
+| [sop-omics-neoantigen-pipeline](skills/sop-omics-neoantigen-pipeline/) | Neoantigen prediction: somatic variants → MHC binding → immunogenicity. |
+| [sop-omics-microbiome-pipeline](skills/sop-omics-microbiome-pipeline/) | Microbiome: 16S/ITS amplicon or shotgun → diversity → differential. |
+| [sop-omics-crispr-screen-pipeline](skills/sop-omics-crispr-screen-pipeline/) | CRISPR screen: guide counting → MAGeCK → hit calling → visualization. |
+| [sop-omics-crispr-editing-pipeline](skills/sop-omics-crispr-editing-pipeline/) | CRISPR editing: amplicon sequencing → CRISPResso2 → outcome analysis. |
+| [sop-omics-tcr-pipeline](skills/sop-omics-tcr-pipeline/) | TCR/BCR: V(D)J alignment → clonotype → repertoire analysis. |
+| [sop-omics-riboseq-pipeline](skills/sop-omics-riboseq-pipeline/) | Ribo-seq: footprint alignment → periodicity → ORF detection. |
+| [sop-omics-smrna-pipeline](skills/sop-omics-smrna-pipeline/) | Small RNA-seq: miRNA identification → quantification → DE analysis. |
+| [sop-omics-merip-pipeline](skills/sop-omics-merip-pipeline/) | MeRIP-seq: m6A peak calling → differential → motif analysis. |
+| [sop-omics-clip-pipeline](skills/sop-omics-clip-pipeline/) | CLIP-seq: peak calling → binding site annotation → motif discovery. |
+| [sop-omics-imc-pipeline](skills/sop-omics-imc-pipeline/) | Imaging mass cytometry: segmentation → phenotyping → spatial analysis. |
+| [sop-omics-cytometry-pipeline](skills/sop-omics-cytometry-pipeline/) | Flow/mass cytometry: QC → gating → clustering → differential. |
+| [sop-omics-longread-sv-pipeline](skills/sop-omics-longread-sv-pipeline/) | Long-read structural variant calling and annotation pipeline. |
+| [sop-omics-genome-assembly-pipeline](skills/sop-omics-genome-assembly-pipeline/) | De novo genome assembly: raw reads → assembly → QC → annotation. |
+| [sop-omics-outbreak-pipeline](skills/sop-omics-outbreak-pipeline/) | Pathogen genomics: assembly → typing → phylodynamics → transmission. |
+| [sop-omics-biomarker-pipeline](skills/sop-omics-biomarker-pipeline/) | Biomarker discovery: omics → feature selection → validation → report. |
+| [sop-omics-metabolic-modeling-pipeline](skills/sop-omics-metabolic-modeling-pipeline/) | Metabolic model reconstruction → FBA → simulation → visualization. |
+| [omics-splicing-pipeline](skills/omics-splicing-pipeline/) | Alternative splicing analysis: rMATS → PSI → differential → sashimi. |
+| [omics-liquid-biopsy-pipeline](skills/omics-liquid-biopsy-pipeline/) | Liquid biopsy: cfDNA/ctDNA QC → mutation detection → TMB → MRD. |
+| [research-workflow-management-snakemake-workflows](skills/research-workflow-management-snakemake-workflows/) | Create and manage Snakemake reproducible bioinformatics workflows. |
+| [research-workflow-management-nextflow-pipelines](skills/research-workflow-management-nextflow-pipelines/) | Build and run Nextflow (DSL2) bioinformatics pipelines. |
+| [research-workflow-management-cwl-workflows](skills/research-workflow-management-cwl-workflows/) | Write Common Workflow Language (CWL) portable workflow definitions. |
+| [research-workflow-management-wdl-workflows](skills/research-workflow-management-wdl-workflows/) | Create WDL workflows for Terra/Cromwell bioinformatics execution. |
+| [sop-omics-expression-to-pathways](skills/sop-omics-expression-to-pathways/) | End-to-end workflow from differential expression to GO/KEGG/Reactome enrichment and pathway visualization. |
 
 </details>
 
@@ -1449,17 +1451,17 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bio-data-visualization-heatmaps-clustering](skills/bio-data-visualization-heatmaps-clustering/) | Hierarchical clustering heatmaps with ComplexHeatmap or seaborn. |
-| [bio-data-visualization-volcano-customization](skills/bio-data-visualization-volcano-customization/) | Customized volcano plots with ggplot2 or matplotlib for DE results. |
-| [bio-data-visualization-circos-plots](skills/bio-data-visualization-circos-plots/) | Circular genome visualization with Circos or pycirclize. |
-| [bio-data-visualization-genome-browser-tracks](skills/bio-data-visualization-genome-browser-tracks/) | Generate genome browser tracks and IGV sessions from BAM/BigWig. |
-| [bio-data-visualization-genome-tracks](skills/bio-data-visualization-genome-tracks/) | Multi-panel genome track plots with pyGenomeTracks. |
-| [bio-data-visualization-ggplot2-fundamentals](skills/bio-data-visualization-ggplot2-fundamentals/) | R ggplot2 for publication-quality genomics and omics figures. |
-| [bio-data-visualization-interactive-visualization](skills/bio-data-visualization-interactive-visualization/) | Interactive omics visualizations with Plotly, Bokeh, or shiny. |
-| [bio-data-visualization-upset-plots](skills/bio-data-visualization-upset-plots/) | UpSet plots for multi-set intersection visualization. |
-| [bio-data-visualization-multipanel-figures](skills/bio-data-visualization-multipanel-figures/) | Compose multipanel publication figures with cowplot or patchwork. |
-| [bio-data-visualization-color-palettes](skills/bio-data-visualization-color-palettes/) | Scientific color palettes: colorblind-safe, perceptually uniform, diverging. |
-| [bio-data-visualization-specialized-omics-plots](skills/bio-data-visualization-specialized-omics-plots/) | Specialized plots: lollipop (mutations), circomap, oncoprint. |
+| [research-data-visualization-heatmaps-clustering](skills/research-data-visualization-heatmaps-clustering/) | Hierarchical clustering heatmaps with ComplexHeatmap or seaborn. |
+| [research-data-visualization-volcano-customization](skills/research-data-visualization-volcano-customization/) | Customized volcano plots with ggplot2 or matplotlib for DE results. |
+| [research-data-visualization-circos-plots](skills/research-data-visualization-circos-plots/) | Circular genome visualization with Circos or pycirclize. |
+| [research-data-visualization-genome-browser-tracks](skills/research-data-visualization-genome-browser-tracks/) | Generate genome browser tracks and IGV sessions from BAM/BigWig. |
+| [research-data-visualization-genome-tracks](skills/research-data-visualization-genome-tracks/) | Multi-panel genome track plots with pyGenomeTracks. |
+| [research-data-visualization-ggplot2-fundamentals](skills/research-data-visualization-ggplot2-fundamentals/) | R ggplot2 for publication-quality genomics and omics figures. |
+| [research-data-visualization-interactive-visualization](skills/research-data-visualization-interactive-visualization/) | Interactive omics visualizations with Plotly, Bokeh, or shiny. |
+| [research-data-visualization-upset-plots](skills/research-data-visualization-upset-plots/) | UpSet plots for multi-set intersection visualization. |
+| [research-data-visualization-multipanel-figures](skills/research-data-visualization-multipanel-figures/) | Compose multipanel publication figures with cowplot or patchwork. |
+| [research-data-visualization-color-palettes](skills/research-data-visualization-color-palettes/) | Scientific color palettes: colorblind-safe, perceptually uniform, diverging. |
+| [research-data-visualization-specialized-omics-plots](skills/research-data-visualization-specialized-omics-plots/) | Specialized plots: lollipop (mutations), circomap, oncoprint. |
 
 </details>
 
@@ -1470,28 +1472,28 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [autonomous-oncology-agent](skills/autonomous-oncology-agent/) | Autonomous oncology research agent: literature mining, trial matching, biomarker analysis, and treatment hypothesis generation. |
-| [precision-oncology-agent](skills/precision-oncology-agent/) | Precision oncology: tumor molecular profiling → actionable alterations → treatment recommendations. |
-| [pan-cancer-multiomics-agent](skills/pan-cancer-multiomics-agent/) | Pan-cancer multi-omics integration for cross-cancer pattern discovery and driver identification. |
-| [tumor-clonal-evolution-agent](skills/tumor-clonal-evolution-agent/) | Model tumor clonal evolution: phylogenetic trees, clonal dynamics, branching patterns from somatic variants. |
-| [tumor-heterogeneity-agent](skills/tumor-heterogeneity-agent/) | Analyze intratumoral heterogeneity from bulk and single-cell sequencing data. |
-| [tumor-mutational-burden-agent](skills/tumor-mutational-burden-agent/) | Compute TMB and assess its predictive value for immunotherapy response. |
-| [chromosomal-instability-agent](skills/chromosomal-instability-agent/) | Quantify chromosomal instability (CIN) from copy number and SV data. |
-| [cancer-metabolism-agent](skills/cancer-metabolism-agent/) | Analyze tumor metabolic reprogramming from transcriptomic and metabolomic data. |
-| [liquid-biopsy-analytics-agent](skills/liquid-biopsy-analytics-agent/) | Comprehensive liquid biopsy analytics: ctDNA detection, MRD monitoring, treatment response. |
-| [ctdna-dynamics-mrd-agent](skills/ctdna-dynamics-mrd-agent/) | Track ctDNA dynamics for minimal residual disease detection and treatment monitoring. |
-| [mrd-edge-detection-agent](skills/mrd-edge-detection-agent/) | Ultra-sensitive MRD detection from deep sequencing with error suppression. |
-| [hrd-analysis-agent](skills/hrd-analysis-agent/) | Homologous recombination deficiency (HRD) analysis for PARP inhibitor response prediction. |
-| [computational-pathology-agent](skills/computational-pathology-agent/) | Computational pathology: WSI analysis, tissue segmentation, histological feature extraction. |
-| [multimodal-radpath-fusion-agent](skills/multimodal-radpath-fusion-agent/) | Fuse radiology and pathology imaging for integrated cancer phenotyping. |
-| [radiomics-pathomics-fusion-agent](skills/radiomics-pathomics-fusion-agent/) | Extract radiomic and pathomic features and integrate for predictive modeling. |
-| [radgpt-radiology-reporter](skills/radgpt-radiology-reporter/) | AI-assisted radiology report generation from imaging findings. |
-| [organoid-drug-response-agent](skills/organoid-drug-response-agent/) | Analyze drug response in patient-derived organoids for personalized therapy prediction. |
-| [pdx-model-analysis-agent](skills/pdx-model-analysis-agent/) | Patient-derived xenograft model analysis for drug efficacy and biomarker discovery. |
-| [deep-visual-proteomics-agent](skills/deep-visual-proteomics-agent/) | Deep visual proteomics: spatial proteomic analysis from laser-capture microdissection MS data. |
-| [exosome-ev-analysis-agent](skills/exosome-ev-analysis-agent/) | Extracellular vesicle and exosome analysis: cargo profiling and biomarker discovery. |
-| [microbiome-cancer-agent](skills/microbiome-cancer-agent/) | Tumor microbiome analysis and its role in cancer progression and immunotherapy response. |
-| [bio-fragment-analysis](skills/bio-fragment-analysis/) | Analyze cfDNA fragment size distributions and fragmentomics features (FinaleToolkit/Griffin) for cancer detection and tissue-of-origin assessment. |
+| [clinical-oncology-evidence-integration](skills/clinical-oncology-evidence-integration/) | Autonomous oncology research agent: literature mining, trial matching, biomarker analysis, and treatment hypothesis generation. |
+| [clinical-precision-oncology](skills/clinical-precision-oncology/) | Precision oncology: tumor molecular profiling → actionable alterations → treatment recommendations. |
+| [omics-pan-cancer-integration](skills/omics-pan-cancer-integration/) | Pan-cancer multi-omics integration for cross-cancer pattern discovery and driver identification. |
+| [clinical-tumor-clonal-evolution](skills/clinical-tumor-clonal-evolution/) | Model tumor clonal evolution: phylogenetic trees, clonal dynamics, branching patterns from somatic variants. |
+| [clinical-tumor-heterogeneity](skills/clinical-tumor-heterogeneity/) | Analyze intratumoral heterogeneity from bulk and single-cell sequencing data. |
+| [clinical-tumor-mutational-burden](skills/clinical-tumor-mutational-burden/) | Compute TMB and assess its predictive value for immunotherapy response. |
+| [omics-chromosomal-instability-analysis](skills/omics-chromosomal-instability-analysis/) | Quantify chromosomal instability (CIN) from copy number and SV data. |
+| [omics-cancer-metabolism-analysis](skills/omics-cancer-metabolism-analysis/) | Analyze tumor metabolic reprogramming from transcriptomic and metabolomic data. |
+| [omics-liquid-biopsy-analysis](skills/omics-liquid-biopsy-analysis/) | Comprehensive liquid biopsy analytics: ctDNA detection, MRD monitoring, treatment response. |
+| [omics-ctdna-dynamics-analysis](skills/omics-ctdna-dynamics-analysis/) | Track ctDNA dynamics for minimal residual disease detection and treatment monitoring. |
+| [omics-ctdna-residual-disease-analysis](skills/omics-ctdna-residual-disease-analysis/) | Ultra-sensitive MRD detection from deep sequencing with error suppression. |
+| [omics-homologous-recombination-analysis](skills/omics-homologous-recombination-analysis/) | Homologous recombination deficiency (HRD) analysis for PARP inhibitor response prediction. |
+| [imaging-computational-pathology](skills/imaging-computational-pathology/) | Computational pathology: WSI analysis, tissue segmentation, histological feature extraction. |
+| [imaging-multimodal-radpath-fusion](skills/imaging-multimodal-radpath-fusion/) | Fuse radiology and pathology imaging for integrated cancer phenotyping. |
+| [imaging-radiomics-pathomics-fusion](skills/imaging-radiomics-pathomics-fusion/) | Extract radiomic and pathomic features and integrate for predictive modeling. |
+| [clinical-radiology-report-explanation](skills/clinical-radiology-report-explanation/) | AI-assisted radiology report generation from imaging findings. |
+| [drug-organoid-response-analysis](skills/drug-organoid-response-analysis/) | Analyze drug response in patient-derived organoids for personalized therapy prediction. |
+| [drug-pdx-response-analysis](skills/drug-pdx-response-analysis/) | Patient-derived xenograft model analysis for drug efficacy and biomarker discovery. |
+| [omics-deep-visual-proteomics](skills/omics-deep-visual-proteomics/) | Deep visual proteomics: spatial proteomic analysis from laser-capture microdissection MS data. |
+| [omics-exosome-cargo-analysis](skills/omics-exosome-cargo-analysis/) | Extracellular vesicle and exosome analysis: cargo profiling and biomarker discovery. |
+| [omics-microbiome-cancer-association](skills/omics-microbiome-cancer-association/) | Tumor microbiome analysis and its role in cancer progression and immunotherapy response. |
+| [omics-fragment-analysis](skills/omics-fragment-analysis/) | Analyze cfDNA fragment size distributions and fragmentomics features (FinaleToolkit/Griffin) for cancer detection and tissue-of-origin assessment. |
 
 </details>
 
@@ -1502,13 +1504,13 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [myeloma-mrd-agent](skills/myeloma-mrd-agent/) | Multiple myeloma MRD assessment from flow cytometry and NGS data. |
-| [mpn-progression-monitor-agent](skills/mpn-progression-monitor-agent/) | Myeloproliferative neoplasm progression monitoring from serial molecular data. |
-| [mpn-research-assistant](skills/mpn-research-assistant/) | Research assistant for myeloproliferative neoplasms: literature, mutation analysis, treatment. |
-| [bone-marrow-ai-agent](skills/bone-marrow-ai-agent/) | Bone marrow analysis: blast counting, immunophenotyping, disease classification. |
-| [hemoglobinopathy-analysis-agent](skills/hemoglobinopathy-analysis-agent/) | Hemoglobin variant analysis, sickle cell, and thalassemia genotype-phenotype assessment. |
-| [chip-clonal-hematopoiesis-agent](skills/chip-clonal-hematopoiesis-agent/) | Clonal hematopoiesis of indeterminate potential (CHIP) variant detection and risk assessment. |
-| [coagulation-thrombosis-agent](skills/coagulation-thrombosis-agent/) | Coagulation pathway analysis, thrombophilia assessment, anticoagulation guidance. |
+| [clinical-myeloma-residual-disease-assessment](skills/clinical-myeloma-residual-disease-assessment/) | Multiple myeloma MRD assessment from flow cytometry and NGS data. |
+| [clinical-mpn-progression-monitoring](skills/clinical-mpn-progression-monitoring/) | Myeloproliferative neoplasm progression monitoring from serial molecular data. |
+| [clinical-mpn-research-assistant](skills/clinical-mpn-research-assistant/) | Research assistant for myeloproliferative neoplasms: literature, mutation analysis, treatment. |
+| [imaging-bone-marrow-ai](skills/imaging-bone-marrow-ai/) | Bone marrow analysis: blast counting, immunophenotyping, disease classification. |
+| [research-hemoglobinopathy-analysis](skills/research-hemoglobinopathy-analysis/) | Hemoglobin variant analysis, sickle cell, and thalassemia genotype-phenotype assessment. |
+| [omics-chip-clonal-hematopoiesis](skills/omics-chip-clonal-hematopoiesis/) | Clonal hematopoiesis of indeterminate potential (CHIP) variant detection and risk assessment. |
+| [clinical-coagulation-thrombosis](skills/clinical-coagulation-thrombosis/) | Coagulation pathway analysis, thrombophilia assessment, anticoagulation guidance. |
 
 </details>
 
@@ -1519,15 +1521,15 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [cart-design-optimizer-agent](skills/cart-design-optimizer-agent/) | Optimize CAR-T cell construct design: scFv selection, linker, co-stimulatory domain. |
-| [armored-cart-design-agent](skills/armored-cart-design-agent/) | Design armored CAR-T cells with cytokine payloads and resistance mechanisms. |
-| [tcell-exhaustion-analysis-agent](skills/tcell-exhaustion-analysis-agent/) | Analyze T cell exhaustion from scRNA-seq and ATAC-seq data. |
-| [nk-cell-therapy-agent](skills/nk-cell-therapy-agent/) | NK cell therapy design: receptor engineering, expansion protocols, persistence. |
-| [tcr-pmhc-prediction-agent](skills/tcr-pmhc-prediction-agent/) | Predict TCR-pMHC binding affinity and selectivity for TCR therapy design. |
-| [tcr-repertoire-analysis-agent](skills/tcr-repertoire-analysis-agent/) | TCR repertoire analysis: V(D)J usage, clonotype dynamics, antigen specificity. |
-| [immune-checkpoint-combination-agent](skills/immune-checkpoint-combination-agent/) | Predict optimal immune checkpoint combination strategies from tumor immune microenvironment. |
-| [tme-immune-profiling-agent](skills/tme-immune-profiling-agent/) | Tumor microenvironment immune profiling: cell type deconvolution and spatial mapping. |
-| [cytokine-storm-analysis-agent](skills/cytokine-storm-analysis-agent/) | Cytokine storm detection, severity scoring, and intervention modeling. |
+| [drug-cart-design-optimization](skills/drug-cart-design-optimization/) | Optimize CAR-T cell construct design: scFv selection, linker, co-stimulatory domain. |
+| [drug-armored-cart-design](skills/drug-armored-cart-design/) | Design armored CAR-T cells with cytokine payloads and resistance mechanisms. |
+| [omics-tcell-exhaustion-analysis](skills/omics-tcell-exhaustion-analysis/) | Analyze T cell exhaustion from scRNA-seq and ATAC-seq data. |
+| [drug-nk-cell-therapy-planning](skills/drug-nk-cell-therapy-planning/) | NK cell therapy design: receptor engineering, expansion protocols, persistence. |
+| [omics-tcr-pmhc-prediction](skills/omics-tcr-pmhc-prediction/) | Predict TCR-pMHC binding affinity and selectivity for TCR therapy design. |
+| [omics-tcr-repertoire-analysis](skills/omics-tcr-repertoire-analysis/) | TCR repertoire analysis: V(D)J usage, clonotype dynamics, antigen specificity. |
+| [drug-immune-checkpoint-combination-planning](skills/drug-immune-checkpoint-combination-planning/) | Predict optimal immune checkpoint combination strategies from tumor immune microenvironment. |
+| [omics-tme-immune-profiling](skills/omics-tme-immune-profiling/) | Tumor microenvironment immune profiling: cell type deconvolution and spatial mapping. |
+| [omics-cytokine-storm-analysis](skills/omics-cytokine-storm-analysis/) | Cytokine storm detection, severity scoring, and intervention modeling. |
 
 </details>
 
@@ -1538,21 +1540,21 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [cellagent-annotation](skills/cellagent-annotation/) | AI-driven single-cell cluster annotation using marker gene databases. |
-| [universal-single-cell-annotator](skills/universal-single-cell-annotator/) | Universal scRNA-seq annotator using foundation models and multi-reference integration. |
-| [scfoundation-model-agent](skills/scfoundation-model-agent/) | Single-cell foundation model inference (scFoundation/scGPT) for zero-shot annotation. |
-| [rna-velocity-agent](skills/rna-velocity-agent/) | RNA velocity analysis with scVelo for trajectory and fate decision inference. |
-| [spatial-transcriptomics-agent](skills/spatial-transcriptomics-agent/) | End-to-end spatial transcriptomics analysis: QC, deconvolution, domain detection. |
-| [spatial-transcriptomics-analysis](skills/spatial-transcriptomics-analysis/) | Spatial transcriptomics analysis with Squidpy and SpatialDE. |
-| [spatial-agent](skills/spatial-agent/) | Spatial omics agent: integrate spatial data with imaging, protein, and genomic layers. |
-| [nicheformer-spatial-agent](skills/nicheformer-spatial-agent/) | Spatial niche analysis with Nicheformer foundation model for tissue microenvironment. |
-| [spatial-epigenomics-agent](skills/spatial-epigenomics-agent/) | Spatial epigenomics analysis: spatially resolved chromatin accessibility and gene regulation. |
-| [bioinformatics-singlecell](skills/bioinformatics-singlecell/) | General single-cell bioinformatics: clustering, trajectory, cell communication. |
-| [scrna-qc](skills/scrna-qc/) | Single-cell RNA-seq quality control: doublet removal, ambient RNA, filtering thresholds. |
-| [compbioagent-explorer](skills/compbioagent-explorer/) | Computational biology exploration agent for multi-omics dataset analysis. |
-| [simo-multiomics-integration-agent](skills/simo-multiomics-integration-agent/) | Single-cell multi-omics integration with SIMO/MOFA+ for joint embedding. |
-| [epigenomics-methylgpt-agent](skills/epigenomics-methylgpt-agent/) | Epigenomics and DNA methylation analysis with MethylGPT-inspired approaches. |
-| [biomaster-workflows](skills/biomaster-workflows/) | BioMaster workflow orchestration for end-to-end bioinformatics analyses. |
+| [omics-cellagent-cell-annotation](skills/omics-cellagent-cell-annotation/) | AI-driven single-cell cluster annotation using marker gene databases. |
+| [omics-universal-single-cell-annotator](skills/omics-universal-single-cell-annotator/) | Universal scRNA-seq annotator using foundation models and multi-reference integration. |
+| [omics-scfoundation-model](skills/omics-scfoundation-model/) | Single-cell foundation model inference (scFoundation/scGPT) for zero-shot annotation. |
+| [omics-rna-velocity](skills/omics-rna-velocity/) | RNA velocity analysis with scVelo for trajectory and fate decision inference. |
+| [omics-spatial-transcriptomics](skills/omics-spatial-transcriptomics/) | End-to-end spatial transcriptomics analysis: QC, deconvolution, domain detection. |
+| [omics-spatial-transcriptomics-analysis](skills/omics-spatial-transcriptomics-analysis/) | Spatial transcriptomics analysis with Squidpy and SpatialDE. |
+| [omics-spatial](skills/omics-spatial/) | Spatial omics agent: integrate spatial data with imaging, protein, and genomic layers. |
+| [omics-nicheformer-spatial](skills/omics-nicheformer-spatial/) | Spatial niche analysis with Nicheformer foundation model for tissue microenvironment. |
+| [omics-spatial-epigenomics](skills/omics-spatial-epigenomics/) | Spatial epigenomics analysis: spatially resolved chromatin accessibility and gene regulation. |
+| [omics-single-cell-integration-guide](skills/omics-single-cell-integration-guide/) | General single-cell bioinformatics: clustering, trajectory, cell communication. |
+| [omics-scrna-qc](skills/omics-scrna-qc/) | Single-cell RNA-seq quality control: doublet removal, ambient RNA, filtering thresholds. |
+| [omics-single-cell-interactive-exploration](skills/omics-single-cell-interactive-exploration/) | Computational biology exploration agent for multi-omics dataset analysis. |
+| [omics-simo-multiomics-integration](skills/omics-simo-multiomics-integration/) | Single-cell multi-omics integration with SIMO/MOFA+ for joint embedding. |
+| [omics-epigenomics-methylgpt](skills/omics-epigenomics-methylgpt/) | Epigenomics and DNA methylation analysis with MethylGPT-inspired approaches. |
+| [sop-omics-biomaster-analysis](skills/sop-omics-biomaster-analysis/) | BioMaster workflow orchestration for end-to-end bioinformatics analyses. |
 
 </details>
 
@@ -1563,35 +1565,35 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [agentd-drug-discovery](skills/agentd-drug-discovery/) | AgentD autonomous drug discovery: target identification, hit finding, ADMET optimization. |
-| [chematagent-drug-discovery](skills/chematagent-drug-discovery/) | CheMatAgent: chemistry-aware drug design with retrosynthesis and property optimization. |
-| [chemcrow-drug-discovery](skills/chemcrow-drug-discovery/) | ChemCrow drug discovery toolkit: web search, Python, chemical tools integration. |
-| [medea-therapeutic-discovery](skills/medea-therapeutic-discovery/) | MEDEA therapeutic discovery: multimodal evidence aggregation for target-disease validation. |
-| [molecule-evolution-agent](skills/molecule-evolution-agent/) | Directed molecular evolution: generative models for compound optimization and library design. |
-| [molecular-glue-discovery-agent](skills/molecular-glue-discovery-agent/) | Molecular glue discovery: induced proximity degraders and ternary complex stabilizers. |
-| [protac-design-agent](skills/protac-design-agent/) | PROTAC design: E3 ligase ligand selection, linker optimization, ternary complex modeling. |
-| [tpd-ternary-complex-agent](skills/tpd-ternary-complex-agent/) | Targeted protein degradation ternary complex modeling and cooperativity prediction. |
-| [mage-antibody-generator](skills/mage-antibody-generator/) | MAGE antibody generator: sequence design, humanization, affinity maturation. |
-| [antibody-design-agent](skills/antibody-design-agent/) | Antibody design: epitope mapping, CDR engineering, bispecific construction. |
-| [aav-vector-design-agent](skills/aav-vector-design-agent/) | AAV vector design: capsid selection, promoter optimization, payload capacity. |
-| [protein-structure-prediction](skills/protein-structure-prediction/) | Protein structure prediction with AlphaFold3, ESMFold, or Boltz with comparison. |
-| [crispr-guide-design](skills/crispr-guide-design/) | CRISPR guide RNA design with on-target scoring and off-target minimization. |
-| [crispr-offtarget-predictor](skills/crispr-offtarget-predictor/) | Predict CRISPR Cas9/Cas12 off-target sites genome-wide with CRISPOR/Cas-OFFinder. |
-| [chemical-property-lookup](skills/chemical-property-lookup/) | Look up chemical properties from PubChem, ChEMBL, DrugBank by name/SMILES. |
-| [chemistry-agent](skills/chemistry-agent/) | General chemistry agent for synthesis planning, reaction prediction, and property calculation. |
-| [cryoem-ai-drug-design-agent](skills/cryoem-ai-drug-design-agent/) | AI-guided drug design from cryo-EM structures: binding site analysis and docking. |
-| [time-resolved-cryoem-agent](skills/time-resolved-cryoem-agent/) | Time-resolved cryo-EM analysis for dynamic structural biology. |
-| [cnv-caller-agent](skills/cnv-caller-agent/) | Specialized CNV detection agent integrating multiple callers with ensemble scoring. |
-| [popeve-variant-predictor-agent](skills/popeve-variant-predictor-agent/) | Variant pathogenicity prediction using EVE population-based evolutionary models. |
-| [varcadd-pathogenicity](skills/varcadd-pathogenicity/) | VARCADD pathogenicity scoring for coding variants from structure and evolution. |
-| [variant-interpretation-acmg](skills/variant-interpretation-acmg/) | ACMG/AMP variant interpretation with evidence-based classification framework. |
-| [gene-panel-design-agent](skills/gene-panel-design-agent/) | Design targeted gene panels for clinical or research sequencing applications. |
-| [pharmacogenomics-agent](skills/pharmacogenomics-agent/) | Pharmacogenomics analysis: variant-drug interaction prediction and dosing recommendations. |
-| [multi-ancestry-prs-agent](skills/multi-ancestry-prs-agent/) | Multi-ancestry polygenic risk score computation with ancestry-specific weighting. |
-| [prs-net-deep-learning-agent](skills/prs-net-deep-learning-agent/) | Deep learning PRS prediction with PRSnet for complex traits. |
-| [cellfree-rna-agent](skills/cellfree-rna-agent/) | Cell-free RNA analysis: plasma cfRNA profiling for liquid biopsy diagnostics. |
-| [long-read-sequencing-agent](skills/long-read-sequencing-agent/) | Long-read sequencing analysis: SV calling, methylation, isoform discovery, assembly. |
-| [bayesian-optimizer](skills/bayesian-optimizer/) | Bayesian optimization for experimental design and hyperparameter tuning in biomedical research. |
+| [drug-agentd-molecule-discovery](skills/drug-agentd-molecule-discovery/) | AgentD autonomous drug discovery: target identification, hit finding, ADMET optimization. |
+| [drug-chematagent-drug-discovery](skills/drug-chematagent-drug-discovery/) | CheMatAgent: chemistry-aware drug design with retrosynthesis and property optimization. |
+| [drug-chemcrow-drug-discovery](skills/drug-chemcrow-drug-discovery/) | ChemCrow drug discovery toolkit: web search, Python, chemical tools integration. |
+| [drug-medea-target-planning](skills/drug-medea-target-planning/) | MEDEA therapeutic discovery: multimodal evidence aggregation for target-disease validation. |
+| [drug-molecule-evolution](skills/drug-molecule-evolution/) | Directed molecular evolution: generative models for compound optimization and library design. |
+| [drug-molecular-glue-discovery-planning](skills/drug-molecular-glue-discovery-planning/) | Molecular glue discovery: induced proximity degraders and ternary complex stabilizers. |
+| [drug-protac-design](skills/drug-protac-design/) | PROTAC design: E3 ligase ligand selection, linker optimization, ternary complex modeling. |
+| [drug-tpd-ternary-complex](skills/drug-tpd-ternary-complex/) | Targeted protein degradation ternary complex modeling and cooperativity prediction. |
+| [drug-mage-antibody-generation](skills/drug-mage-antibody-generation/) | MAGE antibody generator: sequence design, humanization, affinity maturation. |
+| [drug-antibody-sequence-design](skills/drug-antibody-sequence-design/) | Antibody design: epitope mapping, CDR engineering, bispecific construction. |
+| [drug-aav-vector-design](skills/drug-aav-vector-design/) | AAV vector design: capsid selection, promoter optimization, payload capacity. |
+| [omics-protein-structure-prediction](skills/omics-protein-structure-prediction/) | Protein structure prediction with AlphaFold3, ESMFold, or Boltz with comparison. |
+| [omics-crispr-guide-design](skills/omics-crispr-guide-design/) | CRISPR guide RNA design with on-target scoring and off-target minimization. |
+| [omics-crispr-offtarget-predictor](skills/omics-crispr-offtarget-predictor/) | Predict CRISPR Cas9/Cas12 off-target sites genome-wide with CRISPOR/Cas-OFFinder. |
+| [drug-chemical-property-lookup](skills/drug-chemical-property-lookup/) | Look up chemical properties from PubChem, ChEMBL, DrugBank by name/SMILES. |
+| [drug-chemical-synthesis-planning](skills/drug-chemical-synthesis-planning/) | General chemistry agent for synthesis planning, reaction prediction, and property calculation. |
+| [omics-cryoem-ai-drug-design](skills/omics-cryoem-ai-drug-design/) | AI-guided drug design from cryo-EM structures: binding site analysis and docking. |
+| [omics-time-resolved-cryoem](skills/omics-time-resolved-cryoem/) | Time-resolved cryo-EM analysis for dynamic structural biology. |
+| [omics-cnv-caller](skills/omics-cnv-caller/) | Specialized CNV detection agent integrating multiple callers with ensemble scoring. |
+| [omics-popeve-variant-predictor](skills/omics-popeve-variant-predictor/) | Variant pathogenicity prediction using EVE population-based evolutionary models. |
+| [omics-varcadd-pathogenicity](skills/omics-varcadd-pathogenicity/) | VARCADD pathogenicity scoring for coding variants from structure and evolution. |
+| [omics-variant-interpretation-acmg](skills/omics-variant-interpretation-acmg/) | ACMG/AMP variant interpretation with evidence-based classification framework. |
+| [omics-gene-panel-design](skills/omics-gene-panel-design/) | Design targeted gene panels for clinical or research sequencing applications. |
+| [omics-pharmacogenomics](skills/omics-pharmacogenomics/) | Pharmacogenomics analysis: variant-drug interaction prediction and dosing recommendations. |
+| [omics-multi-ancestry-prs](skills/omics-multi-ancestry-prs/) | Multi-ancestry polygenic risk score computation with ancestry-specific weighting. |
+| [omics-prs-net-deep-learning](skills/omics-prs-net-deep-learning/) | Deep learning PRS prediction with PRSnet for complex traits. |
+| [omics-cellfree-rna](skills/omics-cellfree-rna/) | Cell-free RNA analysis: plasma cfRNA profiling for liquid biopsy diagnostics. |
+| [omics-long-read-sequencing](skills/omics-long-read-sequencing/) | Long-read sequencing analysis: SV calling, methylation, isoform discovery, assembly. |
+| [research-bayesian-optimization](skills/research-bayesian-optimization/) | Bayesian optimization for experimental design and hyperparameter tuning in biomedical research. |
 
 </details>
 
@@ -1602,25 +1604,25 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [chatehr-clinician-assistant](skills/chatehr-clinician-assistant/) | EHR clinical assistant: note summarization, structured data extraction, clinical decision support. |
+| [clinical-ehr-question-answering](skills/clinical-ehr-question-answering/) | EHR clinical assistant: note summarization, structured data extraction, clinical decision support. |
 | [clinical-note-summarization](skills/clinical-note-summarization/) | Summarize clinical notes into structured SOAP format with key findings. |
-| [clinical-nlp-extractor](skills/clinical-nlp-extractor/) | Extract clinical entities (diagnoses, medications, procedures) from unstructured text. |
-| [ehr-fhir-integration](skills/ehr-fhir-integration/) | EHR-FHIR integration: HL7 FHIR resource creation, querying, and workflow automation. |
-| [fhir-development](skills/fhir-development/) | FHIR API development: build SMART on FHIR apps and FHIR resource endpoints. |
-| [digital-twin-clinical-agent](skills/digital-twin-clinical-agent/) | Create patient digital twins for treatment simulation and outcome prediction. |
-| [trial-eligibility-agent](skills/trial-eligibility-agent/) | Assess patient eligibility for clinical trials from EHR data and trial criteria. |
-| [trialgpt-matching](skills/trialgpt-matching/) | TrialGPT patient-to-trial matching with eligibility assessment from clinical notes. |
-| [wearable-analysis-agent](skills/wearable-analysis-agent/) | Analyze wearable sensor data: activity, sleep, HRV, ECG for health monitoring. |
-| [multimodal-medical-imaging](skills/multimodal-medical-imaging/) | Multimodal medical imaging analysis: CT, MRI, PET fusion and segmentation. |
-| [prior-auth-coworker](skills/prior-auth-coworker/) | Prior authorization workflow assistant for insurance approval processes. |
-| [care-coordination](skills/care-coordination/) | Care coordination agent: multi-disciplinary team communication and care plan management. |
-| [claims-appeals](skills/claims-appeals/) | Insurance claims appeals: documentation preparation and denial reasoning analysis. |
-| [lab-results](skills/lab-results/) | Lab result interpretation: reference ranges, trend analysis, critical value alerts. |
+| [clinical-nlp-entity-extraction](skills/clinical-nlp-entity-extraction/) | Extract clinical entities (diagnoses, medications, procedures) from unstructured text. |
+| [clinical-ehr-fhir-integration](skills/clinical-ehr-fhir-integration/) | EHR-FHIR integration: HL7 FHIR resource creation, querying, and workflow automation. |
+| [research-fhir-resource-generation](skills/research-fhir-resource-generation/) | FHIR API development: build SMART on FHIR apps and FHIR resource endpoints. |
+| [clinical-digital-twin-clinical](skills/clinical-digital-twin-clinical/) | Create patient digital twins for treatment simulation and outcome prediction. |
+| [clinical-trial-eligibility](skills/clinical-trial-eligibility/) | Assess patient eligibility for clinical trials from EHR data and trial criteria. |
+| [clinical-trialgpt-matching](skills/clinical-trialgpt-matching/) | TrialGPT patient-to-trial matching with eligibility assessment from clinical notes. |
+| [health-wearable-trend-analysis](skills/health-wearable-trend-analysis/) | Analyze wearable sensor data: activity, sleep, HRV, ECG for health monitoring. |
+| [imaging-multimodal-medical-imaging](skills/imaging-multimodal-medical-imaging/) | Multimodal medical imaging analysis: CT, MRI, PET fusion and segmentation. |
+| [clinical-prior-authorization-drafting](skills/clinical-prior-authorization-drafting/) | Prior authorization workflow assistant for insurance approval processes. |
+| [clinical-care-message-routing](skills/clinical-care-message-routing/) | Care coordination agent: multi-disciplinary team communication and care plan management. |
+| [clinical-insurance-appeal-drafting](skills/clinical-insurance-appeal-drafting/) | Insurance claims appeals: documentation preparation and denial reasoning analysis. |
+| [clinical-lab-result-interpretation](skills/clinical-lab-result-interpretation/) | Lab result interpretation: reference ranges, trend analysis, critical value alerts. |
 | [drug-interaction-checker](skills/drug-interaction-checker/) | Check drug-drug interactions from patient medication lists with severity scoring. |
-| [regulatory-drafter](skills/regulatory-drafter/) | Draft regulatory submissions: FDA, EMA, ICH document preparation. |
-| [regulatory-drafting](skills/regulatory-drafting/) | Regulatory writing and document structuring for medical device/drug submissions. |
-| [biomedical-data-analysis](skills/biomedical-data-analysis/) | Comprehensive biomedical data analysis: statistics, visualization, and interpretation. |
-| [data-visualization-biomedical](skills/data-visualization-biomedical/) | Biomedical-specific data visualization: clinical trial plots, survival curves, forest plots. |
+| [research-regulatory-drafter](skills/research-regulatory-drafter/) | Draft regulatory submissions: FDA, EMA, ICH document preparation. |
+| [research-regulatory-drafting](skills/research-regulatory-drafting/) | Regulatory writing and document structuring for medical device/drug submissions. |
+| [research-biomedical-data-analysis](skills/research-biomedical-data-analysis/) | Comprehensive biomedical data analysis: statistics, visualization, and interpretation. |
+| [research-data-visualization-biomedical](skills/research-data-visualization-biomedical/) | Biomedical-specific data visualization: clinical trial plots, survival curves, forest plots. |
 
 </details>
 
@@ -1631,24 +1633,24 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [biomni-general-agent](skills/biomni-general-agent/) | BioMni general biomedical agent for flexible multi-step research tasks. |
-| [biomni-research-agent](skills/biomni-research-agent/) | BioMni research-focused agent with literature, database, and analysis integration. |
-| [biokernel](skills/biokernel/) | BioKernel: unified computational kernel for bioinformatics tool orchestration. |
-| [biomcp-server](skills/biomcp-server/) | BioMCP: Model Context Protocol server for bioinformatics tool access. |
-| [mcpmed-bioinformatics-server](skills/mcpmed-bioinformatics-server/) | MCP server providing medical bioinformatics tool access to agents. |
-| [kragen-knowledge-graph](skills/kragen-knowledge-graph/) | KRAGEN knowledge graph for biomedical entity relationships and reasoning. |
-| [leads-literature-mining](skills/leads-literature-mining/) | LEADS literature mining: automated extraction of biological findings from papers. |
-| [knowledge-synthesis](skills/knowledge-synthesis/) | Synthesize knowledge from multiple biomedical sources into structured summaries. |
-| [deep-research-swarm](skills/deep-research-swarm/) | Multi-agent swarm for deep scientific research with parallel literature synthesis. |
-| [research-literature](skills/research-literature/) | Research literature management: search, organize, and synthesize scientific papers. |
-| [search-strategy](skills/search-strategy/) | Design systematic search strategies for scientific literature and databases. |
-| [scientific-manuscript](skills/scientific-manuscript/) | Scientific manuscript writing and revision with journal-specific formatting. |
-| [cellular-senescence-agent](skills/cellular-senescence-agent/) | Cellular senescence analysis: marker scoring, SASP profiling, tissue aging assessment. |
-| [ngs-analysis](skills/ngs-analysis/) | Next-generation sequencing data analysis orchestration and QC. |
-| [opentrons-protocol-agent](skills/opentrons-protocol-agent/) | Opentrons liquid handler protocol design for automated lab workflows. |
-| [virtual-lab-agent](skills/virtual-lab-agent/) | Virtual lab agent for in silico experiment simulation and protocol optimization. |
-| [data-visualization-expert](skills/data-visualization-expert/) | Expert data visualization for complex scientific and clinical datasets. |
-| [lobster-bioinformatics](skills/lobster-bioinformatics/) | Run bioinformatics analyses via Lobster AI: scRNA-seq, bulk RNA-seq, literature mining, dataset discovery, QC, and visualization. |
+| [research-biomni-local-workflow](skills/research-biomni-local-workflow/) | BioMni general biomedical agent for flexible multi-step research tasks. |
+| [research-biomni-task-planning](skills/research-biomni-task-planning/) | BioMni research-focused agent with literature, database, and analysis integration. |
+| [research-biokernel-task-routing](skills/research-biokernel-task-routing/) | BioKernel: unified computational kernel for bioinformatics tool orchestration. |
+| [evidence-biomcp-search](skills/evidence-biomcp-search/) | BioMCP: Model Context Protocol server for bioinformatics tool access. |
+| [omics-mcpmed-bioinformatics-server](skills/omics-mcpmed-bioinformatics-server/) | MCP server providing medical bioinformatics tool access to agents. |
+| [research-kragen-knowledge-graph](skills/research-kragen-knowledge-graph/) | KRAGEN knowledge graph for biomedical entity relationships and reasoning. |
+| [evidence-leads-literature-mining](skills/evidence-leads-literature-mining/) | LEADS literature mining: automated extraction of biological findings from papers. |
+| [evidence-knowledge-synthesis](skills/evidence-knowledge-synthesis/) | Synthesize knowledge from multiple biomedical sources into structured summaries. |
+| [evidence-research-task-coordination](skills/evidence-research-task-coordination/) | Multi-agent swarm for deep scientific research with parallel literature synthesis. |
+| [evidence-research-literature](skills/evidence-research-literature/) | Research literature management: search, organize, and synthesize scientific papers. |
+| [research-enterprise-search-strategy](skills/research-enterprise-search-strategy/) | Design systematic search strategies for scientific literature and databases. |
+| [research-scientific-manuscript](skills/research-scientific-manuscript/) | Scientific manuscript writing and revision with journal-specific formatting. |
+| [omics-cellular-senescence-analysis](skills/omics-cellular-senescence-analysis/) | Cellular senescence analysis: marker scoring, SASP profiling, tissue aging assessment. |
+| [sop-omics-ngs-analysis](skills/sop-omics-ngs-analysis/) | Next-generation sequencing data analysis orchestration and QC. |
+| [research-opentrons-protocol-generation](skills/research-opentrons-protocol-generation/) | Opentrons liquid handler protocol design for automated lab workflows. |
+| [research-virtual-lab-planning](skills/research-virtual-lab-planning/) | Virtual lab agent for in silico experiment simulation and protocol optimization. |
+| [research-data-visualization-expert](skills/research-data-visualization-expert/) | Expert data visualization for complex scientific and clinical datasets. |
+| [sop-omics-lobster-analysis](skills/sop-omics-lobster-analysis/) | Run bioinformatics analyses via Lobster AI: scRNA-seq, bulk RNA-seq, literature mining, dataset discovery, QC, and visualization. |
 
 </details>
 
@@ -1666,15 +1668,15 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [statistical-analysis](skills/statistical-analysis/) | Statistical analysis toolkit. Hypothesis tests (t-test, ANOVA, chi-square), regression, correlation, Bayesian stats, power analysis, assumption checks, APA reporting. |
-| [statsmodels](skills/statsmodels/) | Statistical modeling: OLS, GLM, logistic, ARIMA, time series, hypothesis tests, diagnostics, AIC/BIC, for rigorous statistical inference. |
-| [pymc](skills/pymc/) | Bayesian modeling with PyMC. Build hierarchical models, MCMC (NUTS), variational inference, LOO/WAIC comparison, posterior checks, for probabilistic programming. |
-| [simpy](skills/simpy/) | Process-based discrete-event simulation for clinical systems: queues, resources, time-based events. Useful for modeling hospital workflows and patient flow. |
-| [exploratory-data-analysis](skills/exploratory-data-analysis/) | Comprehensive exploratory data analysis on scientific data files across 200+ file formats — structure, content, quality assessment, and visualization. |
-| [data-stats-analysis](skills/data-stats-analysis/) | Statistical tests, hypothesis testing, correlation analysis, and multiple testing corrections using scipy and statsmodels (OmicVerse). |
-| [data-transform](skills/data-transform/) | Transform, clean, reshape, and preprocess biological data using pandas and numpy (OmicVerse). |
-| [data-viz-plots](skills/data-viz-plots/) | Create publication-quality plots and visualizations using matplotlib and seaborn (OmicVerse). |
-| [scientific-visualization](skills/scientific-visualization/) | Create publication figures with matplotlib/seaborn/plotly. Multi-panel layouts, error bars, significance markers, colorblind-safe, PDF/EPS/TIFF export. |
+| [clinical-statistical-analysis](skills/clinical-statistical-analysis/) | Statistical analysis toolkit. Hypothesis tests (t-test, ANOVA, chi-square), regression, correlation, Bayesian stats, power analysis, assumption checks, APA reporting. |
+| [research-statsmodels-statistical-modeling](skills/research-statsmodels-statistical-modeling/) | Statistical modeling: OLS, GLM, logistic, ARIMA, time series, hypothesis tests, diagnostics, AIC/BIC, for rigorous statistical inference. |
+| [research-pymc-bayesian-modeling](skills/research-pymc-bayesian-modeling/) | Bayesian modeling with PyMC. Build hierarchical models, MCMC (NUTS), variational inference, LOO/WAIC comparison, posterior checks, for probabilistic programming. |
+| [research-simpy-event-simulation](skills/research-simpy-event-simulation/) | Process-based discrete-event simulation for clinical systems: queues, resources, time-based events. Useful for modeling hospital workflows and patient flow. |
+| [research-exploratory-data-analysis](skills/research-exploratory-data-analysis/) | Comprehensive exploratory data analysis on scientific data files across 200+ file formats — structure, content, quality assessment, and visualization. |
+| [clinical-data-stats-analysis](skills/clinical-data-stats-analysis/) | Statistical tests, hypothesis testing, correlation analysis, and multiple testing corrections using scipy and statsmodels (OmicVerse). |
+| [research-data-transform](skills/research-data-transform/) | Transform, clean, reshape, and preprocess biological data using pandas and numpy (OmicVerse). |
+| [research-data-viz-plots](skills/research-data-viz-plots/) | Create publication-quality plots and visualizations using matplotlib and seaborn (OmicVerse). |
+| [research-scientific-visualization](skills/research-scientific-visualization/) | Create publication figures with matplotlib/seaborn/plotly. Multi-panel layouts, error bars, significance markers, colorblind-safe, PDF/EPS/TIFF export. |
 
 </details>
 
@@ -1685,12 +1687,12 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [opentrons-integration](skills/opentrons-integration/) | Lab automation platform for Flex/OT-2 robots. Write Protocol API v2 protocols, liquid handling, hardware modules (heater-shaker, thermocycler), labware management. |
-| [pylabrobot](skills/pylabrobot/) | Laboratory automation toolkit for controlling liquid handlers, plate readers, pumps, heater shakers, incubators, centrifuges, and analytical equipment. |
-| [benchling-integration](skills/benchling-integration/) | Benchling R&D platform integration. Access registry (DNA, proteins), inventory, ELN entries, workflows via API, build Benchling Apps, for lab data management automation. |
-| [labarchive-integration](skills/labarchive-integration/) | Electronic lab notebook API integration. Access notebooks, manage entries/attachments, backup notebooks, integrate with Protocols.io/Jupyter/REDCap. |
-| [protocolsio-integration](skills/protocolsio-integration/) | Integration with protocols.io API for managing scientific protocols — search, create, update, publish protocols, and manage protocol steps and reagents. |
-| [instrument-data-to-allotrope](skills/instrument-data-to-allotrope/) | Convert laboratory instrument output files (PDF, CSV, Excel, TXT) to Allotrope Simple Model (ASM) JSON format for LIMS systems, data lakes, and downstream analysis. |
+| [research-opentrons-integration](skills/research-opentrons-integration/) | Lab automation platform for Flex/OT-2 robots. Write Protocol API v2 protocols, liquid handling, hardware modules (heater-shaker, thermocycler), labware management. |
+| [research-pylabrobot-lab-automation](skills/research-pylabrobot-lab-automation/) | Laboratory automation toolkit for controlling liquid handlers, plate readers, pumps, heater shakers, incubators, centrifuges, and analytical equipment. |
+| [research-benchling-integration](skills/research-benchling-integration/) | Benchling R&D platform integration. Access registry (DNA, proteins), inventory, ELN entries, workflows via API, build Benchling Apps, for lab data management automation. |
+| [research-labarchive-integration](skills/research-labarchive-integration/) | Electronic lab notebook API integration. Access notebooks, manage entries/attachments, backup notebooks, integrate with Protocols.io/Jupyter/REDCap. |
+| [research-protocolsio-integration](skills/research-protocolsio-integration/) | Integration with protocols.io API for managing scientific protocols — search, create, update, publish protocols, and manage protocol steps and reagents. |
+| [research-instrument-data-to-allotrope](skills/research-instrument-data-to-allotrope/) | Convert laboratory instrument output files (PDF, CSV, Excel, TXT) to Allotrope Simple Model (ASM) JSON format for LIMS systems, data lakes, and downstream analysis. |
 
 </details>
 
@@ -1701,17 +1703,17 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [scientific-writing](skills/scientific-writing/) | Write scientific manuscripts in full paragraphs using a two-stage process: section outlines then full text. Covers all sections of research papers. |
-| [scientific-critical-thinking](skills/scientific-critical-thinking/) | Evaluate research rigor. Assess methodology, experimental design, statistical validity, biases, confounding, evidence quality (GRADE, Cochrane ROB). |
-| [scientific-brainstorming](skills/scientific-brainstorming/) | Research ideation partner. Generate hypotheses, explore interdisciplinary connections, challenge assumptions, develop methodologies, identify research gaps. |
-| [hypothesis-generation](skills/hypothesis-generation/) | Generate testable hypotheses. Formulate from observations, design experiments, explore competing explanations, develop predictions, propose mechanisms. |
-| [scientific-problem-selection](skills/scientific-problem-selection/) | Help scientists with research problem selection, project ideation, troubleshooting stuck projects, and strategic scientific decisions. |
-| [peer-review](skills/peer-review/) | Systematic peer review toolkit. Evaluate methodology, statistics, design, reproducibility, ethics, figure integrity, reporting standards, for manuscript and grant review. |
-| [citation-management](skills/citation-management/) | Comprehensive citation management. Search Google Scholar and PubMed for papers, extract accurate metadata, validate citations, generate BibTeX entries. |
+| [research-scientific-writing](skills/research-scientific-writing/) | Write scientific manuscripts in full paragraphs using a two-stage process: section outlines then full text. Covers all sections of research papers. |
+| [clinical-scientific-critical-thinking](skills/clinical-scientific-critical-thinking/) | Evaluate research rigor. Assess methodology, experimental design, statistical validity, biases, confounding, evidence quality (GRADE, Cochrane ROB). |
+| [research-scientific-brainstorming](skills/research-scientific-brainstorming/) | Research ideation partner. Generate hypotheses, explore interdisciplinary connections, challenge assumptions, develop methodologies, identify research gaps. |
+| [evidence-hypothesis-generation](skills/evidence-hypothesis-generation/) | Generate testable hypotheses. Formulate from observations, design experiments, explore competing explanations, develop predictions, propose mechanisms. |
+| [research-scientific-problem-selection](skills/research-scientific-problem-selection/) | Help scientists with research problem selection, project ideation, troubleshooting stuck projects, and strategic scientific decisions. |
+| [research-peer-review](skills/research-peer-review/) | Systematic peer review toolkit. Evaluate methodology, statistics, design, reproducibility, ethics, figure integrity, reporting standards, for manuscript and grant review. |
+| [evidence-citation-management](skills/evidence-citation-management/) | Comprehensive citation management. Search Google Scholar and PubMed for papers, extract accurate metadata, validate citations, generate BibTeX entries. |
 | [research-grants](skills/research-grants/) | Write competitive research proposals for NSF, NIH, DOE, and DARPA. Agency-specific formatting, review criteria, budget preparation, broader impacts. |
-| [research-lookup](skills/research-lookup/) | Look up current research using Perplexity's Sonar Pro Search or Sonar Reasoning Pro via OpenRouter. Automatically selects best model for the query complexity. |
-| [biomni](skills/biomni/) | Autonomous biomedical AI agent framework for executing complex research tasks across genomics, drug discovery, molecular biology, and clinical analysis. |
-| [treatment-plans](skills/treatment-plans/) | Generate concise (3-4 page) medical treatment plans in LaTeX/PDF format for all clinical specialties including general medicine, rehabilitation, mental health, and chronic disease. |
+| [evidence-research-lookup](skills/evidence-research-lookup/) | Look up current research using Perplexity's Sonar Pro Search or Sonar Reasoning Pro via OpenRouter. Automatically selects best model for the query complexity. |
+| [research-biomni-tool-guidance](skills/research-biomni-tool-guidance/) | Autonomous biomedical AI agent framework for executing complex research tasks across genomics, drug discovery, molecular biology, and clinical analysis. |
+| [clinical-treatment-plan-drafting](skills/clinical-treatment-plan-drafting/) | Generate concise (3-4 page) medical treatment plans in LaTeX/PDF format for all clinical specialties including general medicine, rehabilitation, mental health, and chronic disease. |
 
 </details>
 
@@ -1722,10 +1724,10 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [biologist-analyst](skills/biologist-analyst/) | Expert biologist analyst persona for interpreting biological experiments, sequencing data, cell biology assays, and molecular biology research. |
-| [chemist-analyst](skills/chemist-analyst/) | Expert chemist analyst persona for interpreting chemical data, synthesis routes, spectroscopic results, reaction mechanisms, and laboratory analyses. |
-| [epidemiologist-analyst](skills/epidemiologist-analyst/) | Expert epidemiologist analyst persona for study design, cohort analysis, risk factor assessment, public health surveillance, and causal inference. |
-| [psychologist-analyst](skills/psychologist-analyst/) | Expert psychologist analyst persona for behavioral data analysis, psychological assessment interpretation, clinical case formulation, and mental health research. |
+| [research-biologist-analyst](skills/research-biologist-analyst/) | Expert biologist analyst persona for interpreting biological experiments, sequencing data, cell biology assays, and molecular biology research. |
+| [drug-chemist-analyst](skills/drug-chemist-analyst/) | Expert chemist analyst persona for interpreting chemical data, synthesis routes, spectroscopic results, reaction mechanisms, and laboratory analyses. |
+| [clinical-epidemiologist-analyst](skills/clinical-epidemiologist-analyst/) | Expert epidemiologist analyst persona for study design, cohort analysis, risk factor assessment, public health surveillance, and causal inference. |
+| [clinical-psychologist-analyst](skills/clinical-psychologist-analyst/) | Expert psychologist analyst persona for behavioral data analysis, psychological assessment interpretation, clinical case formulation, and mental health research. |
 
 </details>
 
@@ -1736,9 +1738,9 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [datacommons-client](skills/datacommons-client/) | Access public health statistics from Google Data Commons: disease prevalence, demographic data, health indicators across global sources. |
-| [timesfm-forecasting](skills/timesfm-forecasting/) | Zero-shot time series forecasting with Google's TimesFM. For vital sign trends, health sensor data, and longitudinal health monitoring without custom model training. |
-| [aeon](skills/aeon/) | Time series ML: classification, regression, clustering, anomaly detection, segmentation for temporal health data and sequential clinical measurements. |
+| [research-datacommons-statistics-query](skills/research-datacommons-statistics-query/) | Access public health statistics from Google Data Commons: disease prevalence, demographic data, health indicators across global sources. |
+| [research-timesfm-forecasting](skills/research-timesfm-forecasting/) | Zero-shot time series forecasting with Google's TimesFM. For vital sign trends, health sensor data, and longitudinal health monitoring without custom model training. |
+| [research-aeon-timeseries-analysis](skills/research-aeon-timeseries-analysis/) | Time series ML: classification, regression, clustering, anomaly detection, segmentation for temporal health data and sequential clinical measurements. |
 
 </details>
 
@@ -1749,9 +1751,9 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [bgpt-paper-search](skills/bgpt-paper-search/) | Search scientific papers with BGPT MCP server. Returns 25+ structured fields per paper: methods, results, sample sizes, quality scores. For literature reviews and evidence synthesis. |
-| [pyzotero](skills/pyzotero/) | Interact with Zotero reference libraries programmatically via Zotero Web API v3. Retrieve, create, update items, export citations, upload PDFs, and build research automation workflows. |
-| [open-notebook](skills/open-notebook/) | Self-hosted NotebookLM alternative. Ingest PDFs, videos, web pages, documents; generate AI-powered notes; chat with research materials; supports 16+ AI providers. |
+| [evidence-bgpt-paper-search](skills/evidence-bgpt-paper-search/) | Search scientific papers with BGPT MCP server. Returns 25+ structured fields per paper: methods, results, sample sizes, quality scores. For literature reviews and evidence synthesis. |
+| [evidence-zotero-library-management](skills/evidence-zotero-library-management/) | Interact with Zotero reference libraries programmatically via Zotero Web API v3. Retrieve, create, update items, export citations, upload PDFs, and build research automation workflows. |
+| [evidence-research-notebook-management](skills/evidence-research-notebook-management/) | Self-hosted NotebookLM alternative. Ingest PDFs, videos, web pages, documents; generate AI-powered notes; chat with research materials; supports 16+ AI providers. |
 
 </details>
 
@@ -1762,11 +1764,11 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [dask](skills/dask/) | Distributed computing for larger-than-RAM genomics/omics datasets. Scale pandas/NumPy beyond memory, parallel file processing, distributed ML. |
-| [polars](skills/polars/) | Fast in-memory DataFrame library (1-100GB). Faster pandas replacement for biomedical data ETL and analysis pipelines. |
-| [vaex](skills/vaex/) | Out-of-core DataFrame operations for billions of rows. Fast statistics and visualization for large genomic and clinical datasets. |
-| [zarr-python](skills/zarr-python/) | Chunked N-D arrays for cloud storage. Compressed arrays, parallel I/O, S3/GCS integration for large-scale omics data. |
-| [pytorch-lightning](skills/pytorch-lightning/) | Organized PyTorch deep learning for biomedical AI: multi-GPU training, callbacks, logging, distributed training for clinical/genomic models. |
+| [research-dask-data-processing](skills/research-dask-data-processing/) | Distributed computing for larger-than-RAM genomics/omics datasets. Scale pandas/NumPy beyond memory, parallel file processing, distributed ML. |
+| [research-polars-table-processing](skills/research-polars-table-processing/) | Fast in-memory DataFrame library (1-100GB). Faster pandas replacement for biomedical data ETL and analysis pipelines. |
+| [research-vaex-table-processing](skills/research-vaex-table-processing/) | Out-of-core DataFrame operations for billions of rows. Fast statistics and visualization for large genomic and clinical datasets. |
+| [research-zarr-array-storage](skills/research-zarr-array-storage/) | Chunked N-D arrays for cloud storage. Compressed arrays, parallel I/O, S3/GCS integration for large-scale omics data. |
+| [research-pytorch-lightning-model-training](skills/research-pytorch-lightning-model-training/) | Organized PyTorch deep learning for biomedical AI: multi-GPU training, callbacks, logging, distributed training for clinical/genomic models. |
 
 </details>
 
@@ -1777,16 +1779,16 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [matplotlib](skills/matplotlib/) | Low-level plotting library for full customization. Publication-quality figures for scientific manuscripts and journals. |
-| [seaborn](skills/seaborn/) | Statistical visualization with pandas integration. Box plots, violin plots, heatmaps, pair plots for biomedical data exploration. |
-| [plotly](skills/plotly/) | Interactive visualization. Hover info, zoom, dashboards for exploratory biomedical analysis and presentations. |
-| [infographics](skills/infographics/) | Create professional scientific infographics with iterative AI refinement. Supports 10 infographic types and 8 industry styles. |
-| [scientific-schematics](skills/scientific-schematics/) | Publication-quality scientific diagrams: neural network architectures, biological pathways, system diagrams, flowcharts. |
-| [scientific-slides](skills/scientific-slides/) | Build research presentation slide decks for conferences, seminars, thesis defenses. PowerPoint and LaTeX Beamer support. |
-| [latex-posters](skills/latex-posters/) | Create professional research posters in LaTeX (beamerposter, tikzposter). Conference posters with multi-column layouts. |
-| [pptx-posters](skills/pptx-posters/) | HTML/CSS research posters exportable to PDF or PPTX. Modern web-based poster design. |
-| [markdown-mermaid-writing](skills/markdown-mermaid-writing/) | Scientific documentation with Markdown and 24 Mermaid diagram types. 9 document templates for scientific reports. |
-| [paper-2-web](skills/paper-2-web/) | Convert academic papers to interactive websites, presentation videos, and conference posters (Paper2Web, Paper2Video, Paper2Poster). |
+| [research-matplotlib-figure-generation](skills/research-matplotlib-figure-generation/) | Low-level plotting library for full customization. Publication-quality figures for scientific manuscripts and journals. |
+| [research-seaborn-statistical-visualization](skills/research-seaborn-statistical-visualization/) | Statistical visualization with pandas integration. Box plots, violin plots, heatmaps, pair plots for biomedical data exploration. |
+| [research-plotly-interactive-visualization](skills/research-plotly-interactive-visualization/) | Interactive visualization. Hover info, zoom, dashboards for exploratory biomedical analysis and presentations. |
+| [research-infographics](skills/research-infographics/) | Create professional scientific infographics with iterative AI refinement. Supports 10 infographic types and 8 industry styles. |
+| [research-scientific-schematics](skills/research-scientific-schematics/) | Publication-quality scientific diagrams: neural network architectures, biological pathways, system diagrams, flowcharts. |
+| [research-scientific-slides](skills/research-scientific-slides/) | Build research presentation slide decks for conferences, seminars, thesis defenses. PowerPoint and LaTeX Beamer support. |
+| [research-latex-posters](skills/research-latex-posters/) | Create professional research posters in LaTeX (beamerposter, tikzposter). Conference posters with multi-column layouts. |
+| [research-pptx-posters](skills/research-pptx-posters/) | HTML/CSS research posters exportable to PDF or PPTX. Modern web-based poster design. |
+| [research-markdown-mermaid-writing](skills/research-markdown-mermaid-writing/) | Scientific documentation with Markdown and 24 Mermaid diagram types. 9 document templates for scientific reports. |
+| [research-paper-2-web](skills/research-paper-2-web/) | Convert academic papers to interactive websites, presentation videos, and conference posters (Paper2Web, Paper2Video, Paper2Poster). |
 
 </details>
 
@@ -1797,17 +1799,17 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [pymoo](skills/pymoo/) | Multi-objective optimization with PYMOO. Drug design parameter optimization, Pareto front analysis, evolutionary algorithms. |
-| [markitdown](skills/markitdown/) | Convert documents (PDF, DOCX, PPTX, HTML, images) to Markdown for processing and analysis. |
-| [perplexity-search](skills/perplexity-search/) | AI-powered search via Perplexity for real-time scientific information retrieval. |
-| [geopandas](skills/geopandas/) | Geospatial data analysis with GeoPandas. Epidemiology mapping, disease distribution, spatial health analytics. |
-| [hypogenic](skills/hypogenic/) | Automated hypothesis generation and testing on tabular datasets. Combine literature insights with data-driven hypothesis validation. |
-| [pdf-processing](skills/pdf-processing/) | Advanced PDF processing: text extraction, table parsing, annotation, form filling. |
-| [pdf-processing-pro](skills/pdf-processing-pro/) | Professional PDF processing with enhanced OCR, multi-column layout handling, and batch processing. |
-| [pdf-anthropic](skills/pdf-anthropic/) | Anthropic-optimized PDF analysis for scientific and medical document comprehension. |
-| [xlsx-official](skills/xlsx-official/) | Official Excel/XLSX skill for spreadsheet creation, analysis, and data management. |
-| [docx-official](skills/docx-official/) | Official Word/DOCX skill for document creation, editing, and formatting. |
-| [pptx-official](skills/pptx-official/) | Official PowerPoint/PPTX skill for presentation creation and editing. |
+| [research-pymoo-multiobjective-optimization](skills/research-pymoo-multiobjective-optimization/) | Multi-objective optimization with PYMOO. Drug design parameter optimization, Pareto front analysis, evolutionary algorithms. |
+| [research-document-markdown-conversion](skills/research-document-markdown-conversion/) | Convert documents (PDF, DOCX, PPTX, HTML, images) to Markdown for processing and analysis. |
+| [evidence-perplexity-search](skills/evidence-perplexity-search/) | AI-powered search via Perplexity for real-time scientific information retrieval. |
+| [research-geopandas-spatial-analysis](skills/research-geopandas-spatial-analysis/) | Geospatial data analysis with GeoPandas. Epidemiology mapping, disease distribution, spatial health analytics. |
+| [research-hypogenic-hypothesis-generation](skills/research-hypogenic-hypothesis-generation/) | Automated hypothesis generation and testing on tabular datasets. Combine literature insights with data-driven hypothesis validation. |
+| [research-pdf-text-extraction](skills/research-pdf-text-extraction/) | Advanced PDF processing: text extraction, table parsing, annotation, form filling. |
+| [research-pdf-batch-processing](skills/research-pdf-batch-processing/) | Professional PDF processing with enhanced OCR, multi-column layout handling, and batch processing. |
+| [research-pdf-form-processing](skills/research-pdf-form-processing/) | Anthropic-optimized PDF analysis for scientific and medical document comprehension. |
+| [research-xlsx-formula-edit](skills/research-xlsx-formula-edit/) | Official Excel/XLSX skill for spreadsheet creation, analysis, and data management. |
+| [research-docx-track-changes](skills/research-docx-track-changes/) | Official Word/DOCX skill for document creation, editing, and formatting. |
+| [research-pptx-ooxml-edit](skills/research-pptx-ooxml-edit/) | Official PowerPoint/PPTX skill for presentation creation and editing. |
 
 </details>
 
@@ -1818,23 +1820,23 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [ontology-validator](skills/ontology-validator/) | Validate biomedical ontology structures and term relationships (HPO, GO, MeSH, SNOMED, OBO). |
-| [ontology-explorer](skills/ontology-explorer/) | Navigate and query biomedical ontologies: term hierarchies, annotations, cross-references. |
-| [ontology-mapper](skills/ontology-mapper/) | Map between biomedical ontologies: HPO↔OMIM, GO↔UniProt, disease↔phenotype cross-ontology. |
-| [slurm-job-script-generator](skills/slurm-job-script-generator/) | Generate SLURM sbatch scripts for HPC genomics/bioinformatics pipeline jobs with optimized resource requests. |
-| [numerical-integration](skills/numerical-integration/) | Select and configure ODE/PDE time integration for biological model simulation (stiff systems, IMEX). |
-| [nonlinear-solvers](skills/nonlinear-solvers/) | Configure nonlinear solvers for biological network optimization, parameter fitting, FBA. |
-| [parameter-optimization](skills/parameter-optimization/) | Design of experiments, sensitivity analysis, Bayesian optimization for biological model calibration. |
-| [linear-solvers](skills/linear-solvers/) | Select linear solvers for large-scale biological network and metabolic model computations. |
-| [numerical-stability](skills/numerical-stability/) | Analyze numerical stability for time-dependent biological simulations (CFL criteria, stiffness). |
-| [simulation-orchestrator](skills/simulation-orchestrator/) | Orchestrate multi-simulation campaigns: parameter sweeps, batch jobs, result aggregation. |
-| [simulation-validator](skills/simulation-validator/) | Validate simulations: pre-flight checks, runtime monitoring, convergence, NaN/Inf detection. |
-| [convergence-study](skills/convergence-study/) | Spatial/temporal convergence analysis with Richardson extrapolation for simulation verification. |
-| [post-processing](skills/post-processing/) | Extract, analyze, and visualize simulation output data: time series, field profiles, statistics. |
-| [performance-profiling](skills/performance-profiling/) | Identify computational bottlenecks, analyze scaling behavior, optimize HPC simulation jobs. |
-| [differentiation-schemes](skills/differentiation-schemes/) | Select finite difference/volume/spectral schemes for PDE discretization in biological models. |
-| [time-stepping](skills/time-stepping/) | Adaptive time-step control for biological dynamics: CFL constraints, checkpoint scheduling. |
-| [mesh-generation](skills/mesh-generation/) | Mesh generation for numerical simulations: resolution, quality metrics, adaptive refinement. |
+| [research-ontology-validator](skills/research-ontology-validator/) | Validate biomedical ontology structures and term relationships (HPO, GO, MeSH, SNOMED, OBO). |
+| [research-ontology-explorer](skills/research-ontology-explorer/) | Navigate and query biomedical ontologies: term hierarchies, annotations, cross-references. |
+| [research-ontology-mapper](skills/research-ontology-mapper/) | Map between biomedical ontologies: HPO↔OMIM, GO↔UniProt, disease↔phenotype cross-ontology. |
+| [research-slurm-job-script-generator](skills/research-slurm-job-script-generator/) | Generate SLURM sbatch scripts for HPC genomics/bioinformatics pipeline jobs with optimized resource requests. |
+| [research-numerical-integration](skills/research-numerical-integration/) | Select and configure ODE/PDE time integration for biological model simulation (stiff systems, IMEX). |
+| [research-nonlinear-solvers](skills/research-nonlinear-solvers/) | Configure nonlinear solvers for biological network optimization, parameter fitting, FBA. |
+| [research-parameter-optimization](skills/research-parameter-optimization/) | Design of experiments, sensitivity analysis, Bayesian optimization for biological model calibration. |
+| [research-linear-solvers](skills/research-linear-solvers/) | Select linear solvers for large-scale biological network and metabolic model computations. |
+| [research-numerical-stability](skills/research-numerical-stability/) | Analyze numerical stability for time-dependent biological simulations (CFL criteria, stiffness). |
+| [research-simulation-orchestrator](skills/research-simulation-orchestrator/) | Orchestrate multi-simulation campaigns: parameter sweeps, batch jobs, result aggregation. |
+| [research-simulation-validator](skills/research-simulation-validator/) | Validate simulations: pre-flight checks, runtime monitoring, convergence, NaN/Inf detection. |
+| [research-convergence-study](skills/research-convergence-study/) | Spatial/temporal convergence analysis with Richardson extrapolation for simulation verification. |
+| [research-post-processing](skills/research-post-processing/) | Extract, analyze, and visualize simulation output data: time series, field profiles, statistics. |
+| [research-performance-profiling](skills/research-performance-profiling/) | Identify computational bottlenecks, analyze scaling behavior, optimize HPC simulation jobs. |
+| [research-differentiation-schemes](skills/research-differentiation-schemes/) | Select finite difference/volume/spectral schemes for PDE discretization in biological models. |
+| [research-time-stepping](skills/research-time-stepping/) | Adaptive time-step control for biological dynamics: CFL constraints, checkpoint scheduling. |
+| [research-mesh-generation](skills/research-mesh-generation/) | Mesh generation for numerical simulations: resolution, quality metrics, adaptive refinement. |
 
 </details>
 
@@ -1845,20 +1847,20 @@ In Codex, use `/skills` to browse available skills or invoke one by name, for ex
 
 | Skill | Description |
 |-------|-------------|
-| [test-driven-development](skills/test-driven-development/) | TDD workflow: write tests before implementation, red-green-refactor cycle for reliable code. |
-| [systematic-debugging](skills/systematic-debugging/) | Structured debugging approach: hypothesis formation, evidence gathering, root cause analysis. |
-| [dispatching-parallel-agents](skills/dispatching-parallel-agents/) | Orchestrate parallel subagents for independent tasks to maximize throughput. |
-| [writing-plans](skills/writing-plans/) | Write structured implementation plans before touching code for complex multi-step tasks. |
-| [executing-plans](skills/executing-plans/) | Execute written implementation plans with review checkpoints in isolated sessions. |
-| [brainstorming](skills/brainstorming/) | Structured creative exploration of requirements and design before implementation. |
-| [writing-skills](skills/writing-skills/) | Create and verify new SKILL.md skills with proper format and deployment validation. |
-| [verification-before-completion](skills/verification-before-completion/) | Run verification commands and confirm outputs before claiming work is complete. |
-| [requesting-code-review](skills/requesting-code-review/) | Structure code review requests with context, changes summary, and specific questions. |
-| [receiving-code-review](skills/receiving-code-review/) | Process code review feedback with technical rigor rather than blind acceptance. |
-| [subagent-driven-development](skills/subagent-driven-development/) | Break development tasks into subtasks for parallel subagent execution. |
-| [using-git-worktrees](skills/using-git-worktrees/) | Create isolated git worktrees for feature work and plan execution. |
-| [finishing-a-development-branch](skills/finishing-a-development-branch/) | Complete development branches: merge, PR, or cleanup with structured decision options. |
-| [using-superpowers](skills/using-superpowers/) | Meta-skill: discover and use available skills for any task at conversation start. |
+| [research-test-driven-development](skills/research-test-driven-development/) | TDD workflow: write tests before implementation, red-green-refactor cycle for reliable code. |
+| [research-systematic-debugging](skills/research-systematic-debugging/) | Structured debugging approach: hypothesis formation, evidence gathering, root cause analysis. |
+| [research-parallel-task-delegation](skills/research-parallel-task-delegation/) | Orchestrate parallel subagents for independent tasks to maximize throughput. |
+| [research-implementation-planning](skills/research-implementation-planning/) | Write structured implementation plans before touching code for complex multi-step tasks. |
+| [research-executing-plans](skills/research-executing-plans/) | Execute written implementation plans with review checkpoints in isolated sessions. |
+| [research-software-design-planning](skills/research-software-design-planning/) | Structured creative exploration of requirements and design before implementation. |
+| [research-skill-authoring](skills/research-skill-authoring/) | Create and verify new SKILL.md skills with proper format and deployment validation. |
+| [research-completion-verification](skills/research-completion-verification/) | Run verification commands and confirm outputs before claiming work is complete. |
+| [research-code-review-request](skills/research-code-review-request/) | Structure code review requests with context, changes summary, and specific questions. |
+| [research-code-review-response](skills/research-code-review-response/) | Process code review feedback with technical rigor rather than blind acceptance. |
+| [research-delegated-development](skills/research-delegated-development/) | Break development tasks into subtasks for parallel subagent execution. |
+| [research-git-worktree-management](skills/research-git-worktree-management/) | Create isolated git worktrees for feature work and plan execution. |
+| [research-development-branch-completion](skills/research-development-branch-completion/) | Complete development branches: merge, PR, or cleanup with structured decision options. |
+| [research-skill-selection](skills/research-skill-selection/) | Meta-skill: discover and use available skills for any task at conversation start. |
 
 </details>
 

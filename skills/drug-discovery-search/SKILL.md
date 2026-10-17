@@ -1,6 +1,6 @@
 ---
 name: drug-discovery-search
-description: End-to-end drug discovery platform combining ChEMBL compounds, DrugBank, targets, and FDA labels. Natural language powered by Valyu.
+description: 跨库检索化合物、靶点和药品标签信息；用于处理自然语言查询、Valyu密钥和结果数量。
 license: MIT
 metadata:
   source_extensions:
@@ -15,6 +15,15 @@ metadata:
 
 
 # Drug Discovery Search
+
+## Codex 调用
+
+- **选择**：请求涉及“跨库检索化合物、靶点和药品标签信息”时使用；显式调用 `$drug-discovery-search`。
+- **输入**：自然语言查询、Valyu密钥和结果数量。
+- **预期产物**：统一JSON结果、来源链接、相关度和图像；按正文的方法约束和质量检查核对本次输入与产物。
+- **执行方式**：使用正文明确的 API/服务协议，通过当前可用的 HTTP、终端或已配置连接器执行。先确认端点、凭据和访问范围；不假定存在专用 MCP 工具。
+- **环境核对**：`valyu`（原文涉及的工具或导入名，按实际执行分支检查，不将导入名直接当作安装包名）。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
 
 Search across all major drug discovery databases (ChEMBL, DrugBank, FDA drug labels, Open Targets) simultaneously using natural language queries powered by Valyu's semantic search API.
 

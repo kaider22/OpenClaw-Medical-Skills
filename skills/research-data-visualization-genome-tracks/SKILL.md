@@ -1,0 +1,260 @@
+---
+name: research-data-visualization-genome-tracks
+description: 提供生成多样本基因组轨道和局部区域图的方法与调用指南；用于处理coverage、peaks、基因注释及区域坐标。
+metadata:
+  source_extensions:
+    tool_type: mixed
+    primary_tool: pyGenomeTracks
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+    allowed-tools:
+    - read_file
+    - run_shell_command
+---
+<!--
+# COPYRIGHT NOTICE
+# This file is part of the "Universal Biomedical Skills" project.
+# Copyright (c) 2026 MD BABU MIA, PhD <md.babu.mia@mssm.edu>
+# All Rights Reserved.
+#
+# This code is proprietary and confidential.
+# Unauthorized copying of this file, via any medium is strictly prohibited.
+#
+# Provenance: Authenticated by MD BABU MIA
+
+-->
+
+
+# Genome Track Visualization
+
+## Codex 调用
+
+- **选择**：请求涉及“生成多样本基因组轨道和局部区域图”时使用；显式调用 `$research-data-visualization-genome-tracks`。
+- **输入**：coverage、peaks、基因注释及区域坐标。
+- **预期产物**：PNG/PDF/SVG轨道图或浏览页；按正文的方法约束和质量检查核对本次输入与产物。
+- **执行方式**：按正文的库/命令行示例在当前终端执行与本次输入相符的分支；这是按指南运行，不是仓库自带完整算法入口。先确认所选软件和版本。
+- **环境核对**：`pyGenomeTracks`、`pygenometracks`（原文涉及的工具或导入名，按实际执行分支检查，不将导入名直接当作安装包名）。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
+
+## pyGenomeTracks (Python/CLI)
+
+```bash
+# Create tracks configuration file
+cat > tracks.ini << 'EOF'
+[bigwig]
+file = coverage.bw
+title = Coverage
+height = 4
+color = #4DBBD5
+min_value = 0
+
+[spacer]
+height = 0.5
+
+[peaks]
+file = peaks.bed
+title = Peaks
+color = #E64B35
+height = 2
+labels = false
+
+[spacer]
+height = 0.5
+
+[genes]
+file = genes.gtf
+title = Genes
+height = 5
+fontsize = 10
+style = flybase
+color = #3C5488
+
+[x-axis]
+EOF
+
+# Generate plot
+pyGenomeTracks --tracks tracks.ini --region chr1:1000000-2000000 \
+    --outFileName tracks.png --dpi 150
+```
+
+## pyGenomeTracks with Multiple Samples
+
+```ini
+[sample1 coverage]
+file = sample1.bw
+title = Sample 1
+height = 3
+color = #4DBBD5
+min_value = 0
+max_value = auto
+
+[sample2 coverage]
+file = sample2.bw
+title = Sample 2
+height = 3
+color = #E64B35
+min_value = 0
+max_value = auto
+
+[sample1 peaks]
+file = sample1_peaks.narrowPeak
+title = Sample 1 Peaks
+color = #4DBBD5
+height = 1
+file_type = narrowPeak
+
+[sample2 peaks]
+file = sample2_peaks.narrowPeak
+title = Sample 2 Peaks
+color = #E64B35
+height = 1
+file_type = narrowPeak
+```
+
+## pyGenomeTracks Programmatic
+
+```python
+import pygenometracks.tracks as pygtk
+
+tracks = pygtk.PlotTracks('tracks.ini', fig_width=40, dpi=150)
+tracks.plot('output.png', 'chr1', 1000000, 2000000)
+```
+
+## Gviz (R)
+
+```r
+library(Gviz)
+library(GenomicRanges)
+
+# Genome axis
+gtrack <- GenomeAxisTrack()
+
+# Ideogram
+itrack <- IdeogramTrack(genome = 'hg38', chromosome = 'chr1')
+
+# Gene model
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
+grtrack <- GeneRegionTrack(txdb, genome = 'hg38', chromosome = 'chr1',
+                            name = 'Genes', transcriptAnnotation = 'symbol')
+
+# Data track from BigWig
+dtrack <- DataTrack(range = 'coverage.bw', genome = 'hg38', chromosome = 'chr1',
+                     name = 'Coverage', type = 'histogram', col.histogram = '#4DBBD5')
+
+# Annotation track from BED
+atrack <- AnnotationTrack(range = 'peaks.bed', genome = 'hg38', chromosome = 'chr1',
+                           name = 'Peaks', fill = '#E64B35')
+
+# Plot tracks
+plotTracks(list(itrack, gtrack, dtrack, atrack, grtrack),
+           from = 1000000, to = 2000000, sizes = c(1, 1, 3, 1, 3))
+```
+
+## Gviz with Multiple Samples
+
+```r
+# Create overlay data track
+dtrack1 <- DataTrack(range = 'sample1.bw', name = 'Sample1', col = '#4DBBD5')
+dtrack2 <- DataTrack(range = 'sample2.bw', name = 'Sample2', col = '#E64B35')
+
+overlay <- OverlayTrack(trackList = list(dtrack1, dtrack2))
+
+plotTracks(list(gtrack, overlay, grtrack), from = 1000000, to = 2000000,
+           type = 'histogram', legend = TRUE)
+```
+
+## Gviz Customization
+
+```r
+# Highlight regions
+ht <- HighlightTrack(trackList = list(dtrack, atrack),
+                      start = c(1200000, 1500000),
+                      end = c(1300000, 1600000),
+                      chromosome = 'chr1')
+
+# Custom display parameters
+displayPars(dtrack) <- list(
+    background.title = '#3C5488',
+    fontcolor.title = 'white',
+    col.axis = 'black',
+    ylim = c(0, 100)
+)
+
+plotTracks(list(gtrack, ht, grtrack), from = 1000000, to = 2000000)
+```
+
+## IGV.js (Web)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/igv@3.0.0/dist/igv.min.js"></script>
+</head>
+<body>
+    <div id="igv-div"></div>
+    <script>
+        var options = {
+            genome: "hg38",
+            locus: "chr1:1,000,000-2,000,000",
+            tracks: [
+                {
+                    name: "Coverage",
+                    url: "coverage.bw",
+                    type: "wig",
+                    color: "#4DBBD5"
+                },
+                {
+                    name: "Peaks",
+                    url: "peaks.bed",
+                    type: "annotation",
+                    color: "#E64B35"
+                }
+            ]
+        };
+        igv.createBrowser(document.getElementById('igv-div'), options);
+    </script>
+</body>
+</html>
+```
+
+## Create BigWig from BAM
+
+```bash
+# Using deepTools
+bamCoverage -b sample.bam -o coverage.bw \
+    --binSize 10 --normalizeUsing RPKM --effectiveGenomeSize 2913022398
+
+# Using bedtools + wigToBigWig
+bedtools genomecov -bg -ibam sample.bam > coverage.bedGraph
+sort -k1,1 -k2,2n coverage.bedGraph > coverage.sorted.bedGraph
+bedGraphToBigWig coverage.sorted.bedGraph chrom.sizes coverage.bw
+```
+
+## Multi-Region Plot
+
+```bash
+# pyGenomeTracks with BED regions
+pyGenomeTracks --tracks tracks.ini --BED regions.bed \
+    --outFileName multi_region.pdf --dpi 150
+```
+
+```r
+# Gviz with multiple regions
+regions <- GRanges(seqnames = 'chr1', ranges = IRanges(start = c(1e6, 2e6), end = c(1.5e6, 2.5e6)))
+
+pdf('multi_region.pdf', width = 10, height = 8)
+for (i in seq_along(regions)) {
+    plotTracks(track_list, from = start(regions[i]), to = end(regions[i]))
+}
+dev.off()
+```
+
+## Related Skills
+
+- genome-intervals/bigwig-tracks - BigWig file handling
+- chip-seq/chipseq-visualization - ChIP-specific tracks
+- hi-c-analysis/hic-visualization - Hi-C contact maps
+
+
+<!-- AUTHOR_SIGNATURE: 9a7f3c2e-MD-BABU-MIA-2026-MSSM-SECURE -->

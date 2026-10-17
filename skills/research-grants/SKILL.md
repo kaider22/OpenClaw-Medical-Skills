@@ -1,10 +1,24 @@
 ---
 name: research-grants
-description: "Write competitive research proposals for NSF, NIH, DOE, and DARPA. Agency-specific formatting, review criteria, budget preparation, broader impacts, significance statements, innovation narratives, and compliance with submission requirements."
-allowed-tools: [Read, Write, Edit, Bash]
+description: 提供按资助机构要求组织研究计划和预算叙事的方法与调用指南；用于处理基金指南、研究目标、初步数据、团队和预算。
+metadata:
+  source_extensions:
+    allowed-tools:
+    - Read
+    - Write
+    - Edit
+    - Bash
 ---
 
 # Research Grant Writing
+
+## Codex 调用
+
+- **选择**：请求涉及“按资助机构要求组织研究计划和预算叙事”时使用；显式调用 `$research-grants`。
+- **输入**：基金指南、研究目标、初步数据、团队和预算。
+- **预期产物**：Specific Aims、研究策略、时间表和预算说明；按正文的方法约束和质量检查核对本次输入与产物。
+- **执行方式**：由当前 Codex 根据正文完成所述分析、设计或文档任务；需要计算或实时信息的环节必须使用实际可用的工具，不能用文字生成代替执行。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
 
 ## Overview
 
@@ -26,41 +40,9 @@ This skill should be used when:
 - Writing preliminary data or feasibility sections
 - Preparing biosketches, CVs, or facilities descriptions
 
-## Visual Enhancement with Scientific Schematics
+## 按任务需要生成图示
 
-**⚠️ MANDATORY: Every research grant proposal MUST include at least 1-2 AI-generated figures using the scientific-schematics skill.**
-
-This is not optional. Grant proposals without visual elements are incomplete and less competitive. Before finalizing any document:
-1. Generate at minimum ONE schematic or diagram (e.g., project timeline, methodology flowchart, or conceptual framework)
-2. Prefer 2-3 figures for comprehensive proposals (research workflow, Gantt chart, preliminary data visualization)
-
-**How to generate figures:**
-- Use the **scientific-schematics** skill to generate AI-powered publication-quality diagrams
-- Simply describe your desired diagram in natural language
-- Nano Banana Pro will automatically generate, review, and refine the schematic
-
-**How to generate schematics:**
-```bash
-python scripts/generate_schematic.py "your diagram description" -o figures/output.png
-```
-
-The AI will automatically:
-- Create publication-quality images with proper formatting
-- Review and refine through multiple iterations
-- Ensure accessibility (colorblind-friendly, high contrast)
-- Save outputs in the figures/ directory
-
-**When to add schematics:**
-- Research methodology and workflow diagrams
-- Project timeline Gantt charts
-- Conceptual framework illustrations
-- System architecture diagrams (for technical proposals)
-- Experimental design flowcharts
-- Broader impacts activity diagrams
-- Collaboration network diagrams
-- Any complex concept that benefits from visualization
-
-For detailed guidance on creating schematics, refer to the scientific-schematics skill documentation.
+仅在当前任务需要流程图或概念图时，选择 `$research-scientific-schematics` 并先确认其实际工具和凭据。统计结果图应使用本次真实数据和相应绘图工具。无需为每份文稿自动生成 AI 图片，也不把其他技能的脚本当成本目录自带文件。
 
 ---
 

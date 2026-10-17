@@ -1,0 +1,216 @@
+---
+name: omics-read-alignment-hisat2-alignment
+description: 提供用HISAT2进行剪接感知的RNA-seq比对的方法与调用指南；用于处理参考FASTA、GTF及单或双端RNA FASTQ。
+metadata:
+  source_extensions:
+    tool_type: cli
+    primary_tool: HISAT2
+    measurable_outcome: Execute skill workflow successfully with valid output within 15 minutes.
+    allowed-tools:
+    - read_file
+    - run_shell_command
+---
+<!--
+# COPYRIGHT NOTICE
+# This file is part of the "Universal Biomedical Skills" project.
+# Copyright (c) 2026 MD BABU MIA, PhD <md.babu.mia@mssm.edu>
+# All Rights Reserved.
+#
+# This code is proprietary and confidential.
+# Unauthorized copying of this file, via any medium is strictly prohibited.
+#
+# Provenance: Authenticated by MD BABU MIA
+
+-->
+
+
+# HISAT2 RNA-seq Alignment
+
+## Codex 调用
+
+- **选择**：请求涉及“用HISAT2进行剪接感知的RNA-seq比对”时使用；显式调用 `$omics-read-alignment-hisat2-alignment`。
+- **输入**：参考FASTA、GTF及单或双端RNA FASTQ。
+- **预期产物**：排序BAM、剪接位点和比对摘要；按正文的方法约束和质量检查核对本次输入与产物。
+- **执行方式**：由当前 Codex 根据正文完成所述分析、设计或文档任务；需要计算或实时信息的环节必须使用实际可用的工具，不能用文字生成代替执行。
+- **环境核对**：`HISAT2`（原文涉及的工具或导入名，按实际执行分支检查，不将导入名直接当作安装包名）。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
+
+## Build Index
+
+```bash
+# Basic index (no annotation)
+hisat2-build -p 8 reference.fa hisat2_index
+
+# Index with splice sites and exons (recommended)
+hisat2_extract_splice_sites.py annotation.gtf > splice_sites.txt
+hisat2_extract_exons.py annotation.gtf > exons.txt
+
+hisat2-build -p 8 \
+    --ss splice_sites.txt \
+    --exon exons.txt \
+    reference.fa hisat2_index
+```
+
+## Basic Alignment
+
+```bash
+# Paired-end reads
+hisat2 -p 8 -x hisat2_index \
+    -1 reads_1.fq.gz -2 reads_2.fq.gz \
+    -S aligned.sam
+
+# Single-end reads
+hisat2 -p 8 -x hisat2_index \
+    -U reads.fq.gz \
+    -S aligned.sam
+```
+
+## Direct to Sorted BAM
+
+```bash
+# Pipe to samtools
+hisat2 -p 8 -x hisat2_index \
+    -1 r1.fq.gz -2 r2.fq.gz | \
+    samtools sort -@ 4 -o aligned.sorted.bam -
+
+samtools index aligned.sorted.bam
+```
+
+## Stranded Libraries
+
+```bash
+# Forward stranded (e.g., Ligation)
+hisat2 -p 8 -x hisat2_index \
+    --rna-strandness FR \
+    -1 r1.fq.gz -2 r2.fq.gz -S aligned.sam
+
+# Reverse stranded (e.g., dUTP, TruSeq - most common)
+hisat2 -p 8 -x hisat2_index \
+    --rna-strandness RF \
+    -1 r1.fq.gz -2 r2.fq.gz -S aligned.sam
+
+# Single-end stranded
+hisat2 -p 8 -x hisat2_index \
+    --rna-strandness F \    # or R for reverse
+    -U reads.fq.gz -S aligned.sam
+```
+
+## Novel Splice Junction Discovery
+
+```bash
+# Output novel splice junctions
+hisat2 -p 8 -x hisat2_index \
+    --novel-splicesite-outfile novel_splices.txt \
+    -1 r1.fq.gz -2 r2.fq.gz -S aligned.sam
+
+# Use known + novel junctions for subsequent alignments
+hisat2 -p 8 -x hisat2_index \
+    --novel-splicesite-infile novel_splices.txt \
+    -1 r1.fq.gz -2 r2.fq.gz -S aligned.sam
+```
+
+## Two-Pass Alignment (Manual)
+
+```bash
+# Pass 1: Discover junctions from all samples
+for r1 in *_R1.fq.gz; do
+    r2=${r1/_R1/_R2}
+    base=$(basename $r1 _R1.fq.gz)
+    hisat2 -p 8 -x hisat2_index \
+        --novel-splicesite-outfile ${base}_splices.txt \
+        -1 $r1 -2 $r2 -S /dev/null
+done
+
+# Combine and filter junctions
+cat *_splices.txt | sort -u > combined_splices.txt
+
+# Pass 2: Realign with all junctions
+for r1 in *_R1.fq.gz; do
+    r2=${r1/_R1/_R2}
+    base=$(basename $r1 _R1.fq.gz)
+    hisat2 -p 8 -x hisat2_index \
+        --novel-splicesite-infile combined_splices.txt \
+        -1 $r1 -2 $r2 | \
+        samtools sort -@ 4 -o ${base}.sorted.bam -
+done
+```
+
+## Read Group Information
+
+```bash
+hisat2 -p 8 -x hisat2_index \
+    --rg-id sample1 \
+    --rg SM:sample1 \
+    --rg PL:ILLUMINA \
+    --rg LB:lib1 \
+    -1 r1.fq.gz -2 r2.fq.gz -S aligned.sam
+```
+
+## Downstream Quantification
+
+```bash
+# Output name-sorted BAM for htseq-count
+hisat2 -p 8 -x hisat2_index -1 r1.fq.gz -2 r2.fq.gz | \
+    samtools sort -n -@ 4 -o aligned.namesorted.bam -
+
+# Or coordinate-sorted for featureCounts
+hisat2 -p 8 -x hisat2_index -1 r1.fq.gz -2 r2.fq.gz | \
+    samtools sort -@ 4 -o aligned.sorted.bam -
+```
+
+## Key Parameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| -p | 1 | Number of threads |
+| -x | - | Index basename |
+| --rna-strandness | unstranded | FR/RF/F/R |
+| --dta | off | Downstream transcriptome assembly |
+| --dta-cufflinks | off | For Cufflinks |
+| --min-intronlen | 20 | Minimum intron length |
+| --max-intronlen | 500000 | Maximum intron length |
+| -k | 5 | Max alignments to report |
+
+## For StringTie/Cufflinks
+
+```bash
+# Use --dta for StringTie
+hisat2 -p 8 -x hisat2_index \
+    --dta \
+    -1 r1.fq.gz -2 r2.fq.gz | \
+    samtools sort -@ 4 -o aligned.sorted.bam -
+```
+
+## Alignment Summary
+
+```bash
+# HISAT2 prints summary to stderr
+hisat2 -p 8 -x hisat2_index -1 r1.fq.gz -2 r2.fq.gz -S aligned.sam 2> summary.txt
+```
+
+Example:
+```
+50000000 reads; of these:
+  50000000 (100.00%) were paired; of these:
+    2500000 (5.00%) aligned concordantly 0 times
+    45000000 (90.00%) aligned concordantly exactly 1 time
+    2500000 (5.00%) aligned concordantly >1 times
+95.00% overall alignment rate
+```
+
+## Memory Comparison
+
+| Aligner | Human Genome Memory |
+|---------|-------------------|
+| STAR | ~30GB |
+| HISAT2 | ~8GB |
+
+## Related Skills
+
+- read-alignment/star-alignment - Alternative with more features
+- rna-quantification/featurecounts-counting - Count aligned reads
+- rna-quantification/alignment-free-quant - Skip alignment entirely
+- differential-expression/deseq2-basics - Downstream DE analysis
+
+
+<!-- AUTHOR_SIGNATURE: 9a7f3c2e-MD-BABU-MIA-2026-MSSM-SECURE -->

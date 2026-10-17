@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-17",
+  "base_commit": "f71213bc83a82f8571a3e1d95515472056661467",
+  "scope": "869 entries in openclaw.plugin.json; nested upstream skills are separate",
+  "skills": 869,
+  "renamed_directories": 860,
+  "unchanged_canonical_directories": 9,
+  "skills_with_task_specific_invocation": 869,
+  "namespace_counts": {
+    "drug": 68,
+    "research": 145,
+    "health": 29,
+    "omics": 493,
+    "evidence": 36,
+    "clinical": 46,
+    "sop": 41,
+    "imaging": 11
+  },
+  "execution_kind_counts": {
+    "planning": 54,
+    "service-guide": 53,
+    "instruction": 191,
+    "library-guide": 362,
+    "prototype": 7,
+    "bundled-code": 159,
+    "workflow-guide": 35,
+    "workflow-code": 5,
+    "project-dependent": 3
+  },
+  "resolved_dependency_entries": 147,
+  "repaired_command_examples": 46,
+  "repaired_markdown_links": 16,
+  "unbundled_link_targets_labeled": 57,
+  "unbundled_command_examples_documented": 122,
+  "skills_with_prototype_markers": 8,
+  "validation": {
+    "format_layout_and_invocation": "PASS",
+    "main_local_markdown_links": "PASS",
+    "main_names_unique": 869,
+    "canonical_codex_symlinks": 869,
+    "preserved_copyright_comment_blocks": 562,
+    "unchanged_license_files": 23,
+    "python_syntax_files": 1149,
+    "python_syntax_errors": 0,
+    "routing_probe": {
+      "h5ad": "sop-omics-single-cell-analysis",
+      "csv": null
+    },
+    "wikipedia_setup_shell_syntax": "PASS"
+  },
+  "codex_discovery": {
+    "expected_main_skills": 869,
+    "matched_and_enabled": 869,
+    "main_errors": 0,
+    "all_discovered_including_other_scopes": 1109,
+    "nested_upstream_errors": 28,
+    "nested_error_locations": [
+      "skills/drug-antibody-sequence-design/MAGE/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/STAgent/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/SpatialAgent/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/varCADD/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/image-analysis/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-communication/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-data-io/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-deconvolution/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-domains/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-multiomics/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-neighbors/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-preprocessing/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-proteomics/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-statistics/SKILL.md",
+      "skills/omics-spatial-transcriptomics-analysis/bioSkills/spatial-visualization/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/clinical-interpretation/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/consensus-sequences/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/deepvariant/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/filtering-best-practices/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/gatk-variant-calling/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/joint-calling/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/structural-variant-calling/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/variant-annotation/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/variant-calling/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/variant-normalization/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/vcf-basics/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/vcf-manipulation/SKILL.md",
+      "skills/omics-variant-interpretation-acmg/bioSkills/vcf-statistics/SKILL.md"
+    ]
+  },
+  "codex_cli_version": "codex-cli 0.163.0-alpha.10.2",
+  "functional_smoke": {
+    "skill": "evidence-pubmed-api-search",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "status": "PASS_AUTO",
+    "duration_seconds": 78.758,
+    "checks": [
+      {
+        "name": "codex --version",
+        "ok": true,
+        "detail": "0"
+      },
+      {
+        "name": "codex login status",
+        "ok": true,
+        "detail": "0"
+      },
+      {
+        "name": "codex exec exit",
+        "ok": true,
+        "detail": "0"
+      },
+      {
+        "name": "turn.completed",
+        "ok": true,
+        "detail": "True"
+      },
+      {
+        "name": "成功读取目标 SKILL",
+        "ok": true,
+        "detail": "True"
+      },
+      {
+        "name": "last-message.md 写入",
+        "ok": true,
+        "detail": "True"
+      },
+      {
+        "name": "主路径原始数据与 results 一致",
+        "ok": true,
+        "detail": "True"
+      },
+      {
+        "name": "无结果原始 count/idlist",
+        "ok": true,
+        "detail": "True"
+      },
+      {
+        "name": "final.md 中文表格/证据/局限",
+        "ok": true,
+        "detail": "True"
+      }
+    ],
+    "pmids": [
+      "38785437",
+      "38374795",
+      "39523797"
+    ],
+    "empty_query_count": 0,
+    "evidence_directory": "workbench/runs/20261017-130114-pubmed-smoke",
+    "skill_sha256": "45404ca3e43fc39c087a4c9a43a22091965e5577e0fd26cb3e3e17ceab2734a7"
+  },
+  "aggregate_main_skill_digest": "0e96d62449277d9a7526ce2a29842cf451e0741e9bea670710426e0700cf146d",
+  "aggregate_digest_method": "SHA256 of each name + NUL + SKILL.md bytes + NUL in name order",
+  "limitations": [
+    "This is a complete naming and invocation migration, not 869 scientific end-to-end executions.",
+    "54 planning guides have no complete bundled execution entry.",
+    "3 entries need unbundled project modules.",
+    "8 entries contain prototype markers; simulations are not scientific validation.",
+    "28 nested upstream entry warnings remain outside the 869 manifest skills.",
+    "Catalog discovery does not guarantee automatic selection with a large skill catalog."
+  ]
+}

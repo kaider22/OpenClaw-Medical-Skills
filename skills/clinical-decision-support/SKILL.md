@@ -1,10 +1,25 @@
 ---
 name: clinical-decision-support
-description: "Generate professional clinical decision support (CDS) documents for pharmaceutical and clinical research settings, including patient cohort analyses (biomarker-stratified with outcomes) and treatment recommendation reports (evidence-based guidelines with decision algorithms). Supports GRADE evidence grading, statistical analysis (hazard ratios, survival curves, waterfall plots), biomarker integration, and regulatory compliance. Outputs publication-ready LaTeX/PDF format optimized for drug development, clinical research, and evidence synthesis."
-allowed-tools: [Read, Write, Edit, Bash]
+description: 开展生物标志物分层队列统计和证据分级报告；用于处理去标识化队列、结局、生物标志物和证据材料。
+metadata:
+  source_extensions:
+    allowed-tools:
+    - Read
+    - Write
+    - Edit
+    - Bash
 ---
 
 # Clinical Decision Support Documents
+
+## Codex 调用
+
+- **选择**：请求涉及“开展生物标志物分层队列统计和证据分级报告”时使用；显式调用 `$clinical-decision-support`。
+- **输入**：去标识化队列、结局、生物标志物和证据材料。
+- **预期产物**：生存曲线、亚组表图、GRADE报告和决策流程；按正文的方法约束和质量检查核对本次输入与产物。
+- **本地资源**：[scripts/build_decision_tree.py](scripts/build_decision_tree.py)、[scripts/biomarker_classifier.py](scripts/biomarker_classifier.py)、[scripts/create_cohort_tables.py](scripts/create_cohort_tables.py)、[scripts/validate_cds_document.py](scripts/validate_cds_document.py)。先读取函数/命令参数并选择与本次任务相关的入口；普通相对命令以本技能目录为基准，正文另有 `cd` 时遵循所示目录。
+- **环境核对**：`lifelines`、`matplotlib`、`numpy`、`pandas`、`scipy`（原文涉及的工具或导入名，按实际执行分支检查，不将导入名直接当作安装包名）。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
 
 ## Description
 
@@ -15,7 +30,7 @@ Generate professional clinical decision support (CDS) documents for pharmaceutic
 
 All documents are generated as publication-ready LaTeX/PDF files optimized for pharmaceutical research, regulatory submissions, and clinical guideline development.
 
-**Note:** For individual patient treatment plans at the bedside, use the `treatment-plans` skill instead. This skill focuses on group-level analyses and evidence synthesis for pharmaceutical/research settings.
+**Note:** For individual patient treatment plans at the bedside, use the `clinical-treatment-plan-drafting` skill instead. This skill focuses on group-level analyses and evidence synthesis for pharmaceutical/research settings.
 
 ## Capabilities
 
@@ -92,45 +107,13 @@ Use this skill when you need to:
 - **Create clinical decision algorithms** with flowcharts for treatment sequencing
 
 **Do NOT use this skill for:**
-- Individual patient treatment plans (use `treatment-plans` skill)
-- Bedside clinical care documentation (use `treatment-plans` skill)
-- Simple patient-specific treatment protocols (use `treatment-plans` skill)
+- Individual patient treatment plans (use `clinical-treatment-plan-drafting` skill)
+- Bedside clinical care documentation (use `clinical-treatment-plan-drafting` skill)
+- Simple patient-specific treatment protocols (use `clinical-treatment-plan-drafting` skill)
 
-## Visual Enhancement with Scientific Schematics
+## 按任务需要生成图示
 
-**⚠️ MANDATORY: Every clinical decision support document MUST include at least 1-2 AI-generated figures using the scientific-schematics skill.**
-
-This is not optional. Clinical decision documents require clear visual algorithms. Before finalizing any document:
-1. Generate at minimum ONE schematic or diagram (e.g., clinical decision algorithm, treatment pathway, or biomarker stratification tree)
-2. For cohort analyses: include patient flow diagram
-3. For treatment recommendations: include decision flowchart
-
-**How to generate figures:**
-- Use the **scientific-schematics** skill to generate AI-powered publication-quality diagrams
-- Simply describe your desired diagram in natural language
-- Nano Banana Pro will automatically generate, review, and refine the schematic
-
-**How to generate schematics:**
-```bash
-python scripts/generate_schematic.py "your diagram description" -o figures/output.png
-```
-
-The AI will automatically:
-- Create publication-quality images with proper formatting
-- Review and refine through multiple iterations
-- Ensure accessibility (colorblind-friendly, high contrast)
-- Save outputs in the figures/ directory
-
-**When to add schematics:**
-- Clinical decision algorithm flowcharts
-- Treatment pathway diagrams
-- Biomarker stratification trees
-- Patient cohort flow diagrams (CONSORT-style)
-- Survival curve visualizations
-- Molecular mechanism diagrams
-- Any complex concept that benefits from visualization
-
-For detailed guidance on creating schematics, refer to the scientific-schematics skill documentation.
+仅在当前任务需要流程图或概念图时，选择 `$research-scientific-schematics` 并先确认其实际工具和凭据。统计结果图应使用本次真实数据和相应绘图工具。无需为每份文稿自动生成 AI 图片，也不把其他技能的脚本当成本目录自带文件。
 
 ---
 

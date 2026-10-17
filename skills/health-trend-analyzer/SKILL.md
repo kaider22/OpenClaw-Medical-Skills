@@ -1,10 +1,21 @@
 ---
 name: health-trend-analyzer
-description: 分析一段时间内健康数据的趋势和模式。关联药物、症状、生命体征、化验结果和其他健康指标的变化。识别令人担忧的趋势、改善情况，并提供数据驱动的洞察。当用户询问健康趋势、模式、随时间的变化或"我的健康状况有什么变化？"时使用。支持多维度分析（体重/BMI、症状、药物依从性、化验结果、情绪睡眠），相关性分析，变化检测，以及交互式HTML可视化报告（ECharts图表）。
-allowed-tools: Read, Grep, Glob, Write
+description: 汇总个人健康记录的时间趋势、相关性和变化提示；用于处理本地体重、症状、用药、化验、情绪和睡眠JSON。
+metadata:
+  source_extensions:
+    allowed-tools: Read, Grep, Glob, Write
 ---
 
 # 健康趋势分析器
+
+## Codex 调用
+
+- **选择**：请求涉及“汇总个人健康记录的时间趋势、相关性和变化提示”时使用；显式调用 `$health-trend-analyzer`。
+- **输入**：本地体重、症状、用药、化验、情绪和睡眠JSON。
+- **预期产物**：趋势、相关性、阈值提示及HTML健康报告；按正文的方法约束和质量检查核对本次输入与产物。
+- **本地资源**：[templates/charts-config.js](templates/charts-config.js)。先读取函数/命令参数并选择与本次任务相关的入口；普通相对命令以本技能目录为基准，正文另有 `cd` 时遵循所示目录。
+- **按需阅读**：[data-sources.md](data-sources.md)、[algorithms.md](algorithms.md)；仅加载本次分支需要的说明。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
 
 分析一段时间内健康数据的趋势和模式，识别变化、相关性，并提供数据驱动的健康洞察。
 

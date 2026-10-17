@@ -1,9 +1,11 @@
 ---
 name: clinical-note-summarization
-description: Structure raw clinical notes into SOAP-format summaries with explicit contradictions, missing data, and ICD-linked assessments using the provided prompt + usage script.
-allowed-tools:
-  - read_file
-  - run_shell_command
+description: 把临床记录整理为SOAP并标注矛盾和缺失的本地原型指南；代码含模拟或替代分支，真实计算与服务结果需分别核验。
+metadata:
+  source_extensions:
+    allowed-tools:
+    - read_file
+    - run_shell_command
 ---
 <!--
 # COPYRIGHT NOTICE
@@ -20,6 +22,17 @@ allowed-tools:
 
 
 ## At-a-Glance
+
+## Codex 调用
+
+- **选择**：请求涉及“把临床记录整理为SOAP并标注矛盾和缺失”时使用；显式调用 `$clinical-note-summarization`。
+- **输入**：原始临床记录及可选患者上下文。
+- **预期产物**：SOAP Markdown/JSON、警示和缺失项清单；按正文的方法约束和质量检查核对本次输入与产物。
+- **本地资源**：[usage.py](usage.py)、[medprompt_utils.py](medprompt_utils.py)。先读取函数/命令参数并选择与本次任务相关的入口；普通相对命令以本技能目录为基准，正文另有 `cd` 时遵循所示目录。
+- **环境核对**：`abc`、`medprompt_utils`（原文涉及的工具或导入名，按实际执行分支检查，不将导入名直接当作安装包名）。
+- **原型边界**：随附代码含模拟、mock 或替代分支。运行时明确记录实际走到的分支；模拟结果不能标作真实查询、模型预测或实验验证。
+- **执行记录**：对照上述输入与预期产物报告 `PASS`、`FAIL`、`BLOCKED` 或 `NOT_RUN`；注明是源代码执行、按指南运行还是方案说明。
+
 - **description (10-20 chars):** SOAP builder
 - **keywords:** clinical-notes, SOAP, guardrails, ICD10, gaps
 - **measurable_outcome:** Produce SOAP markdown + JSON (when requested) covering all four sections with ≥95% note coverage and explicit missing info in ≤2 minutes per note.
